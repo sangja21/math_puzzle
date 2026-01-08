@@ -35,6 +35,22 @@ const PUZZLES: PuzzleCard[] = [
     difficulty: 'medium',
     href: '/puzzle/balance',
   },
+  {
+    id: 'river',
+    title: '강 건너기',
+    emoji: '🚣',
+    description: '늑대, 양, 양배추를 모두 안전하게 건너편으로!',
+    difficulty: 'easy',
+    href: '/puzzle/river',
+  },
+  {
+    id: 'fakecoin',
+    title: '가짜 동전 찾기',
+    emoji: '🪙',
+    description: '삼진 탐색으로 가짜 동전을 찾아라! O(log₃N)',
+    difficulty: 'medium',
+    href: '/puzzle/fakecoin',
+  },
 ];
 
 const difficultyColors = {
