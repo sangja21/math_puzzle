@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.container:hover {
+  transform: scale(1.03);
+  border-color: rgba(255, 200, 100, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 30px rgba(255, 200, 100, 0.15);
+}
+
+.container:active {
+  transform: scale(0.98);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+}
+
+.hourglassWrapper {
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.flipping {
+  animation: flipAnimation 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes flipAnimation {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg) scale(0.9);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+.hourglass {
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
+}
+
+.sand {
+  transition: all 0.4s ease-out;
+}
+
+/* 떨어지는 모래 애니메이션 */
+.fallingStream {
+  animation: sandDrip 0.4s ease-in-out infinite;
+}
+
+@keyframes sandDrip {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.status {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.sandInfo {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sandLabel {
+  color: rgba(255, 215, 0, 0.8);
+  font-weight: 600;
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.flipHint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s;
+}
+
+.container:hover .flipHint {
+  color: rgba(255, 200, 100, 0.7);
+}

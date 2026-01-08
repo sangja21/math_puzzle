@@ -1,0 +1,252 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* 퍼즐 선택 */
+.puzzleSelector {
+  display: flex;
+  gap: 12px;
+}
+
+.puzzleButton {
+  padding: 12px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.puzzleButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 200, 100, 0.5);
+}
+
+.puzzleButton.selected {
+  background: linear-gradient(135deg, rgba(255, 200, 100, 0.3) 0%, rgba(255, 150, 50, 0.2) 100%);
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* 설명 */
+.description {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  max-width: 500px;
+  line-height: 1.6;
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 게임 상태 */
+.stats {
+  display: flex;
+  gap: 32px;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.statValue.success {
+  color: #4ade80;
+  text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+}
+
+.statValue.error {
+  color: #f87171;
+  text-shadow: 0 0 20px rgba(248, 113, 113, 0.5);
+}
+
+/* 모래시계 영역 */
+.hourglasses {
+  display: flex;
+  gap: 48px;
+  padding: 32px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 액션 버튼 */
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.advanceButton,
+.resetButton {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.advanceButton {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  color: #0a2e0a;
+  box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4);
+}
+
+.advanceButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(74, 222, 128, 0.5);
+}
+
+.advanceButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.advanceButton.advancing {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 40px rgba(74, 222, 128, 0.7);
+  }
+}
+
+.resetButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.resetButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 메시지 */
+.message {
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  max-width: 600px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.successMessage {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+}
+
+.errorMessage {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(220, 38, 38, 0.2) 100%);
+  border: 1px solid rgba(248, 113, 113, 0.5);
+  color: #f87171;
+}
+
+/* 도움말 */
+.help {
+  max-width: 500px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.help h3 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 1.2rem;
+}
+
+.help ol {
+  margin: 0;
+  padding-left: 24px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.help ol li {
+  margin-bottom: 8px;
+}
+
+.hint {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(255, 200, 100, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #ffd700;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
