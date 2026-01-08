@@ -88,10 +88,10 @@ export default function Home() {
       <header className={styles.hero}>
         <h1 className={styles.title}>
           <span className={styles.emoji}>🧮</span>
-          주시후와 함께하는 수학퍼즐
+          Math Puzzle
         </h1>
         <p className={styles.subtitle}>
-          마틴 가드너의 클래식 수학 퍼즐을<br />
+          주시후와 함께하는 수학퍼즐<br />
           인터랙티브 게임으로 풀어보세요!
         </p>
       </header>
