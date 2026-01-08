@@ -1,0 +1,301 @@
+/* 양팔저울 컴포넌트 스타일 */
+
+.balanceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* 저울 본체 */
+.balance {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 저울대 (기울어지는 부분) */
+.beam {
+  position: absolute;
+  top: 60px;
+  width: 400px;
+  height: 12px;
+  background: linear-gradient(135deg, #8b7355 0%, #6b5344 100%);
+  border-radius: 6px;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+/* 저울 받침대 */
+.stand {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 160px;
+  background: linear-gradient(180deg, #8b7355 0%, #5a4535 100%);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.standBase {
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 20px;
+  background: linear-gradient(180deg, #6b5344 0%, #4a3828 100%);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+/* 저울 축 */
+.pivot {
+  position: absolute;
+  top: 50px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #ffd700 0%, #b8960f 100%);
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* 접시 영역 */
+.plate {
+  position: absolute;
+  top: 72px;
+  width: 140px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.plateLeft {
+  left: 10px;
+}
+
+.plateRight {
+  right: 10px;
+}
+
+/* 줄 */
+.rope {
+  width: 3px;
+  height: 30px;
+  background: linear-gradient(180deg, #a08060 0%, #806040 100%);
+}
+
+/* 접시 그릇 */
+.dish {
+  width: 120px;
+  height: 35px;
+  background: linear-gradient(180deg, #c9a66b 0%, #a08050 100%);
+  border-radius: 0 0 60px 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  min-height: 50px;
+}
+
+/* 드롭 영역 활성화 */
+.dish.dropActive {
+  background: linear-gradient(180deg, #e0c080 0%, #c0a060 100%);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* 물건 (재야 할 무게) */
+.targetItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+}
+
+.targetEmoji {
+  font-size: 1.2rem;
+}
+
+.targetWeight {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* 접시 위 추 */
+.weightOnDish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 2px 8px rgba(74, 144, 217, 0.4);
+}
+
+/* 추 보관 영역 */
+.weightsArea {
+  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.weightsArea.dropActive {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.weightsAreaLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.weightsContainer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 드래그 가능한 추 */
+.weight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%);
+  border-radius: 50%;
+  cursor: grab;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(74, 144, 217, 0.4);
+  user-select: none;
+}
+
+.weight:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(74, 144, 217, 0.6);
+}
+
+.weight:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.weight.dragging {
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+.weight.onScale {
+  width: 32px;
+  height: 32px;
+  font-size: 0.75rem;
+}
+
+.weightValue {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.weightUnit {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 균형 상태 표시 */
+.balanceStatus {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.balanced {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+}
+
+.unbalanced {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 무게 표시 */
+.weightDisplay {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.weightDisplay span {
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* 반응형 */
+@media (max-width: 500px) {
+  .beam {
+    width: 300px;
+  }
+  
+  .plate {
+    width: 110px;
+  }
+  
+  .plateLeft {
+    left: 0;
+  }
+  
+  .plateRight {
+    right: 0;
+  }
+  
+  .dish {
+    width: 100px;
+  }
+  
+  .weight {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .weightValue {
+    font-size: 1rem;
+  }
+}

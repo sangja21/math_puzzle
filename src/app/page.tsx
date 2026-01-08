@@ -19,7 +19,22 @@ const PUZZLES: PuzzleCard[] = [
     difficulty: 'medium',
     href: '/puzzle/hourglass',
   },
-  // 추후 퍼즐 추가
+  {
+    id: 'doors',
+    title: '100개의 문',
+    emoji: '🚪',
+    description: '100명의 간수가 문을 토글하면 최종적으로 열린 문은?',
+    difficulty: 'easy',
+    href: '/puzzle/doors',
+  },
+  {
+    id: 'balance',
+    title: '양팔저울',
+    emoji: '⚖️',
+    description: '3의 거듭제곱 추로 모든 무게를 재는 비셰의 퍼즐!',
+    difficulty: 'medium',
+    href: '/puzzle/balance',
+  },
 ];
 
 const difficultyColors = {

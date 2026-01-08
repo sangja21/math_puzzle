@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
+import Link from 'next/link';
 import Hourglass from '@/components/Hourglass';
 import {
     GameState,
@@ -86,6 +87,11 @@ export default function HourglassPuzzlePage() {
 
     return (
         <div className={styles.container}>
+            {/* 홈 버튼 */}
+            <Link href="/" className={styles.homeButton}>
+                🏠 메인으로
+            </Link>
+
             {/* 헤더 */}
             <header className={styles.header}>
                 <h1 className={styles.title}>⏳ 모래시계 퍼즐</h1>
