@@ -1,7 +1,8 @@
+/* 메인 컨테이너 */
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  color: white;
+  background-color: var(--surface);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
 }
@@ -9,8 +10,9 @@
 /* 히어로 섹션 */
 .hero {
   text-align: center;
-  padding: 60px 24px 40px;
-  background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+  padding: 80px 24px 60px;
+  background-color: var(--background);
+  border-bottom: 1px solid #eaeaea;
 }
 
 .title {
@@ -21,115 +23,160 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
 .emoji {
-  font-size: 3rem;
+  font-size: 3.5rem;
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.25rem;
+  color: var(--text-secondary);
   margin-top: 16px;
-  line-height: 1.8;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 메인 섹션 */
 .main {
   flex: 1;
-  padding: 24px;
+  padding: 48px 24px;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
-  margin-bottom: 24px;
-  color: #ffd700;
+  font-size: 1.75rem;
+  margin-bottom: 32px;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: center;
 }
 
 /* 퍼즐 그리드 */
 .puzzleGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
 }
 
 .puzzleCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  padding: 40px 32px;
+  background: var(--card-bg);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: inherit;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.puzzleCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 .puzzleCard:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 200, 100, 0.5);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--primary);
+}
+
+.puzzleCard:hover::before {
+  opacity: 1;
 }
 
 .comingSoon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 2px dashed rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  opacity: 0.6;
+  padding: 40px 32px;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  opacity: 0.8;
 }
 
 .cardEmoji {
   font-size: 4rem;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
 .cardTitle {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 12px 0;
-  color: white;
+  color: var(--text-primary);
 }
 
 .cardDescription {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  color: var(--text-secondary);
   text-align: center;
-  margin: 0 0 16px 0;
+  margin: 0 0 24px 0;
   line-height: 1.6;
 }
 
 .difficulty {
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 9999px; /* Pill shape */
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #0a0a0a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* 푸터 */
 .footer {
   text-align: center;
-  padding: 32px;
-  color: rgba(255, 255, 255, 0.4);
+  padding: 40px;
+  color: var(--text-secondary);
   font-size: 0.9rem;
+  background-color: var(--background);
+  border-top: 1px solid #eaeaea;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    flex-direction: column;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero {
+    padding: 60px 20px 40px;
+  }
+  
+  .puzzleGrid {
+    grid-template-columns: 1fr;
+  }
 }
