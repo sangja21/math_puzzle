@@ -1,0 +1,236 @@
+/* 기본 레이아웃 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.homeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* 입력 폼 */
+.inputForm {
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.inputGroup input {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  width: 100px;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+
+.startButton {
+  padding: 12px 24px;
+  background: #f1c40f;
+  color: #2c3e50;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  height: 48px;
+}
+
+.startButton:hover {
+  transform: scale(1.05);
+}
+
+/* 게임 영역 */
+.gameArea {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  background: rgba(0,0,0,0.2);
+  padding: 15px 30px;
+  border-radius: 50px;
+}
+
+.p1 { color: #4ade80; font-weight: bold; }
+.p2 { color: #ff6b6b; font-weight: bold; }
+
+/* 시각화 영역 (직사각형) */
+.visualizer {
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  overflow: hidden; /* 자식 요소가 삐져나가지 않게 */
+  border-radius: 4px;
+}
+
+/* 정사각형 가이드 */
+.squareGuide {
+  position: absolute;
+  top: 0;
+  border-right: 2px dashed rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.squareGuide:last-child {
+    border-right: none;
+}
+
+.squareGuide:hover,
+.squareGuide.hovered {
+  background: rgba(241, 196, 15, 0.4); /* 호버 시 노란색 반투명 */
+}
+
+.cutText {
+  opacity: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.2s;
+}
+
+.squareGuide:hover .cutText,
+.squareGuide.hovered .cutText {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 남은 영역 */
+.remainArea {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: rgba(231, 76, 60, 0.2); /* 붉은색 틴트 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remainLabel {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+/* 결과 화면 */
+.result {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: white;
+  color: #2c3e50;
+  padding: 30px 50px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.restartButton {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.instruction {
+    margin-top: 20px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 해설 */
+.explanationButton {
+    margin-top: 40px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.explanation {
+    max-width: 600px;
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    line-height: 1.6;
+}

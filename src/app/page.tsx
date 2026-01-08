@@ -51,6 +51,22 @@ const PUZZLES: PuzzleCard[] = [
     difficulty: 'medium',
     href: '/puzzle/fakecoin',
   },
+  {
+    id: 'josephus',
+    title: '요세푸스 퍼즐',
+    emoji: '🌀',
+    description: '원형에서 k번째 사람을 제거하고 마지막 생존자를 찾으세요.',
+    difficulty: 'medium',
+    href: '/puzzle/josephus',
+  },
+  {
+    id: 'euclid',
+    title: 'Euclidean Game',
+    emoji: '🧮',
+    description: '유클리드 호제법을 게임으로 체험하세요.',
+    difficulty: 'medium',
+    href: '/puzzle/euclid',
+  },
 ];
 
 const difficultyColors = {
@@ -72,7 +88,7 @@ export default function Home() {
       <header className={styles.hero}>
         <h1 className={styles.title}>
           <span className={styles.emoji}>🧮</span>
-          Math Puzzle
+          주시후와 함께하는 수학퍼즐
         </h1>
         <p className={styles.subtitle}>
           마틴 가드너의 클래식 수학 퍼즐을<br />
