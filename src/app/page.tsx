@@ -67,6 +67,14 @@ const PUZZLES: PuzzleCard[] = [
     difficulty: 'medium',
     href: '/puzzle/euclid',
   },
+  {
+    id: 'sum_product',
+    title: 'Mr.P와 Mr.S',
+    emoji: '🕵️',
+    description: '정보의 부재가 정보가 되는 역설! (The Impossible Puzzle)',
+    difficulty: 'hard',
+    href: '/puzzle/sum_product',
+  },
 ];
 
 const difficultyColors = {
