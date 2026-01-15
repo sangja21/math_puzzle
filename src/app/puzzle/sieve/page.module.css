@@ -1,0 +1,566 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* 홈 버튼 */
+.homeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.homeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* 설정 패널 */
+.settingsPanel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.settingsLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.rangeSelect {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rangeSelect:hover {
+  border-color: #ffd700;
+}
+
+.rangeSelect option {
+  background: #1a1a2e;
+  color: white;
+}
+
+.startButton {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  border: none;
+  border-radius: 8px;
+  color: #0a2e0a;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+}
+
+/* 게임 상태 */
+.stats {
+  display: flex;
+  gap: 24px;
+  padding: 16px 32px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.statValue.prime {
+  color: #4ade80;
+}
+
+.statValue.eliminated {
+  color: #f87171;
+}
+
+/* 진행 바 */
+.progressContainer {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+  transition: width 0.1s ease;
+}
+
+.progressText {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  min-width: 100px;
+}
+
+/* 숫자 그리드 */
+.numbersGrid {
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  max-width: 95vw;
+  overflow-x: auto;
+}
+
+/* 범위별 그리드 컬럼 조절 */
+.gridSmall {
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.gridMedium {
+  grid-template-columns: repeat(15, 1fr);
+}
+
+.gridLarge {
+  grid-template-columns: repeat(20, 1fr);
+}
+
+.gridXLarge {
+  grid-template-columns: repeat(25, 1fr);
+}
+
+.number {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: default;
+  transition: all 0.2s ease;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.numberPrime {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.4) 0%, rgba(34, 197, 94, 0.3) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+}
+
+.numberEliminated {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: line-through;
+}
+
+.numberCurrentPrime {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.5) 0%, rgba(255, 140, 0, 0.4) 100%);
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+.highlighted {
+  animation: eliminate 0.3s ease;
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
+  border-color: #f87171 !important;
+  background: rgba(248, 113, 113, 0.3) !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes eliminate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 컨트롤 */
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nextButton,
+.autoButton,
+.completeButton,
+.resetButton {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nextButton {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  color: #0a2e0a;
+}
+
+.autoButton {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+}
+
+.autoButton.playing {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #0a0a0a;
+}
+
+.completeButton {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+}
+
+.resetButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nextButton:hover:not(:disabled),
+.autoButton:hover:not(:disabled),
+.completeButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.resetButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nextButton:disabled,
+.autoButton:disabled,
+.completeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 속도 조절 */
+.speedControl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.speedControl input[type="range"] {
+  width: 120px;
+  accent-color: #ffd700;
+}
+
+/* 결과 */
+.result {
+  text-align: center;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result h2 {
+  margin: 0 0 12px 0;
+  color: #4ade80;
+}
+
+.result p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.primesList {
+  font-size: 0.85rem;
+  color: #4ade80;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 12px;
+  max-height: 150px;
+  overflow-y: auto;
+  word-break: break-word;
+  line-height: 1.8;
+}
+
+.explanationButton {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.explanationButton:hover {
+  transform: scale(1.05);
+}
+
+.explanation {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  text-align: left;
+  line-height: 1.8;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.explanation h2,
+.explanation h3 {
+  color: #ffd700;
+  margin: 16px 0 12px 0;
+}
+
+.explanation h2:first-child,
+.explanation h3:first-child {
+  margin-top: 0;
+}
+
+.explanation strong {
+  color: #4ade80;
+}
+
+.explanation table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.explanation th,
+.explanation td {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.explanation th {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+}
+
+/* 도움말 */
+.help {
+  max-width: 500px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.help h3 {
+  margin: 0 0 12px 0;
+  color: #ffd700;
+  font-size: 1.1rem;
+}
+
+.help ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.help li {
+  margin-bottom: 6px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 60px;
+  }
+
+  .homeButton {
+    top: 10px;
+    left: 10px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .numbersGrid {
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .number {
+    min-width: 22px;
+    min-height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .gridSmall {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .gridMedium {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .gridLarge {
+    grid-template-columns: repeat(15, 1fr);
+  }
+
+  .gridXLarge {
+    grid-template-columns: repeat(20, 1fr);
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
+  .nextButton,
+  .autoButton,
+  .completeButton,
+  .resetButton {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .stats {
+    gap: 16px;
+    padding: 12px 20px;
+  }
+
+  .statValue {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .number {
+    min-width: 18px;
+    min-height: 18px;
+    font-size: 0.5rem;
+  }
+
+  .gridLarge,
+  .gridXLarge {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}

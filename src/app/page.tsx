@@ -8,6 +8,7 @@ interface PuzzleCard {
   description: string;
   difficulty: 'easy' | 'medium' | 'hard';
   href: string;
+  tag?: string;
 }
 
 const PUZZLES: PuzzleCard[] = [
@@ -75,6 +76,23 @@ const PUZZLES: PuzzleCard[] = [
     difficulty: 'hard',
     href: '/puzzle/sum_product',
   },
+  {
+    id: 'sieve',
+    title: '에라토스테네스의 체',
+    emoji: '🔢',
+    description: '고대 그리스의 소수 찾기 알고리즘을 시각적으로 체험하세요!',
+    difficulty: 'easy',
+    href: '/puzzle/sieve',
+  },
+  {
+    id: 'squares',
+    title: '완전제곱수의 기하학',
+    emoji: '📐',
+    description: 'n²이 ㄴ자 블록으로 성장하는 과정을 관찰하세요!',
+    difficulty: 'easy',
+    href: '/puzzle/squares',
+    tag: '시후의 발견! 🚀',
+  },
 ];
 
 const difficultyColors = {
@@ -110,6 +128,7 @@ export default function Home() {
         <div className={styles.puzzleGrid}>
           {PUZZLES.map((puzzle) => (
             <Link key={puzzle.id} href={puzzle.href} className={styles.puzzleCard}>
+              {puzzle.tag && <span className={styles.puzzleTag}>{puzzle.tag}</span>}
               <div className={styles.cardEmoji}>{puzzle.emoji}</div>
               <h3 className={styles.cardTitle}>{puzzle.title}</h3>
               <p className={styles.cardDescription}>{puzzle.description}</p>

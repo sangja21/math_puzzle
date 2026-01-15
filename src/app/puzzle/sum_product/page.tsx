@@ -44,6 +44,29 @@ export default function SumProductPage() {
 
     const maxRange = Math.min(Math.max(maxNum, MIN_RANGE_LIMIT), MAX_RANGE_LIMIT);
 
+    // 디버깅: (2,6) 및 S=8 분석
+    const debugInfo = useMemo(() => {
+        const targetId = '2-6';
+        const inInit = solutions.initial.some(c => c.id === targetId);
+        const inS1 = solutions.step1.some(c => c.id === targetId);
+        const inS2 = solutions.step2.some(c => c.id === targetId);
+
+        let reason = '';
+        if (inS1 && !inS2) {
+            // S=8인 후보들 분석
+            const s8 = solutions.initial.filter(c => c.s === 8);
+            const s8Details = s8.map(c => {
+                const passedS1 = solutions.step1.some(s1 => s1.id === c.id);
+                // 곱의 빈도 (Step 1에서 쓰인)
+                const pCount = solutions.initial.filter(i => i.p === c.p).length;
+                return `(${c.x},${c.y}) P=${c.p} Count=${pCount} => Passed S1? ${passedS1}`;
+            }).join('\n');
+            reason = `\n[Analysis for Sum=8]\n${s8Details}`;
+        }
+
+        return `Debug (2,6): Init=${inInit} S1=${inS1} S2=${inS2}${reason}`;
+    }, [solutions]);
+
     return (
         <div className={styles.container}>
             {/* 헤더 */}
@@ -198,6 +221,11 @@ export default function SumProductPage() {
                     Product: {hoveredCell.p}
                 </div>
             )}
+
+            {/* 디버그 출력 */}
+            <pre id="debug-output" style={{ padding: '20px', background: '#333', color: '#fff', marginTop: '50px', whiteSpace: 'pre-wrap' }}>
+                {debugInfo}
+            </pre>
         </div>
     );
 }
