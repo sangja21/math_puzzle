@@ -205,6 +205,11 @@ export default function DoorsPuzzlePage() {
                             <div dangerouslySetInnerHTML={{ __html: EXPLANATION.replace(/\n/g, '<br />').replace(/##/g, '<h3>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                         </div>
                     )}
+
+                    {/* 블록코딩 심화 학습 버튼 */}
+                    <Link href="/puzzle/doors/block-coding" className={styles.blockCodingButton}>
+                        🧩 블록코딩해보기
+                    </Link>
                 </div>
             )}
 

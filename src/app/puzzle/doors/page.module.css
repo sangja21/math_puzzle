@@ -409,3 +409,32 @@
     font-size: 0.85rem;
   }
 }
+
+/* 블록코딩 버튼 */
+.blockCodingButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #e040fb 0%, #7c4dff 50%, #536dfe 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+}
+
+.blockCodingButton:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(124, 77, 255, 0.5);
+}
+
+.blockCodingButton:active {
+  transform: translateY(-1px);
+}
