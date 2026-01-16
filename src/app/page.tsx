@@ -114,7 +114,7 @@ export default function Home() {
       <header className={styles.hero}>
         <h1 className={styles.title}>
           <span className={styles.emoji}>🧮</span>
-          Math Puzzle
+          시후의 수학퍼즐
         </h1>
         <p className={styles.subtitle}>
           주시후와 함께하는 수학퍼즐<br />
