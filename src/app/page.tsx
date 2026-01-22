@@ -93,6 +93,15 @@ const PUZZLES: PuzzleCard[] = [
     href: '/puzzle/squares',
     tag: '시후의 발견! 🚀',
   },
+  {
+    id: 'caesar',
+    title: '카이사르 암호',
+    emoji: '🔐',
+    description: '로마 장군 카이사르의 비밀 편지를 해독하라!',
+    difficulty: 'easy',
+    href: '/puzzle/caesar',
+    tag: '역사 스토리! 🏛️',
+  },
 ];
 
 const difficultyColors = {
