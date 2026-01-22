@@ -1,0 +1,434 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* 홈 버튼 */
+.homeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.homeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 단계 표시 */
+.stageBadge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* 스토리 카드 */
+.storyCard {
+  max-width: 600px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 16px;
+  text-align: center;
+  line-height: 1.8;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 숫자 퍼즐 영역 */
+.numberPuzzle {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.examplesBox {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.exampleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.fromNumber {
+  color: #60a5fa;
+  min-width: 50px;
+  text-align: right;
+}
+
+.arrow {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.toNumber {
+  color: #4ade80;
+  min-width: 50px;
+  text-align: left;
+}
+
+.questionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px dashed rgba(255, 255, 255, 0.2);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.questionNumber {
+  color: #fbbf24;
+}
+
+.questionMark {
+  color: #f87171;
+  font-size: 2rem;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* 입력 영역 */
+.inputSection {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.inputLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(74, 222, 128, 0.4);
+  border-radius: 12px;
+  color: #4ade80;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.inputBox::placeholder {
+  color: rgba(74, 222, 128, 0.4);
+  letter-spacing: 1px;
+}
+
+.inputBox:focus {
+  border-color: #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+.inputBox.correct {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.inputBox.incorrect {
+  border-color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* 버튼들 */
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hintButton,
+.checkButton,
+.nextButton,
+.startButton {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hintButton {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #0a0a0a;
+}
+
+.checkButton {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  color: #0a2e0a;
+}
+
+.nextButton {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+}
+
+.startButton {
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.hintButton:hover,
+.checkButton:hover,
+.nextButton:hover,
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.checkButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 힌트 박스 */
+.hintBox {
+  padding: 16px 24px;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 12px;
+  color: #fbbf24;
+  font-size: 1rem;
+  animation: fadeSlideIn 0.3s ease;
+  max-width: 400px;
+}
+
+/* 결과 메시지 */
+.resultMessage {
+  padding: 16px 28px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+.resultMessage.success {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
+  border: 2px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+}
+
+.resultMessage.error {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%);
+  border: 2px solid rgba(248, 113, 113, 0.5);
+  color: #f87171;
+}
+
+/* 규칙 설명 */
+.ruleExplanation {
+  margin-top: 16px;
+  padding: 16px 24px;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 12px;
+  color: #4ade80;
+  font-size: 1rem;
+}
+
+/* 완료 화면 */
+.completeScreen {
+  text-align: center;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+  border: 2px solid rgba(74, 222, 128, 0.4);
+  border-radius: 20px;
+  max-width: 500px;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+.completeScreen h2 {
+  font-size: 2rem;
+  margin: 0 0 16px 0;
+  color: #4ade80;
+}
+
+.completeScreen p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.celebrationEmoji {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.caesarButton {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);
+  border: none;
+  border-radius: 12px;
+  color: #0a0a0a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.caesarButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+/* 진행 표시 */
+.progressDots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: #60a5fa;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+.dot.completed {
+  background: #4ade80;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 70px;
+  }
+
+  .homeButton {
+    top: 10px;
+    left: 10px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .stageBadge {
+    top: 10px;
+    right: 10px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .exampleRow {
+    font-size: 1.2rem;
+  }
+
+  .questionRow {
+    font-size: 1.4rem;
+  }
+
+  .inputBox {
+    font-size: 1.2rem;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 480px) {

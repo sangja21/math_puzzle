@@ -1,0 +1,441 @@
+.container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
+  color: #f8fafc;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+.homeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.homeButton:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.header {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.title {
+  font-size: 2.4rem;
+  margin: 0;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: rgba(248, 250, 252, 0.7);
+}
+
+.storyCard {
+  max-width: 620px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  line-height: 1.7;
+}
+
+.startActions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.startButton,
+.secondaryButton {
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.startButton {
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  color: #031b10;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e2e8f0;
+}
+
+.startButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.stageBadge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.15);
+  font-weight: 600;
+}
+
+.progressBar {
+  width: min(680px, 100%);
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.3);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(135deg, #34d399, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.stageSteps {
+  display: flex;
+  gap: 12px;
+}
+
+.stageDot {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.stageDot.active {
+  border-color: #60a5fa;
+  color: #e0f2fe;
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.5);
+}
+
+.stageDot.completed {
+  background: rgba(74, 222, 128, 0.15);
+  border-color: #4ade80;
+  color: #bbf7d0;
+}
+
+.stageCard {
+  width: min(760px, 100%);
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 25px 80px rgba(2, 6, 23, 0.6);
+}
+
+.stageHeader h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.stageHeader p {
+  margin-top: 8px;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.recordPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 6px;
+}
+
+.recordLabel {
+  letter-spacing: normal;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.recordDigits {
+  font-size: 1.5rem;
+}
+
+.lockDisplay {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.lockDial {
+  flex: 1;
+  min-width: 140px;
+  padding: 18px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(20, 184, 166, 0.4);
+  background: rgba(15, 118, 110, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.lockDial.unlocked {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: #4ade80;
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.35);
+}
+
+.dialButton {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 184, 166, 0.5);
+  background: rgba(13, 148, 136, 0.3);
+  color: #a7f3d0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dialButton:hover:not(:disabled) {
+  background: rgba(20, 184, 166, 0.45);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4);
+}
+
+.dialButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dialBody {
+  width: 100%;
+  border-radius: 16px;
+  background: rgba(6, 78, 59, 0.6);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.dialNumber {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.dialLabel {
+  font-size: 0.9rem;
+  color: rgba(226, 232, 240, 0.7);
+  letter-spacing: 1px;
+}
+
+.storyStrip {
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px dashed rgba(96, 165, 250, 0.4);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 0.95rem;
+  color: #bfdbfe;
+}
+
+
+.hintBox {
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fde68a;
+}
+
+.ruleBox {
+  border-radius: 16px;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  background: rgba(15, 118, 110, 0.15);
+  padding: 18px;
+}
+
+.ruleTitle {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.ruleText {
+  margin: 0 0 12px 0;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.ruleExamples {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.exampleChip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #bfdbfe;
+  font-weight: 600;
+}
+
+.successMessage,
+.errorMessage {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.successMessage {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: #bbf7d0;
+}
+
+.errorMessage {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #fecaca;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hintButton,
+.checkButton,
+.nextButton {
+  flex: 1;
+  min-width: 160px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.hintButton {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1f1304;
+}
+
+.checkButton {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  color: #ebf4ff;
+}
+
+.checkButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nextButton {
+  background: linear-gradient(135deg, #4ade80, #16a34a);
+  color: #042312;
+}
+
+.hintButton:hover,
+.checkButton:hover:not(:disabled),
+.nextButton:hover {
+  transform: translateY(-2px);
+}
+
+.completeScreen {
+  width: min(640px, 100%);
+  padding: 32px;
+  background: rgba(7, 89, 133, 0.2);
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  border-radius: 24px;
+  text-align: center;
+  line-height: 1.7;
+  box-shadow: 0 25px 70px rgba(2, 6, 23, 0.6);
+}
+
+.celebrationEmoji {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
+
+.caesarButton {
+  margin-top: 16px;
+  padding: 16px 28px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #fde047, #f97316);
+  color: #1f1202;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .stageCard {
+    padding: 24px;
+  }
+
+  .stageDot {
+    width: 42px;
+    height: 42px;
+  }
+
+  .dialButton {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homeButton,
+  .stageBadge {
+    position: static;
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .container {
+    padding-top: 32px;
+  }
+
+  .lockDisplay {
+    flex-direction: column;
+  }
+
+  .recordPanel {
+    flex-direction: column;
+    gap: 8px;
+    letter-spacing: 4px;
+  }
+}
