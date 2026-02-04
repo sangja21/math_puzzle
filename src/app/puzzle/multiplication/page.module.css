@@ -1,0 +1,324 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d3436;
+  border-left: 5px solid #6c5ce7;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #636e72;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+/* --- Carousel (Modulo) --- */
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.canvasWrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #6c5ce7;
+  position: relative;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+  background: conic-gradient(from 0deg, #fff 0%, #f0f0f0 100%);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.2);
+}
+
+.wheelNumber {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: bold;
+  transform-origin: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-left: -15px; /* half width */
+  margin-top: -15px; /* half height */
+}
+
+.pointer {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid #ff7675;
+  z-index: 10;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.controlButton {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background: #6c5ce7;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controlButton:hover {
+  background: #5649c0;
+  transform: translateY(-2px);
+}
+
+.activeNumber {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #6c5ce7;
+}
+
+/* --- Euclid Tiling --- */
+.tilingContainer {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #dfe6e9;
+  border: 2px solid #b2bec3;
+  margin: 2rem 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.tile {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+  animation: popIn 0.5s ease backwards;
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inputGroup label {
+  font-weight: bold;
+}
+
+.inputGroup input {
+  padding: 0.5rem;
+  border: 2px solid #dfe6e9;
+  border-radius: 6px;
+  width: 80px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* --- Cipher Machine --- */
+.cipherContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cipherControls {
+  background: #f1f2f6;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rangeInputs {
+  width: 60%;
+}
+
+.keyDisplay {
+  text-align: right;
+}
+
+.keyDisplay h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2d3436;
+}
+
+.statusGood {
+  color: #00b894;
+  font-weight: bold;
+}
+
+.statusBad {
+  color: #d63031;
+  font-weight: bold;
+}
+
+.mappingTable {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 0.5rem;
+}
+
+.mappingItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.mappingItem.collision {
+  background-color: #ff7675;
+  color: white;
+  border-color: #fab1a0;
+  animation: shake 0.5s ease-in-out;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+  color: #b2bec3;
+}
+
+.original {
+  font-weight: bold;
+  color: #636e72;
+}
+
+.encrypted {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #0984e3;
+}
+
+.mappingItem.collision .encrypted {
+  color: white;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+.collisionAlert {
+  background: #fab1a0;
+  color: #d63031;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Existing styles... append these */
+
+.challengeContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.challengeCard {
+  background: white;
+  border: 2px solid #dfe6e9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.challengeCard:hover {
+  transform: translateY(-5px);
+  border-color: #6c5ce7;
+  box-shadow: 0 10px 20px rgba(108, 92, 231, 0.15);
+}
+
+.challengeCard h3 {
+  margin: 0.5rem 0;
+  color: #2d3436;
+}
+
+.challengeCard p {
+  font-size: 0.9rem;
+  color: #636e72;
+}

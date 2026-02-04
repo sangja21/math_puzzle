@@ -120,6 +120,33 @@ const PUZZLES: PuzzleCard[] = [
     href: '/puzzle/caesar',
     tag: '역사 스토리! 🏛️',
   },
+  {
+    id: 'multiplication',
+    title: '곱셈 암호 원리',
+    emoji: '🎡',
+    description: '회전목마와 블록으로 곱셈 암호의 수학적 비밀을 배워보세요!',
+    difficulty: 'medium',
+    href: '/puzzle/multiplication',
+    tag: '개념 학습 📚',
+  },
+  {
+    id: 'multiplication_quiz',
+    title: '스파이 암호 해독',
+    emoji: '🕵️',
+    description: '암호표를 사용하여 스파이의 비밀 메시지를 해독하세요!',
+    difficulty: 'hard',
+    href: '/puzzle/multiplication/quiz',
+    tag: '실전 퀴즈 🧩',
+  },
+  {
+    id: 'multiplication_robot',
+    title: '모듈로 로봇',
+    emoji: '🤖',
+    description: '시계 세상에 갇힌 로봇을 블록코딩으로 구해주세요!',
+    difficulty: 'easy',
+    href: '/puzzle/multiplication/block-coding',
+    tag: '미니 게임 🎮',
+  },
 ];
 
 const difficultyColors = {

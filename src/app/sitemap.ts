@@ -14,10 +14,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'sum_product',
     'sieve',
     'squares',
+    'multiplication', // Main page
   ];
 
   const puzzleUrls = puzzles.map((id) => ({
     url: `${baseUrl}/puzzle/${id}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  const subPageUrls = [
+    'multiplication/quiz',
+    'multiplication/block-coding',
+    'multiplication/principle-quiz',
+  ].map((path) => ({
+    url: `${baseUrl}/puzzle/${path}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
@@ -31,5 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...puzzleUrls,
+    ...subPageUrls,
   ];
 }
