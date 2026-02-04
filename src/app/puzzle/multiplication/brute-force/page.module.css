@@ -1,0 +1,144 @@
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Outfit', sans-serif; /* More friendly font */
+  background-color: #2d3436;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #55efc4;
+  text-shadow: 0 0 10px rgba(85, 239, 196, 0.5);
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #b2bec3;
+  font-size: 1.1rem;
+}
+
+.cipherDisplay {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: #000;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid #55efc4;
+  letter-spacing: 0.5rem;
+  box-shadow: 0 0 20px rgba(85, 239, 196, 0.2);
+}
+
+/* Visualization Area */
+.visualizer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  min-height: 120px;
+}
+
+.keyCircle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #a29bfe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  background: #6c5ce7;
+  box-shadow: 0 0 15px #6c5ce7;
+  transition: transform 0.3s;
+}
+
+.keyCircle.rotate {
+  transform: rotate(360deg);
+}
+
+.processArrow {
+  font-size: 2rem;
+  color: #dfe6e9;
+}
+
+.resultBox {
+  min-width: 200px;
+  padding: 1rem;
+  background: #fff;
+  color: #2d3436;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.terminal {
+  background-color: #000;
+  border: 2px solid #636e72;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 300px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2rem;
+}
+
+/* ... keep existing terminal styles ... */
+.logLine {
+  margin: 0.5rem 0;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.2rem;
+}
+.keyAttempt { color: #ffeaa7; font-weight: bold; margin-right: 0.5rem; }
+.decryptedText { color: #55efc4; }
+.errorText { color: #ff7675; }
+.successLine { background-color: rgba(0, 184, 148, 0.2); border: 1px solid #55efc4; }
+
+.hackerButton {
+  background: #00b894;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
+  transition: transform 0.2s;
+}
+.hackerButton:hover { transform: scale(1.05); }
+.hackerButton:disabled { opacity: 0.5; cursor: wait; }
+
+.bubble {
+  background: white;
+  color: #333;
+  padding: 1rem;
+  border-radius: 20px;
+  position: relative;
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+.bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-top-color: white;
+  border-bottom: 0;
+  margin-left: -15px;
+  margin-bottom: -15px;
+}

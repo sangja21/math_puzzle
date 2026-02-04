@@ -147,6 +147,15 @@ const PUZZLES: PuzzleCard[] = [
     href: '/puzzle/multiplication/block-coding',
     tag: '미니 게임 🎮',
   },
+  {
+    id: 'multiplication_brute',
+    title: '해커 모드 (Brute Force)',
+    emoji: '💻',
+    description: '모든 암호 키를 대입하여 시스템을 해킹하세요!',
+    difficulty: 'hard',
+    href: '/puzzle/multiplication/brute-force',
+    tag: '시스템 해킹 🕵️‍♂️',
+  },
 ];
 
 const difficultyColors = {

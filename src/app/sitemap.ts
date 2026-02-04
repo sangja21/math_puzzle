@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'multiplication/quiz',
     'multiplication/block-coding',
     'multiplication/principle-quiz',
+    'multiplication/brute-force',
   ].map((path) => ({
     url: `${baseUrl}/puzzle/${path}`,
     lastModified: new Date(),

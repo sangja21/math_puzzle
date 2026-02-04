@@ -273,6 +273,10 @@ const CipherMachine = () => {
 export default function MultiplicationPage() {
     return (
         <div className={styles.container}>
+            <Link href="/" style={{ textDecoration: 'none', color: '#666', marginBottom: '1rem', display: 'inline-block' }}>
+                ← 메인으로 돌아가기
+            </Link>
+
             <div className={styles.intro}>
                 <h1>🚀 곱셈 암호 탐험대</h1>
                 <p>
@@ -303,7 +307,7 @@ export default function MultiplicationPage() {
                 <div className={styles.description}>
                     지금까지 배운 내용을 바탕으로 퀴즈를 풀어보세요!
                 </div>
-                <div className={styles.challengeContainer} style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
+                <div className={styles.challengeContainer} style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
                     <Link href="/puzzle/multiplication/principle-quiz" className={styles.challengeCard}>
                         <div style={{ fontSize: '3rem' }}>📏</div>
                         <h3>원리 퀴즈</h3>
@@ -318,6 +322,11 @@ export default function MultiplicationPage() {
                         <div style={{ fontSize: '3rem' }}>🤖</div>
                         <h3>모듈로 로봇</h3>
                         <p>블록코딩으로 로봇을 목표 지점으로 옮기세요!</p>
+                    </Link>
+                    <Link href="/puzzle/multiplication/brute-force" className={styles.challengeCard} style={{ borderColor: '#00ff00', background: '#e0ffe0' }}>
+                        <div style={{ fontSize: '3rem' }}>💻</div>
+                        <h3>해커 모드</h3>
+                        <p>모든 키를 대입하여(Brute Force) 암호를 뚫으세요!</p>
                     </Link>
                 </div>
             </div>

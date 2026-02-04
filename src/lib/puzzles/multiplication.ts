@@ -159,7 +159,50 @@ export function analyzeCollisions(key: number): Map<string, string[]> {
   return collisions;
 }
 
+
+/**
+ * 문자열 암호화
+ */
+export function encryptString(text: string, key: number): string {
+  return text.toUpperCase().split('').map(char => {
+    const idx = ALPHABET.indexOf(char);
+    if (idx === -1) return char;
+    const newIdx = (idx * key) % 26;
+    return ALPHABET[newIdx];
+  }).join('');
+}
+
+/**
+ * 문자열 복호화
+ * Key의 역원을 구해서 복호화
+ */
+export function decryptString(text: string, key: number): string | null {
+  const inv = getModularInverse(key, 26);
+  if (inv === null) return null; // 해독 불가 (키가 잘못됨)
+
+  return text.toUpperCase().split('').map(char => {
+    const idx = ALPHABET.indexOf(char);
+    if (idx === -1) return char;
+    const newIdx = (idx * inv) % 26;
+    return ALPHABET[newIdx];
+  }).join('');
+}
+
 // --- 퀴즈 및 블록코딩 데이터 ---
+
+export interface BruteForceQuiz {
+  id: number;
+  cipherText: string;
+  plainText: string; // 정답 검증용
+  actualKey: number; // 찾을 키
+}
+
+export const BRUTE_FORCE_DATA: BruteForceQuiz[] = [
+  { id: 1, cipherText: encryptString('APPLE', 3), plainText: 'APPLE', actualKey: 3 },
+  { id: 2, cipherText: encryptString('SECRET', 5), plainText: 'SECRET', actualKey: 5 },
+  { id: 3, cipherText: encryptString('TREASURE', 7), plainText: 'TREASURE', actualKey: 7 },
+  { id: 4, cipherText: encryptString('IMPOSSIBLE', 11), plainText: 'IMPOSSIBLE', actualKey: 11 },
+];
 
 export interface MulQuiz {
   id: number;
