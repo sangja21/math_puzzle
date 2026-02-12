@@ -174,6 +174,15 @@ const PUZZLES: PuzzleCard[] = [
     href: '/puzzle/multiplication/brute-force',
     tag: '시스템 해킹 🕵️‍♂️',
   },
+  {
+    id: 'machin',
+    title: '침묵하는 설계자의 암호',
+    emoji: '📜',
+    description: '1706년 런던, 존 마친의 서재에서 원주율의 비밀을 밝혀내세요.',
+    difficulty: 'hard',
+    href: '/puzzle/machin',
+    tag: '신규 퍼즐! ✨',
+  },
 ];
 
 const difficultyColors = {
