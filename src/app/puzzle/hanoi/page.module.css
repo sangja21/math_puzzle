@@ -1,0 +1,263 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.gameArea {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: flex-end;
+  gap: 0; /* Grid handles spacing */
+  margin-bottom: 3rem;
+  padding: 2rem 0; /* Remove horizontal padding to simplify calculations */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 400px; /* Fixed height for absolute positioning reference */
+}
+
+/* Tower (Rod) - Now just a hit area and visual */
+.towerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%; /* Fill grid cell */
+  height: 100%;
+  cursor: pointer;
+  z-index: 1; /* Below disks */
+}
+
+.towerContainer:hover .rod {
+  background: #a3bffa;
+}
+
+.rod {
+  width: 12px;
+  height: 250px; /* Fixed height */
+  background: #cbd5e0;
+  border-radius: 6px 6px 0 0;
+  position: absolute;
+  bottom: 12px; /* Above base */
+  transition: background 0.2s;
+}
+
+.base {
+  width: 80%;
+  max-width: 180px;
+  height: 12px;
+  background: #a0aec0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Disks - Now Absolute */
+.disk {
+  height: 30px;
+  border-radius: 15px;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateX(-50%); /* Center on the 'left' coordinate */
+  /* Critical for animation */
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none; /* Let clicks pass through to tower */
+}
+
+/* Selected state is now handled via React inline styles for position */
+.selectedTower .rod {
+  background: #667eea;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Control Panel */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.controlGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.value {
+  font-family: monospace;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+/* Back Button */
+.backButton {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  color: #4a5568;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(5px);
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Number Control (Stepper) */
+.numberControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.numBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e0;
+  background: white;
+  color: #4a5568;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.numBtn:hover:not(:disabled) {
+  border-color: #667eea;
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+.numBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f7fafc;
+}
+
+.numDisplay {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2d3748;
+  min-width: 40px;
+  text-align: center;
+}
+
+.button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btnPrimary {
+  background: #667eea;
+  color: white;
+}
+.btnPrimary:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+}
+.btnPrimary:disabled {
+  background: #a3bffa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btnSecondary {
+  background: #edf2f7;
+  color: #4a5568;
+}
+.btnSecondary:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.statItem {
+  text-align: center;
+}
+.statLabel {
+  font-size: 0.85rem;
+  color: #718096;
+  display: block;
+}
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+}

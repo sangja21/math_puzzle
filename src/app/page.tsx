@@ -13,6 +13,24 @@ interface PuzzleCard {
 
 const PUZZLES: PuzzleCard[] = [
   {
+    id: 'hanoi',
+    title: '하노이의 탑',
+    emoji: '🗼',
+    description: '전설의 하노이 탑! 재귀 알고리즘으로 규칙에 맞게 원판을 옮겨보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/hanoi',
+    tag: '두뇌 풀가동! 🧠',
+  },
+  {
+    id: 'knight',
+    title: '기사의 여행',
+    emoji: '🦄',
+    description: '체스판의 모든 칸을 한 번씩만 밟고 돌아오세요! (해밀턴 경로)',
+    difficulty: 'hard',
+    href: '/puzzle/knight',
+    tag: '수학 천재 도전! ♟️',
+  },
+  {
     id: 'hourglass',
     title: '모래시계 퍼즐',
     emoji: '⏳',
