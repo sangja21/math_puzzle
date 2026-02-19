@@ -56,6 +56,12 @@ const Sidebar = () => {
                         </div>
                     </Link>
 
+                    <Link href="/coding" onClick={closeSidebar}>
+                        <div className={`${styles.navLink} ${pathname.startsWith('/coding') ? styles.active : ''}`}>
+                            <span>💻</span> 코딩의 원리
+                        </div>
+                    </Link>
+
                     <Link href="/alice" onClick={closeSidebar}>
                         <div className={`${styles.navLink} ${isActive('/alice') ? styles.active : ''}`}>
                             <span>🐰</span> 퍼즐나라의 앨리스

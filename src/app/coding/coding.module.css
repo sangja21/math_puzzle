@@ -1,0 +1,95 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #0f172a;
+  padding: 32px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero {
+  text-align: center;
+  max-width: 720px;
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #0284c7, #f59e0b); /* Sky-600 to Amber-500 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  margin-top: 12px;
+  color: #475569;
+  font-size: 1.05rem;
+}
+
+.main {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  padding: 26px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #0ea5e9;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.cardTag {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #e0f2fe; /* Sky-100 */
+  color: #0284c7; /* Sky-600 */
+  letter-spacing: 0.4px;
+}
+
+.cardEmoji {
+  font-size: 2.4rem;
+}
+
+.cardTitle {
+  margin: 16px 0 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.cardDesc {
+  margin: 0 0 18px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.cardCta {
+  font-weight: 700;
+  color: #0284c7;
+}
