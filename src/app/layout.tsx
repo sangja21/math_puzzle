@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import styles from "./layout.module.css";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://math-puzzle-alpha.vercel.app'),
@@ -57,7 +59,14 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PP3LHKPC');
           `}
         </Script>
-        {children}</body>
+
+        <div className={styles.layout}>
+          <Sidebar />
+          <main className={styles.mainContent}>
+            {children}
+          </main>
+        </div>
+      </body>
     </html>
   );
 }

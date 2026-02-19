@@ -1,0 +1,243 @@
+export type PuzzleCategory = 'principle' | 'puzzle' | 'alice';
+
+export interface PuzzleCard {
+  id: string;
+  title: string;
+  emoji: string;
+  description: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  href: string;
+  tag?: string;
+  category: PuzzleCategory;
+}
+
+export const PUZZLES: PuzzleCard[] = [
+  // --- 수학의 원리 (Math Principles) ---
+  {
+    id: 'euclid',
+    title: 'Euclidean Game',
+    emoji: '🧮',
+    description: '유클리드 호제법을 게임으로 체험하세요.',
+    difficulty: 'medium',
+    href: '/puzzle/euclid',
+    category: 'principle',
+  },
+  {
+    id: 'josephus',
+    title: '요세푸스 퍼즐',
+    emoji: '🌀',
+    description: '원형에서 k번째 사람을 제거하고 마지막 생존자를 찾으세요.',
+    difficulty: 'medium',
+    href: '/puzzle/josephus',
+    category: 'principle',
+  },
+  {
+    id: 'sieve',
+    title: '에라토스테네스의 체',
+    emoji: '🔢',
+    description: '고대 그리스의 소수 찾기 알고리즘을 시각적으로 체험하세요!',
+    difficulty: 'easy',
+    href: '/puzzle/sieve',
+    category: 'principle',
+  },
+  {
+    id: 'squares',
+    title: '완전제곱수의 기하학',
+    emoji: '📐',
+    description: 'n²이 ㄴ자 블록으로 성장하는 과정을 관찰하세요!',
+    difficulty: 'easy',
+    href: '/puzzle/squares',
+    tag: '시후의 발견! 🚀',
+    category: 'principle',
+  },
+  {
+    id: 'machin',
+    title: '침묵하는 설계자의 암호',
+    emoji: '📜',
+    description: '1706년 런던, 존 마친의 서재에서 원주율의 비밀을 밝혀내세요.',
+    difficulty: 'hard',
+    href: '/puzzle/machin',
+    tag: '신규 퍼즐! ✨',
+    category: 'principle',
+  },
+
+  // --- 퍼즐나라의 앨리스 (Alice in Puzzle Land) ---
+  {
+    id: 'alice_cookies',
+    title: '앨리스와 마법과자',
+    emoji: '🍪',
+    description: '조약돌이 과자로 변했다! 10개의 과자를 5줄로 만들어라.',
+    difficulty: 'easy',
+    href: '/alice/magic-cookies',
+    tag: 'Story Mode 📖',
+    category: 'alice',
+  },
+  {
+    id: 'alice_shrinking',
+    title: '몸이 작아지는 마법과자',
+    emoji: '🔵',
+    description: '과자 9개로 8줄, 9줄, 10줄을 만드는 3단계 도전!',
+    difficulty: 'hard',
+    href: '/alice/shrinking-cookies',
+    tag: 'Story Mode 📖',
+    category: 'alice',
+  },
+
+  // --- 수학 퍼즐 (Math Puzzles) ---
+  {
+    id: 'hanoi',
+    title: '하노이의 탑',
+    emoji: '🗼',
+    description: '전설의 하노이 탑! 재귀 알고리즘으로 규칙에 맞게 원판을 옮겨보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/hanoi',
+    tag: '두뇌 풀가동! 🧠',
+    category: 'puzzle',
+  },
+  {
+    id: 'knight',
+    title: '기사의 여행',
+    emoji: '🦄',
+    description: '체스판의 모든 칸을 한 번씩만 밟고 돌아오세요! (해밀턴 경로)',
+    difficulty: 'hard',
+    href: '/puzzle/knight',
+    tag: '수학 천재 도전! ♟️',
+    category: 'puzzle',
+  },
+  {
+    id: 'hourglass',
+    title: '모래시계 퍼즐',
+    emoji: '⏳',
+    description: '7분과 11분 모래시계로 정확히 15분을 재세요!',
+    difficulty: 'medium',
+    href: '/puzzle/hourglass',
+    category: 'puzzle',
+  },
+  {
+    id: 'doors',
+    title: '100개의 문',
+    emoji: '🚪',
+    description: '100명의 간수가 문을 토글하면 최종적으로 열린 문은?',
+    difficulty: 'easy',
+    href: '/puzzle/doors',
+    category: 'puzzle',
+  },
+  {
+    id: 'balance',
+    title: '양팔저울',
+    emoji: '⚖️',
+    description: '3의 거듭제곱 추로 모든 무게를 재는 비셰의 퍼즐!',
+    difficulty: 'medium',
+    href: '/puzzle/balance',
+    category: 'puzzle',
+  },
+  {
+    id: 'river',
+    title: '강 건너기',
+    emoji: '🚣',
+    description: '늑대, 양, 양배추를 모두 안전하게 건너편으로!',
+    difficulty: 'easy',
+    href: '/puzzle/river',
+    category: 'puzzle',
+  },
+  {
+    id: 'fakecoin',
+    title: '가짜 동전 찾기',
+    emoji: '🪙',
+    description: '삼진 탐색으로 가짜 동전을 찾아라! O(log₃N)',
+    difficulty: 'medium',
+    href: '/puzzle/fakecoin',
+    category: 'puzzle',
+  },
+  {
+    id: 'sum_product',
+    title: 'Mr.P와 Mr.S',
+    emoji: '🕵️',
+    description: '정보의 부재가 정보가 되는 역설! (The Impossible Puzzle)',
+    difficulty: 'hard',
+    href: '/puzzle/sum_product',
+    category: 'puzzle',
+  },
+  {
+    id: 'warmup',
+    title: '비밀요원 입단 테스트',
+    emoji: '🕵️',
+    description: '카이사르 암호 전 워밍업! 규칙 찾기 연습!',
+    difficulty: 'easy',
+    href: '/puzzle/warmup',
+    tag: '워밍업! 🔥',
+    category: 'puzzle',
+  },
+  {
+    id: 'number_lock',
+    title: '숫자 자물쇠',
+    emoji: '🔢',
+    description: '숫자를 밀어 3단계 보안 잠금을 해제하세요!',
+    difficulty: 'easy',
+    href: '/puzzle/number-lock',
+    tag: '중간 미션! 🧩',
+    category: 'puzzle',
+  },
+  {
+    id: 'caesar',
+    title: '카이사르 암호',
+    emoji: '🔐',
+    description: '로마 장군 카이사르의 비밀 편지를 해독하라!',
+    difficulty: 'easy',
+    href: '/puzzle/caesar',
+    tag: '역사 스토리! 🏛️',
+    category: 'puzzle',
+  },
+  {
+    id: 'multiplication',
+    title: '곱셈 암호 원리',
+    emoji: '🎡',
+    description: '회전목마와 블록으로 곱셈 암호의 수학적 비밀을 배워보세요!',
+    difficulty: 'medium',
+    href: '/puzzle/multiplication',
+    tag: '개념 학습 📚',
+    category: 'puzzle',
+  },
+  {
+    id: 'multiplication_quiz',
+    title: '스파이 암호 해독',
+    emoji: '🕵️',
+    description: '암호표를 사용하여 스파이의 비밀 메시지를 해독하세요!',
+    difficulty: 'hard',
+    href: '/puzzle/multiplication/quiz',
+    tag: '실전 퀴즈 🧩',
+    category: 'puzzle',
+  },
+  {
+    id: 'multiplication_robot',
+    title: '모듈로 로봇',
+    emoji: '🤖',
+    description: '시계 세상에 갇힌 로봇을 블록코딩으로 구해주세요!',
+    difficulty: 'easy',
+    href: '/puzzle/multiplication/block-coding',
+    tag: '미니 게임 🎮',
+    category: 'puzzle',
+  },
+  {
+    id: 'multiplication_brute',
+    title: '해커 모드 (Brute Force)',
+    emoji: '💻',
+    description: '모든 암호 키를 대입하여 시스템을 해킹하세요!',
+    difficulty: 'hard',
+    href: '/puzzle/multiplication/brute-force',
+    tag: '시스템 해킹 🕵️‍♂️',
+    category: 'puzzle',
+  },
+];
+
+export const difficultyColors = {
+  easy: '#4ade80',
+  medium: '#fbbf24',
+  hard: '#f87171',
+};
+
+export const difficultyLabels = {
+  easy: '쉬움',
+  medium: '보통',
+  hard: '어려움',
+};

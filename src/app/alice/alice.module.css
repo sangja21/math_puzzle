@@ -1,0 +1,158 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 24px 40px;
+  background-color: var(--background);
+  border-bottom: 1px solid #eaeaea;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  flex: 1;
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.puzzleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Alice-themed Card Styles */
+.puzzleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+  background: white; /* Basic white card */
+  border: 2px solid #e1e4e8;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Alice specific hover effect - Wonderland purple/pink */
+.puzzleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.15); /* Purple shadow */
+  border-color: #8b5cf6; /* Violet border */
+}
+
+.cardEmoji {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  text-align: center;
+  font-family: 'Gowun Batang', serif; /* Optional serif for story feel */
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.difficulty {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.puzzleTag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%); /* Purple to Pink */
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(167, 139, 250, 0.3);
+}
+
+/* Coming Soon Section at bottom */
+.comingSoonWrapper {
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.comingSoon {
+  text-align: center;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  border: 1px dashed #cbd5e1;
+  max-width: 500px;
+}
+
+.rabbit {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.message {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .puzzleGrid {
+    grid-template-columns: 1fr;
+  }
+}

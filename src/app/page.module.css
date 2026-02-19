@@ -1,4 +1,4 @@
-/* 메인 컨테이너 */
+/* Dashboard Container */
 .container {
   min-height: 100vh;
   background-color: var(--surface);
@@ -7,195 +7,216 @@
   flex-direction: column;
 }
 
-/* 히어로 섹션 */
+/* Hero Section */
 .hero {
-  text-align: center;
-  padding: 80px 24px 60px;
-  background-color: var(--background);
+  text-align: left;
+  padding: 60px 40px;
+  background: white;
   border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 600px;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+  margin-bottom: 16px;
   color: var(--text-primary);
-  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
-.emoji {
-  font-size: 3.5rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.highlight {
+  color: var(--primary);
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
-  margin-top: 16px;
   line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 24px;
 }
 
-/* 메인 섹션 */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.ctaButton:hover {
+  background-color: #0260a4; /* Darker shade of primary */
+}
+
+/* Main Content */
 .main {
   flex: 1;
-  padding: 48px 24px;
-  max-width: 1200px;
+  padding: 40px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }
 
+.section {
+  margin-bottom: 60px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
 .sectionTitle {
-  font-size: 1.75rem;
-  margin-bottom: 32px;
-  color: var(--text-primary);
+  font-size: 1.5rem;
   font-weight: 700;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* 퍼즐 그리드 */
-.puzzleGrid {
+.viewAll {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+/* Categories Grid */
+.categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 
-.puzzleCard {
+.categoryCard {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e1e4e8;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 32px;
-  background: var(--card-bg);
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-  position: relative;
-  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
 }
 
-.puzzleCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--primary);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.puzzleCard:hover {
+.categoryCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
   border-color: var(--primary);
 }
 
-.puzzleCard:hover::before {
-  opacity: 1;
-}
-
-.comingSoon {
+.iconWrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--surface);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 40px 32px;
-  background: #f8fafc;
-  border: 2px dashed #cbd5e1;
-  border-radius: 16px;
-  opacity: 0.8;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.cardEmoji {
-  font-size: 4rem;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-}
-
-.cardTitle {
-  font-size: 1.5rem;
+.categoryTitle {
+  font-size: 1.25rem;
   font-weight: 700;
-  margin: 0 0 12px 0;
+  margin-bottom: 8px;
+}
+
+.categoryDesc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Recent Puzzles List - Simplified Card */
+.recentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.miniCard {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.miniCard:hover {
+  border-color: var(--primary);
+  background-color: #f8fbff;
+}
+
+.miniEmoji {
+  font-size: 2rem;
+  margin-right: 16px;
+}
+
+.miniContent {
+  flex: 1;
+}
+
+.miniTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
   color: var(--text-primary);
 }
 
-.cardDescription {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  text-align: center;
-  margin: 0 0 24px 0;
-  line-height: 1.6;
-}
-
-.difficulty {
-  padding: 6px 14px;
-  border-radius: 9999px; /* Pill shape */
+.miniDesc {
   font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.puzzleTag {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
-  animation: shine 2s infinite;
-}
-
-@keyframes shine {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); }
-}
-
-/* 푸터 */
-.footer {
-  text-align: center;
-  padding: 40px;
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  background-color: var(--background);
-  border-top: 1px solid #eaeaea;
 }
 
-/* 반응형 */
+/* Responsive */
 @media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-    flex-direction: column;
-  }
-  
-  .subtitle {
-    font-size: 1.1rem;
-  }
-  
   .hero {
-    padding: 60px 20px 40px;
+    flex-direction: column;
+    padding: 40px 24px;
+    text-align: center;
   }
   
-  .puzzleGrid {
-    grid-template-columns: 1fr;
+  .heroContent {
+    margin-bottom: 32px;
+  }
+  
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main {
+    padding: 24px;
   }
 }

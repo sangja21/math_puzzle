@@ -1,0 +1,251 @@
+/* ── 화면 크기 가드 ─────────────────────────────────────────────── */
+.screenGuard {
+  display: none;
+}
+
+.sgIcon {
+  font-size: 4rem;
+  animation: sgBounce 1.5s ease-in-out infinite;
+}
+
+.sgTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fdf6e3;
+}
+
+.sgDesc {
+  font-size: 1rem;
+  color: #d4b896;
+  line-height: 1.7;
+}
+
+.sgBadge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #fbbf24;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sgBackBtn {
+  margin-top: 8px;
+  padding: 12px 32px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.sgBackBtn:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 959px), (max-height: 599px) {
+  .screenGuard {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: linear-gradient(135deg, #2c1a0e 0%, #4a2c0a 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 32px;
+    text-align: center;
+  }
+}
+
+@keyframes sgBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #fdf6e3; /* Creamy color for storybook feel */
+  font-family: 'Gowun Batang', serif; /* Or any serif font available */
+  display: flex;
+  flex-direction: column;
+}
+
+.storySection {
+  padding: 40px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #d35400;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.storyContent {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 32px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  border: 4px double #e67e22;
+}
+
+.hintBox {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #fff3cd;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  font-size: 0.95rem;
+}
+
+.startButton {
+  background-color: #9b59b6; /* Alice purple */
+  color: white;
+  font-size: 1.2rem;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #8e44ad;
+}
+
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #8e44ad;
+}
+
+.startButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #8e44ad;
+}
+
+/* Puzzle Interface */
+.puzzleArea {
+  flex: 1;
+  position: relative;
+  background-color: #aaddff; /* Sky blue */
+  min-height: 600px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to bottom, #2ecc71, #27ae60);
+}
+
+.cookie {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  cursor: grab;
+  transition: transform 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  z-index: 10;
+  touch-action: none; /* Crucial for touch dragging */
+  filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+}
+
+.cookie:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+  z-index: 20;
+}
+
+.controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 30;
+}
+
+.controlBtn {
+  background: white;
+  border: 2px solid #34495e;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.moveCounter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.9);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e74c3c;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Solution Overlay (Guide Lines) */
+.solutionOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 클릭 통과 */
+  z-index: 5; /* 과자보다 아래 */
+}
+
+/* Toast Message */
+.toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(52, 73, 94, 0.9);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 100;
+  animation: slideUp 0.3s ease-out;
+  white-space: nowrap;
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* 이동해야 하는 4개 과자 강조 (정답 보기 시 반짝임) */
+.cookieMoved {
+  filter: drop-shadow(0 0 10px #f1c40f) drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from { filter: drop-shadow(0 0 6px #f1c40f) drop-shadow(0 4px 4px rgba(0,0,0,0.2)); }
+  to   { filter: drop-shadow(0 0 18px #e67e22) drop-shadow(0 4px 4px rgba(0,0,0,0.2)); }
+}
+
