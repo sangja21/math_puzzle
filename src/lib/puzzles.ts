@@ -85,6 +85,16 @@ export const PUZZLES: PuzzleCard[] = [
 
   // --- 수학 퍼즐 (Math Puzzles) ---
   {
+    id: 'magic_square',
+    title: '마방진',
+    emoji: '🔮',
+    description: '숫자를 배치하여 모든 행·열·대각선의 합을 같게 만드세요!',
+    difficulty: 'medium',
+    href: '/puzzle/magic-square',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
+  {
     id: 'hanoi',
     title: '하노이의 탑',
     emoji: '🗼',

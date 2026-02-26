@@ -1,0 +1,839 @@
+/* ===================================
+   마방진 퍼즐 - Magic Square Puzzle
+   =================================== */
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 2rem;
+  min-height: 100vh;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.titleEmoji {
+  font-size: 2.4rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(10deg); }
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ===== Settings Panel ===== */
+.settingsPanel {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.settingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.settingLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.optionBtn {
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.optionBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(3, 125, 214, 0.15);
+}
+
+.optionActive {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 2px 12px rgba(3, 125, 214, 0.3);
+}
+
+.optionActive:hover {
+  color: #fff;
+}
+
+/* Toggle Switch */
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggleInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  background: #ccc;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggleSwitch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggleInput:checked + .toggleSwitch {
+  background: var(--primary);
+}
+
+.toggleInput:checked + .toggleSwitch::after {
+  transform: translateX(18px);
+}
+
+/* ===== Success Banner ===== */
+.successBanner {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #4ade80;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.successContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.successEmoji {
+  font-size: 2.5rem;
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+.successTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #166534;
+  margin: 0;
+}
+
+.successMessage {
+  font-size: 0.9rem;
+  color: #15803d;
+  margin: 0.2rem 0 0;
+}
+
+.successActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ===== Game Area ===== */
+.gameArea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Board Wrapper ===== */
+.boardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.colSumsRow {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 0.25rem;
+}
+
+.boardArea {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.boardGrid {
+  display: grid;
+  gap: 4px;
+  background: linear-gradient(135deg, #e8ecf1 0%, #d5dce6 100%);
+  border-radius: 14px;
+  padding: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.rowSumsCol {
+  position: absolute;
+  right: -52px;
+  top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: calc(100% - 16px);
+}
+
+/* ===== Sum Labels ===== */
+.sumLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  min-width: 36px;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.sumCorrect {
+  color: #166534;
+  background: rgba(74, 222, 128, 0.2);
+  border: 1.5px solid #4ade80;
+}
+
+.sumWrong {
+  color: #dc2626;
+  background: rgba(248, 113, 113, 0.15);
+  border: 1.5px solid #f87171;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* Diagonal Labels */
+.diagLabel {
+  position: absolute;
+  top: -28px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.diagAnti {
+  left: 0;
+}
+
+.diagMain {
+  right: 0;
+}
+
+/* ===== Board Cell ===== */
+.boardCell {
+  background: var(--card-bg);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.cellLg {
+  min-width: 80px;
+  min-height: 80px;
+}
+
+.cellMd {
+  min-width: 65px;
+  min-height: 65px;
+}
+
+.cellSm {
+  min-width: 52px;
+  min-height: 52px;
+}
+
+.cellEmpty {
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px dashed rgba(0, 0, 0, 0.12);
+}
+
+.cellEmpty:hover {
+  border-color: var(--primary);
+  background: rgba(3, 125, 214, 0.05);
+}
+
+.cellOver {
+  border-color: var(--primary) !important;
+  background: rgba(3, 125, 214, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(3, 125, 214, 0.15);
+  transform: scale(1.03);
+}
+
+.cellHinted {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+  animation: hintPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.1); }
+}
+
+/* ===== Number Tile ===== */
+.numberTile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 800;
+  background: linear-gradient(145deg, #ffffff, #f0f3f7);
+  color: var(--text-primary);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  cursor: grab;
+  user-select: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  touch-action: none;
+}
+
+.tileLg {
+  width: 68px;
+  height: 68px;
+  font-size: 1.6rem;
+}
+
+.tileMd {
+  width: 54px;
+  height: 54px;
+  font-size: 1.3rem;
+}
+
+.tileSm {
+  width: 42px;
+  height: 42px;
+  font-size: 1.05rem;
+}
+
+.numberTile:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(3, 125, 214, 0.15);
+}
+
+.numberTile:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.locked {
+  background: linear-gradient(145deg, #e8f4fd, #d4e8f7);
+  color: var(--primary);
+  border-color: rgba(3, 125, 214, 0.2);
+  cursor: not-allowed;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.locked:hover {
+  transform: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.selected {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(246, 133, 27, 0.25), 0 4px 16px rgba(246, 133, 27, 0.2);
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+.dragging {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+
+.draggingOverlay {
+  width: 64px;
+  height: 64px;
+  font-size: 1.5rem;
+  background: linear-gradient(145deg, #fff, #e8f0fe);
+  border-color: var(--primary);
+  box-shadow: 0 8px 32px rgba(3, 125, 214, 0.3);
+  transform: scale(1.1) rotate(3deg);
+  pointer-events: none;
+}
+
+/* ===== Palette ===== */
+.palette {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 0.75rem;
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  width: 160px;
+  min-width: 160px;
+  transition: all 0.3s ease;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.paletteOver {
+  border-color: var(--primary);
+  background: rgba(3, 125, 214, 0.04);
+  box-shadow: 0 0 0 3px rgba(3, 125, 214, 0.1);
+}
+
+.paletteTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.paletteCount {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+}
+
+.paletteGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  justify-items: center;
+  flex: 1;
+  align-content: start;
+}
+
+.paletteEmpty {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+/* 팔레트 전용 타일 크기 (보드 크기와 무관하게 컴팩트) */
+.paletteTile {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 0.85rem !important;
+  border-radius: 8px;
+}
+
+/* ===== Target Sum ===== */
+.targetSum {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+.targetSum strong {
+  color: var(--primary);
+  font-size: 1.15rem;
+}
+
+/* ===== Action Bar ===== */
+.actionBar {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.actionBtn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.actionBtnPrimary {
+  padding: 0.55rem 1.1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--primary);
+  color: #fff;
+}
+
+.actionBtnPrimary:hover {
+  background: #0269b5;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(3, 125, 214, 0.3);
+}
+
+.actionBtnSecondary {
+  padding: 0.55rem 1.1rem;
+  border-radius: 12px;
+  border: 1.5px dashed rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.actionBtnSecondary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ===== Help Section ===== */
+.helpSection {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.helpDetails {
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.helpSummary {
+  padding: 0.9rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.2s;
+}
+
+.helpSummary:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.helpContent {
+  padding: 0 1.25rem 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.helpContent p {
+  margin-bottom: 0.6rem;
+}
+
+.helpContent code {
+  background: rgba(3, 125, 214, 0.08);
+  color: var(--primary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.helpContent ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.helpContent li {
+  margin-bottom: 0.3rem;
+}
+
+.helpContent h4 {
+  margin: 1rem 0 0.4rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .gameArea {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .palette {
+    width: 100%;
+    max-width: 500px;
+    min-width: unset;
+  }
+
+  .paletteTitle {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .paletteGrid {
+    grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem 1rem 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .titleEmoji {
+    font-size: 1.8rem;
+  }
+
+  .settingsPanel {
+    padding: 1rem;
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .settingGroup {
+    width: 100%;
+  }
+
+  .buttonGroup {
+    flex-wrap: wrap;
+  }
+
+  .optionBtn {
+    flex: 1;
+    text-align: center;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .boardWrapper {
+    max-width: 100%;
+  }
+
+  .boardArea {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .rowSumsCol {
+    right: -40px;
+  }
+
+  .sumLabel {
+    font-size: 0.65rem;
+    min-width: 28px;
+  }
+
+  .cellLg {
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  .cellMd {
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .cellSm {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .tileLg {
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .tileMd {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .tileSm {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .draggingOverlay {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .successBanner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .successContent {
+    flex-direction: column;
+  }
+
+  .actionBar {
+    gap: 0.4rem;
+  }
+
+  .actionBtn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .diagLabel {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .boardGrid {
+    padding: 5px;
+    gap: 3px;
+  }
+
+  .cellSm {
+    min-width: 34px;
+    min-height: 34px;
+  }
+
+  .tileSm {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  }
+}
