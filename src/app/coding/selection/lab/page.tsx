@@ -9,6 +9,7 @@ import {
     shuffleBlocks,
     generateRandomBlocks,
 } from '@/lib/coding/selectionSort';
+import AlgorithmTabs from '@/app/coding/components/AlgorithmTabs';
 import styles from './page.module.css';
 
 /**
@@ -172,6 +173,8 @@ export default function SelectionLabPage() {
                     관찰해보세요.
                 </p>
             </header>
+
+            <AlgorithmTabs basePath="/coding/selection" />
 
             {/* 통계 */}
             <div className={styles.stats}>

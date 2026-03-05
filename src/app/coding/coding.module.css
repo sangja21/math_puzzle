@@ -33,6 +33,24 @@
 .main {
   width: 100%;
   max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  border-left: 4px solid #0ea5e9;
+  padding-left: 12px;
 }
 
 .cardGrid {

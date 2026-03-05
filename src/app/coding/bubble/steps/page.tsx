@@ -7,6 +7,7 @@ import {
   BubbleBlock,
   createBubbleSortTrace,
 } from '@/lib/coding/bubbleSort';
+import AlgorithmTabs from '@/app/coding/components/AlgorithmTabs';
 import styles from './page.module.css';
 
 const STEP_BLOCKS: BubbleBlock[] = [
@@ -48,9 +49,8 @@ export default function BubbleStepsPage() {
     const action = item.swapped ? '교환' : '유지';
     return {
       id: `step-${index}`,
-      text: `${index + 1}단계: ${item.pass + 1}번째 패스, 위치 ${
-        item.compare[0] + 1
-      }↔${item.compare[1] + 1} 비교 → ${action}`,
+      text: `${index + 1}단계: ${item.pass + 1}번째 패스, 위치 ${item.compare[0] + 1
+        }↔${item.compare[1] + 1} 비교 → ${action}`,
     };
   });
 
@@ -67,6 +67,8 @@ export default function BubbleStepsPage() {
           따라가 봅시다.
         </p>
       </header>
+
+      <AlgorithmTabs basePath="/coding/bubble" />
 
       <div className={styles.stats}>
         <div className={styles.statBox}>
@@ -143,9 +145,8 @@ export default function BubbleStepsPage() {
             {stepSummaries.map((item, index) => (
               <div
                 key={item.id}
-                className={`${styles.stepItem} ${
-                  index === stepIndex ? styles.stepActive : ''
-                }`}
+                className={`${styles.stepItem} ${index === stepIndex ? styles.stepActive : ''
+                  }`}
               >
                 {item.text}
               </div>

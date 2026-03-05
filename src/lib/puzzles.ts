@@ -238,6 +238,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '시스템 해킹 🕵️‍♂️',
     category: 'puzzle',
   },
+  {
+    id: 'consecutive_node',
+    title: '연속 번호 배치 퍼즐',
+    emoji: '🛑',
+    description: '1~8을 그래프 노드에 배치하되, 연결된 두 노드에 연속된 숫자가 오면 안 돼요!',
+    difficulty: 'hard',
+    href: '/puzzle/consecutive-node',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {

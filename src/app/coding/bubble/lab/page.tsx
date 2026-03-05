@@ -8,6 +8,7 @@ import {
   createBubbleSortTrace,
   shuffleBlocks,
 } from '@/lib/coding/bubbleSort';
+import AlgorithmTabs from '@/app/coding/components/AlgorithmTabs';
 import styles from './page.module.css';
 
 const BASE_BLOCKS: BubbleBlock[] = [
@@ -121,6 +122,8 @@ export default function BubbleLabPage() {
           관찰하세요.
         </p>
       </header>
+
+      <AlgorithmTabs basePath="/coding/bubble" />
 
       <div className={styles.stats}>
         <div className={styles.statBox}>

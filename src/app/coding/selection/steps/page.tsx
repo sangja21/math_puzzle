@@ -1,5 +1,6 @@
 'use client';
 
+
 import Link from 'next/link';
 import { useMemo, useState, useCallback, useEffect } from 'react';
 import SelectionSortStage from '@/components/SelectionSortStage';
@@ -7,6 +8,7 @@ import {
     SelectionBlock,
     createSelectionSortTrace,
 } from '@/lib/coding/selectionSort';
+import AlgorithmTabs from '@/app/coding/components/AlgorithmTabs';
 import styles from './page.module.css';
 
 /** 고정 배열: [5, 1, 4, 2, 8] */
@@ -98,6 +100,8 @@ export default function SelectionStepsPage() {
                     선택정렬의 원리를 한 단계씩 따라가 봅시다.
                 </p>
             </header>
+
+            <AlgorithmTabs basePath="/coding/selection" />
 
             {/* 상태 표시 */}
             <div className={styles.stats}>
