@@ -67,6 +67,36 @@ const BASIC_GRAMMAR_ITEMS = [
   },
 ];
 
+const CONDITIONAL_ITEMS = [
+  {
+    id: 'if',
+    title: 'if 문',
+    emoji: '🚦',
+    description:
+      '신호등처럼! 조건이 참(True)일 때만 코드를 실행해요. 슬라이더로 조건을 직접 바꿔보세요.',
+    href: '/coding/if',
+    tag: '조건문',
+  },
+  {
+    id: 'if-else',
+    title: 'if-else 문',
+    emoji: '🏹',
+    description:
+      '갈림길처럼! 조건이 참이면 A 경로, 거짓이면 반드시 B 경로로 실행됩니다.',
+    href: '/coding/if-else',
+    tag: '조건문',
+  },
+  {
+    id: 'compound',
+    title: '복합 조건문',
+    emoji: '💡',
+    description:
+      'AND(&&), OR(||), NOT(!)을 조합해 더 정교한 조건을 만들어요. 논리 스위치를 켜고 꺼보세요!',
+    href: '/coding/compound',
+    tag: '조건문',
+  },
+];
+
 export default function CodingPage() {
   return (
     <div className={styles.container}>
@@ -97,6 +127,20 @@ export default function CodingPage() {
           <h2 className={styles.sectionTitle}>기초 문법 파트</h2>
           <div className={styles.cardGrid}>
             {BASIC_GRAMMAR_ITEMS.map((item) => (
+              <Link key={item.id} href={item.href} className={styles.card}>
+                <span className={styles.cardTag}>{item.tag}</span>
+                <div className={styles.cardEmoji}>{item.emoji}</div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.cardDesc}>{item.description}</p>
+                <span className={styles.cardCta}>학습 시작하기 →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>조건문 파트</h2>
+          <div className={styles.cardGrid}>
+            {CONDITIONAL_ITEMS.map((item) => (
               <Link key={item.id} href={item.href} className={styles.card}>
                 <span className={styles.cardTag}>{item.tag}</span>
                 <div className={styles.cardEmoji}>{item.emoji}</div>

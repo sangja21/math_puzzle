@@ -85,6 +85,16 @@ export const PUZZLES: PuzzleCard[] = [
 
   // --- 수학 퍼즐 (Math Puzzles) ---
   {
+    id: 'truth_table',
+    title: '진리표 논리 퍼즐',
+    emoji: '📝',
+    description: '드래그 앤 드롭으로 참/거짓 표를 완성하고 논리적 모순을 찾아내세요!',
+    difficulty: 'medium',
+    href: '/puzzle/truth-table',
+    tag: '논리 추론 🧠',
+    category: 'puzzle',
+  },
+  {
     id: 'magic_square',
     title: '마방진',
     emoji: '🔮',
@@ -246,6 +256,16 @@ export const PUZZLES: PuzzleCard[] = [
     difficulty: 'hard',
     href: '/puzzle/consecutive-node',
     tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
+  {
+    id: 'nim',
+    title: 'NIM 게임',
+    emoji: '🟢',
+    description: '수학적 필승 전략을 찾아보세요! 마지막 돌을 가져가는 사람이 승리합니다.',
+    difficulty: 'medium',
+    href: '/puzzle/nim',
+    tag: '수학적 전략 💡',
     category: 'puzzle',
   },
 ];

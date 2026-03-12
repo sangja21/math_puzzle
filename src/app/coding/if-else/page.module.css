@@ -1,0 +1,483 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #0f172a;
+  padding: 32px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #64748b;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+
+.backButton:hover {
+  border-color: #0ea5e9;
+  color: #0284c7;
+  transform: translateY(-2px);
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin-top: 16px;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  color: #1e293b;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.mainContent {
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .mainContent {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+
+/* ─── 설명 패널 ─── */
+.explainPanel {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.explainPanel h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.3rem;
+}
+
+.explainPanel p {
+  color: #475569;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.explainPanel code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #7c3aed;
+}
+
+.highlightTrue {
+  color: #10b981;
+  font-weight: 700;
+  background: #d1fae5;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.highlightFalse {
+  color: #ef4444;
+  font-weight: 700;
+  background: #fee2e2;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ─── 개념 그리드 ─── */
+.conceptGrid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conceptBlock {
+  flex: 1;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all 0.3s;
+  opacity: 0.5;
+}
+
+.conceptBlock.activeBlock {
+  background: #dcfce7;
+  border-color: #22c55e;
+  opacity: 1;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+}
+
+.elseBlock {
+  border-color: #e2e8f0;
+}
+
+.elseBlock.activeElseBlock {
+  background: #fee2e2;
+  border-color: #ef4444;
+  opacity: 1;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.conceptBlockTitle {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.conceptBlockCond {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.conceptBlockArrow {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  margin: 4px 0;
+}
+
+.conceptBlockResult {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.conceptDivider {
+  font-weight: 900;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* ─── 코드 블록 ─── */
+.codeBlock {
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 18px;
+  border-radius: 12px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+
+.codeKeyword { color: #c084fc; font-weight: 700; }
+.codeVar     { color: #38bdf8; }
+.codeValue   { color: #fb923c; font-weight: 700; }
+.codeComment { color: #64748b; font-style: italic; }
+
+.codeString {
+  transition: all 0.3s;
+}
+
+.codeString.executing {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  font-weight: 700;
+}
+
+.codeString.skipped {
+  color: #475569;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.trueColor  { color: #4ade80; font-weight: 700; }
+.falseColor { color: #f87171; font-weight: 700; }
+
+/* ─── 인터랙티브 ─── */
+.interactiveArea {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ─── 갈림길 시각화 ─── */
+.forkStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.flowIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scoreNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 12px 32px;
+  gap: 4px;
+}
+
+.scoreLabel {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.scoreValue {
+  font-size: 2.2rem;
+  font-weight: 900;
+  transition: all 0.3s;
+}
+
+.scorePass { color: #4ade80; }
+.scoreFail { color: #f87171; }
+
+.flowArrow {
+  font-size: 1.5rem;
+  color: #94a3b8;
+}
+
+/* ─── 다이아몬드 ─── */
+.conditionDiamond {
+  width: 140px;
+  height: 140px;
+  background: #f8fafc;
+  border: 3px solid #cbd5e1;
+  border-radius: 12px;
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.diamondInner {
+  transform: rotate(-45deg);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+.trueTag {
+  display: inline-block;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.falseTag {
+  display: inline-block;
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+/* ─── 결과 경로 ─── */
+.outcomes {
+  display: flex;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.outcomePath {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.4s;
+}
+
+.pathLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.pathArrow {
+  font-size: 1.2rem;
+  color: #94a3b8;
+}
+
+.outcomeBox {
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: center;
+  border: 3px solid;
+  transition: all 0.4s;
+}
+
+.passBox {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+.failBox {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.inactivePath {
+  opacity: 0.3;
+  filter: grayscale(0.8);
+}
+
+.activePassPath {
+  opacity: 1;
+  filter: none;
+  animation: pulsePass 1.5s ease-in-out infinite;
+}
+
+.activeFailPath {
+  opacity: 1;
+  filter: none;
+  animation: pulseFail 1.5s ease-in-out infinite;
+}
+
+@keyframes pulsePass {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes pulseFail {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* ─── 슬라이더 ─── */
+.sliderArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #334155;
+}
+
+.scoreDisplay {
+  font-size: 1.8rem;
+  font-weight: 900;
+  padding: 4px 16px;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.scoreDisplayPass {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.scoreDisplayFail {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  background: #e2e8f0;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sliderPass::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #22c55e;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
+}
+
+.sliderFail::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ef4444;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.thresholdLabel {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.divider {
+  height: 2px;
+  background: #f1f5f9;
+  width: 100%;
+}
