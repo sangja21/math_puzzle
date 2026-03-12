@@ -78,5 +78,47 @@ export const truthTablePuzzles: TruthTablePuzzleDef[] = [
         evaluate: null
       }
     ]
+  },
+  {
+    id: 'heaven_hell',
+    title: '레벨 4: 천국문 / 지옥문',
+    desc: '문지기 A, B 중 한 명만 항상 참(T)을 말합니다. A에게 "B가 지목할 천국문"에 대해 물었을 때, 그 대답(답변 C)이 항상 거짓(F, 지옥문)이 됨을 증명해보세요!',
+    people: [
+      {
+        name: 'A',
+        statementStr: '문지기 A. 참말(T)이거나 거짓말(F) 중 하나를 택하세요.',
+        evaluate: null
+      },
+      {
+        name: 'B',
+        statementStr: '문지기 B. A와 정체(T/F)가 서로 달라야 합니다.',
+        evaluate: (env) => !env['A']
+      },
+      {
+        name: '답변 C',
+        statementStr: 'A에게 "진짜 천국문(T)의 위치를 B가 어떻게 가리킬까?" 물었을 때의 대답',
+        evaluate: (env) => {
+          const B_answer = env['B']; // B가 할 대답
+          return env['A'] ? B_answer : !B_answer; 
+        }
+      }
+    ]
+  },
+  {
+    id: 'knight_knave',
+    title: '레벨 5: 기사와 악당',
+    desc: '거짓말을 하는 악당(F)과 참말을 하는 기사(T)가 삽니다. A와 B의 서로의 발언을 분석하여 정체를 밝혀보세요.',
+    people: [
+      {
+        name: 'A',
+        statementStr: 'A: "B는 악당(거짓말쟁이)이다."',
+        evaluate: (env) => !env['B']
+      },
+      {
+        name: 'B',
+        statementStr: 'B: (아무 말도 하지 않음)',
+        evaluate: null
+      }
+    ]
   }
 ];
