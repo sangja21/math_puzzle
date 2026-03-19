@@ -268,6 +268,26 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '수학적 전략 💡',
     category: 'puzzle',
   },
+  {
+    id: 'ant_sequence',
+    title: '개미수열의 비밀',
+    emoji: '🐜',
+    description: '베르나르 베르베르의 소설 속 유명한 숫자 패턴! 다음 숫자는 무엇일까요?',
+    difficulty: 'hard',
+    href: '/puzzle/ant-sequence',
+    tag: '패턴 추론 🔍',
+    category: 'puzzle',
+  },
+  {
+    id: 'base_16_sequence',
+    title: '76. 다음에 올 수',
+    emoji: '🛸',
+    description: '10, 11, 12... 이 외계인 암호의 진짜 의미는 무엇일까요?',
+    difficulty: 'hard',
+    href: '/puzzle/base-16',
+    tag: '천재들의 암호 💡',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {

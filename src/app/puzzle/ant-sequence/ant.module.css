@@ -1,0 +1,199 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Pretendard', sans-serif;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+}
+
+.mainCard {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.sequenceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sequenceRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.stepLabel {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #95a5a6;
+  width: 80px;
+  text-align: right;
+}
+
+.sequenceValue {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  color: #2980b9;
+  font-family: 'Fira Code', monospace;
+  word-break: break-all;
+  max-width: 500px;
+  text-align: left;
+}
+
+.nextButton {
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: block;
+  margin: 0 auto 2rem auto;
+}
+
+.nextButton:hover {
+  background-color: #d68910;
+  transform: translateY(-2px);
+}
+
+.nextButton:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.inputSection {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px dashed #bdc3c7;
+  text-align: center;
+  animation: popIn 0.4s ease-out;
+}
+
+.inputTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #34495e;
+}
+
+.inputField {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  color: #c0392b;
+  font-family: 'Fira Code', monospace;
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem;
+  border: 3px solid #3498db;
+  border-radius: 12px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputField:focus {
+  border-color: #2ecc71;
+}
+
+.submitButton {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+.hintBox {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border-radius: 8px;
+  font-weight: bold;
+  border-left: 4px solid #ffeeba;
+  animation: fadeIn 0.3s;
+}
+
+.successScreen {
+  text-align: center;
+  padding: 3rem;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.successIcon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: shake 1s infinite alternate;
+}
+
+.successTitle {
+  font-size: 2.5rem;
+  color: #27ae60;
+  margin-bottom: 1rem;
+}
+
+.successText {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}

@@ -97,6 +97,27 @@ const CONDITIONAL_ITEMS = [
   },
 ];
 
+const LOOP_ITEMS = [
+  {
+    id: 'for',
+    title: 'for 문 (지정된 횟수 반복)',
+    emoji: '🏭',
+    description:
+      '정확히 정해진 개수만큼 반복해서 찍어내는 공장의 컨베이어 벨트를 작동시켜봐요!',
+    href: '/coding/loop/for',
+    tag: '반복문',
+  },
+  {
+    id: 'while',
+    title: 'while 문 (조건 만족 시 반복)',
+    emoji: '🔋',
+    description:
+      '배터리가 다 닳을 때까지(조건이 거짓이 될 때까지) 멈추지 않고 계속 작동하는 기계를 조종해요!',
+    href: '/coding/loop/while',
+    tag: '반복문',
+  },
+];
+
 export default function CodingPage() {
   return (
     <div className={styles.container}>
@@ -137,10 +158,26 @@ export default function CodingPage() {
             ))}
           </div>
         </section>
+        
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>조건문 파트</h2>
           <div className={styles.cardGrid}>
             {CONDITIONAL_ITEMS.map((item) => (
+              <Link key={item.id} href={item.href} className={styles.card}>
+                <span className={styles.cardTag}>{item.tag}</span>
+                <div className={styles.cardEmoji}>{item.emoji}</div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.cardDesc}>{item.description}</p>
+                <span className={styles.cardCta}>학습 시작하기 →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>반복문 파트</h2>
+          <div className={styles.cardGrid}>
+            {LOOP_ITEMS.map((item) => (
               <Link key={item.id} href={item.href} className={styles.card}>
                 <span className={styles.cardTag}>{item.tag}</span>
                 <div className={styles.cardEmoji}>{item.emoji}</div>
