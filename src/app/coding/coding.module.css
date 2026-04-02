@@ -111,3 +111,105 @@
   font-weight: 700;
   color: #0284c7;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 70px;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .main {
+    gap: 32px;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .cardEmoji {
+    font-size: 2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.15rem;
+    margin: 12px 0 8px;
+  }
+
+  .cardDesc {
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+
+  .cardTag {
+    top: 14px;
+    right: 14px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+    padding-top: 65px;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.88rem;
+  }
+
+  .main {
+    gap: 24px;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .cardEmoji {
+    font-size: 1.8rem;
+  }
+
+  .cardTitle {
+    font-size: 1.05rem;
+  }
+
+  .cardDesc {
+    font-size: 0.85rem;
+  }
+}

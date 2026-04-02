@@ -322,3 +322,170 @@
   font-size: 0.9rem;
   color: #636e72;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.2rem;
+    padding-top: 70px;
+  }
+
+  .intro {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .intro h1 {
+    font-size: 1.8rem;
+  }
+
+  .section {
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 1.4rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .canvasWrapper {
+    width: 240px;
+    height: 240px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .controlButton {
+    min-height: 44px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .activeNumber {
+    font-size: 2.2rem;
+  }
+
+  .tilingContainer {
+    height: 220px;
+  }
+
+  .inputGroup {
+    flex-wrap: wrap;
+  }
+
+  .cipherControls {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .rangeInputs {
+    width: 100%;
+  }
+
+  .keyDisplay {
+    text-align: center;
+  }
+
+  .mappingTable {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 0.3rem;
+  }
+
+  .challengeContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .challengeCard {
+    padding: 1.2rem;
+  }
+
+  .collisionAlert {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.8rem;
+    padding-top: 65px;
+  }
+
+  .intro {
+    padding: 1.5rem 1rem;
+  }
+
+  .intro h1 {
+    font-size: 1.5rem;
+  }
+
+  .section {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 0.92rem;
+    padding: 0.8rem;
+  }
+
+  .canvasWrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .controlButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .activeNumber {
+    font-size: 1.8rem;
+  }
+
+  .tilingContainer {
+    height: 180px;
+  }
+
+  .inputGroup input {
+    width: 60px;
+    font-size: 1rem;
+  }
+
+  .mappingTable {
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  }
+
+  .mappingItem {
+    padding: 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  .encrypted {
+    font-size: 1.1rem;
+  }
+
+  .challengeCard {
+    padding: 1rem;
+  }
+
+  .challengeCard p {
+    font-size: 0.85rem;
+  }
+}

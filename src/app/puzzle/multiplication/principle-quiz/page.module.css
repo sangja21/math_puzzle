@@ -97,3 +97,75 @@
   margin-top: 1rem;
   font-style: italic;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .mappingTable {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cell {
+    width: 34px;
+    height: 34px;
+  }
+
+  .quizContainer {
+    padding: 1.2rem;
+    padding-top: 70px;
+  }
+
+  .inputArea {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .inputBox {
+    width: 100%;
+    max-width: 200px;
+    font-size: 1.3rem;
+    min-height: 44px;
+  }
+
+  .submitBtn {
+    min-height: 44px;
+    width: 100%;
+    max-width: 200px;
+    font-size: 1.1rem;
+  }
+
+  .hintText {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mappingTable {
+    gap: 0.6rem;
+  }
+
+  .cell {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .quizContainer {
+    padding: 0.8rem;
+    padding-top: 65px;
+  }
+
+  .inputBox {
+    font-size: 1.1rem;
+  }
+
+  .submitBtn {
+    font-size: 1rem;
+  }
+
+  .hintText {
+    font-size: 0.85rem;
+  }
+}

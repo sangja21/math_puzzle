@@ -241,3 +241,135 @@
   0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .mainCard {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .sequenceGrid {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .sequenceItem {
+    font-size: 1.4rem;
+    padding: 1rem;
+    min-width: 60px;
+  }
+
+  .baseLabel {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .inputSection {
+    padding: 1.25rem;
+  }
+
+  .inputLabel {
+    font-size: 1.2rem;
+  }
+
+  .inputField {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    max-width: 100%;
+    letter-spacing: 0.3rem;
+  }
+
+  .submitButton {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    min-height: 44px;
+  }
+
+  .hintButton {
+    min-height: 44px;
+  }
+
+  .hintText {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .successTitle {
+    font-size: 2rem;
+  }
+
+  .explanationCard {
+    padding: 1.25rem;
+  }
+
+  .explanationTitle {
+    font-size: 1.2rem;
+  }
+
+  .baseEquation {
+    font-size: 1rem;
+    padding: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .navButton {
+    min-height: 44px;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .mainCard {
+    padding: 1rem;
+  }
+
+  .sequenceGrid {
+    gap: 0.75rem;
+  }
+
+  .sequenceItem {
+    font-size: 1.2rem;
+    padding: 0.75rem;
+    min-width: 50px;
+  }
+
+  .inputField {
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+
+  .explanationCard {
+    padding: 1rem;
+  }
+
+  .baseEquation {
+    font-size: 0.85rem;
+  }
+}

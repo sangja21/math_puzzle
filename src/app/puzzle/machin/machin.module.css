@@ -349,3 +349,112 @@
 .backLink:hover {
   color: #cba135;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 20px;
+  }
+
+  .backLink {
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .content {
+    gap: 1.5rem;
+  }
+
+  .storySection {
+    padding: 1.25rem;
+  }
+
+  .storyText {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .formulaContainer {
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .variableInput {
+    font-size: 1.1rem;
+    width: 50px;
+  }
+
+  .checkButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    min-height: 44px;
+  }
+
+  .visualizationSection {
+    padding: 1.25rem;
+  }
+
+  .piDisplay {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .statItem {
+    padding: 0.75rem;
+  }
+
+  .codeBlock {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .formulaContainer {
+    font-size: 0.95rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .variableInput {
+    font-size: 0.95rem;
+    width: 45px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .piDisplay {
+    font-size: 0.9rem;
+  }
+}

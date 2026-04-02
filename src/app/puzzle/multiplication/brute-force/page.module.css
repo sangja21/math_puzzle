@@ -142,3 +142,108 @@
   margin-left: -15px;
   margin-bottom: -15px;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.2rem;
+    padding-top: 70px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .cipherDisplay {
+    font-size: 1.6rem;
+    padding: 1rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .visualizer {
+    flex-direction: column;
+    gap: 0.8rem;
+    min-height: auto;
+  }
+
+  .keyCircle {
+    width: 80px;
+    height: 80px;
+    font-size: 1.6rem;
+  }
+
+  .processArrow {
+    font-size: 1.5rem;
+    transform: rotate(90deg);
+  }
+
+  .resultBox {
+    min-width: 160px;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+
+  .terminal {
+    height: 220px;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .hackerButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.05rem;
+    min-height: 44px;
+  }
+
+  .bubble {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.8rem;
+    padding-top: 65px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .cipherDisplay {
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .keyCircle {
+    width: 65px;
+    height: 65px;
+    font-size: 1.3rem;
+    border-width: 4px;
+  }
+
+  .resultBox {
+    min-width: 140px;
+    font-size: 1rem;
+  }
+
+  .terminal {
+    height: 180px;
+    font-size: 0.8rem;
+  }
+
+  .hackerButton {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}

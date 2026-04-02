@@ -270,3 +270,157 @@
   margin-top: -12px;
   font-size: 0.9rem;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 70px;
+    gap: 18px;
+  }
+
+  .backButton {
+    top: 16px;
+    left: 16px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .header {
+    margin-top: 8px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .explainPanel {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .explainPanel h3 {
+    font-size: 1.15rem;
+  }
+
+  .codeBlock {
+    font-size: 0.95rem;
+    padding: 12px;
+    line-height: 1.6;
+  }
+
+  .interactiveArea {
+    padding: 20px 16px;
+    gap: 24px;
+    border-radius: 16px;
+  }
+
+  .controlsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .numInput {
+    width: 100%;
+  }
+
+  .actionBtn {
+    min-height: 44px;
+    width: 100%;
+  }
+
+  .trainStage {
+    padding: 14px 8px;
+    min-height: 120px;
+  }
+
+  .locomotive {
+    padding: 18px 22px;
+    font-size: 1rem;
+  }
+
+  .wagon {
+    width: 65px;
+    height: 75px;
+  }
+
+  .wagonContent {
+    font-size: 1.3rem;
+  }
+
+  .wagonLink {
+    font-size: 1.2rem;
+  }
+
+  .hintText {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+    padding-top: 65px;
+    gap: 14px;
+  }
+
+  .backButton {
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .explainPanel {
+    padding: 14px;
+  }
+
+  .explainPanel h3 {
+    font-size: 1.05rem;
+  }
+
+  .codeBlock {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .interactiveArea {
+    padding: 16px 12px;
+    gap: 20px;
+  }
+
+  .locomotive {
+    padding: 14px 18px;
+    font-size: 0.9rem;
+  }
+
+  .wagon {
+    width: 55px;
+    height: 65px;
+  }
+
+  .wagonContent {
+    font-size: 1.1rem;
+  }
+
+  .wagonIndex {
+    font-size: 0.65rem;
+  }
+}

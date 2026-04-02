@@ -197,3 +197,107 @@
   from { transform: rotate(-5deg); }
   to { transform: rotate(5deg); }
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .mainCard {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .sequenceRow {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .stepLabel {
+    width: auto;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .sequenceValue {
+    font-size: 1.3rem;
+    max-width: 100%;
+    letter-spacing: 0.1rem;
+  }
+
+  .nextButton {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    min-height: 44px;
+  }
+
+  .inputSection {
+    padding: 1.25rem;
+  }
+
+  .inputTitle {
+    font-size: 1.1rem;
+  }
+
+  .inputField {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    max-width: 100%;
+    letter-spacing: 0.1rem;
+  }
+
+  .submitButton {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    min-height: 44px;
+  }
+
+  .successTitle {
+    font-size: 1.8rem;
+  }
+
+  .successIcon {
+    font-size: 3.5rem;
+  }
+
+  .successText {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .mainCard {
+    padding: 1rem;
+  }
+
+  .sequenceValue {
+    font-size: 1.1rem;
+  }
+
+  .inputField {
+    font-size: 1.2rem;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}

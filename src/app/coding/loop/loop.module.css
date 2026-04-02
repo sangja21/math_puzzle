@@ -429,3 +429,169 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.2rem;
+    padding-top: 70px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .partsBox {
+    padding: 1rem;
+  }
+
+  .partsRow {
+    gap: 0.6rem;
+  }
+
+  .draggableBlock {
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+  }
+
+  .slotsContainer {
+    gap: 0.6rem;
+    padding: 1rem;
+  }
+
+  .dropZone {
+    width: 75px;
+    height: 50px;
+  }
+
+  .slotFixedText {
+    font-size: 1.2rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .startButton,
+  .stopButton {
+    min-height: 44px;
+  }
+
+  .machineIcon {
+    font-size: 3.5rem;
+  }
+
+  .conveyorBelt {
+    min-height: 100px;
+    padding: 0.8rem 1rem;
+  }
+
+  .box {
+    min-width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .codeArea {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+
+  .batteryContainer {
+    width: 80px;
+    height: 160px;
+  }
+
+  .batteryText {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.8rem;
+    padding-top: 65px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .partsBox {
+    padding: 0.8rem;
+  }
+
+  .draggableBlock {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .slotsContainer {
+    gap: 0.4rem;
+    padding: 0.8rem;
+  }
+
+  .dropZone {
+    width: 60px;
+    height: 44px;
+  }
+
+  .slotFixedText {
+    font-size: 1rem;
+    margin: 0 0.2rem;
+  }
+
+  .slotLabel {
+    font-size: 0.8rem;
+  }
+
+  .machineIcon {
+    font-size: 2.5rem;
+  }
+
+  .conveyorBelt {
+    min-height: 80px;
+    padding: 0.5rem;
+  }
+
+  .box {
+    min-width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .codeArea {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  .batteryContainer {
+    width: 60px;
+    height: 130px;
+  }
+
+  .batteryText {
+    font-size: 1rem;
+  }
+
+  .label {
+    font-size: 0.95rem;
+  }
+}
+
