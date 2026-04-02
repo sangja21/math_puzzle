@@ -1,0 +1,873 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* 홈 버튼 */
+.homeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.homeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 단계 표시 */
+.stageBadge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* 스토리 카드 */
+.storyCard {
+  max-width: 600px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 16px;
+  text-align: center;
+  line-height: 1.8;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+.introExample {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.introInput {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.2);
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+.introArrow {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.4rem;
+}
+
+.introOutput {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.2);
+  padding: 8px 16px;
+  border-radius: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* 시작 버튼 */
+.startButton {
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.startButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+/* 진행 표시 */
+.progressDots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: #a78bfa;
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+.dot.completed {
+  background: #4ade80;
+}
+
+/* 숫자 블록 팔레트 */
+.inputPalette {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.paletteLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+}
+
+.inputBlocks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.inputBlock {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%);
+  border: 2px solid rgba(96, 165, 250, 0.5);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #60a5fa;
+  cursor: grab;
+  transition: all 0.2s;
+  touch-action: none;
+}
+
+.inputBlock:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+  border-color: #60a5fa;
+}
+
+/* 기계 */
+.machine {
+  width: 100%;
+  max-width: 400px;
+}
+
+.machineBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 2px solid rgba(168, 85, 247, 0.4);
+  border-radius: 20px;
+  position: relative;
+}
+
+.machineSlot {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(96, 165, 250, 0.1);
+  border: 2px dashed rgba(96, 165, 250, 0.4);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.machineSlotOver {
+  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.2);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+.machineSlotValue {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #60a5fa;
+}
+
+.machineSlotPlaceholder {
+  font-size: 0.7rem;
+  color: rgba(96, 165, 250, 0.5);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.machineGear {
+  font-size: 2.5rem;
+  transition: transform 0.3s;
+}
+
+.machineGear.spinning {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.machineOutputBox {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 222, 128, 0.1);
+  border: 2px solid rgba(74, 222, 128, 0.4);
+  border-radius: 12px;
+}
+
+.outputValue {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #4ade80;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.outputPlaceholder {
+  font-size: 1.5rem;
+  color: rgba(74, 222, 128, 0.3);
+}
+
+.processingDots {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  animation: pulse 0.5s infinite;
+}
+
+/* 실험 기록 */
+.historySection {
+  width: 100%;
+  max-width: 320px;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+}
+
+.historyTable {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+
+.historyHeader span {
+  flex: 1;
+  text-align: center;
+}
+
+.historyRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  align-items: center;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.histIn {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #60a5fa;
+}
+
+.histArrow {
+  flex: 1;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.histOut {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #4ade80;
+}
+
+/* 힌트 */
+.hintButton {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.3) 0%, rgba(245, 158, 11, 0.2) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  border-radius: 12px;
+  color: #fbbf24;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hintButton:hover {
+  transform: translateY(-2px);
+}
+
+.hintBox {
+  padding: 16px 24px;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 12px;
+  color: #fbbf24;
+  font-size: 1rem;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+/* 규칙 맞추기 버튼 */
+.solveButton {
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #0a2e0a;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.solveButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+
+/* 수식 조립 영역 */
+.solveSection {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.08) 0%, rgba(34, 197, 94, 0.04) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: 16px;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.solveHint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+/* 수식 블록 팔레트 */
+.formulaPalette {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.formulaRow {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.formulaBlock {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  cursor: grab;
+  transition: all 0.2s;
+  touch-action: none;
+}
+
+.formulaBlock:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.operatorBlock {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: rgba(251, 191, 36, 0.5);
+  color: #fbbf24;
+}
+
+.variableBlock {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: #60a5fa;
+  font-size: 0.9rem;
+}
+
+/* 드롭 영역 */
+.formulaZone {
+  min-height: 56px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px dashed rgba(74, 222, 128, 0.3);
+  border-radius: 12px;
+  transition: all 0.2s;
+  margin-bottom: 12px;
+}
+
+.formulaZoneOver {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+}
+
+.formulaPlaceholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+}
+
+.formulaPlaced {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.formulaPlaced:hover {
+  opacity: 0.7;
+}
+
+.removeX {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f87171;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.formulaPlaced:hover .removeX {
+  opacity: 1;
+}
+
+/* 미리보기 */
+.preview {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.previewLabel {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.previewFormula {
+  font-weight: 700;
+  color: #a78bfa;
+  font-size: 1rem;
+}
+
+.previewCalc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* 결과 메시지 */
+.resultMessage {
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.resultMessage.success {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
+  border: 2px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+}
+
+.resultMessage.error {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%);
+  border: 2px solid rgba(248, 113, 113, 0.5);
+  color: #f87171;
+}
+
+/* 컨트롤 버튼들 */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.checkButton {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #0a2e0a;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.checkButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+
+.checkButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.clearButton {
+  padding: 14px 20px;
+  background: rgba(248, 113, 113, 0.2);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 12px;
+  color: #f87171;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearButton:hover {
+  background: rgba(248, 113, 113, 0.3);
+  transform: translateY(-2px);
+}
+
+.backToExplore {
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.backToExplore:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 드래그 오버레이 */
+.dragOverlay {
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  background: rgba(168, 85, 247, 0.8);
+  border: 2px solid #a78bfa;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* 완료 화면 */
+.completeScreen {
+  text-align: center;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+  border: 2px solid rgba(74, 222, 128, 0.4);
+  border-radius: 20px;
+  max-width: 500px;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+.completeScreen h2 {
+  font-size: 2rem;
+  margin: 0 0 16px 0;
+  color: #4ade80;
+}
+
+.completeScreen p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.celebrationEmoji {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.summaryBox {
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.summaryBox h3 {
+  color: #a78bfa;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.summaryRow + .summaryRow {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.summaryStage {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 60px;
+}
+
+.summaryFormula {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #4ade80;
+}
+
+.learnBox {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.learnBox h3 {
+  color: #a78bfa;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.learnBox p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.restartButton {
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.restartButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    padding-top: 70px;
+  }
+
+  .homeButton {
+    top: 10px;
+    left: 10px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .stageBadge {
+    top: 10px;
+    right: 10px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .inputBlock {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .machineSlot,
+  .machineOutputBox {
+    width: 65px;
+    height: 65px;
+  }
+
+  .machineSlotValue,
+  .outputValue {
+    font-size: 1.5rem;
+  }
+
+  .machineGear {
+    font-size: 2rem;
+  }
+
+  .formulaBlock,
+  .formulaPlaced {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inputBlocks {
+    gap: 5px;
+  }
+
+  .inputBlock {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .formulaRow {
+    gap: 5px;
+  }
+
+  .controls {
+    gap: 6px;
+  }
+
+  .checkButton,
+  .clearButton,
+  .backToExplore {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+}

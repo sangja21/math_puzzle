@@ -298,6 +298,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '신규 퍼즐! ✨',
     category: 'puzzle',
   },
+  {
+    id: 'function_machine',
+    title: '함수 기계',
+    emoji: '⚙️',
+    description: '신비한 기계에 숫자를 넣으면 다른 숫자가 나와요! 규칙을 찾아보세요!',
+    difficulty: 'medium',
+    href: '/puzzle/function-machine',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
