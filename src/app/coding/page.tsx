@@ -118,6 +118,18 @@ const LOOP_ITEMS = [
   },
 ];
 
+const FUNCTION_ITEMS = [
+  {
+    id: 'function',
+    title: '함수 (Function)',
+    emoji: '⚙️',
+    description:
+      '입력을 넣으면 규칙대로 출력이 나오는 마법 기계! 나만의 함수를 만들고, 여러 함수를 연결해봐요!',
+    href: '/coding/function',
+    tag: '함수',
+  },
+];
+
 export default function CodingPage() {
   return (
     <div className={styles.container}>
@@ -178,6 +190,21 @@ export default function CodingPage() {
           <h2 className={styles.sectionTitle}>반복문 파트</h2>
           <div className={styles.cardGrid}>
             {LOOP_ITEMS.map((item) => (
+              <Link key={item.id} href={item.href} className={styles.card}>
+                <span className={styles.cardTag}>{item.tag}</span>
+                <div className={styles.cardEmoji}>{item.emoji}</div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.cardDesc}>{item.description}</p>
+                <span className={styles.cardCta}>학습 시작하기 →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>함수 파트</h2>
+          <div className={styles.cardGrid}>
+            {FUNCTION_ITEMS.map((item) => (
               <Link key={item.id} href={item.href} className={styles.card}>
                 <span className={styles.cardTag}>{item.tag}</span>
                 <div className={styles.cardEmoji}>{item.emoji}</div>
