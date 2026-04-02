@@ -288,6 +288,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '천재들의 암호 💡',
     category: 'puzzle',
   },
+  {
+    id: 'strange_dice',
+    title: '이상한 주사위',
+    emoji: '🎲',
+    description: '1~6이 아닌 눈을 가진 주사위인데, 합의 확률이 정상 주사위와 똑같다?!',
+    difficulty: 'hard',
+    href: '/puzzle/strange-dice',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
