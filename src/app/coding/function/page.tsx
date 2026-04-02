@@ -409,90 +409,60 @@ export default function FunctionPage() {
 
       {/* ═══════ 3단계: 함수 합성 ═══════ */}
       {phase === 'compose' && (
-        <div className={styles.mainContent}>
-          <div className={styles.explainPanel}>
+        <div className={styles.composeLayout}>
+          {/* 상단: 설명 */}
+          <div className={styles.composeExplain}>
             <h3>🔗 함수 합성이란?</h3>
             <p>
               한 함수의 <strong>출력</strong>을 다른 함수의 <strong>입력</strong>으로 넣는 것을
               <strong> 함수 합성</strong>이라고 해요!
-            </p>
-            <p style={{ marginTop: 12 }}>
               마치 공장에서 기계를 <strong>파이프라인</strong>처럼 연결하는 거예요.
             </p>
-            <div className={styles.codeBlock}>
-              <code>
-                {composePipeline.map((fnIdx, i) => {
-                  const f = FUNCTIONS[fnIdx];
-                  return (
-                    <span key={i}>
-                      {i === 0 ? '' : '→ '}
-                      <span className={styles.codeFnName}>{f.name}</span>()
-                      {i < composePipeline.length - 1 ? ' ' : ''}
-                    </span>
-                  );
-                })}
-              </code>
-            </div>
-            {composeSteps.length > 0 && (
-              <div className={styles.composeTrace}>
-                <div className={styles.traceRow}>
-                  <span className={styles.traceLabel}>입력</span>
-                  <span className={styles.traceValue}>{composeInput}</span>
-                </div>
-                {composeSteps.map((step, i) => (
-                  <div key={i} className={styles.traceRow}>
-                    <span className={styles.traceLabel}>{step.fn}</span>
-                    <span className={`${styles.traceValue} ${i === composeSteps.length - 1 ? styles.traceFinal : ''}`}>
-                      {step.result}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
 
-          <div className={styles.interactiveArea}>
-            {/* 파이프라인 편집 */}
-            <div className={styles.pipelineEditor}>
-              <h3 className={styles.selectorTitle}>파이프라인 구성</h3>
-              <div className={styles.pipeline}>
-                <div className={styles.pipeInput}>입력</div>
-                {composePipeline.map((fnIdx, i) => (
-                  <div key={i} className={styles.pipeBlock}>
-                    <span className={styles.pipeArrow}>→</span>
-                    <div className={styles.pipeFunction}>
-                      <span>{FUNCTIONS[fnIdx].emoji} {FUNCTIONS[fnIdx].name}</span>
-                      <button
-                        className={styles.pipeRemove}
-                        onClick={() => handleRemovePipeline(i)}
-                        title="제거"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                <span className={styles.pipeArrow}>→</span>
-                <div className={styles.pipeOutput}>출력</div>
-              </div>
+          {/* 중단: 파이프라인 조립 */}
+          <div className={styles.composeBuilder}>
+            <h3 className={styles.selectorTitle}>파이프라인 구성</h3>
 
-              <div className={styles.addFnRow}>
-                <span className={styles.addLabel}>함수 추가:</span>
-                {FUNCTIONS.map((fn, idx) => (
-                  <button
-                    key={fn.name}
-                    className={styles.addFnButton}
-                    onClick={() => handleAddPipeline(idx)}
-                  >
-                    {fn.emoji} {fn.name}
-                  </button>
-                ))}
-              </div>
+            {/* 파이프라인을 세로로 표시 */}
+            <div className={styles.pipelineVertical}>
+              <div className={styles.pipeInput}>📥 입력</div>
+              {composePipeline.map((fnIdx, i) => (
+                <div key={i} className={styles.pipeStep}>
+                  <span className={styles.pipeArrowDown}>↓</span>
+                  <div className={styles.pipeFunction}>
+                    <span>{FUNCTIONS[fnIdx].emoji} {FUNCTIONS[fnIdx].name}()</span>
+                    <button
+                      className={styles.pipeRemove}
+                      onClick={() => handleRemovePipeline(i)}
+                      title="제거"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+              ))}
+              <span className={styles.pipeArrowDown}>↓</span>
+              <div className={styles.pipeOutput}>📤 출력</div>
+            </div>
+
+            {/* 함수 추가 버튼 */}
+            <div className={styles.addFnRow}>
+              <span className={styles.addLabel}>함수 추가:</span>
+              {FUNCTIONS.map((fn, idx) => (
+                <button
+                  key={fn.name}
+                  className={styles.addFnButton}
+                  onClick={() => handleAddPipeline(idx)}
+                >
+                  {fn.emoji} {fn.name}
+                </button>
+              ))}
             </div>
 
             <div className={styles.divider} />
 
-            {/* 실행 */}
+            {/* 숫자 입력 & 실행 */}
             <div className={styles.composeTest}>
               <h3 className={styles.selectorTitle}>숫자를 넣어보세요</h3>
               <div className={styles.chipRow}>
@@ -515,6 +485,40 @@ export default function FunctionPage() {
               </button>
             </div>
           </div>
+
+          {/* 하단: 연산 과정 */}
+          {composeSteps.length > 0 && (
+            <div className={styles.composeResult}>
+              <h3 className={styles.selectorTitle}>연산 과정</h3>
+              <div className={styles.composeTrace}>
+                <div className={styles.traceRow}>
+                  <span className={styles.traceLabel}>📥 입력</span>
+                  <span className={styles.traceValue}>{composeInput}</span>
+                </div>
+                {composeSteps.map((step, i) => (
+                  <div key={i} className={styles.traceRow}>
+                    <span className={styles.traceLabel}>{step.fn}</span>
+                    <span className={`${styles.traceValue} ${i === composeSteps.length - 1 ? styles.traceFinal : ''}`}>
+                      {step.result}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.codeBlock}>
+                <code>
+                  {composePipeline.map((fnIdx, i) => {
+                    const f = FUNCTIONS[fnIdx];
+                    return (
+                      <span key={i}>
+                        {i === 0 ? '' : ' → '}
+                        <span className={styles.codeFnName}>{f.name}</span>()
+                      </span>
+                    );
+                  })}
+                </code>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

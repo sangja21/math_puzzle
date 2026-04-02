@@ -487,27 +487,89 @@
 }
 
 /* ─── 함수 합성 ─── */
-.pipelineEditor {
+
+/* 합성 전용 세로 레이아웃 (2열 그리드 X → 1열) */
+.composeLayout {
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
-.pipeline {
+.composeExplain {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.composeExplain h3 {
+  margin: 0 0 12px 0;
+  color: #1e293b;
+  font-size: 1.3rem;
+}
+
+.composeExplain p {
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.composeBuilder {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.composeResult {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 세로 파이프라인 */
+.pipelineVertical {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 4px;
   padding: 16px;
-  background: #f1f5f9;
+  background: #f8fafc;
   border-radius: 14px;
   border: 2px solid #e2e8f0;
 }
 
+.pipeStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pipeArrowDown {
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
 .pipeInput,
 .pipeOutput {
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 10px;
   font-weight: 700;
   font-size: 0.9rem;
@@ -525,23 +587,11 @@
   border: 2px solid #6ee7b7;
 }
 
-.pipeBlock {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pipeArrow {
-  color: #94a3b8;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
 .pipeFunction {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
+  gap: 8px;
+  padding: 10px 18px;
   background: white;
   border: 2px solid #c7d2fe;
   border-radius: 10px;
@@ -555,9 +605,9 @@
   border: none;
   color: #ef4444;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  padding: 2px 4px;
+  padding: 2px 6px;
   border-radius: 4px;
   transition: background 0.2s;
 }
@@ -607,10 +657,10 @@
 
 /* 합성 추적 */
 .composeTrace {
-  margin-top: 16px;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 12px;
 }
 
 .traceRow {
@@ -678,13 +728,12 @@
     padding: 10px 12px;
   }
 
-  .pipeline {
-    padding: 12px;
-    gap: 6px;
+  .composeLayout {
+    max-width: 100%;
   }
 
   .pipeFunction {
-    padding: 6px 10px;
+    padding: 8px 12px;
     font-size: 0.8rem;
   }
 }
