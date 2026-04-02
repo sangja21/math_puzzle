@@ -16,18 +16,47 @@ import styles from './page.module.css';
 
 type Phase = 'intro' | 'playing' | 'answer' | 'complete';
 
+// 단계별 힌트
+const HINTS = [
+  {
+    title: '힌트 1: 합 분포 표',
+    content: '일반 주사위 두 개의 합 분포표를 보세요. 이상한 주사위도 이것과 똑같은 분포를 만들어야 해요!',
+    showTable: true,
+  },
+  {
+    title: '힌트 2: 합이 2가 되려면?',
+    content: '합이 2가 나오는 경우는 딱 1가지여야 해요.\n두 주사위 모두 최솟값이 1이어야 하겠죠?\n→ 양쪽 주사위 모두 1을 하나씩 가지고 있어요!',
+    showTable: false,
+  },
+  {
+    title: '힌트 3: 합이 12가 되려면?',
+    content: '합이 12가 나오는 경우도 딱 1가지여야 해요.\n한쪽이 4라면 다른 쪽은 8이 필요하고,\n한쪽이 5라면 다른 쪽은 7이 필요해요.\n→ 두 주사위의 최댓값의 합이 12가 되어야 해요!',
+    showTable: false,
+  },
+  {
+    title: '힌트 4: 핵심 단서!',
+    content: '주사위 A의 눈의 합을 생각해보세요.\n일반 주사위는 1+2+3+4+5+6 = 21이에요.\n\n이상한 주사위도 각 주사위 눈의 합이 같을 필요는 없지만,\n두 주사위 눈의 총합은 같아야 해요 (21+21 = 42).\n\n만약 A의 최댓값이 4라면? A = {1, ?, ?, ?, ?, 4}\nA의 합이 작으니 B의 합이 커야 하고, B의 최댓값은 8이 될 수 있어요!',
+    showTable: false,
+  },
+  {
+    title: '힌트 5: 거의 다 왔어요!',
+    content: '주사위 A: {1, 2, 2, 3, 3, 4}\n주사위 B: {1, ?, ?, ?, ?, 8}\n\nB의 나머지 4개 면을 찾아보세요!\n합이 7이 되는 경우가 6가지여야 한다는 걸 이용해보세요.',
+    showTable: false,
+  },
+];
+
 export default function StrangeDicePage() {
   const [phase, setPhase] = useState<Phase>('intro');
   const [history, setHistory] = useState<RollHistory[]>([]);
   const [lastRoll, setLastRoll] = useState<{ sum: number } | null>(null);
   const [isRolling, setIsRolling] = useState(false);
-  const [showHint, setShowHint] = useState(false);
+  const [hintLevel, setHintLevel] = useState(-1); // -1: 안 봄, 0~4: 힌트 단계
   const [showCompare, setShowCompare] = useState(false);
 
   // 정답 입력
   const [userDieA, setUserDieA] = useState<string[]>(['', '', '', '', '', '']);
   const [userDieB, setUserDieB] = useState<string[]>(['', '', '', '', '', '']);
-  const [answerResult, setAnswerResult] = useState<boolean | null>(null);
+  const [answerResult, setAnswerResult] = useState<{ valid: boolean; reason: string } | null>(null);
 
   const rollIdRef = useRef(0);
 
@@ -37,7 +66,6 @@ export default function StrangeDicePage() {
     setIsRolling(true);
     setAnswerResult(null);
 
-    // 굴리기 애니메이션 (0.6초)
     const animInterval = setInterval(() => {
       setLastRoll({ sum: Math.floor(Math.random() * 11) + 2 });
     }, 80);
@@ -76,24 +104,20 @@ export default function StrangeDicePage() {
     const dieB = userDieB.map((v) => parseInt(v, 10)).sort((a, b) => a - b);
 
     if (dieA.some(isNaN) || dieB.some(isNaN)) {
-      setAnswerResult(false);
+      setAnswerResult({ valid: false, reason: '모든 칸에 숫자를 입력해주세요.' });
       return;
     }
 
-    const isCorrect = validateAnswer(dieA, dieB);
-    setAnswerResult(isCorrect);
+    const result = validateAnswer(dieA, dieB);
+    setAnswerResult(result);
 
-    if (isCorrect) {
-      setPhase('complete');
+    if (result.valid) {
+      setTimeout(() => setPhase('complete'), 800);
     }
   }, [userDieA, userDieB]);
 
   // 주사위 입력 핸들러
-  const handleDieInput = (
-    die: 'A' | 'B',
-    index: number,
-    value: string
-  ) => {
+  const handleDieInput = (die: 'A' | 'B', index: number, value: string) => {
     const digitsOnly = value.replace(/[^0-9]/g, '');
     if (die === 'A') {
       setUserDieA((prev) => {
@@ -111,17 +135,20 @@ export default function StrangeDicePage() {
     setAnswerResult(null);
   };
 
+  // 다음 힌트 보기
+  const handleNextHint = useCallback(() => {
+    setHintLevel((prev) => Math.min(prev + 1, HINTS.length - 1));
+  }, []);
+
   const frequency = getFrequencyFromHistory(history);
   const normalTable = getSumTable(NORMAL_DIE, NORMAL_DIE);
   const sichermanTable = getSumTable(SICHERMAN_A, SICHERMAN_B);
 
-  // 인트로 화면
+  // ─── 인트로 화면 ───
   if (phase === 'intro') {
     return (
       <div className={styles.container}>
-        <Link href="/puzzles" className={styles.homeButton}>
-          🏠 목록으로
-        </Link>
+        <Link href="/puzzles" className={styles.homeButton}>🏠 목록으로</Link>
         <header className={styles.header}>
           <h1 className={styles.title}>🎲 이상한 주사위</h1>
           <p className={styles.subtitle}>눈의 수가 1~6이 아닌 주사위가 있다?!</p>
@@ -149,13 +176,11 @@ export default function StrangeDicePage() {
     );
   }
 
-  // 완료 화면
+  // ─── 완료 화면 ───
   if (phase === 'complete') {
     return (
       <div className={styles.container}>
-        <Link href="/puzzles" className={styles.homeButton}>
-          🏠 목록으로
-        </Link>
+        <Link href="/puzzles" className={styles.homeButton}>🏠 목록으로</Link>
         <header className={styles.header}>
           <h1 className={styles.title}>🎲 이상한 주사위</h1>
         </header>
@@ -200,7 +225,6 @@ export default function StrangeDicePage() {
             </p>
           </div>
 
-          {/* 비교 표 */}
           <button
             className={styles.compareButton}
             onClick={() => setShowCompare((v) => !v)}
@@ -264,7 +288,7 @@ export default function StrangeDicePage() {
               setPhase('intro');
               setHistory([]);
               setLastRoll(null);
-              setShowHint(false);
+              setHintLevel(-1);
               setShowCompare(false);
               setUserDieA(['', '', '', '', '', '']);
               setUserDieB(['', '', '', '', '', '']);
@@ -278,15 +302,11 @@ export default function StrangeDicePage() {
     );
   }
 
-  // 게임 화면
+  // ─── 게임 화면 ───
   return (
     <div className={styles.container}>
-      <Link href="/puzzles" className={styles.homeButton}>
-        🏠 목록으로
-      </Link>
-      <span className={styles.rollCount}>
-        🎲 {history.length}회 굴림
-      </span>
+      <Link href="/puzzles" className={styles.homeButton}>🏠 목록으로</Link>
+      <span className={styles.rollCount}>🎲 {history.length}회 굴림</span>
 
       <header className={styles.header}>
         <h1 className={styles.title}>🎲 이상한 주사위</h1>
@@ -303,18 +323,10 @@ export default function StrangeDicePage() {
 
       {/* 굴리기 버튼 */}
       <div className={styles.controls}>
-        <button
-          className={styles.rollButton}
-          onClick={handleRoll}
-          disabled={isRolling}
-        >
+        <button className={styles.rollButton} onClick={handleRoll} disabled={isRolling}>
           🎲 굴리기
         </button>
-        <button
-          className={styles.roll10Button}
-          onClick={handleRoll10}
-          disabled={isRolling}
-        >
+        <button className={styles.roll10Button} onClick={handleRoll10} disabled={isRolling}>
           🎲×10 연속 굴리기
         </button>
       </div>
@@ -331,72 +343,78 @@ export default function StrangeDicePage() {
               return (
                 <div key={sum} className={styles.barColumn}>
                   <span className={styles.barCount}>{count}</span>
-                  <div
-                    className={styles.bar}
-                    style={{ height: `${Math.max(height, 2)}%` }}
-                  />
+                  <div className={styles.bar} style={{ height: `${Math.max(height, 2)}%` }} />
                   <span className={styles.barLabel}>{sum}</span>
                 </div>
               );
             })}
           </div>
+          {history.length >= 30 && (
+            <p className={styles.frequencyNote}>
+              💡 분포가 일반 주사위와 비슷하죠? 그런데 이 주사위의 눈은 1~6이 아니에요!
+            </p>
+          )}
         </div>
       )}
 
-      {/* 힌트 버튼 & 표 */}
-      <button
-        className={styles.hintButton}
-        onClick={() => setShowHint((v) => !v)}
-      >
-        {showHint ? '📋 힌트 접기' : '💡 힌트!'}
-      </button>
-
-      {showHint && (
-        <div className={styles.hintSection}>
-          <p className={styles.hintText}>
-            일반 주사위 두 개를 던졌을 때의 합 분포표입니다.<br />
-            이상한 주사위도 이것과 <strong>똑같은 분포</strong>를 가져야 합니다!
-          </p>
-          <div className={styles.tableWrapper}>
-            <table className={styles.sumTable}>
-              <thead>
-                <tr>
-                  <th></th>
-                  {NORMAL_DIE.map((v, i) => (
-                    <th key={i} className={styles.dieHeader}>
-                      <span className={styles.dieFace}>{v}</span>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {normalTable.map((row, ri) => (
-                  <tr key={ri}>
-                    <th className={styles.dieHeader}>
-                      <span className={styles.dieFace}>{NORMAL_DIE[ri]}</span>
-                    </th>
-                    {row.map((val, ci) => (
-                      <td key={ci} className={styles.sumCell}>{val}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className={styles.hintExtra}>
-            합이 2가 나오는 경우: 1가지 (1+1)<br />
-            합이 7이 나오는 경우: 6가지 (가장 많음!)<br />
-            합이 12가 나오는 경우: 1가지 (6+6)
-          </p>
-        </div>
-      )}
+      {/* 단계별 힌트 */}
+      <div className={styles.hintArea}>
+        {hintLevel === -1 ? (
+          <button className={styles.hintButton} onClick={handleNextHint}>
+            💡 힌트가 필요해요!
+          </button>
+        ) : (
+          <>
+            {/* 현재까지 열린 힌트들 모두 표시 */}
+            {HINTS.slice(0, hintLevel + 1).map((hint, idx) => (
+              <div key={idx} className={styles.hintCard}>
+                <h4 className={styles.hintTitle}>{hint.title}</h4>
+                <p className={styles.hintContent}>{hint.content}</p>
+                {hint.showTable && (
+                  <div className={styles.tableWrapper}>
+                    <table className={styles.sumTable}>
+                      <thead>
+                        <tr>
+                          <th></th>
+                          {NORMAL_DIE.map((v, i) => (
+                            <th key={i} className={styles.dieHeader}>
+                              <span className={styles.dieFace}>{v}</span>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {normalTable.map((row, ri) => (
+                          <tr key={ri}>
+                            <th className={styles.dieHeader}>
+                              <span className={styles.dieFace}>{NORMAL_DIE[ri]}</span>
+                            </th>
+                            {row.map((val, ci) => (
+                              <td key={ci} className={styles.sumCell}>{val}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <p className={styles.tableNote}>
+                      합 2: 1가지 &middot; 합 7: 6가지 (최다!) &middot; 합 12: 1가지
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+            {hintLevel < HINTS.length - 1 && (
+              <button className={styles.nextHintButton} onClick={handleNextHint}>
+                💡 다음 힌트 보기 ({hintLevel + 2}/{HINTS.length})
+              </button>
+            )}
+          </>
+        )}
+      </div>
 
       {/* 정답 입력 */}
       {phase === 'playing' && (
-        <button
-          className={styles.answerToggle}
-          onClick={() => setPhase('answer')}
-        >
+        <button className={styles.answerToggle} onClick={() => setPhase('answer')}>
           ✏️ 정답 입력하기
         </button>
       )}
@@ -404,7 +422,9 @@ export default function StrangeDicePage() {
       {phase === 'answer' && (
         <div className={styles.answerSection}>
           <h3 className={styles.sectionTitle}>두 주사위의 눈을 입력하세요</h3>
-          <p className={styles.answerHint}>각 주사위의 6개 면에 적힌 숫자 (1 이상의 자연수)</p>
+          <p className={styles.answerHint}>
+            각 주사위의 6개 면에 적힌 숫자 (1 이상의 자연수, 같은 숫자 가능)
+          </p>
 
           <div className={styles.dieInputGroup}>
             <label className={styles.dieLabel}>주사위 A</label>
@@ -442,9 +462,14 @@ export default function StrangeDicePage() {
             </div>
           </div>
 
-          {answerResult === false && (
+          {answerResult !== null && !answerResult.valid && (
             <div className={`${styles.resultMessage} ${styles.error}`}>
-              ❌ 이 주사위의 합 분포는 정상 주사위와 다릅니다. 다시 생각해보세요!
+              ❌ {answerResult.reason}
+            </div>
+          )}
+          {answerResult !== null && answerResult.valid && (
+            <div className={`${styles.resultMessage} ${styles.success}`}>
+              🎉 정답이에요!
             </div>
           )}
 
@@ -465,9 +490,7 @@ export default function StrangeDicePage() {
           <h3 className={styles.sectionTitle}>최근 기록</h3>
           <div className={styles.historyList}>
             {history.slice(0, 20).map((roll) => (
-              <span key={roll.id} className={styles.historyItem}>
-                {roll.sum}
-              </span>
+              <span key={roll.id} className={styles.historyItem}>{roll.sum}</span>
             ))}
             {history.length > 20 && (
               <span className={styles.historyMore}>+{history.length - 20}개 더</span>

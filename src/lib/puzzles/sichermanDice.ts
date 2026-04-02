@@ -62,15 +62,39 @@ export function getSumTable(dieA: number[], dieB: number[]): number[][] {
   return dieA.map((a) => dieB.map((b) => a + b));
 }
 
-// 정답 검증: 사용자가 입력한 두 주사위가 정상 주사위와 같은 합 분포를 가지는지
-export function validateAnswer(userDieA: number[], userDieB: number[]): boolean {
-  if (userDieA.length !== 6 || userDieB.length !== 6) return false;
-  if (userDieA.some((n) => n < 1) || userDieB.some((n) => n < 1)) return false;
+// 두 배열이 같은지 비교 (정렬된 상태)
+function arraysEqual(a: number[], b: number[]): boolean {
+  if (a.length !== b.length) return false;
+  return a.every((v, i) => v === b[i]);
+}
+
+// 정답 검증: 사용자가 입력한 두 주사위가 정상 주사위와 같은 합 분포를 가지면서
+// 일반 주사위(1~6, 1~6)와는 다른 조합인지 확인
+export function validateAnswer(userDieA: number[], userDieB: number[]): { valid: boolean; reason: string } {
+  if (userDieA.length !== 6 || userDieB.length !== 6) {
+    return { valid: false, reason: '각 주사위에 6개의 숫자를 모두 입력해주세요.' };
+  }
+  if (userDieA.some((n) => n < 1 || !Number.isInteger(n)) || userDieB.some((n) => n < 1 || !Number.isInteger(n))) {
+    return { valid: false, reason: '1 이상의 자연수만 입력할 수 있어요.' };
+  }
+
+  const sortedA = [...userDieA].sort((a, b) => a - b);
+  const sortedB = [...userDieB].sort((a, b) => a - b);
+  const normalSorted = [...NORMAL_DIE].sort((a, b) => a - b);
+
+  // 둘 다 일반 주사위면 거부
+  if (arraysEqual(sortedA, normalSorted) && arraysEqual(sortedB, normalSorted)) {
+    return { valid: false, reason: '그건 일반 주사위잖아요! 😅 1~6이 아닌 다른 눈을 찾아보세요.' };
+  }
 
   const normalDist = getNormalSumDistribution();
   const userDist = getSumDistribution(userDieA, userDieB);
 
-  return distributionsEqual(normalDist, userDist);
+  if (!distributionsEqual(normalDist, userDist)) {
+    return { valid: false, reason: '이 주사위의 합 분포는 정상 주사위와 달라요. 다시 생각해보세요!' };
+  }
+
+  return { valid: true, reason: '' };
 }
 
 // 합 기록 히스토리
