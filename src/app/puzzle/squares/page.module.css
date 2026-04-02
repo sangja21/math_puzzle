@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  color: white;
+  background-color: #f8fafc;
+  color: #0f172a;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  color: white;
+  color: #1e293b;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -28,10 +28,10 @@
 }
 
 .homeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: #f1f5f9;
+  border-color: #0ea5e9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* 헤더 */
@@ -71,7 +71,7 @@
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -99,7 +99,7 @@
   display: grid;
   gap: 3px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #f1f5f9;
   border-radius: 16px;
   transition: all 0.3s ease;
 }
@@ -151,7 +151,7 @@
 
 .infoCard {
   padding: 20px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #f1f5f9;
   border-radius: 12px;
 }
 
@@ -174,19 +174,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f8fafc;
   border-radius: 8px;
 }
 
 .formulaLabel {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748b;
 }
 
 .formulaValue {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #4ade80;
+  color: #16a34a;
 }
 
 .formulaValueHighlight {
@@ -194,7 +194,7 @@
 }
 
 .formulaValueNew {
-  color: #f87171;
+  color: #dc2626;
   animation: pulse 1s ease-in-out infinite;
 }
 
@@ -220,7 +220,7 @@
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.9rem;
-  color: white;
+  color: #1e293b;
   transition: all 0.3s ease;
 }
 
@@ -231,14 +231,14 @@
 
 .sumEquals {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748b;
   margin: 0 4px;
 }
 
 .sumResult {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #4ade80;
+  color: #16a34a;
 }
 
 /* 컨트롤 패널 */
@@ -258,7 +258,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #334155;
 }
 
 .sliderValue {
@@ -271,7 +271,7 @@
   width: 100%;
   height: 8px;
   appearance: none;
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   border-radius: 4px;
   outline: none;
 }
@@ -320,15 +320,15 @@
 }
 
 .resetButton {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
 }
 
 .autoButton:hover,
 .resetButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .autoButton:disabled {
@@ -343,7 +343,7 @@
   align-items: center;
   gap: 12px;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
 }
 
 .speedControl input[type="range"] {
@@ -353,8 +353,8 @@
 
 /* 관찰 포인트 */
 .observationCard {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
 }
 
 .observationList {
@@ -367,7 +367,7 @@
   padding: 8px 0;
   padding-left: 24px;
   position: relative;
-  color: rgba(255, 255, 255, 0.8);
+  color: #334155;
   line-height: 1.6;
 }
 
@@ -399,7 +399,7 @@
 .explanation {
   margin-top: 16px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.4);
+  background: #f1f5f9;
   border-radius: 12px;
   text-align: left;
   line-height: 1.8;
@@ -419,11 +419,11 @@
 }
 
 .explanation strong {
-  color: #4ade80;
+  color: #16a34a;
 }
 
 .explanation code {
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   padding: 2px 6px;
   border-radius: 4px;
   font-family: monospace;
@@ -443,7 +443,7 @@
   align-items: center;
   gap: 6px;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
 }
 
 .legendColor {

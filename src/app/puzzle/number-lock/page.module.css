@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
-  color: #f8fafc;
+  background-color: #0f172a;
+  color: #0f172a;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -132,14 +132,14 @@
 }
 
 .stageDot.active {
-  border-color: #60a5fa;
+  border-color: #2563eb;
   color: #e0f2fe;
   box-shadow: 0 0 12px rgba(96, 165, 250, 0.5);
 }
 
 .stageDot.completed {
   background: rgba(74, 222, 128, 0.15);
-  border-color: #4ade80;
+  border-color: #16a34a;
   color: #bbf7d0;
 }
 
@@ -209,7 +209,7 @@
 
 .lockDial.unlocked {
   background: rgba(74, 222, 128, 0.12);
-  border-color: #4ade80;
+  border-color: #16a34a;
   box-shadow: 0 6px 20px rgba(74, 222, 128, 0.35);
 }
 
@@ -271,7 +271,7 @@
   border-radius: 12px;
   padding: 14px 18px;
   background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  border: 1px solid #fcd34d;
   color: #fde68a;
 }
 

@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  color: white;
+  background-color: #f8fafc;
+  color: #0f172a;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  color: white;
+  color: #1e293b;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -28,10 +28,10 @@
 }
 
 .homeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: #f1f5f9;
+  border-color: #0ea5e9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* 레벨 표시 */
@@ -40,8 +40,8 @@
   top: 20px;
   right: 20px;
   padding: 10px 18px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 140, 0, 0.2) 100%);
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -65,7 +65,7 @@
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -74,8 +74,8 @@
 .storyCard {
   max-width: 600px;
   padding: 20px 24px;
-  background: linear-gradient(135deg, rgba(75, 0, 130, 0.3) 0%, rgba(147, 51, 234, 0.2) 100%);
-  border: 1px solid rgba(147, 51, 234, 0.4);
+  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   display: flex;
   gap: 16px;
@@ -102,7 +102,7 @@
 .storyText {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  color: #334155;
 }
 
 /* 암호문 박스 */
@@ -114,7 +114,7 @@
 
 .sectionLabel {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748b;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -123,8 +123,8 @@
 }
 
 .cipherBox {
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid rgba(255, 215, 0, 0.5);
+  background: #f1f5f9;
+  border: 2px solid #fcd34d;
   border-radius: 12px;
   padding: 24px;
   font-family: 'Courier New', Courier, monospace;
@@ -143,7 +143,7 @@
 }
 
 .wheelContainer {
-  background: rgba(0, 0, 0, 0.3);
+  background: #f1f5f9;
   border-radius: 16px;
   padding: 20px;
   text-align: center;
@@ -194,7 +194,7 @@
 
 .shiftNumber {
   font-size: 2rem;
-  color: #4ade80;
+  color: #16a34a;
 }
 
 /* 알파벳 매핑 */
@@ -211,7 +211,7 @@
   flex-direction: column;
   align-items: center;
   padding: 4px 6px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f8fafc;
   border-radius: 6px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.75rem;
@@ -219,16 +219,16 @@
 }
 
 .letterPair:hover {
-  background: rgba(255, 215, 0, 0.2);
+  background: #fffbeb;
   transform: scale(1.1);
 }
 
 .originalLetter {
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 
 .arrowDown {
-  color: rgba(255, 255, 255, 0.3);
+  color: #94a3b8;
   font-size: 0.5rem;
 }
 
@@ -252,32 +252,32 @@
   font-weight: 600;
   text-align: center;
   letter-spacing: 3px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(74, 222, 128, 0.4);
+  background: #f1f5f9;
+  border: 2px solid #86efac;
   border-radius: 12px;
-  color: #4ade80;
+  color: #16a34a;
   outline: none;
   transition: all 0.2s;
 }
 
 .inputBox::placeholder {
-  color: rgba(74, 222, 128, 0.4);
+  color: #86efac;
   letter-spacing: 1px;
 }
 
 .inputBox:focus {
-  border-color: #4ade80;
+  border-color: #16a34a;
   box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
 }
 
 .inputBox.correct {
-  border-color: #4ade80;
-  background: rgba(74, 222, 128, 0.1);
+  border-color: #16a34a;
+  background: #f0fdf4;
 }
 
 .inputBox.incorrect {
-  border-color: #f87171;
-  background: rgba(248, 113, 113, 0.1);
+  border-color: #dc2626;
+  background: #fef2f2;
   animation: shake 0.5s ease;
 }
 
@@ -324,20 +324,20 @@
 }
 
 .resetButton {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
 }
 
 .hintButton:hover,
 .checkButton:hover,
 .nextButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .resetButton:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #f1f5f9;
 }
 
 .checkButton:disabled {
@@ -349,10 +349,10 @@
 /* 힌트 표시 */
 .hintBox {
   padding: 16px 24px;
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
   border-radius: 12px;
-  color: #fbbf24;
+  color: #d97706;
   font-size: 1rem;
   animation: fadeSlideIn 0.3s ease;
   max-width: 500px;
@@ -369,7 +369,7 @@
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   padding: 16px;
   border-radius: 12px;
 }
@@ -379,7 +379,7 @@
   flex-direction: column;
   align-items: center;
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f8fafc;
   border-radius: 8px;
   min-width: 50px;
 }
@@ -388,12 +388,12 @@
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #60a5fa;
+  color: #2563eb;
 }
 
 .frequencyBar {
   width: 30px;
-  background: rgba(96, 165, 250, 0.3);
+  background: #eff6ff;
   border-radius: 4px;
   margin-top: 4px;
   overflow: hidden;
@@ -406,7 +406,7 @@
 
 .frequencyPercent {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
   margin-top: 4px;
 }
 
@@ -420,23 +420,23 @@
 }
 
 .resultMessage.success {
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
-  border: 2px solid rgba(74, 222, 128, 0.5);
-  color: #4ade80;
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  color: #16a34a;
 }
 
 .resultMessage.error {
-  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%);
-  border: 2px solid rgba(248, 113, 113, 0.5);
-  color: #f87171;
+  background: #fef2f2;
+  border: 2px solid #fca5a5;
+  color: #dc2626;
 }
 
 /* 레벨 완료 화면 */
 .levelComplete {
   text-align: center;
   padding: 32px;
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
-  border: 2px solid rgba(74, 222, 128, 0.4);
+  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 2px solid #86efac;
   border-radius: 20px;
   max-width: 500px;
   animation: fadeSlideIn 0.5s ease;
@@ -445,7 +445,7 @@
 .levelComplete h2 {
   font-size: 2rem;
   margin: 0 0 16px 0;
-  color: #4ade80;
+  color: #16a34a;
 }
 
 .levelComplete p {
@@ -472,7 +472,7 @@
 }
 
 .introStory {
-  background: rgba(0, 0, 0, 0.3);
+  background: #f1f5f9;
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 24px;
@@ -495,10 +495,10 @@
 
 .levelButton {
   padding: 16px 24px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #e2e8f0;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
+  background: #f8fafc;
+  color: #1e293b;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -511,18 +511,18 @@
 
 .levelButton:hover {
   border-color: #ffd700;
-  background: rgba(255, 215, 0, 0.1);
+  background: #fffbeb;
   transform: translateY(-3px);
 }
 
 .levelButton.active {
   border-color: #ffd700;
-  background: rgba(255, 215, 0, 0.2);
+  background: #fffbeb;
 }
 
 .levelButton.completed {
-  border-color: #4ade80;
-  background: rgba(74, 222, 128, 0.1);
+  border-color: #16a34a;
+  background: #f0fdf4;
 }
 
 .levelStars {
@@ -551,7 +551,7 @@
 .helpBox {
   max-width: 500px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   border-radius: 12px;
   margin-top: 12px;
 }
@@ -566,7 +566,7 @@
   margin: 0;
   padding-left: 20px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.8);
+  color: #334155;
 }
 
 .helpBox li {
@@ -584,12 +584,12 @@
   justify-content: space-between;
   margin-bottom: 8px;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
 }
 
 .progressBar {
   height: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -603,14 +603,14 @@
 /* Shift가 표시될 때 */
 .shiftInfo {
   padding: 12px 24px;
-  background: rgba(74, 222, 128, 0.2);
-  border: 1px solid rgba(74, 222, 128, 0.4);
+  background: #f0fdf4;
+  border: 1px solid #86efac;
   border-radius: 10px;
   font-size: 1rem;
 }
 
 .shiftInfo strong {
-  color: #4ade80;
+  color: #16a34a;
   font-size: 1.3rem;
 }
 

@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  color: white;
+  background-color: #f8fafc;
+  color: #0f172a;
   padding: 24px;
   padding-top: 60px;
   display: flex;
@@ -17,10 +17,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  color: white;
+  color: #1e293b;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -29,8 +29,8 @@
 }
 
 .homeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: #f1f5f9;
+  border-color: #0ea5e9;
   transform: translateY(-2px);
 }
 
@@ -50,7 +50,7 @@
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -63,10 +63,10 @@
 
 .difficultyButton {
   padding: 10px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
+  background: #f8fafc;
+  color: #1e293b;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -74,12 +74,12 @@
 }
 
 .difficultyButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 215, 0, 0.5);
+  background: white;
+  border-color: #0ea5e9;
 }
 
 .difficultyButton.selected {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 179, 71, 0.2) 100%);
+  background: #fffbeb;
   border-color: #ffd700;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
@@ -89,7 +89,7 @@
   display: flex;
   gap: 24px;
   padding: 12px 24px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   border-radius: 12px;
 }
 
@@ -102,7 +102,7 @@
 
 .statLabel {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
   text-transform: uppercase;
 }
 
@@ -118,7 +118,7 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   border-radius: 20px;
   width: 100%;
   max-width: 700px;
@@ -131,22 +131,22 @@
   align-items: center;
   gap: 10px;
   padding: 16px;
-  background: linear-gradient(180deg, rgba(139, 69, 19, 0.3) 0%, rgba(101, 67, 33, 0.2) 100%);
+  background: #fef3c7;
   border-radius: 12px;
-  border: 2px solid rgba(139, 69, 19, 0.5);
+  border: 2px solid #d97706;
   min-height: 150px;
   transition: all 0.3s ease;
 }
 
 .scalePlate.dropActive {
   border-color: #ffd700;
-  background: linear-gradient(180deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 179, 71, 0.1) 100%);
+  background: #fef9c3;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .plateLabel {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
   font-weight: 600;
 }
 
@@ -161,12 +161,12 @@
 
 .emptyPlate {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #94a3b8;
 }
 
 .coinCount {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 
 /* 저울 중심 */
@@ -259,7 +259,7 @@
 
 .coin.selectable {
   animation: pulse 1s infinite;
-  border-color: #4ade80;
+  border-color: #16a34a;
 }
 
 @keyframes pulse {
@@ -275,7 +275,7 @@
   position: absolute;
   bottom: -16px;
   font-size: 0.5rem;
-  color: #4ade80;
+  color: #16a34a;
   white-space: nowrap;
 }
 
@@ -284,27 +284,27 @@
   width: 100%;
   max-width: 700px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   border-radius: 16px;
-  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border: 2px dashed #cbd5e1;
   transition: all 0.3s ease;
   min-height: 100px;
 }
 
 .coinPool.dropActive {
   border-color: #ffd700;
-  background: rgba(255, 215, 0, 0.1);
+  background: #fffbeb;
 }
 
 .emptyPool {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: #94a3b8;
 }
 
 .poolLabel {
   text-align: center;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748b;
   margin-bottom: 12px;
 }
 
@@ -327,25 +327,25 @@
 }
 
 .message {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border: 1px solid #e2e8f0;
 }
 
 .message.success {
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
-  border-color: rgba(74, 222, 128, 0.5);
-  color: #4ade80;
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #16a34a;
 }
 
 .message.error {
-  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(220, 38, 38, 0.2) 100%);
-  border-color: rgba(248, 113, 113, 0.5);
-  color: #f87171;
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #dc2626;
 }
 
 .hintMessage {
-  background: rgba(255, 200, 100, 0.2);
-  border: 1px solid rgba(255, 200, 100, 0.4);
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
   color: #ffd700;
 }
 
@@ -365,21 +365,21 @@
   width: 100%;
   max-width: 500px;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   border-radius: 12px;
 }
 
 .historyLabel {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748b;
   margin-bottom: 8px;
 }
 
 .historyItem {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #334155;
   padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .historyItem:last-child {
@@ -391,11 +391,11 @@
 }
 
 .resultLeft {
-  color: #60a5fa;
+  color: #2563eb;
 }
 
 .resultRight {
-  color: #f87171;
+  color: #dc2626;
 }
 
 /* 액션 버튼 */
@@ -433,16 +433,16 @@
 }
 
 .resetButton {
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #e2e8f0;
 }
 
 .hintButton:hover:not(:disabled),
 .selectButton:hover:not(:disabled),
 .resetButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .hintButton:disabled,
@@ -473,9 +473,9 @@
 .explanation {
   max-width: 600px;
   padding: 24px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #f1f5f9;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e2e8f0;
   line-height: 1.8;
   animation: fadeIn 0.3s ease;
 }
@@ -487,17 +487,17 @@
 }
 
 .explanation h4 {
-  color: #60a5fa;
+  color: #2563eb;
   margin: 12px 0 6px 0;
   font-size: 1rem;
 }
 
 .explanation strong {
-  color: #4ade80;
+  color: #16a34a;
 }
 
 .explanation code {
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -507,9 +507,9 @@
 .help {
   max-width: 500px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f1f5f9;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e2e8f0;
 }
 
 .help h3 {
@@ -522,7 +522,7 @@
   margin: 0;
   padding-left: 20px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.8);
+  color: #334155;
 }
 
 .help li {
@@ -532,10 +532,10 @@
 .tipBox {
   margin-top: 12px;
   padding: 10px 14px;
-  background: rgba(255, 215, 0, 0.1);
+  background: #fffbeb;
   border-radius: 8px;
   border-left: 3px solid #ffd700;
-  color: rgba(255, 255, 255, 0.9);
+  color: #334155;
   font-size: 0.9rem;
 }
 

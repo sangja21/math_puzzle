@@ -1,8 +1,8 @@
 /* 기본 레이아웃 */
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-  color: white;
+  background-color: #0f172a;
+  color: #0f172a;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
@@ -112,7 +112,7 @@
   border-radius: 50px;
 }
 
-.p1 { color: #4ade80; font-weight: bold; }
+.p1 { color: #16a34a; font-weight: bold; }
 .p2 { color: #ff6b6b; font-weight: bold; }
 
 /* 시각화 영역 (직사각형) */

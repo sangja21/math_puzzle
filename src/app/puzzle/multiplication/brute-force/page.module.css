@@ -4,8 +4,8 @@
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Outfit', sans-serif; /* More friendly font */
-  background-color: #2d3436;
-  color: #fff;
+  background-color: #0f172a;
+  color: #0f172a;
   min-height: 100vh;
 }
 
@@ -95,7 +95,7 @@
 /* ... keep existing terminal styles ... */
 .logLine {
   margin: 0.5rem 0;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #e2e8f0;
   padding-bottom: 0.2rem;
 }
 .keyAttempt { color: #ffeaa7; font-weight: bold; margin-right: 0.5rem; }

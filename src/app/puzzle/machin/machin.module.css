@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #1a1a1a;
-  color: #e5e5e5;
+  background-color: #0f172a;
+  color: #0f172a;
   font-family: 'Times New Roman', serif;
   display: flex;
   flex-direction: column;
@@ -105,8 +105,8 @@
 }
 
 .variableInput.correct {
-  border-bottom-color: #4ade80;
-  color: #4ade80;
+  border-bottom-color: #16a34a;
+  color: #16a34a;
 }
 
 .checkButton {
@@ -139,8 +139,8 @@
 
 /* Visualization Section */
 .visualizationSection {
-  background-color: #222;
-  border: 1px solid #444;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
   padding: 2rem;
   border-radius: 8px;
   animation: fadeIn 0.8s ease-out;
@@ -151,7 +151,7 @@
   font-size: 1.5rem;
   word-break: break-all;
   line-height: 1.6;
-  color: #888;
+  color: #94a3b8;
   background: #111;
   padding: 1.5rem;
   border-radius: 4px;
@@ -172,7 +172,7 @@
   background: #111;
 }
 .piDisplay::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #f1f5f9;
   border-radius: 4px;
 }
 .piDisplay::-webkit-scrollbar-thumb:hover {
@@ -184,13 +184,13 @@
 }
 
 .piDigit.matched {
-  color: #4ade80; /* Green for correct digits */
+  color: #16a34a; /* Green for correct digits */
   font-weight: bold;
   text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
 }
 
 .piDigit.calculating {
-  color: #f87171; /* Red for changing digits */
+  color: #dc2626; /* Red for changing digits */
 }
 
 .controls {
@@ -244,7 +244,7 @@
 .slider {
   width: 100%;
   height: 8px;
-  background: #444;
+  background: #e2e8f0;
   outline: none;
   opacity: 0.7;
   transition: opacity .2s;
@@ -264,7 +264,7 @@
 }
 
 .statItem {
-  background: #333;
+  background: #f1f5f9;
   padding: 1rem;
   border-radius: 4px;
   text-align: center;
@@ -272,7 +272,7 @@
 
 .statLabel {
   font-size: 0.8rem;
-  color: #aaa;
+  color: #64748b;
   margin-bottom: 0.5rem;
 }
 
@@ -287,11 +287,11 @@
   padding-top: 2rem;
   border-top: 1px solid #444;
   font-size: 0.95rem;
-  color: #bbb;
+  color: #64748b;
 }
 
 .mathBlock {
-  background: #1a1a1a;
+  background: #f8fafc;
   padding: 1rem;
   border-radius: 4px;
   font-family: 'Times New Roman', serif;
@@ -305,7 +305,7 @@
 }
 
 .explanationSection h4 {
-  color: #e5e5e5;
+  color: #1e293b;
   margin-bottom: 1rem;
   font-size: 1.1rem;
   border-left: 3px solid #cba135;
@@ -340,7 +340,7 @@
 
 .backLink {
   margin-top: 3rem;
-  color: #666;
+  color: #94a3b8;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.2s;
