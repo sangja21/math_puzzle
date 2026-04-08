@@ -1,0 +1,320 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  position: relative;
+  min-height: 100vh;
+}
+
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: var(--foreground);
+}
+
+.header {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #434343, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Level Bar --- */
+.levelBar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.levelBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.levelBtn:hover:not(:disabled) {
+  border-color: #037dd6;
+}
+
+.levelActive {
+  border-color: #037dd6;
+  background: #eff6ff;
+}
+
+.levelLocked {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+}
+
+.levelNum {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.levelName {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+/* --- Game Info --- */
+.gameInfo {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.infoLabel {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.infoValue {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* --- Board --- */
+.boardWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.board {
+  display: grid;
+  gap: 4px;
+  padding: 1rem;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cell {
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+
+.cell.on {
+  background: #037dd6;
+  box-shadow: 0 0 14px rgba(3, 125, 214, 0.5);
+}
+
+.cell.off {
+  background: #e2e8f0;
+}
+
+.cell.affected {
+  animation: cellPulse 0.35s ease-out;
+}
+
+.cell:hover:not(:disabled) {
+  transform: scale(1.06);
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+/* --- Controls --- */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.resetBtn {
+  padding: 0.6rem 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.resetBtn:hover {
+  background: var(--surface);
+}
+
+/* --- Clear Overlay --- */
+.clearOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.3s;
+}
+
+.clearModal {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.clearEmoji {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.clearTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.clearText {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.clearActions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retryBtn {
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.retryBtn:hover {
+  background: var(--surface);
+}
+
+.nextBtn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #037dd6, #0256a0);
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(3, 125, 214, 0.3);
+}
+
+.nextBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(3, 125, 214, 0.4);
+}
+
+/* --- Animations --- */
+@keyframes cellPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .cell {
+    width: 56px;
+    height: 56px;
+  }
+
+  .gameInfo {
+    gap: 1rem;
+  }
+
+  .levelBtn {
+    padding: 0.4rem 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .cell {
+    width: 48px;
+    height: 48px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .gameInfo {
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .levelBtn {
+    padding: 0.3rem 0.5rem;
+  }
+
+  .levelName {
+    font-size: 0.6rem;
+  }
+}

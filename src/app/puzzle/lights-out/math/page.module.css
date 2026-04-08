@@ -1,0 +1,494 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  position: relative;
+  min-height: 100vh;
+}
+
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: var(--foreground);
+}
+
+.header {
+  text-align: center;
+  margin: 2rem 0 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #434343, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* --- Section --- */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+/* --- Concept Grid --- */
+.conceptGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.conceptCard {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.conceptCard h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0.4rem 0;
+}
+
+.conceptCard p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.conceptIcon {
+  font-size: 1.8rem;
+}
+
+/* --- Explanation --- */
+.explanation {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.explanation p {
+  font-size: 0.95rem;
+  color: var(--foreground);
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bulletList li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.bulletList li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #037dd6;
+  font-weight: 700;
+}
+
+/* --- Demo Box --- */
+.demoBox {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.demoTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+/* --- XOR Demo --- */
+.xorDemo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.xorBulb {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.xorOn {
+  background: #037dd6;
+  color: white;
+  box-shadow: 0 0 30px rgba(3, 125, 214, 0.6);
+}
+
+.xorOff {
+  background: #e2e8f0;
+  color: var(--text-secondary);
+}
+
+.xorInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.xorResult {
+  font-weight: 700;
+  color: #037dd6;
+}
+
+/* --- Order Demo --- */
+.orderDemo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.orderTabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.orderTab {
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.orderTabActive {
+  border-color: #037dd6;
+  background: #eff6ff;
+  color: #037dd6;
+}
+
+.orderResetBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.orderBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.orderRow {
+  display: flex;
+  gap: 3px;
+}
+
+.orderCell {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.orderCell:hover {
+  transform: scale(1.05);
+}
+
+.on {
+  background: #037dd6;
+  box-shadow: 0 0 12px rgba(3, 125, 214, 0.4);
+}
+
+.off {
+  background: #e2e8f0;
+}
+
+.orderHistory {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.historyChip {
+  background: var(--surface);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+.historyEmpty {
+  font-style: italic;
+}
+
+.orderMatch {
+  font-weight: 700;
+  color: #16a34a;
+  font-size: 0.9rem;
+  animation: fadeSlideIn 0.4s ease-out;
+}
+
+/* --- Matrix Demo --- */
+.matrixDemo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.matrixHint {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.matrixRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.matrixGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.matrixLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.matrixCell {
+  width: 52px;
+  height: 52px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-family: monospace;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.matrixCell:hover {
+  border-color: #037dd6;
+}
+
+.matrixSelected {
+  border-color: #037dd6;
+  background: #eff6ff;
+  color: #037dd6;
+  font-weight: 700;
+}
+
+.matrixResult {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+
+.matrixAffected {
+  background: #037dd6;
+  color: white;
+  box-shadow: 0 0 8px rgba(3, 125, 214, 0.3);
+}
+
+.matrixArrow {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.matrixExplain {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* --- Summary --- */
+.summarySection {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.summaryItem {
+  background: white;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.summaryLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #037dd6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Nav --- */
+.navArea {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.navBtn {
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.navBtn:hover {
+  background: var(--surface);
+}
+
+.navBtnPrimary {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #037dd6, #0256a0);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(3, 125, 214, 0.3);
+}
+
+.navBtnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(3, 125, 214, 0.4);
+}
+
+/* --- Animations --- */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .conceptGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .orderCell, .matrixCell, .matrixResult {
+    width: 48px;
+    height: 48px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .orderCell, .matrixCell, .matrixResult {
+    width: 42px;
+    height: 42px;
+    font-size: 0.65rem;
+  }
+
+  .xorBulb {
+    width: 80px;
+    height: 80px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+}

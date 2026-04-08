@@ -308,6 +308,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '신규 퍼즐! ✨',
     category: 'puzzle',
   },
+  {
+    id: 'lights_out',
+    title: '라이츠 아웃',
+    emoji: '💡',
+    description: '하나의 클릭이 주변을 바꾼다! 모든 불을 꺼라!',
+    difficulty: 'medium',
+    href: '/puzzle/lights-out',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
