@@ -318,6 +318,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '신규 퍼즐! ✨',
     category: 'puzzle',
   },
+  {
+    id: 'game_of_life',
+    title: '생명 게임',
+    emoji: '🧬',
+    description: '존 콘웨이의 생명 게임! 단순한 규칙에서 복잡한 세계가 탄생합니다.',
+    difficulty: 'medium',
+    href: '/puzzle/game-of-life',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {

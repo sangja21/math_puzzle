@@ -1,0 +1,328 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  position: relative;
+  min-height: 100vh;
+}
+
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: var(--foreground);
+}
+
+.header {
+  text-align: center;
+  margin: 2rem 0 2.5rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #434343, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+/* --- Rules --- */
+.rulesSection {
+  margin-bottom: 2.5rem;
+}
+
+.rulesIntro {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.ruleCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.ruleCard {
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.ruleCard h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.4rem 0;
+}
+
+.ruleCard p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.ruleIcon {
+  font-size: 1.8rem;
+}
+
+.ruleBirth {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.ruleSurvive {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.ruleOverpop {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.ruleLonely {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+}
+
+/* --- Demo --- */
+.demoSection {
+  margin-bottom: 2.5rem;
+}
+
+.demoHint {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.demoArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.demoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.demoRow {
+  display: flex;
+  gap: 2px;
+}
+
+.demoCell {
+  width: 52px;
+  height: 52px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.demoCell.alive {
+  background: #037dd6;
+  box-shadow: 0 0 10px rgba(3, 125, 214, 0.4);
+}
+
+.demoCell.dead {
+  background: #f1f5f9;
+}
+
+.demoCell.selected {
+  border-color: #f59e0b;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+}
+
+.demoCell.neighbor {
+  border-color: #fbbf24;
+}
+
+.demoCell:hover {
+  transform: scale(1.08);
+}
+
+.cellInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--surface);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+}
+
+.prediction {
+  font-weight: 700;
+  color: #037dd6;
+}
+
+.demoControls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.genLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.stepBtn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #037dd6, #0256a0);
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.stepBtn:hover {
+  transform: translateY(-1px);
+}
+
+.resetBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.resetBtn:hover {
+  background: var(--surface);
+}
+
+/* --- Key Points --- */
+.keyPoint {
+  margin-bottom: 2.5rem;
+}
+
+.keyPointCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.keyCard {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.keyCard strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.keyCard p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --- Nav --- */
+.navArea {
+  text-align: center;
+}
+
+.nextButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #037dd6, #0256a0);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(3, 125, 214, 0.3);
+}
+
+.nextButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(3, 125, 214, 0.4);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .ruleCards {
+    grid-template-columns: 1fr;
+  }
+
+  .keyPointCards {
+    grid-template-columns: 1fr;
+  }
+
+  .demoCell {
+    width: 44px;
+    height: 44px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .demoCell {
+    width: 38px;
+    height: 38px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .demoControls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
