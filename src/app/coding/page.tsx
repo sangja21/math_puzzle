@@ -130,6 +130,18 @@ const FUNCTION_ITEMS = [
   },
 ];
 
+const EVENT_ITEMS = [
+  {
+    id: 'event',
+    title: '이벤트 (Event)',
+    emoji: '🔔',
+    description:
+      '"~하면 ~한다" — 초인종, 알람, 클릭! 이벤트와 핸들러를 직접 연결하고 실험해 봐요!',
+    href: '/coding/event',
+    tag: '이벤트',
+  },
+];
+
 export default function CodingPage() {
   return (
     <div className={styles.container}>
@@ -205,6 +217,21 @@ export default function CodingPage() {
           <h2 className={styles.sectionTitle}>함수 파트</h2>
           <div className={styles.cardGrid}>
             {FUNCTION_ITEMS.map((item) => (
+              <Link key={item.id} href={item.href} className={styles.card}>
+                <span className={styles.cardTag}>{item.tag}</span>
+                <div className={styles.cardEmoji}>{item.emoji}</div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.cardDesc}>{item.description}</p>
+                <span className={styles.cardCta}>학습 시작하기 →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>이벤트 파트</h2>
+          <div className={styles.cardGrid}>
+            {EVENT_ITEMS.map((item) => (
               <Link key={item.id} href={item.href} className={styles.card}>
                 <span className={styles.cardTag}>{item.tag}</span>
                 <div className={styles.cardEmoji}>{item.emoji}</div>
