@@ -1,0 +1,577 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #0f172a;
+  padding: 32px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.backButton {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #64748b;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+.backButton:hover {
+  border-color: #0ea5e9;
+  color: #0284c7;
+  transform: translateY(-2px);
+}
+
+.header {
+  text-align: center;
+  max-width: 620px;
+  margin-top: 16px;
+}
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  color: #1e293b;
+}
+.subtitle {
+  color: #64748b;
+  margin-top: 10px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ─── Tabs ─────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tab {
+  padding: 12px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab:hover { border-color: #93c5fd; color: #2563eb; }
+.activeTab {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* ─── Layout ────────────────────────────── */
+.mainContent {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .mainContent { grid-template-columns: 5fr 6fr; }
+}
+
+.panel {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.panelTitle {
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* ─── Code block ─────────────────────────── */
+.codeBlock {
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 16px;
+  border-radius: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  white-space: pre;
+  overflow-x: auto;
+  margin-top: 16px;
+}
+.kw  { color: #c084fc; font-weight: bold; }   /* keyword */
+.cls { color: #60a5fa; font-weight: bold; }   /* class name */
+.fn  { color: #34d399; font-weight: bold; }   /* method */
+.str { color: #fbbf24; }                       /* string/value */
+.cmt { color: #64748b; font-style: italic; }  /* comment */
+
+/* ─── Concept badge row ───────────────────── */
+.conceptBox {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.conceptRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+}
+.conceptRow + .conceptRow { border-top: 1px solid #e2e8f0; }
+.conceptLabel {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 600;
+}
+.conceptValue {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.9rem;
+}
+
+/* ─── Piece selector cards ───────────────── */
+.pieceCards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pieceCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 72px;
+}
+.pieceCard:hover {
+  border-color: #93c5fd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59,130,246,0.1);
+}
+.pieceCardActive {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.15);
+}
+.pieceGlyph {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.pieceName {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+/* ─── Mini chess board ───────────────────── */
+.boardWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 2px solid #94a3b8;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 220px;
+  height: 220px;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.15s;
+  cursor: default;
+  position: relative;
+}
+.cellLight { background: #f0d9b5; }
+.cellDark  { background: #b58863; }
+.cellHighlight { background: #cdd16f !important; }
+.cellPiece { background: #f6f669 !important; }
+
+/* ─── Move button ────────────────────────── */
+.moveBtn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.moveBtn:hover { background: #2563eb; transform: translateY(-2px); }
+.moveBtn:active { transform: translateY(0); }
+
+/* ─── Attr highlight ─────────────────────── */
+.attrHighlight {
+  background: #fffbeb;
+  border-color: #fbbf24 !important;
+}
+
+/* ─── Tab 2: Builder ─────────────────────── */
+.builderGrid {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .builderGrid { grid-template-columns: 1fr 1fr; }
+}
+
+.blueprint {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  border: 2px dashed #94a3b8;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.blueprintTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #475569;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+.blueprintLabel {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-align: center;
+  margin: -8px 0 4px;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.formLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  min-width: 52px;
+}
+.formSelect, .formInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 9px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #f8fafc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.formSelect:focus, .formInput:focus { border-color: #3b82f6; }
+
+.colorRow {
+  display: flex;
+  gap: 8px;
+}
+.colorBtn {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #e2e8f0;
+  border-radius: 9px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8fafc;
+  color: #475569;
+}
+.colorBtnActive {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.createBtn {
+  padding: 12px;
+  background: #10b981;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.createBtn:hover { background: #059669; transform: translateY(-2px); }
+.createBtn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* Instances panel */
+.instancesPanel {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.instanceCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+  animation: slideIn 0.25s ease;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.instanceGlyph { font-size: 1.6rem; }
+.instanceInfo { flex: 1; }
+.instanceName {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+.instanceAttrs {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+.instanceRemove {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.instanceRemove:hover { background: #fee2e2; }
+
+.emptySlot {
+  border: 2px dashed #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ─── Tab 3: Inheritance tree ────────────── */
+.treeLayout {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.treeRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.treeConnector {
+  width: 2px;
+  height: 28px;
+  background: #94a3b8;
+}
+
+.treeBranch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+.treeBranch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  height: 2px;
+  background: #94a3b8;
+  transform: translateX(-50%);
+  width: calc(100% - 80px);
+}
+
+.childConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.childConnectorLine {
+  width: 2px;
+  height: 24px;
+  background: #94a3b8;
+}
+
+/* Class cards in tree */
+.classCard {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 20px;
+  min-width: 180px;
+  max-width: 220px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  cursor: default;
+}
+.classCardAbstract {
+  border-style: dashed;
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.classCardChild {
+  border-color: #3b82f6;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.classCardChild:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(59,130,246,0.15);
+}
+.classCardChildActive {
+  background: #eff6ff;
+  border-color: #2563eb;
+  box-shadow: 0 6px 16px rgba(59,130,246,0.2);
+}
+
+.classCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.classGlyph { font-size: 1.4rem; }
+.classCardName {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+.abstractBadge {
+  font-size: 0.65rem;
+  background: #f1f5f9;
+  color: #94a3b8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+}
+
+.attrList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.attrItem {
+  font-size: 0.78rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.attrItem:hover { border-color: #fbbf24; background: #fffbeb; }
+.attrItemInherited { background: #eff6ff; border-color: #bfdbfe; }
+.attrItemHighlighted { background: #fffbeb !important; border-color: #f59e0b !important; }
+.attrItemAbstract { background: #fef3c7; border-color: #fde68a; color: #92400e; }
+.attrKey { font-weight: 700; color: #475569; }
+.attrVal { color: #94a3b8; font-style: italic; }
+.attrNew { color: #059669; font-weight: 700; }
+.attrInheritedTag {
+  font-size: 0.65rem;
+  color: #93c5fd;
+  font-weight: 600;
+  margin-left: auto;
+}
+.attrNewTag {
+  font-size: 0.65rem;
+  color: #6ee7b7;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+/* board under tree */
+.treeBoardArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.treeBoardLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* children flex row */
+.childrenRow {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  position: relative;
+}
+
+/* ─── Responsive ─────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 16px 12px 48px; padding-top: 70px; }
+  .backButton { top: 16px; left: 16px; padding: 8px 12px; font-size: 0.85rem; }
+  .title { font-size: 1.6rem; }
+  .board { width: 180px; height: 180px; }
+  .board { grid-template-columns: repeat(5, 1fr); }
+  .cell { font-size: 1.2rem; }
+  .classCard { min-width: 140px; padding: 12px 14px; }
+}
+
+@media (max-width: 480px) {
+  .board { width: 160px; height: 160px; }
+  .pieceGlyph { font-size: 1.5rem; }
+  .childrenRow { gap: 12px; }
+  .classCard { min-width: 120px; font-size: 0.8rem; }
+}

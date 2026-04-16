@@ -130,6 +130,17 @@ const FUNCTION_ITEMS = [
   },
 ];
 
+const OOP_ITEMS = [
+  {
+    id: 'oop',
+    title: '객체지향 (OOP)',
+    emoji: '♟',
+    description: '체스 기물로 배우는 OOP! 객체, 클래스, 상속, 추상화를 직접 체험해봐요.',
+    href: '/coding/oop',
+    tag: '객체지향',
+  },
+];
+
 const EVENT_ITEMS = [
   {
     id: 'event',
@@ -217,6 +228,21 @@ export default function CodingPage() {
           <h2 className={styles.sectionTitle}>함수 파트</h2>
           <div className={styles.cardGrid}>
             {FUNCTION_ITEMS.map((item) => (
+              <Link key={item.id} href={item.href} className={styles.card}>
+                <span className={styles.cardTag}>{item.tag}</span>
+                <div className={styles.cardEmoji}>{item.emoji}</div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.cardDesc}>{item.description}</p>
+                <span className={styles.cardCta}>학습 시작하기 →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>객체지향 파트</h2>
+          <div className={styles.cardGrid}>
+            {OOP_ITEMS.map((item) => (
               <Link key={item.id} href={item.href} className={styles.card}>
                 <span className={styles.cardTag}>{item.tag}</span>
                 <div className={styles.cardEmoji}>{item.emoji}</div>
