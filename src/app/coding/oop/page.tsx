@@ -47,16 +47,18 @@ function slideMoves(row: number, col: number, size: number, dirs: [number, numbe
 const PIECES: Record<PieceType, PieceDef> = {
   pawn: {
     type: 'pawn', glyph: '♟', name: '폰',
-    moveDesc: '앞으로 1칸',
+    moveDesc: '앞 1칸 + 대각선 공격',
     attrs: [
       { key: 'name', value: '"폰"' },
       { key: 'color', value: '"white"' },
       { key: 'position', value: '"c3"' },
-      { key: 'move()', value: '앞으로 1칸' },
+      { key: 'move()', value: '앞 1칸 + 대각 공격' },
     ],
     getMoves: (r, c, sz) => {
       const moves: [number, number][] = [];
-      if (inBounds(r - 1, c, sz)) moves.push([r - 1, c]);
+      if (inBounds(r - 1, c, sz)) moves.push([r - 1, c]);         // 앞으로 1칸
+      if (inBounds(r - 1, c - 1, sz)) moves.push([r - 1, c - 1]); // 대각선 캡처
+      if (inBounds(r - 1, c + 1, sz)) moves.push([r - 1, c + 1]); // 대각선 캡처
       return moves;
     },
   },
