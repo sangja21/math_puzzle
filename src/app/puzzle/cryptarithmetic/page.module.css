@@ -1,0 +1,569 @@
+.container {
+  min-height: 100vh;
+  background: var(--surface, #f2f4f6);
+  padding: 2rem 1rem 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ─── Hero ─────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary, #037dd6);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.2s;
+}
+.backLink:hover { opacity: 0.7; }
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--foreground, #24292e);
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary, #586069);
+  margin: 0;
+}
+
+/* ─── Level Tabs ────────────────────────────────────── */
+.levelTabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.levelTab {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid #d0d7de;
+  background: #fff;
+  color: var(--text-secondary, #586069);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.levelTab:hover {
+  border-color: var(--primary, #037dd6);
+  color: var(--primary, #037dd6);
+}
+.levelTabActive {
+  background: var(--primary, #037dd6);
+  border-color: var(--primary, #037dd6);
+  color: #fff;
+}
+
+/* ─── Card wrapper ──────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--foreground, #24292e);
+  margin: 0 0 0.5rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #586069);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─── Puzzle Selector (Level 1) ─────────────────────── */
+.puzzleSelector {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.puzzleTab {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #d0d7de;
+  background: #f6f8fa;
+  color: var(--text-secondary, #586069);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Courier New', monospace;
+}
+.puzzleTab:hover { border-color: var(--primary, #037dd6); }
+.puzzleTabActive {
+  background: #e8f4fd;
+  border-color: var(--primary, #037dd6);
+  color: var(--primary, #037dd6);
+}
+
+/* ─── Equation Display ──────────────────────────────── */
+.equationArea {
+  background: #fdf9f0;
+  border: 2px solid #e8dfc4;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  font-family: 'Courier New', monospace;
+}
+
+.equationRow {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.eqSign {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-secondary, #586069);
+  width: 2rem;
+  text-align: center;
+  margin-right: 0.25rem;
+  align-self: flex-end;
+}
+
+.eqDivider {
+  width: 100%;
+  height: 2px;
+  background: #c9b97a;
+  margin: 0.2rem 0;
+  border-radius: 1px;
+}
+
+.letterCell {
+  width: 2.4rem;
+  height: 2.8rem;
+  border: 2px solid #d0d7de;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  user-select: none;
+}
+.letterCell:hover {
+  border-color: var(--primary, #037dd6);
+  background: #f0f8ff;
+}
+.letterCellSelected {
+  border-color: var(--primary, #037dd6);
+  background: #e8f4fd;
+  box-shadow: 0 0 0 2px rgba(3,125,214,0.25);
+}
+.letterCellCorrect {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+.letterCellWrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.letterLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-secondary, #586069);
+  line-height: 1;
+}
+.letterValue {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--foreground, #24292e);
+  line-height: 1;
+}
+.letterValueEmpty {
+  color: #c0c0c0;
+  font-size: 0.9rem;
+}
+
+/* Level 3 equation layout */
+.level3Area {
+  background: #fdf9f0;
+  border: 2px solid #e8dfc4;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.level3Row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.multiSignCell {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-secondary, #586069);
+  width: 2rem;
+  text-align: center;
+}
+
+.fCell {
+  width: 2.4rem;
+  height: 2.8rem;
+  border: 2px solid #d0d7de;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.fCell:hover {
+  border-color: var(--primary, #037dd6);
+  background: #f0f8ff;
+}
+
+.equalsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.equalsSign {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-secondary, #586069);
+}
+
+.repeatSlider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.repeatLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #586069);
+  font-weight: 600;
+}
+
+.repeatSlider input[type='range'] {
+  accent-color: var(--primary, #037dd6);
+  width: 140px;
+}
+
+.repeatValue {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary, #037dd6);
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* ─── Digit Palette ─────────────────────────────────── */
+.palette {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.digitChip {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  border: 2px solid #d0d7de;
+  background: #f6f8fa;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground, #24292e);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+}
+.digitChip:hover {
+  border-color: var(--primary, #037dd6);
+  background: #e8f4fd;
+  color: var(--primary, #037dd6);
+}
+.digitChipUsed {
+  background: #e5f0fa;
+  border-color: #a8d4f5;
+  color: #6aade4;
+}
+.digitChipDuplicate {
+  background: #fef2f2;
+  border-color: #f87171;
+  color: #ef4444;
+}
+
+/* ─── Status Panel ──────────────────────────────────── */
+.statusPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #586069);
+  flex-wrap: wrap;
+}
+
+.statusLabel {
+  font-weight: 600;
+  min-width: 4rem;
+}
+
+.assignments {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.assignBadge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  background: #f0f8ff;
+  border: 1px solid #a8d4f5;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary, #037dd6);
+  font-family: 'Courier New', monospace;
+}
+
+.duplicateWarning {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+/* ─── Result Banner ─────────────────────────────────── */
+.resultBanner {
+  text-align: center;
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.resultCorrect {
+  background: #f0fdf4;
+  border: 2px solid #22c55e;
+  color: #15803d;
+}
+
+.resultWrong {
+  background: #fef2f2;
+  border: 2px solid #ef4444;
+  color: #b91c1c;
+}
+
+.resultLevel3Discovery {
+  background: linear-gradient(135deg, #fdf9f0, #e8f4fd);
+  border: 2px solid #fbbf24;
+  color: var(--foreground, #24292e);
+}
+
+/* ─── Actions ───────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary, #037dd6);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btnPrimary:hover { opacity: 0.85; }
+
+.btnSecondary {
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  border: 2px solid #d0d7de;
+  background: #fff;
+  color: var(--text-secondary, #586069);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btnSecondary:hover {
+  border-color: var(--primary, #037dd6);
+  color: var(--primary, #037dd6);
+}
+
+/* ─── Hint Box ──────────────────────────────────────── */
+.hintBox {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #92400e;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* ─── Assignment Map ─────────────────────────────────── */
+.assignMap {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.assignCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.assignLetter {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary, #586069);
+  font-family: 'Courier New', monospace;
+}
+
+.assignDigit {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  border: 1.5px solid #d0d7de;
+  background: #f6f8fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground, #24292e);
+  font-family: 'Courier New', monospace;
+}
+
+.assignDigitFilled {
+  background: #e8f4fd;
+  border-color: #a8d4f5;
+  color: var(--primary, #037dd6);
+}
+
+/* ─── Verification ──────────────────────────────────── */
+.verifyRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground, #24292e);
+  flex-wrap: wrap;
+}
+
+.verifyNum {
+  letter-spacing: 0.05em;
+}
+
+.verifyOp {
+  color: var(--text-secondary, #586069);
+}
+
+.verifyResult {
+  color: #22c55e;
+}
+
+.verifyResultWrong {
+  color: #ef4444;
+}
+
+/* ─── Selected letter indicator ─────────────────────── */
+.selectedIndicator {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--primary, #037dd6);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  min-height: 1.2rem;
+}
+
+/* ─── Responsive ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .title { font-size: 1.5rem; }
+  .card { padding: 1.25rem; }
+  .equationArea { padding: 1rem; }
+  .letterCell { width: 2rem; height: 2.4rem; }
+  .letterValue { font-size: 0.95rem; }
+  .letterLabel { font-size: 0.55rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 1rem 0.5rem 3rem; }
+  .card { padding: 1rem; border-radius: 12px; }
+  .letterCell { width: 1.8rem; height: 2.2rem; }
+  .letterValue { font-size: 0.85rem; }
+  .digitChip { width: 2.2rem; height: 2.2rem; font-size: 0.9rem; }
+  .cardTitle { font-size: 1.1rem; }
+  .eqSign { width: 1.5rem; font-size: 1.1rem; }
+}

@@ -328,6 +328,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '신규 퍼즐! ✨',
     category: 'puzzle',
   },
+  {
+    id: 'cryptarithmetic',
+    title: '복면산 (Cryptarithmetic)',
+    emoji: '🔤',
+    description: '알파벳이 숫자를 가리고 있어요! GO+GO=OUT부터 SEND+MORE=MONEY까지 도전해보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/cryptarithmetic',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
