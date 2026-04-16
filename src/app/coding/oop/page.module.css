@@ -176,6 +176,12 @@
 .pieceGlyph {
   font-size: 2.2rem;
   line-height: 1;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .pieceName {
   font-size: 0.78rem;
@@ -204,6 +210,8 @@
   align-items: center;
   justify-content: center;
   font-size: 1.9rem;
+  line-height: 1;
+  overflow: hidden;
   transition: background 0.15s;
   cursor: default;
   position: relative;
