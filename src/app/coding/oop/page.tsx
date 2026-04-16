@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 // ─── Types ────────────────────────────────────────────────────────
-type PieceType = 'pawn' | 'knight' | 'bishop' | 'rook' | 'queen';
+type PieceType = 'king' | 'knight' | 'bishop' | 'rook' | 'queen';
 type PieceColor = 'white' | 'black';
 type Phase = 'object' | 'class' | 'inherit';
 
@@ -45,21 +45,20 @@ function slideMoves(row: number, col: number, size: number, dirs: [number, numbe
 
 // ─── Piece definitions ─────────────────────────────────────────────
 const PIECES: Record<PieceType, PieceDef> = {
-  pawn: {
-    type: 'pawn', glyph: '♟', name: '폰',
-    moveDesc: '앞 1칸 + 대각선 공격',
+  king: {
+    type: 'king', glyph: '♚', name: '킹',
+    moveDesc: '인접 8방향 1칸',
     attrs: [
-      { key: 'name', value: '"폰"' },
+      { key: 'name', value: '"킹"' },
       { key: 'color', value: '"white"' },
       { key: 'position', value: '"c3"' },
-      { key: 'move()', value: '앞 1칸 + 대각 공격' },
+      { key: 'move()', value: '8방향 1칸' },
     ],
     getMoves: (r, c, sz) => {
-      const moves: [number, number][] = [];
-      if (inBounds(r - 1, c, sz)) moves.push([r - 1, c]);         // 앞으로 1칸
-      if (inBounds(r - 1, c - 1, sz)) moves.push([r - 1, c - 1]); // 대각선 캡처
-      if (inBounds(r - 1, c + 1, sz)) moves.push([r - 1, c + 1]); // 대각선 캡처
-      return moves;
+      const offsets: [number, number][] = [
+        [-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1],
+      ];
+      return offsets.filter(([dr,dc]) => inBounds(r+dr, c+dc, sz)).map(([dr,dc]) => [r+dr, c+dc]);
     },
   },
   knight: {
@@ -115,13 +114,13 @@ const PIECES: Record<PieceType, PieceDef> = {
   },
 };
 
-const PIECE_ORDER: PieceType[] = ['pawn','knight','bishop','rook','queen'];
+const PIECE_ORDER: PieceType[] = ['king','knight','bishop','rook','queen'];
 
 const WHITE_GLYPHS: Record<PieceType, string> = {
-  pawn:'♙', knight:'♘', bishop:'♗', rook:'♖', queen:'♕',
+  king:'♔', knight:'♘', bishop:'♗', rook:'♖', queen:'♕',
 };
 const BLACK_GLYPHS: Record<PieceType, string> = {
-  pawn:'♟', knight:'♞', bishop:'♝', rook:'♜', queen:'♛',
+  king:'♚', knight:'♞', bishop:'♝', rook:'♜', queen:'♛',
 };
 
 // ─── Mini Board ────────────────────────────────────────────────────
