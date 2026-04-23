@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--background);
+  color: var(--text-primary);
   padding: 32px 24px 64px;
   display: flex;
   flex-direction: column;
@@ -16,11 +16,11 @@
   left: 32px;
   text-decoration: none;
   font-weight: 600;
-  color: #64748b;
-  background: white;
+  color: var(--text-secondary);
+  background: var(--card-bg);
   padding: 10px 16px;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   transition: all 0.2s;
 }
@@ -41,11 +41,11 @@
   font-size: 2.2rem;
   font-weight: 800;
   margin: 0;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .subtitle {
-  color: #64748b;
+  color: var(--text-secondary);
   margin-top: 10px;
   font-size: 1.1rem;
 }
@@ -65,21 +65,21 @@
 }
 
 .explainPanel {
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 .explainPanel h3 {
   margin: 0 0 16px 0;
-  color: #1e293b;
+  color: var(--text-primary);
   font-size: 1.3rem;
 }
 
 .explainPanel p {
-  color: #475569;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -95,7 +95,7 @@
 }
 
 .codeComment {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
@@ -110,11 +110,11 @@
 }
 
 .interactiveArea {
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 32px 24px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -164,7 +164,7 @@
 }
 
 .opBtn {
-  background: white;
+  background: var(--card-bg);
   border: 2px solid #e2e8f0;
   padding: 8px 12px;
   border-radius: 8px;
@@ -193,7 +193,7 @@
 
 .opName {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .physicalScale {
@@ -289,6 +289,6 @@
 
 .controlGroup label {
   font-weight: 700;
-  color: #334155;
+  color: var(--text-secondary);
   margin-bottom: 8px;
 }

@@ -62,11 +62,6 @@ const Sidebar = () => {
                         </div>
                     </Link>
 
-                    <Link href="/alice" onClick={closeSidebar}>
-                        <div className={`${styles.navLink} ${isActive('/alice') ? styles.active : ''}`}>
-                            <span>🐰</span> 퍼즐나라의 앨리스
-                        </div>
-                    </Link>
                 </nav>
 
                 <div className={styles.footer}>

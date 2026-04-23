@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--background);
+  color: var(--text-primary);
   padding: 32px 24px 64px;
   display: flex;
   flex-direction: column;
@@ -16,11 +16,11 @@
   left: 32px;
   text-decoration: none;
   font-weight: 600;
-  color: #64748b;
-  background: white;
+  color: var(--text-secondary);
+  background: var(--card-bg);
   padding: 10px 16px;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   transition: all 0.2s;
 }
@@ -41,11 +41,11 @@
   font-size: 2.2rem;
   font-weight: 800;
   margin: 0;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .subtitle {
-  color: #64748b;
+  color: var(--text-secondary);
   margin-top: 10px;
   font-size: 1.1rem;
 }
@@ -65,21 +65,21 @@
 }
 
 .explainPanel {
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 .explainPanel h3 {
   margin: 0 0 16px 0;
-  color: #1e293b;
+  color: var(--text-primary);
   font-size: 1.3rem;
 }
 
 .explainPanel p {
-  color: #475569;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -100,11 +100,11 @@
 }
 
 .interactiveArea {
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 32px 24px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -121,7 +121,7 @@
 .boxContainer {
   width: 100px;
   height: 100px;
-  background: #f1f5f9;
+  background: rgba(255,255,255,0.05);
   border: 3px dashed #cbd5e1;
   border-radius: 16px;
   display: flex;
@@ -135,7 +135,7 @@
 
 .boxContainer:hover {
   transform: scale(1.05);
-  border-color: #94a3b8;
+  border-color: var(--text-secondary);
   background: #e2e8f0;
 }
 
@@ -149,21 +149,21 @@
   position: absolute;
   top: -24px;
   font-weight: 700;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .boxContent {
   font-size: 2rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--text-primary);
   z-index: 10;
 }
 
 .operatorIcon {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 .resultBox {
@@ -192,7 +192,7 @@
 
 .divider {
   height: 2px;
-  background: #f1f5f9;
+  background: rgba(255,255,255,0.05);
   width: 100%;
 }
 
@@ -206,7 +206,7 @@
 .selectionTitle {
   margin: 0;
   font-size: 1.1rem;
-  color: #334155;
+  color: var(--text-secondary);
   text-align: center;
 }
 
@@ -221,11 +221,11 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: white;
+  background: var(--card-bg);
   border: 2px solid #cbd5e1;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #334155;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);

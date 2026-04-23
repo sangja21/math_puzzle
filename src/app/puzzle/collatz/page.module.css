@@ -1,0 +1,475 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 100%);
+  color: #cdd9e5;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #768390;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── 탭 ── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  background: #1c2333;
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid rgba(99, 120, 160, 0.2);
+}
+
+.tab {
+  padding: 8px 22px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #768390;
+  background: transparent;
+}
+
+.tab.active {
+  background: #539bf5;
+  color: #fff;
+}
+
+/* ── 공통 카드 ── */
+.card {
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.2);
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ── 규칙 발견 탭 ── */
+.phaseLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #539bf5;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.phaseTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #cdd9e5;
+  margin: 0 0 20px;
+}
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.exampleBox {
+  background: rgba(99, 120, 160, 0.08);
+  border: 1px solid rgba(99, 120, 160, 0.2);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #cdd9e5;
+}
+
+.exampleBox .arrow {
+  color: #768390;
+  margin: 0 6px;
+  font-size: 0.9rem;
+}
+
+.exampleBox .out {
+  color: #539bf5;
+}
+
+.ruleOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ruleBtn {
+  background: rgba(99, 120, 160, 0.08);
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #cdd9e5;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.ruleBtn:hover {
+  background: rgba(83, 155, 245, 0.1);
+  border-color: rgba(83, 155, 245, 0.35);
+}
+
+.ruleBtn.correct {
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.4);
+  color: #4ade80;
+}
+
+.ruleBtn.wrong {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: #f87171;
+}
+
+.feedback {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedback.ok {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+}
+
+.feedback.ng {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.nextBtn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px;
+  background: #539bf5;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.nextBtn:hover {
+  background: #4284d4;
+}
+
+/* 퀴즈 단계 */
+.quizPrompt {
+  font-size: 1rem;
+  color: #768390;
+  margin-bottom: 16px;
+}
+
+.bigNumber {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #cdd9e5;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.parity {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  display: inline-block;
+  width: 100%;
+}
+
+.parity.even {
+  background: rgba(83, 155, 245, 0.12);
+  color: #539bf5;
+}
+
+.parity.odd {
+  background: rgba(167, 139, 250, 0.12);
+  color: #a78bfa;
+}
+
+.inputRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.answerInput {
+  flex: 1;
+  background: #161b22;
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  border-radius: 8px;
+  color: #cdd9e5;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.answerInput:focus {
+  border-color: #539bf5;
+}
+
+.checkBtn {
+  background: #539bf5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+
+.checkBtn:hover { background: #4284d4; }
+.checkBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* 규칙 요약 박스 */
+.ruleReveal {
+  background: linear-gradient(135deg, rgba(83,155,245,0.08), rgba(167,139,250,0.08));
+  border: 1px solid rgba(83, 155, 245, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+.ruleReveal h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: #539bf5;
+}
+
+.ruleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.ruleTag {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.ruleTag.even {
+  background: rgba(83, 155, 245, 0.15);
+  color: #539bf5;
+}
+
+.ruleTag.odd {
+  background: rgba(167, 139, 250, 0.15);
+  color: #a78bfa;
+}
+
+/* ── 탐험 탭 ── */
+.explorerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputSection {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.numberInput {
+  flex: 1;
+  background: #161b22;
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  border-radius: 10px;
+  color: #cdd9e5;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 12px 16px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.numberInput:focus {
+  border-color: #539bf5;
+}
+
+.startBtn {
+  background: #539bf5;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+
+.startBtn:hover { background: #4284d4; }
+.startBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.statBox {
+  background: rgba(99, 120, 160, 0.08);
+  border: 1px solid rgba(99, 120, 160, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #539bf5;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: #768390;
+  margin-top: 4px;
+}
+
+/* SVG 그래프 */
+.graphWrap {
+  background: rgba(99, 120, 160, 0.06);
+  border: 1px solid rgba(99, 120, 160, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.graphSvg {
+  width: 100%;
+  display: block;
+}
+
+/* 수열 스크롤 */
+.sequenceScroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  flex-wrap: wrap;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.seqChip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.seqNum {
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: #cdd9e5;
+  min-width: 36px;
+  text-align: center;
+}
+
+.seqNum.isOne {
+  background: rgba(74, 222, 128, 0.15);
+  border-color: rgba(74, 222, 128, 0.4);
+  color: #4ade80;
+}
+
+.seqNum.isEven {
+  border-color: rgba(83, 155, 245, 0.35);
+  color: #93c5fd;
+}
+
+.seqNum.isOdd {
+  border-color: rgba(167, 139, 250, 0.35);
+  color: #c4b5fd;
+}
+
+.seqArrow {
+  color: #4d5566;
+  font-size: 0.7rem;
+}
+
+.sectionLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #768390;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.emptyHint {
+  text-align: center;
+  color: #4d5566;
+  font-size: 0.9rem;
+  padding: 20px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 560px) {
+  .container { padding: 24px 12px; }
+  .card { padding: 18px 14px; }
+  .exampleGrid { grid-template-columns: 1fr; }
+  .statsRow { grid-template-columns: 1fr 1fr; }
+  .bigNumber { font-size: 2.2rem; }
+}

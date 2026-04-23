@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 24px;
   padding-top: 60px;
   display: flex;
@@ -17,10 +17,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -29,7 +29,7 @@
 }
 
 .homeButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   border-color: #0ea5e9;
   transform: translateY(-2px);
 }
@@ -50,7 +50,7 @@
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -63,10 +63,10 @@
 
 .difficultyButton {
   padding: 10px 20px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  background: #f8fafc;
-  color: #1e293b;
+  background: #1c2333;
+  color: #cdd9e5;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -74,12 +74,12 @@
 }
 
 .difficultyButton:hover {
-  background: white;
+  background: #243048;
   border-color: #0ea5e9;
 }
 
 .difficultyButton.selected {
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border-color: #ffd700;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
@@ -89,7 +89,7 @@
   display: flex;
   gap: 24px;
   padding: 12px 24px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
 }
 
@@ -102,7 +102,7 @@
 
 .statLabel {
   font-size: 0.7rem;
-  color: #64748b;
+  color: #768390;
   text-transform: uppercase;
 }
 
@@ -118,7 +118,7 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 20px;
   width: 100%;
   max-width: 700px;
@@ -131,7 +131,7 @@
   align-items: center;
   gap: 10px;
   padding: 16px;
-  background: #fef3c7;
+  background: rgba(217, 119, 6, 0.08);
   border-radius: 12px;
   border: 2px solid #d97706;
   min-height: 150px;
@@ -140,13 +140,13 @@
 
 .scalePlate.dropActive {
   border-color: #ffd700;
-  background: #fef9c3;
+  background: rgba(255, 215, 0, 0.08);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .plateLabel {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #768390;
   font-weight: 600;
 }
 
@@ -161,12 +161,12 @@
 
 .emptyPlate {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: #768390;
 }
 
 .coinCount {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #768390;
 }
 
 /* 저울 중심 */
@@ -218,7 +218,7 @@
   cursor: grab;
   transition: all 0.2s ease;
   position: relative;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
   user-select: none;
 }
 
@@ -284,27 +284,27 @@
   width: 100%;
   max-width: 700px;
   padding: 20px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
-  border: 2px dashed #cbd5e1;
+  border: 2px dashed rgba(99, 120, 160, 0.3);
   transition: all 0.3s ease;
   min-height: 100px;
 }
 
 .coinPool.dropActive {
   border-color: #ffd700;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
 }
 
 .emptyPool {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: #768390;
 }
 
 .poolLabel {
   text-align: center;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #768390;
   margin-bottom: 12px;
 }
 
@@ -327,24 +327,24 @@
 }
 
 .message {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .message.success {
-  background: #f0fdf4;
+  background: rgba(22, 163, 74, 0.1);
   border-color: #86efac;
   color: #16a34a;
 }
 
 .message.error {
-  background: #fef2f2;
+  background: rgba(220, 38, 38, 0.1);
   border-color: #fca5a5;
   color: #dc2626;
 }
 
 .hintMessage {
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border: 1px solid #fcd34d;
   color: #ffd700;
 }
@@ -365,21 +365,21 @@
   width: 100%;
   max-width: 500px;
   padding: 16px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
 }
 
 .historyLabel {
   font-size: 0.9rem;
-  color: #64748b;
+  color: #768390;
   margin-bottom: 8px;
 }
 
 .historyItem {
   font-size: 0.85rem;
-  color: #334155;
+  color: #cdd9e5;
   padding: 6px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .historyItem:last-child {
@@ -433,16 +433,16 @@
 }
 
 .resetButton {
-  background: white;
-  color: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  color: #cdd9e5;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .hintButton:hover:not(:disabled),
 .selectButton:hover:not(:disabled),
 .resetButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .hintButton:disabled,
@@ -473,9 +473,9 @@
 .explanation {
   max-width: 600px;
   padding: 24px;
-  background: #f1f5f9;
+  background: #1c2333;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   line-height: 1.8;
   animation: fadeIn 0.3s ease;
 }
@@ -497,7 +497,7 @@
 }
 
 .explanation code {
-  background: white;
+  background: #161b22;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -507,9 +507,9 @@
 .help {
   max-width: 500px;
   padding: 20px;
-  background: #f1f5f9;
+  background: #1c2333;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .help h3 {
@@ -522,7 +522,7 @@
   margin: 0;
   padding-left: 20px;
   line-height: 1.8;
-  color: #334155;
+  color: #cdd9e5;
 }
 
 .help li {
@@ -532,10 +532,10 @@
 .tipBox {
   margin-top: 12px;
   padding: 10px 14px;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border-radius: 8px;
   border-left: 3px solid #ffd700;
-  color: #334155;
+  color: #cdd9e5;
   font-size: 0.9rem;
 }
 
@@ -544,18 +544,18 @@
   .scaleArea {
     flex-direction: column;
   }
-  
+
   .scalePlate {
     width: 100%;
     min-height: 100px;
   }
-  
+
   .coin {
     width: 45px;
     height: 45px;
     font-size: 1.3rem;
   }
-  
+
   .coin.onScale {
     width: 35px;
     height: 35px;

@@ -3,22 +3,23 @@
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Outfit', sans-serif;
-  color: #333;
+  color: #cdd9e5;
 }
 
 .intro {
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  background: linear-gradient(135deg, #1a1f2e 0%, #0f1117 100%);
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .intro h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  color: #cdd9e5;
 }
 
 .section {
@@ -27,16 +28,16 @@
   gap: 1.5rem;
   margin-bottom: 4rem;
   padding: 2rem;
-  background: #fff;
+  background: #1c2333;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  border: 1px solid #eee;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .sectionTitle {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2d3436;
+  color: #cdd9e5;
   border-left: 5px solid #6c5ce7;
   padding-left: 1rem;
   margin-bottom: 1rem;
@@ -45,8 +46,8 @@
 .description {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #636e72;
-  background: #f8f9fa;
+  color: #768390;
+  background: rgba(99, 120, 160, 0.08);
   padding: 1.5rem;
   border-radius: 10px;
 }
@@ -73,7 +74,7 @@
   border: 8px solid #6c5ce7;
   position: relative;
   transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-  background: conic-gradient(from 0deg, #fff 0%, #f0f0f0 100%);
+  background: conic-gradient(from 0deg, #1c2333 0%, #161b22 100%);
   box-shadow: 0 0 20px rgba(108, 92, 231, 0.2);
 }
 
@@ -137,8 +138,8 @@
   position: relative;
   width: 100%;
   height: 300px;
-  background: #dfe6e9;
-  border: 2px solid #b2bec3;
+  background: #161b22;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   margin: 2rem 0;
   overflow: hidden;
   border-radius: 8px;
@@ -146,13 +147,13 @@
 
 .tile {
   position: absolute;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  color: rgba(0,0,0,0.5);
+  color: rgba(205, 217, 229, 0.5);
   transition: all 0.5s ease;
   animation: popIn 0.5s ease backwards;
 }
@@ -175,11 +176,13 @@
 
 .inputGroup input {
   padding: 0.5rem;
-  border: 2px solid #dfe6e9;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 6px;
   width: 80px;
   text-align: center;
   font-size: 1.2rem;
+  background: #161b22;
+  color: #cdd9e5;
 }
 
 /* --- Cipher Machine --- */
@@ -190,7 +193,7 @@
 }
 
 .cipherControls {
-  background: #f1f2f6;
+  background: rgba(99, 120, 160, 0.08);
   padding: 1.5rem;
   border-radius: 12px;
   display: flex;
@@ -209,7 +212,7 @@
 .keyDisplay h3 {
   margin: 0;
   font-size: 1.5rem;
-  color: #2d3436;
+  color: #cdd9e5;
 }
 
 .statusGood {
@@ -233,8 +236,8 @@
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
-  background: #fff;
-  border: 1px solid #dfe6e9;
+  background: #161b22;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
   text-align: center;
 }
@@ -249,12 +252,12 @@
 .arrow {
   font-size: 1.2rem;
   margin: 0.2rem 0;
-  color: #b2bec3;
+  color: #768390;
 }
 
 .original {
   font-weight: bold;
-  color: #636e72;
+  color: #768390;
 }
 
 .encrypted {
@@ -276,7 +279,7 @@
 }
 
 .collisionAlert {
-  background: #fab1a0;
+  background: rgba(250, 177, 160, 0.2);
   color: #d63031;
   padding: 1rem;
   border-radius: 8px;
@@ -296,8 +299,8 @@
 }
 
 .challengeCard {
-  background: white;
-  border: 2px solid #dfe6e9;
+  background: #161b22;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
@@ -315,12 +318,12 @@
 
 .challengeCard h3 {
   margin: 0.5rem 0;
-  color: #2d3436;
+  color: #cdd9e5;
 }
 
 .challengeCard p {
   font-size: 0.9rem;
-  color: #636e72;
+  color: #768390;
 }
 
 /* 반응형 */

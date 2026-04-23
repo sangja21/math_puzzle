@@ -1,14 +1,16 @@
 /* Global Reset & Base Styles */
 :root {
-  --background: #ffffff;
-  --foreground: #24292e;
-  --primary: #037dd6;    /* MetaMask Blue */
-  --secondary: #4ade80;
-  --accent: #f6851b;     /* MetaMask Orange */
-  --surface: #f2f4f6;    /* Light Gray Surface */
-  --card-bg: #ffffff;
-  --text-primary: #24292e;
-  --text-secondary: #586069;
+  --background: #0f1117;
+  --foreground: #cdd9e5;
+  --primary: #539bf5;
+  --secondary: #57ab5a;
+  --accent: #f0883e;
+  --surface: #161b22;
+  --card-bg: #1c2333;
+  --card-hover: #243048;
+  --border: rgba(99, 120, 160, 0.2);
+  --text-primary: #cdd9e5;
+  --text-secondary: #768390;
 }
 
 * {
@@ -43,24 +45,24 @@ button {
   font-family: inherit;
 }
 
-/* Scrollbar Styling (Light Mode) */
+/* Scrollbar Styling (Dark Mode) */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #161b22;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 5px;
-  border: 2px solid #f1f1f1;
+  background: #30363d;
+  border-radius: 4px;
+  border: 2px solid #161b22;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #484f58;
 }
 
 /* Selection */

@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -28,10 +28,10 @@
 }
 
 .homeButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   border-color: #0ea5e9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* 굴림 횟수 */
@@ -40,8 +40,8 @@
   top: 20px;
   right: 20px;
   padding: 10px 18px;
-  background: #eff6ff;
-  border: 1px solid #93c5fd;
+  background: rgba(99, 120, 160, 0.08);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -65,7 +65,7 @@
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -74,8 +74,9 @@
 .storyCard {
   max-width: 600px;
   padding: 24px 28px;
-  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 16px;
   text-align: center;
   line-height: 1.8;
@@ -126,7 +127,7 @@
   justify-content: center;
   font-size: 3rem;
   font-weight: 800;
-  background: #fffbeb;
+  background: rgba(99, 120, 160, 0.08);
   border: 3px solid #fcd34d;
   border-radius: 20px;
   color: #d97706;
@@ -136,7 +137,7 @@
 .sumDisplay.rolling {
   animation: diceShake 0.1s infinite;
   border-color: rgba(96, 165, 250, 0.7);
-  color: #64748b;
+  color: #768390;
 }
 
 @keyframes diceShake {
@@ -147,7 +148,7 @@
 
 .sumLabel {
   margin-top: 8px;
-  color: #64748b;
+  color: #768390;
   font-size: 0.9rem;
 }
 
@@ -176,7 +177,7 @@
 }
 
 .roll10Button {
-  background: #fffbeb;
+  background: rgba(99, 120, 160, 0.08);
   border: 1px solid #fcd34d;
   color: #d97706;
 }
@@ -204,7 +205,7 @@
 .sectionTitle {
   text-align: center;
   font-size: 1rem;
-  color: #64748b;
+  color: #768390;
   margin-bottom: 12px;
 }
 
@@ -215,9 +216,9 @@
   gap: 6px;
   height: 140px;
   padding: 12px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .barColumn {
@@ -231,7 +232,7 @@
 
 .barCount {
   font-size: 0.7rem;
-  color: #64748b;
+  color: #768390;
   margin-bottom: 4px;
   min-height: 16px;
 }
@@ -247,7 +248,7 @@
 
 .barLabel {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #768390;
   margin-top: 6px;
   font-weight: 600;
 }
@@ -255,10 +256,10 @@
 /* 힌트 */
 .hintButton {
   padding: 14px 28px;
-  background: #eff6ff;
-  border: 1px solid #93c5fd;
+  background: rgba(99, 120, 160, 0.08);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
-  color: #2563eb;
+  color: #539bf5;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -266,7 +267,7 @@
 }
 
 .hintButton:hover {
-  background: #dbeafe;
+  background: #243048;
   transform: translateY(-2px);
 }
 
@@ -274,8 +275,8 @@
   width: 100%;
   max-width: 520px;
   padding: 20px;
-  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 16px;
   animation: fadeSlideIn 0.3s ease;
 }
@@ -284,14 +285,14 @@
   text-align: center;
   line-height: 1.6;
   margin-bottom: 16px;
-  color: #334155;
+  color: #cdd9e5;
 }
 
 .hintExtra {
   text-align: center;
   margin-top: 16px;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #768390;
   line-height: 1.6;
 }
 
@@ -312,11 +313,11 @@
   width: 42px;
   height: 42px;
   text-align: center;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .dieHeader {
-  background: #fffbeb;
+  background: rgba(99, 120, 160, 0.08);
   font-weight: 700;
   color: #d97706;
 }
@@ -326,8 +327,8 @@
 }
 
 .sumCell {
-  background: #f1f5f9;
-  color: #334155;
+  background: rgba(99, 120, 160, 0.08);
+  color: #cdd9e5;
   font-weight: 500;
 }
 
@@ -354,8 +355,8 @@
   width: 100%;
   max-width: 500px;
   padding: 24px;
-  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #bbf7d0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 16px;
   animation: fadeSlideIn 0.3s ease;
 }
@@ -363,7 +364,7 @@
 .answerHint {
   text-align: center;
   font-size: 0.85rem;
-  color: #64748b;
+  color: #768390;
   margin-bottom: 16px;
 }
 
@@ -391,7 +392,7 @@
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border: 2px solid #86efac;
   border-radius: 10px;
   color: #16a34a;
@@ -427,10 +428,10 @@
 
 .backButton {
   padding: 14px 28px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -438,7 +439,7 @@
 }
 
 .backButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   transform: translateY(-2px);
 }
 
@@ -469,10 +470,10 @@
 .frequencyNote {
   text-align: center;
   font-size: 0.85rem;
-  color: #2563eb;
+  color: #539bf5;
   margin-top: 10px;
   padding: 10px;
-  background: #eff6ff;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 8px;
 }
 
@@ -489,10 +490,10 @@
 .hintCard {
   width: 100%;
   padding: 18px 20px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   animation: fadeSlideIn 0.3s ease;
 }
 
@@ -506,14 +507,14 @@
 .hintContent {
   margin: 0;
   font-size: 0.9rem;
-  color: #334155;
+  color: #cdd9e5;
   line-height: 1.7;
   white-space: pre-line;
 }
 
 .nextHintButton {
   padding: 12px 24px;
-  background: #fffbeb;
+  background: rgba(99, 120, 160, 0.08);
   border: 1px solid #fcd34d;
   border-radius: 10px;
   color: #d97706;
@@ -524,14 +525,14 @@
 }
 
 .nextHintButton:hover {
-  background: #fef3c7;
+  background: rgba(253, 211, 77, 0.1);
   transform: translateY(-2px);
 }
 
 .tableNote {
   text-align: center;
   font-size: 0.8rem;
-  color: #64748b;
+  color: #768390;
   margin-top: 8px;
 }
 
@@ -554,8 +555,8 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: #fffbeb;
-  border: 1px solid #e2e8f0;
+  background: rgba(99, 120, 160, 0.08);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.9rem;
@@ -566,14 +567,14 @@
   display: inline-flex;
   align-items: center;
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: #768390;
 }
 
 /* 완료 화면 */
 .completeScreen {
   text-align: center;
   padding: 32px;
-  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  background: #1c2333;
   border: 2px solid #86efac;
   border-radius: 20px;
   max-width: 600px;
@@ -613,7 +614,7 @@
 }
 
 .answerDie {
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
   padding: 16px;
   min-width: 180px;
@@ -639,7 +640,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: #fffbeb;
+  background: rgba(99, 120, 160, 0.08);
   border: 1px solid #fcd34d;
   border-radius: 8px;
   font-weight: 700;
@@ -650,14 +651,14 @@
 .mathExplanation {
   text-align: left;
   padding: 20px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
   margin: 16px 0;
 }
 
 .mathExplanation h3 {
   text-align: center;
-  color: #2563eb;
+  color: #539bf5;
   margin-bottom: 12px;
 }
 
@@ -668,20 +669,20 @@
 }
 
 .mathExplanation code {
-  background: #eff6ff;
+  background: rgba(83, 155, 245, 0.1);
   padding: 2px 6px;
   border-radius: 4px;
-  color: #2563eb;
+  color: #539bf5;
   font-size: 0.9rem;
 }
 
 /* 비교 버튼 */
 .compareButton {
   padding: 12px 24px;
-  background: #eff6ff;
+  background: rgba(99, 120, 160, 0.08);
   border: 1px solid rgba(96, 165, 250, 0.4);
   border-radius: 10px;
-  color: #2563eb;
+  color: #539bf5;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -690,7 +691,7 @@
 }
 
 .compareButton:hover {
-  background: #eff6ff;
+  background: #243048;
   transform: translateY(-2px);
 }
 
@@ -704,7 +705,7 @@
 }
 
 .compareSection h4 {
-  color: #64748b;
+  color: #768390;
   margin-bottom: 8px;
   font-size: 0.9rem;
 }
@@ -712,10 +713,10 @@
 .restartButton {
   margin-top: 12px;
   padding: 14px 28px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -723,7 +724,7 @@
 }
 
 .restartButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   transform: translateY(-2px);
 }
 

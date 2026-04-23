@@ -4,8 +4,8 @@
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Outfit', sans-serif; /* More friendly font */
-  background-color: #0f172a;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   min-height: 100vh;
 }
 
@@ -67,14 +67,14 @@
 
 .processArrow {
   font-size: 2rem;
-  color: #dfe6e9;
+  color: #cdd9e5;
 }
 
 .resultBox {
   min-width: 200px;
   padding: 1rem;
-  background: #fff;
-  color: #2d3436;
+  background: #1c2333;
+  color: #cdd9e5;
   border-radius: 8px;
   font-size: 1.5rem;
   text-align: center;
@@ -95,7 +95,7 @@
 /* ... keep existing terminal styles ... */
 .logLine {
   margin: 0.5rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(99, 120, 160, 0.25);
   padding-bottom: 0.2rem;
 }
 .keyAttempt { color: #ffeaa7; font-weight: bold; margin-right: 0.5rem; }
@@ -119,8 +119,8 @@
 .hackerButton:disabled { opacity: 0.5; cursor: wait; }
 
 .bubble {
-  background: white;
-  color: #333;
+  background: #1c2333;
+  color: #cdd9e5;
   padding: 1rem;
   border-radius: 20px;
   position: relative;
@@ -137,7 +137,7 @@
   width: 0;
   height: 0;
   border: 15px solid transparent;
-  border-top-color: white;
+  border-top-color: #1c2333;
   border-bottom: 0;
   margin-left: -15px;
   margin-bottom: -15px;

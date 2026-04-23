@@ -91,7 +91,7 @@
 }
 
 .storyContent {
-  background: white;
+  background: var(--card-bg);
   padding: 32px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -105,7 +105,7 @@
 .hintBox {
   margin-top: 20px;
   padding: 16px;
-  background-color: #fff3cd;
+  background-color: rgba(255, 193, 7, 0.1);
   border-radius: 8px;
   border-left: 4px solid #ffc107;
   font-size: 0.95rem;
@@ -184,7 +184,7 @@
 }
 
 .controlBtn {
-  background: white;
+  background: var(--card-bg);
   border: 2px solid #34495e;
   padding: 8px 16px;
   border-radius: 8px;

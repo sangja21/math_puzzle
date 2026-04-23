@@ -6,9 +6,9 @@
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 100%);
   font-family: 'Inter', sans-serif;
-  color: #333;
+  color: #cdd9e5;
 }
 
 .header {
@@ -20,14 +20,14 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #434343 0%, black 100%);
+  background: linear-gradient(to right, #8b9cb5 0%, #cdd9e5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: #768390;
 }
 
 .gameArea {
@@ -41,10 +41,10 @@
 
 .boardContainer {
   position: relative;
-  background: white;
+  background: #1c2333;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .board {
@@ -153,16 +153,16 @@
 .stepNumber {
   font-size: 1rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #cdd9e5;
   z-index: 5;
 }
 
 .controls {
   width: 100%;
-  background: white;
+  background: #1c2333;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
 }
 
 .sizeSelector {
@@ -174,23 +174,23 @@
 
 .sizeBtn {
   padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 6px;
-  background: white;
-  color: #4a5568;
+  background: #243048;
+  color: #768390;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .sizeBtn:hover {
-  background: #edf2f7;
+  background: #243048;
 }
 
 .sizeBtn.active {
-  background: #2d3748;
-  color: white;
-  border-color: #2d3748;
+  background: #cdd9e5;
+  color: #0f1117;
+  border-color: #cdd9e5;
 }
 
 .statusBar {
@@ -198,20 +198,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: #f7fafc;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .statusLabel {
   font-size: 0.9rem;
-  color: #718096;
+  color: #768390;
 }
 
 .statusValue {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #cdd9e5;
 }
 
 .buttonGroup {
@@ -230,25 +230,27 @@
 }
 
 .btnPrimary {
-  background: #2d3748;
-  color: white;
+  background: #cdd9e5;
+  color: #0f1117;
 }
 .btnPrimary:hover {
-  background: #1a202c;
+  background: #b8c8d8;
   transform: translateY(-2px);
 }
 .btnPrimary:disabled {
-  background: #cbd5e0;
+  background: rgba(99, 120, 160, 0.25);
+  color: #768390;
   cursor: not-allowed;
   transform: none;
 }
 
 .btnSecondary {
-  background: #edf2f7;
-  color: #4a5568;
+  background: rgba(99, 120, 160, 0.08);
+  color: #768390;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 .btnSecondary:hover {
-  background: #e2e8f0;
+  background: #243048;
   transform: translateY(-2px);
 }
 
@@ -257,19 +259,19 @@
   top: 2rem;
   left: 2rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid #e2e8f0;
+  background: rgba(28, 35, 51, 0.8);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  color: #4a5568;
+  color: #768390;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .backButton:hover {
-  background: white;
+  background: #1c2333;
   transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 /* 반응형 */

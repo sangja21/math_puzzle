@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #1e293b;
+  background-color: #0f1117;
+  color: #cdd9e5;
 }
 
 .header {
   padding: 2rem;
   text-align: center;
-  background: white;
-  border-bottom: 1px solid #e2e8f0;
+  background: #1c2333;
+  border-bottom: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .title {
@@ -36,17 +36,19 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   padding: 0.5rem 1rem;
   border-radius: 9999px;
 }
 
 .input {
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 4px;
   padding: 0.25rem 0.5rem;
   width: 60px;
   text-align: center;
+  background: #0f1117;
+  color: #cdd9e5;
 }
 
 .buttons {
@@ -59,14 +61,14 @@
   border-radius: 8px;
   font-weight: 600;
   transition: all 0.2s;
-  background: white;
-  border: 1px solid #cbd5e1;
-  color: #64748b;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  color: #768390;
   cursor: pointer;
 }
 
 .button:hover:not(:disabled) {
-  background: #f8fafc;
+  background: #243048;
   transform: translateY(-1px);
 }
 
@@ -99,10 +101,10 @@
 }
 
 .dialogue {
-  background: white;
+  background: #1c2333;
   padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -111,35 +113,35 @@
 .message {
   padding: 1rem;
   border-radius: 12px;
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   border-left: 4px solid transparent;
   transition: all 0.3s ease;
   opacity: 0.5;
 }
 
 .message.active {
-  background: #eff6ff;
+  background: rgba(59, 130, 246, 0.12);
   border-left-color: #3b82f6;
   opacity: 1;
   transform: translateX(8px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .speaker {
   font-weight: 700;
   margin-right: 0.5rem;
-  color: #1e293b;
+  color: #cdd9e5;
 }
 
 .text {
-  color: #475569;
+  color: #768390;
 }
 
 .visualization {
-  background: white;
+  background: #1c2333;
   padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -149,7 +151,7 @@
 .gridContainer {
   overflow: auto;
   max-height: 600px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.2);
   border-radius: 8px;
   position: relative;
 }
@@ -158,7 +160,7 @@
   display: grid;
   /* grid-template-columns is set inline */
   gap: 2px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   padding: 2px;
   width: max-content;
 }
@@ -166,12 +168,12 @@
 .cell {
   width: 40px;
   height: 40px;
-  background: white;
+  background: #161b22;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: #768390;
   position: relative;
   transition: all 0.3s ease;
   user-select: none;
@@ -195,7 +197,8 @@
 }
 
 .cellHeader {
-  background: #e2e8f0;
+  background: #243048;
+  color: #768390;
   font-weight: bold;
   position: sticky;
   z-index: 5;
@@ -211,7 +214,7 @@
 
 .tooltip {
   position: fixed;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.95);
   color: white;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
@@ -219,13 +222,13 @@
   pointer-events: none;
   z-index: 100;
   white-space: pre-line;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 .status {
   text-align: center;
   font-weight: 600;
-  color: #64748b;
+  color: #768390;
 }
 
 /* Landscape/Desktop optimization */
@@ -234,14 +237,14 @@
     flex-direction: row;
     align-items: flex-start;
   }
-  
+
   .dialogue {
     flex: 1;
     position: sticky;
     top: 2rem;
     max-width: 400px;
   }
-  
+
   .visualization {
     flex: 2;
   }

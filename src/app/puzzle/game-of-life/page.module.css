@@ -28,7 +28,7 @@
 .title {
   font-size: 2.2rem;
   font-weight: 800;
-  background: linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #539bf5, #cdd9e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -89,23 +89,23 @@
 }
 
 .ruleBirth {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .ruleSurvive {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: rgba(83, 155, 245, 0.1);
+  border: 1px solid rgba(83, 155, 245, 0.3);
 }
 
 .ruleOverpop {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
 .ruleLonely {
-  background: #fefce8;
-  border: 1px solid #fef08a;
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
 }
 
 /* --- Demo --- */
@@ -132,9 +132,9 @@
   flex-direction: column;
   gap: 2px;
   padding: 0.8rem;
-  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  background: linear-gradient(135deg, #1a1f2e, #0f1117);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .demoRow {
@@ -157,7 +157,7 @@
 }
 
 .demoCell.dead {
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
 }
 
 .demoCell.selected {
@@ -220,9 +220,9 @@
 
 .resetBtn {
   padding: 0.5rem 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  background: white;
+  background: #1c2333;
   color: var(--foreground);
   cursor: pointer;
   font-size: 0.85rem;

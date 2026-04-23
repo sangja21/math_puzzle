@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 32px 24px 64px;
   display: flex;
   flex-direction: column;
@@ -16,18 +16,18 @@
   left: 32px;
   text-decoration: none;
   font-weight: 600;
-  color: #64748b;
-  background: white;
+  color: #768390;
+  background: #1c2333;
   padding: 10px 16px;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
   transition: all 0.2s;
 }
 
 .backButton:hover {
   border-color: #0ea5e9;
-  color: #0284c7;
+  color: #539bf5;
   transform: translateY(-2px);
 }
 
@@ -40,14 +40,14 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin: 0;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  background: linear-gradient(135deg, #cdd9e5 0%, #768390 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   margin-top: 8px;
   font-size: 1.1rem;
 }
@@ -55,11 +55,11 @@
 .gameBoard {
   width: 100%;
   max-width: 800px;
-  background: white;
+  background: #1c2333;
   border-radius: 24px;
   padding: 40px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -70,7 +70,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
-  border-bottom: 2px dashed #f1f5f9;
+  border-bottom: 2px dashed rgba(99, 120, 160, 0.2);
 }
 
 .turnIndicator {
@@ -85,7 +85,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #cbd5e1;
+  background: rgba(99, 120, 160, 0.4);
 }
 
 .turnActive .turnDot {
@@ -107,8 +107,8 @@
 }
 
 .pile {
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background: #0f1117;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 20px;
   padding: 24px;
   display: flex;
@@ -120,13 +120,13 @@
 
 .pileActive {
   border-color: #93c5fd;
-  background: #eff6ff;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+  background: rgba(59, 130, 246, 0.08);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
 .pileTitle {
   font-weight: 700;
-  color: #64748b;
+  color: #768390;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -146,7 +146,7 @@
   height: 24px;
   background: radial-gradient(circle at 30% 30%, #475569, #1e293b);
   border-radius: 50%;
-  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -165,11 +165,11 @@
 .removeButton {
   width: 100%;
   padding: 12px;
-  background: white;
-  border: 2px solid #e2e8f0;
+  background: #1c2333;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
   font-weight: 700;
-  color: #475569;
+  color: #768390;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
@@ -180,15 +180,15 @@
 
 .removeButton:hover:not(:disabled) {
   border-color: #3b82f6;
-  color: #2563eb;
-  background: #eff6ff;
+  color: #539bf5;
+  background: rgba(59, 130, 246, 0.08);
   transform: translateY(-2px);
 }
 
 .removeButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
 }
 
 .footer {
@@ -207,19 +207,19 @@
 }
 
 .resetBtn {
-  background: #f1f5f9;
-  color: #475569;
+  background: rgba(99, 120, 160, 0.08);
+  color: #768390;
   border: none;
 }
 
 .resetBtn:hover {
-  background: #e2e8f0;
+  background: rgba(99, 120, 160, 0.15);
 }
 
 .winnerOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(15, 17, 23, 0.9);
   backdrop-filter: blur(4px);
   z-index: 50;
   display: flex;
@@ -238,13 +238,13 @@
 .winnerTitle {
   font-size: 3rem;
   font-weight: 900;
-  color: #1e293b;
+  color: #cdd9e5;
   margin-bottom: 24px;
 }
 
 .strategyBox {
   width: 100%;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
   padding: 24px;
   margin-top: 24px;
@@ -252,13 +252,13 @@
 
 .strategyTitle {
   font-weight: 800;
-  color: #334155;
+  color: #cdd9e5;
   margin-bottom: 12px;
   font-size: 1.1rem;
 }
 
 .strategyText {
-  color: #64748b;
+  color: #768390;
   font-size: 0.95rem;
   line-height: 1.6;
   white-space: pre-line;

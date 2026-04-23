@@ -6,9 +6,9 @@
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 100%);
   font-family: 'Inter', sans-serif;
-  color: #333;
+  color: #cdd9e5;
 }
 
 .header {
@@ -27,7 +27,7 @@
 
 .subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: #768390;
 }
 
 .gameArea {
@@ -37,10 +37,10 @@
   gap: 0; /* Grid handles spacing */
   margin-bottom: 3rem;
   padding: 2rem 0; /* Remove horizontal padding to simplify calculations */
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(99, 120, 160, 0.08);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   position: relative;
   width: 100%;
   max-width: 800px;
@@ -67,7 +67,7 @@
 .rod {
   width: 12px;
   height: 250px; /* Fixed height */
-  background: #cbd5e0;
+  background: rgba(99, 120, 160, 0.4);
   border-radius: 6px 6px 0 0;
   position: absolute;
   bottom: 12px; /* Above base */
@@ -78,7 +78,7 @@
   width: 80%;
   max-width: 180px;
   height: 12px;
-  background: #a0aec0;
+  background: rgba(99, 120, 160, 0.3);
   border-radius: 6px;
   position: absolute;
   bottom: 0;
@@ -90,7 +90,7 @@
   border-radius: 15px;
   position: absolute;
   z-index: 10;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   transform: translateX(-50%); /* Center on the 'left' coordinate */
   /* Critical for animation */
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -110,10 +110,10 @@
   gap: 1.5rem;
   width: 100%;
   max-width: 600px;
-  background: white;
+  background: #1c2333;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
 }
 
 .controlGroup {
@@ -124,13 +124,13 @@
 
 .label {
   font-weight: 600;
-  color: #4a5568;
+  color: #768390;
 }
 
 .value {
   font-family: monospace;
   font-weight: 700;
-  color: #2d3748;
+  color: #cdd9e5;
 }
 
 /* Back Button */
@@ -139,10 +139,10 @@
   top: 2rem;
   left: 2rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(28, 35, 51, 0.7);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  color: #4a5568;
+  color: #768390;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
@@ -150,7 +150,7 @@
 }
 
 .backButton:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: #1c2333;
   transform: translateY(-2px);
 }
 
@@ -174,9 +174,9 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #cbd5e0;
-  background: white;
-  color: #4a5568;
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  background: #243048;
+  color: #768390;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
@@ -195,13 +195,13 @@
 .numBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #f7fafc;
+  background: rgba(99, 120, 160, 0.08);
 }
 
 .numDisplay {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #2d3748;
+  color: #cdd9e5;
   min-width: 40px;
   text-align: center;
 }
@@ -214,7 +214,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .btnPrimary {
@@ -226,17 +226,18 @@
   transform: translateY(-2px);
 }
 .btnPrimary:disabled {
-  background: #a3bffa;
+  background: rgba(99, 120, 160, 0.25);
   cursor: not-allowed;
   transform: none;
 }
 
 .btnSecondary {
-  background: #edf2f7;
-  color: #4a5568;
+  background: rgba(99, 120, 160, 0.08);
+  color: #768390;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 .btnSecondary:hover {
-  background: #e2e8f0;
+  background: #243048;
   transform: translateY(-2px);
 }
 
@@ -245,7 +246,7 @@
   justify-content: space-around;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .statItem {
@@ -253,13 +254,13 @@
 }
 .statLabel {
   font-size: 0.85rem;
-  color: #718096;
+  color: #768390;
   display: block;
 }
 .statValue {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #cdd9e5;
 }
 
 /* 반응형 */

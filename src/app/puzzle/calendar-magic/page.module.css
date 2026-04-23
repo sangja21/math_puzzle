@@ -1,0 +1,335 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1117 0%, #1a1f2e 100%);
+  color: #cdd9e5;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #768390;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.modeToggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  background: #1c2333;
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid rgba(99, 120, 160, 0.2);
+}
+
+.modeBtn {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #768390;
+  background: transparent;
+}
+
+.modeBtn.active {
+  background: #539bf5;
+  color: #fff;
+}
+
+.card {
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.2);
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.navBtn {
+  background: rgba(83, 155, 245, 0.1);
+  border: 1px solid rgba(83, 155, 245, 0.25);
+  color: #539bf5;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.navBtn:hover {
+  background: rgba(83, 155, 245, 0.2);
+}
+
+.monthLabel {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #cdd9e5;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.dayHeader {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 0;
+  color: #768390;
+}
+
+.dayHeader:first-child {
+  color: #f87171;
+}
+
+.dayHeader:last-child {
+  color: #539bf5;
+}
+
+.cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #cdd9e5;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.cell.empty {
+  color: transparent;
+}
+
+.cell.clickable {
+  cursor: pointer;
+}
+
+.cell.clickable:hover {
+  background: rgba(83, 155, 245, 0.15);
+  border-color: rgba(83, 155, 245, 0.3);
+}
+
+.cell.sunday {
+  color: #f87171;
+}
+
+.cell.saturday {
+  color: #539bf5;
+}
+
+.cell.center {
+  background: #539bf5;
+  color: #fff;
+  font-weight: 800;
+  border-color: #539bf5;
+}
+
+.cell.inBlock {
+  background: rgba(83, 155, 245, 0.15);
+  border-color: rgba(83, 155, 245, 0.35);
+}
+
+.cell.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.resultBox {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(83, 155, 245, 0.1), rgba(167, 139, 250, 0.1));
+  border: 1px solid rgba(83, 155, 245, 0.3);
+  border-radius: 12px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.resultTitle {
+  font-size: 0.85rem;
+  color: #768390;
+  margin-bottom: 6px;
+}
+
+.resultSum {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #539bf5;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.resultHint {
+  font-size: 0.88rem;
+  color: #a78bfa;
+}
+
+.magicReveal {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #cdd9e5;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.magicReveal strong {
+  color: #a78bfa;
+}
+
+.guessSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guessLabel {
+  font-size: 0.9rem;
+  color: #768390;
+  text-align: center;
+}
+
+.guessRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.guessInput {
+  flex: 1;
+  background: #161b22;
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  border-radius: 8px;
+  color: #cdd9e5;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.guessInput:focus {
+  border-color: #539bf5;
+}
+
+.guessBtn {
+  background: #539bf5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.guessBtn:hover {
+  background: #4284d4;
+}
+
+.guessBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.feedbackCorrect {
+  text-align: center;
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedbackWrong {
+  text-align: center;
+  color: #f87171;
+  font-weight: 700;
+  font-size: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.hintBtn {
+  background: transparent;
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  color: #a78bfa;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.hintBtn:hover {
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.instruction {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(99, 120, 160, 0.08);
+  border-radius: 10px;
+  font-size: 0.84rem;
+  color: #768390;
+  text-align: center;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding: 24px 12px;
+  }
+  .card {
+    padding: 18px 14px;
+  }
+  .cell {
+    font-size: 0.78rem;
+  }
+}

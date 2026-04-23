@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -28,10 +28,10 @@
 }
 
 .homeButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   border-color: #0ea5e9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* 레벨 표시 */
@@ -40,7 +40,7 @@
   top: 20px;
   right: 20px;
   padding: 10px 18px;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border: 1px solid #fcd34d;
   border-radius: 10px;
   font-size: 0.95rem;
@@ -65,7 +65,7 @@
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -74,8 +74,9 @@
 .storyCard {
   max-width: 600px;
   padding: 20px 24px;
-  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 16px;
   display: flex;
   gap: 16px;
@@ -102,7 +103,7 @@
 .storyText {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: #334155;
+  color: #cdd9e5;
 }
 
 /* 암호문 박스 */
@@ -114,7 +115,7 @@
 
 .sectionLabel {
   font-size: 0.9rem;
-  color: #64748b;
+  color: #768390;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -123,7 +124,7 @@
 }
 
 .cipherBox {
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border: 2px solid #fcd34d;
   border-radius: 12px;
   padding: 24px;
@@ -143,7 +144,7 @@
 }
 
 .wheelContainer {
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
   padding: 20px;
   text-align: center;
@@ -211,7 +212,7 @@
   flex-direction: column;
   align-items: center;
   padding: 4px 6px;
-  background: #f8fafc;
+  background: #1c2333;
   border-radius: 6px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.75rem;
@@ -219,16 +220,16 @@
 }
 
 .letterPair:hover {
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   transform: scale(1.1);
 }
 
 .originalLetter {
-  color: #64748b;
+  color: #768390;
 }
 
 .arrowDown {
-  color: #94a3b8;
+  color: #768390;
   font-size: 0.5rem;
 }
 
@@ -252,7 +253,7 @@
   font-weight: 600;
   text-align: center;
   letter-spacing: 3px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border: 2px solid #86efac;
   border-radius: 12px;
   color: #16a34a;
@@ -272,12 +273,12 @@
 
 .inputBox.correct {
   border-color: #16a34a;
-  background: #f0fdf4;
+  background: rgba(22, 163, 74, 0.1);
 }
 
 .inputBox.incorrect {
   border-color: #dc2626;
-  background: #fef2f2;
+  background: rgba(220, 38, 38, 0.1);
   animation: shake 0.5s ease;
 }
 
@@ -324,20 +325,20 @@
 }
 
 .resetButton {
-  background: white;
-  border: 1px solid #e2e8f0;
-  color: #1e293b;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  color: #cdd9e5;
 }
 
 .hintButton:hover,
 .checkButton:hover,
 .nextButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .resetButton:hover {
-  background: #f1f5f9;
+  background: #243048;
 }
 
 .checkButton:disabled {
@@ -349,7 +350,7 @@
 /* 힌트 표시 */
 .hintBox {
   padding: 16px 24px;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border: 1px solid #fcd34d;
   border-radius: 12px;
   color: #d97706;
@@ -369,7 +370,7 @@
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   padding: 16px;
   border-radius: 12px;
 }
@@ -379,7 +380,7 @@
   flex-direction: column;
   align-items: center;
   padding: 8px 12px;
-  background: #f8fafc;
+  background: #1c2333;
   border-radius: 8px;
   min-width: 50px;
 }
@@ -393,7 +394,7 @@
 
 .frequencyBar {
   width: 30px;
-  background: #eff6ff;
+  background: rgba(59, 130, 246, 0.15);
   border-radius: 4px;
   margin-top: 4px;
   overflow: hidden;
@@ -406,7 +407,7 @@
 
 .frequencyPercent {
   font-size: 0.7rem;
-  color: #64748b;
+  color: #768390;
   margin-top: 4px;
 }
 
@@ -420,13 +421,13 @@
 }
 
 .resultMessage.success {
-  background: #f0fdf4;
+  background: rgba(22, 163, 74, 0.1);
   border: 2px solid #86efac;
   color: #16a34a;
 }
 
 .resultMessage.error {
-  background: #fef2f2;
+  background: rgba(220, 38, 38, 0.1);
   border: 2px solid #fca5a5;
   color: #dc2626;
 }
@@ -435,7 +436,8 @@
 .levelComplete {
   text-align: center;
   padding: 32px;
-  background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  background: #1c2333;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   border: 2px solid #86efac;
   border-radius: 20px;
   max-width: 500px;
@@ -472,7 +474,7 @@
 }
 
 .introStory {
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 24px;
@@ -495,10 +497,10 @@
 
 .levelButton {
   padding: 16px 24px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
-  background: #f8fafc;
-  color: #1e293b;
+  background: #1c2333;
+  color: #cdd9e5;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -511,18 +513,18 @@
 
 .levelButton:hover {
   border-color: #ffd700;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   transform: translateY(-3px);
 }
 
 .levelButton.active {
   border-color: #ffd700;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
 }
 
 .levelButton.completed {
   border-color: #16a34a;
-  background: #f0fdf4;
+  background: rgba(22, 163, 74, 0.1);
 }
 
 .levelStars {
@@ -551,7 +553,7 @@
 .helpBox {
   max-width: 500px;
   padding: 20px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
   margin-top: 12px;
 }
@@ -566,7 +568,7 @@
   margin: 0;
   padding-left: 20px;
   line-height: 1.8;
-  color: #334155;
+  color: #cdd9e5;
 }
 
 .helpBox li {
@@ -584,12 +586,12 @@
   justify-content: space-between;
   margin-bottom: 8px;
   font-size: 0.85rem;
-  color: #64748b;
+  color: #768390;
 }
 
 .progressBar {
   height: 8px;
-  background: white;
+  background: #1c2333;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -603,7 +605,7 @@
 /* Shift가 표시될 때 */
 .shiftInfo {
   padding: 12px 24px;
-  background: #f0fdf4;
+  background: rgba(22, 163, 74, 0.1);
   border: 1px solid #86efac;
   border-radius: 10px;
   font-size: 1rem;

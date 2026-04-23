@@ -1,0 +1,634 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.homeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.homeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ─── 헤더 ──────────────────────────────────── */
+.header {
+  text-align: center;
+  padding-top: 48px;
+}
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* ─── 탭 ────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 6px;
+}
+.tabBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.tabBtn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+.tabBtnActive {
+  background: rgba(96, 165, 250, 0.25);
+  color: #93c5fd;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+}
+
+/* ─── 탭 래퍼 ───────────────────────────────── */
+.tabWrapper {
+  width: 100%;
+  max-width: 940px;
+}
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── 2컬럼 레이아웃 ────────────────────────── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    flex-direction: column;
+  }
+}
+
+/* ─── SVG 좌표평면 ──────────────────────────── */
+.graphBox {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.svgPlane {
+  display: block;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 380px;
+}
+.legend {
+  display: flex;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* ─── 컨트롤 패널 ───────────────────────────── */
+.controlPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 수식 표시 */
+.equationDisplay {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+.equationLabel {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 52px;
+}
+.equationValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #93c5fd;
+  font-family: 'Courier New', monospace;
+}
+.equationValueTarget {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fca5a5;
+  font-family: 'Courier New', monospace;
+}
+
+/* 슬라이더 */
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.sliderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sliderLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.varName {
+  color: #fbbf24;
+  font-size: 1rem;
+}
+.sliderVal {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #60a5fa;
+  min-width: 28px;
+  text-align: right;
+}
+.slider {
+  width: 100%;
+  accent-color: #60a5fa;
+  cursor: pointer;
+}
+.sliderHint {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* 모드 버튼 */
+.modeButtons {
+  display: flex;
+  gap: 8px;
+}
+.modeBtn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.modeBtn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.modeBtnActive {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: #93c5fd;
+}
+
+/* 게임 액션 */
+.gameActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.checkBtn {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.checkBtnReady {
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+.matchedBox {
+  width: 100%;
+  text-align: center;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.matchedEmoji {
+  font-size: 2rem;
+}
+.matchedEq {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #34d399;
+  font-family: 'Courier New', monospace;
+}
+.nextBtn {
+  margin-top: 6px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.nextBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* 관찰 포인트 */
+.observationCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 16px;
+}
+.obsToggle {
+  width: 100%;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+.obsToggle:hover { color: white; }
+.obsList {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ─── 퀴즈 탭 ───────────────────────────────── */
+.quizIntro {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.quizPointRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.pointBadge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+.quizDesc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* 단계 카드 */
+.phaseCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s;
+}
+.phaseActive {
+  border-color: rgba(96, 165, 250, 0.5);
+  background: rgba(96, 165, 250, 0.06);
+}
+.phaseOk {
+  border-color: rgba(52, 211, 153, 0.5);
+  background: rgba(52, 211, 153, 0.06);
+}
+.phaseLocked {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.phaseTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.formula {
+  font-size: 0.95rem;
+  color: #fbbf24;
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+.numInput {
+  width: 72px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+.numInput:focus {
+  border-color: #60a5fa;
+}
+.inputError {
+  border-color: #f87171;
+  animation: shake 0.3s ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.confirmBtn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.confirmBtn:hover { background: #2563eb; }
+.wrongMsg {
+  font-size: 0.82rem;
+  color: #fca5a5;
+}
+.okMsg {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #34d399;
+}
+.hintBtn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+.hintBtn:hover { color: white; border-color: rgba(255,255,255,0.3); }
+.hintBox {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: #fde68a;
+  font-family: 'Courier New', monospace;
+}
+.doneCard {
+  text-align: center;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.doneEmoji { font-size: 2.5rem; }
+.doneEq {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #34d399;
+  font-family: 'Courier New', monospace;
+}
+
+/* ─── 코딩 탭 ───────────────────────────────── */
+.codingLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.compareRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+@media (max-width: 700px) {
+  .compareRow { flex-direction: column; }
+}
+.compareBox {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.compareTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mathExpr {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #a78bfa;
+  font-family: 'Courier New', monospace;
+}
+.compareDesc {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+.compareSep {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+/* 코드 블록 */
+.codeBlock {
+  background: #0d1117;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.indent { padding-left: 20px; }
+.kw  { color: #ff7b72; }
+.fn  { color: #d2a8ff; }
+.param { color: #ffa657; }
+.num { color: #79c0ff; }
+.op  { color: rgba(255, 255, 255, 0.6); }
+
+/* 코딩 슬라이더 */
+.codingSliders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 700px) {
+  .codingSliders { grid-template-columns: 1fr; }
+}
+
+/* 표 */
+.tableBox {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tableTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+}
+.funcTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.funcTable th {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.funcTable td {
+  padding: 7px 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.funcTable tr:hover td {
+  background: rgba(255, 255, 255, 0.04);
+}
+.calcCell {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+}
+.resultCell {
+  font-weight: 700;
+  color: #a78bfa;
+}
+
+/* 핵심 연결 박스 */
+.insightBox {
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.insightTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #c4b5fd;
+  margin-bottom: 8px;
+}
+.insightList {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}

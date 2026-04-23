@@ -1,8 +1,8 @@
 .sidebar {
   width: 260px;
   height: 100vh;
-  background-color: var(--surface);
-  border-right: 1px solid #e1e4e8;
+  background-color: #161b22;
+  border-right: 1px solid rgba(99, 120, 160, 0.2);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -14,9 +14,9 @@
 }
 
 .logo {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--foreground);
+  color: #cdd9e5;
   margin-bottom: 2rem;
   padding: 0 0.5rem;
   display: flex;
@@ -27,7 +27,7 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 4px;
   flex: 1;
 }
 
@@ -35,37 +35,37 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.95rem;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
+  color: #768390;
+  transition: all 0.15s ease;
 }
 
 .navLink:hover {
-  background-color: var(--background);
-  color: var(--primary);
+  background-color: rgba(99, 120, 160, 0.12);
+  color: #cdd9e5;
   transform: translateX(2px);
 }
 
 .active {
-  background-color: #fff;
-  color: var(--primary);
+  background-color: rgba(83, 155, 245, 0.15);
+  color: #539bf5;
   font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(83, 155, 245, 0.25);
 }
 
 .footer {
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid #e1e4e8;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  border-top: 1px solid rgba(99, 120, 160, 0.2);
+  font-size: 0.78rem;
+  color: #4d5566;
   text-align: center;
+  line-height: 1.6;
 }
 
-/* Mobile Toggle Button */
 /* Mobile Toggle Button */
 .mobileToggle {
   display: none;
@@ -73,12 +73,12 @@
   top: 1rem;
   left: 1rem;
   z-index: 101;
-  background: white;
-  border: 1px solid #e1e4e8;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.3);
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -90,12 +90,11 @@
 .hamburgerLine {
   width: 20px;
   height: 2px;
-  background-color: var(--text-primary);
+  background-color: #cdd9e5;
   transition: all 0.3s ease-in-out;
   border-radius: 2px;
 }
 
-/* Hamburger Animation */
 .mobileToggle.open .hamburgerLine:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -115,7 +114,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 99;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -129,12 +128,12 @@
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
-    background-color: #fff; /* White background for mobile drawer */
+    background-color: #161b22;
   }
 
   .sidebar.open {
     transform: translateX(0);
-    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
   }
 
   .mobileToggle {

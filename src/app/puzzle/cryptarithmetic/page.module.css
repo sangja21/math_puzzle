@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background: var(--surface, #f2f4f6);
+  background: #0f1117;
   padding: 2rem 1rem 4rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -15,7 +15,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--primary, #037dd6);
+  color: var(--primary, #539bf5);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 600;
@@ -27,13 +27,13 @@
 .title {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
   margin: 0 0 0.5rem;
 }
 
 .subtitle {
   font-size: 1rem;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   margin: 0;
 }
 
@@ -49,29 +49,29 @@
 .levelTab {
   padding: 0.6rem 1.4rem;
   border-radius: 999px;
-  border: 2px solid #d0d7de;
-  background: #fff;
-  color: var(--text-secondary, #586069);
+  border: 2px solid rgba(99, 120, 160, 0.25);
+  background: #1c2333;
+  color: #768390;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 .levelTab:hover {
-  border-color: var(--primary, #037dd6);
-  color: var(--primary, #037dd6);
+  border-color: var(--primary, #539bf5);
+  color: var(--primary, #539bf5);
 }
 .levelTabActive {
-  background: var(--primary, #037dd6);
-  border-color: var(--primary, #037dd6);
+  background: var(--primary, #539bf5);
+  border-color: var(--primary, #539bf5);
   color: #fff;
 }
 
 /* ─── Card wrapper ──────────────────────────────────── */
 .card {
-  background: #fff;
+  background: #1c2333;
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
   max-width: 860px;
   margin: 0 auto;
   padding: 2rem;
@@ -85,7 +85,7 @@
 .cardTitle {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
   margin: 0 0 0.5rem;
   font-family: 'Courier New', monospace;
   letter-spacing: 0.05em;
@@ -93,7 +93,7 @@
 
 .cardDesc {
   font-size: 0.9rem;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   margin: 0;
   line-height: 1.6;
 }
@@ -109,26 +109,26 @@
 .puzzleTab {
   padding: 0.4rem 1rem;
   border-radius: 8px;
-  border: 2px solid #d0d7de;
-  background: #f6f8fa;
-  color: var(--text-secondary, #586069);
+  border: 2px solid rgba(99, 120, 160, 0.25);
+  background: rgba(99, 120, 160, 0.08);
+  color: #768390;
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   font-family: 'Courier New', monospace;
 }
-.puzzleTab:hover { border-color: var(--primary, #037dd6); }
+.puzzleTab:hover { border-color: var(--primary, #539bf5); }
 .puzzleTabActive {
-  background: #e8f4fd;
-  border-color: var(--primary, #037dd6);
-  color: var(--primary, #037dd6);
+  background: rgba(83, 155, 245, 0.15);
+  border-color: var(--primary, #539bf5);
+  color: var(--primary, #539bf5);
 }
 
 /* ─── Equation Display ──────────────────────────────── */
 .equationArea {
-  background: #fdf9f0;
-  border: 2px solid #e8dfc4;
+  background: rgba(99, 120, 160, 0.08);
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
   padding: 1.5rem 2rem;
   margin-bottom: 1.5rem;
@@ -148,7 +148,7 @@
 .eqSign {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   width: 2rem;
   text-align: center;
   margin-right: 0.25rem;
@@ -158,7 +158,7 @@
 .eqDivider {
   width: 100%;
   height: 2px;
-  background: #c9b97a;
+  background: rgba(99, 120, 160, 0.4);
   margin: 0.2rem 0;
   border-radius: 1px;
 }
@@ -166,9 +166,9 @@
 .letterCell {
   width: 2.4rem;
   height: 2.8rem;
-  border: 2px solid #d0d7de;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  background: #fff;
+  background: #1c2333;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,44 +179,44 @@
   user-select: none;
 }
 .letterCell:hover {
-  border-color: var(--primary, #037dd6);
-  background: #f0f8ff;
+  border-color: var(--primary, #539bf5);
+  background: rgba(83, 155, 245, 0.08);
 }
 .letterCellSelected {
-  border-color: var(--primary, #037dd6);
-  background: #e8f4fd;
-  box-shadow: 0 0 0 2px rgba(3,125,214,0.25);
+  border-color: var(--primary, #539bf5);
+  background: rgba(83, 155, 245, 0.15);
+  box-shadow: 0 0 0 2px rgba(83, 155, 245, 0.25);
 }
 .letterCellCorrect {
   border-color: #22c55e;
-  background: #f0fdf4;
+  background: rgba(34, 197, 94, 0.1);
 }
 .letterCellWrong {
   border-color: #ef4444;
-  background: #fef2f2;
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .letterLabel {
   font-size: 0.6rem;
   font-weight: 700;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   line-height: 1;
 }
 .letterValue {
   font-size: 1.1rem;
   font-weight: 800;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
   line-height: 1;
 }
 .letterValueEmpty {
-  color: #c0c0c0;
+  color: rgba(99, 120, 160, 0.5);
   font-size: 0.9rem;
 }
 
 /* Level 3 equation layout */
 .level3Area {
-  background: #fdf9f0;
-  border: 2px solid #e8dfc4;
+  background: rgba(99, 120, 160, 0.08);
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
   padding: 1.5rem 2rem;
   margin-bottom: 1.5rem;
@@ -236,7 +236,7 @@
 .multiSignCell {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   width: 2rem;
   text-align: center;
 }
@@ -244,9 +244,9 @@
 .fCell {
   width: 2.4rem;
   height: 2.8rem;
-  border: 2px solid #d0d7de;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  background: #fff;
+  background: #1c2333;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,8 +256,8 @@
   user-select: none;
 }
 .fCell:hover {
-  border-color: var(--primary, #037dd6);
-  background: #f0f8ff;
+  border-color: var(--primary, #539bf5);
+  background: rgba(83, 155, 245, 0.08);
 }
 
 .equalsRow {
@@ -271,7 +271,7 @@
 .equalsSign {
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--text-secondary, #586069);
+  color: #768390;
 }
 
 .repeatSlider {
@@ -285,19 +285,19 @@
 
 .repeatLabel {
   font-size: 0.875rem;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   font-weight: 600;
 }
 
 .repeatSlider input[type='range'] {
-  accent-color: var(--primary, #037dd6);
+  accent-color: var(--primary, #539bf5);
   width: 140px;
 }
 
 .repeatValue {
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--primary, #037dd6);
+  color: var(--primary, #539bf5);
   min-width: 1.5rem;
   text-align: center;
 }
@@ -315,11 +315,11 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 8px;
-  border: 2px solid #d0d7de;
-  background: #f6f8fa;
+  border: 2px solid rgba(99, 120, 160, 0.25);
+  background: rgba(99, 120, 160, 0.08);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
   cursor: pointer;
   transition: all 0.15s;
   display: flex;
@@ -328,17 +328,17 @@
   font-family: 'Courier New', monospace;
 }
 .digitChip:hover {
-  border-color: var(--primary, #037dd6);
-  background: #e8f4fd;
-  color: var(--primary, #037dd6);
+  border-color: var(--primary, #539bf5);
+  background: rgba(83, 155, 245, 0.15);
+  color: var(--primary, #539bf5);
 }
 .digitChipUsed {
-  background: #e5f0fa;
-  border-color: #a8d4f5;
-  color: #6aade4;
+  background: rgba(83, 155, 245, 0.1);
+  border-color: rgba(83, 155, 245, 0.3);
+  color: rgba(83, 155, 245, 0.6);
 }
 .digitChipDuplicate {
-  background: #fef2f2;
+  background: rgba(239, 68, 68, 0.1);
   border-color: #f87171;
   color: #ef4444;
 }
@@ -356,7 +356,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   flex-wrap: wrap;
 }
 
@@ -374,11 +374,11 @@
 .assignBadge {
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
-  background: #f0f8ff;
-  border: 1px solid #a8d4f5;
+  background: rgba(83, 155, 245, 0.1);
+  border: 1px solid rgba(83, 155, 245, 0.3);
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--primary, #037dd6);
+  color: var(--primary, #539bf5);
   font-family: 'Courier New', monospace;
 }
 
@@ -399,21 +399,21 @@
 }
 
 .resultCorrect {
-  background: #f0fdf4;
+  background: rgba(34, 197, 94, 0.1);
   border: 2px solid #22c55e;
-  color: #15803d;
+  color: #4ade80;
 }
 
 .resultWrong {
-  background: #fef2f2;
+  background: rgba(239, 68, 68, 0.1);
   border: 2px solid #ef4444;
-  color: #b91c1c;
+  color: #f87171;
 }
 
 .resultLevel3Discovery {
-  background: linear-gradient(135deg, #fdf9f0, #e8f4fd);
+  background: linear-gradient(135deg, rgba(99, 120, 160, 0.1), rgba(83, 155, 245, 0.1));
   border: 2px solid #fbbf24;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
 }
 
 /* ─── Actions ───────────────────────────────────────── */
@@ -428,7 +428,7 @@
   padding: 0.6rem 1.4rem;
   border-radius: 8px;
   border: none;
-  background: var(--primary, #037dd6);
+  background: var(--primary, #539bf5);
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
@@ -440,27 +440,27 @@
 .btnSecondary {
   padding: 0.6rem 1.4rem;
   border-radius: 8px;
-  border: 2px solid #d0d7de;
-  background: #fff;
-  color: var(--text-secondary, #586069);
+  border: 2px solid rgba(99, 120, 160, 0.25);
+  background: #1c2333;
+  color: #768390;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 .btnSecondary:hover {
-  border-color: var(--primary, #037dd6);
-  color: var(--primary, #037dd6);
+  border-color: var(--primary, #539bf5);
+  color: var(--primary, #539bf5);
 }
 
 /* ─── Hint Box ──────────────────────────────────────── */
 .hintBox {
-  background: #fffbeb;
-  border: 1.5px solid #fde68a;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1.5px solid rgba(251, 191, 36, 0.4);
   border-radius: 10px;
   padding: 0.75rem 1rem;
   font-size: 0.85rem;
-  color: #92400e;
+  color: #fbbf24;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -484,7 +484,7 @@
 .assignLetter {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--text-secondary, #586069);
+  color: #768390;
   font-family: 'Courier New', monospace;
 }
 
@@ -492,21 +492,21 @@
   width: 2rem;
   height: 2rem;
   border-radius: 6px;
-  border: 1.5px solid #d0d7de;
-  background: #f6f8fa;
+  border: 1.5px solid rgba(99, 120, 160, 0.25);
+  background: rgba(99, 120, 160, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
   font-family: 'Courier New', monospace;
 }
 
 .assignDigitFilled {
-  background: #e8f4fd;
-  border-color: #a8d4f5;
-  color: var(--primary, #037dd6);
+  background: rgba(83, 155, 245, 0.1);
+  border-color: rgba(83, 155, 245, 0.3);
+  color: var(--primary, #539bf5);
 }
 
 /* ─── Verification ──────────────────────────────────── */
@@ -518,7 +518,7 @@
   font-family: 'Courier New', monospace;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--foreground, #24292e);
+  color: #cdd9e5;
   flex-wrap: wrap;
 }
 
@@ -527,7 +527,7 @@
 }
 
 .verifyOp {
-  color: var(--text-secondary, #586069);
+  color: #768390;
 }
 
 .verifyResult {
@@ -542,7 +542,7 @@
 .selectedIndicator {
   text-align: center;
   font-size: 0.85rem;
-  color: var(--primary, #037dd6);
+  color: var(--primary, #539bf5);
   font-weight: 600;
   margin-bottom: 0.75rem;
   min-height: 1.2rem;

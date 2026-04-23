@@ -1,0 +1,229 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Pretendard', sans-serif;
+  color: #cdd9e5;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: #cdd9e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #768390;
+}
+
+.mainArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stageCard {
+  background-color: #1c2333;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border: 3px solid transparent;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slideIn 0.5s ease-out;
+}
+
+.stageCard.active {
+  border-color: #3498db;
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+  transform: scale(1.02);
+}
+
+.stageCard.completed {
+  border-color: #2ecc71;
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.stageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.stageTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #cdd9e5;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stageBadge {
+  background-color: #243048;
+  color: #cdd9e5;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.stageStatus {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.numbersBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.numberBadge {
+  background-color: rgba(99, 120, 160, 0.08);
+  color: #cdd9e5;
+  font-size: 1.8rem;
+  font-weight: 800;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  font-family: 'Fira Code', monospace;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.3);
+}
+
+.arrow {
+  color: #768390;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.inputBadge {
+  background-color: #161b22;
+  color: #e74c3c;
+  font-size: 1.8rem;
+  font-weight: 800;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-family: 'Fira Code', monospace;
+  width: 90px;
+  text-align: center;
+  border: 3px solid #3498db;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.inputBadge:focus {
+  border-color: #f39c12;
+  box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+
+.inputBadge:disabled {
+  border-color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #27ae60;
+  cursor: default;
+}
+
+.hintWrapper {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.hintButton {
+  background: none;
+  border: none;
+  color: #e67e22;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hintButton:hover {
+  color: #d35400;
+}
+
+.hintText {
+  margin-top: 0.5rem;
+  background-color: rgba(211, 84, 0, 0.1);
+  color: #d35400;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.checkButton {
+  margin-top: 1.5rem;
+  display: block;
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.checkButton:hover {
+  background-color: #2980b9;
+}
+
+.successScreen {
+  background-color: #1c2333;
+  border: 3px solid #f1c40f;
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(241, 196, 15, 0.2);
+  margin-top: 2rem;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navButton {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: #2ecc71;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.navButton:hover {
+  transform: translateY(-3px);
+  background-color: #27ae60;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}

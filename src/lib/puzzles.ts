@@ -9,6 +9,7 @@ export interface PuzzleCard {
   href: string;
   tag?: string;
   category: PuzzleCategory;
+  lessonGroup?: string; // 수업별 탐구 섹션 분류
 }
 
 export const PUZZLES: PuzzleCard[] = [
@@ -51,6 +52,17 @@ export const PUZZLES: PuzzleCard[] = [
     category: 'principle',
   },
   {
+    id: 'linear_function',
+    title: '1차함수의 원리',
+    emoji: '📈',
+    description: '기울기와 절편을 직접 조작하며 직선의 비밀을 발견하세요!',
+    difficulty: 'easy',
+    href: '/puzzle/linear-function',
+    tag: '1차함수 📊',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
@@ -84,6 +96,26 @@ export const PUZZLES: PuzzleCard[] = [
   },
 
   // --- 수학 퍼즐 (Math Puzzles) ---
+  {
+    id: 'collatz',
+    title: '콜라츠 추측',
+    emoji: '🌀',
+    description: '짝수면 ÷2, 홀수면 ×3+1 — 어떤 수든 결국 1이 된다? 아직 아무도 증명 못 한 미스터리!',
+    difficulty: 'easy',
+    href: '/puzzle/collatz',
+    tag: '미해결 문제 🔥',
+    category: 'puzzle',
+  },
+  {
+    id: 'calendar_magic',
+    title: '달력 마법',
+    emoji: '🗓️',
+    description: '달력에서 3×3 블록을 고르면 합계를 즉시 맞힐 수 있다! 숨겨진 수학 규칙을 찾아보세요.',
+    difficulty: 'easy',
+    href: '/puzzle/calendar-magic',
+    tag: '숨겨진 수학 ✨',
+    category: 'puzzle',
+  },
   {
     id: 'truth_table',
     title: '진리표 논리 퍼즐',
@@ -286,6 +318,16 @@ export const PUZZLES: PuzzleCard[] = [
     difficulty: 'hard',
     href: '/puzzle/base-16',
     tag: '천재들의 암호 💡',
+    category: 'puzzle',
+  },
+  {
+    id: 'easy_sequences',
+    title: '수열 퍼즐',
+    emoji: '🧩',
+    description: '등차, 등비부터 피보나치까지! 다양한 규칙의 기초 수열들을 풀어보세요.',
+    difficulty: 'easy',
+    href: '/puzzle/easy-sequences',
+    tag: '수열 기초 🌱',
     category: 'puzzle',
   },
   {

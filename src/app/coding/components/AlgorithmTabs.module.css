@@ -8,8 +8,8 @@
 .tab {
   padding: 10px 24px;
   border-radius: 9999px;
-  background-color: #f1f5f9;
-  color: #64748b;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -18,13 +18,14 @@
 }
 
 .tab:hover {
-  background-color: #e2e8f0;
+  background-color: rgba(255,255,255,0.1);
+  color: var(--text-primary);
 }
 
 .tab.active {
-  background-color: #e0f2fe;
-  color: #0369a1;
-  border-color: #7dd3fc;
+  background-color: rgba(83, 155, 245, 0.15);
+  color: #539bf5;
+  border-color: rgba(83, 155, 245, 0.4);
 }
 
 /* 반응형 */

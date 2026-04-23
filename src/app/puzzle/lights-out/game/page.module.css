@@ -28,7 +28,7 @@
 .title {
   font-size: 1.8rem;
   font-weight: 800;
-  background: linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #539bf5, #cdd9e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -48,11 +48,12 @@
   align-items: center;
   gap: 0.2rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  background: white;
+  background: #1c2333;
   cursor: pointer;
   transition: all 0.2s;
+  color: #cdd9e5;
 }
 
 .levelBtn:hover:not(:disabled) {
@@ -61,7 +62,7 @@
 
 .levelActive {
   border-color: #037dd6;
-  background: #eff6ff;
+  background: rgba(3, 125, 214, 0.15);
 }
 
 .levelLocked {
@@ -118,9 +119,9 @@
   display: grid;
   gap: 4px;
   padding: 1rem;
-  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  background: linear-gradient(135deg, #1a1f2e, #0f1117);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .cell {
@@ -139,7 +140,7 @@
 }
 
 .cell.off {
-  background: #e2e8f0;
+  background: rgba(99, 120, 160, 0.15);
 }
 
 .cell.affected {
@@ -163,9 +164,9 @@
 
 .resetBtn {
   padding: 0.6rem 1.5rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  background: white;
+  background: #1c2333;
   color: var(--foreground);
   cursor: pointer;
   font-size: 0.9rem;
@@ -181,7 +182,7 @@
 .clearOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,14 +191,15 @@
 }
 
 .clearModal {
-  background: white;
+  background: #1c2333;
   border-radius: 16px;
   padding: 2rem 2.5rem;
   text-align: center;
   max-width: 380px;
   width: 90%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   animation: scaleIn 0.3s ease-out;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .clearEmoji {
@@ -209,6 +211,7 @@
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
+  color: #cdd9e5;
 }
 
 .clearText {
@@ -225,9 +228,9 @@
 
 .retryBtn {
   padding: 0.7rem 1.5rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  background: white;
+  background: #1c2333;
   color: var(--foreground);
   cursor: pointer;
   font-size: 0.9rem;

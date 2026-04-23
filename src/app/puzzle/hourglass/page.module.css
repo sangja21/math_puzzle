@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@
   top: 20px;
   left: 20px;
   padding: 10px 18px;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -28,10 +28,10 @@
 }
 
 .homeButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   border-color: #0ea5e9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* 헤더 */
@@ -51,7 +51,7 @@
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -64,10 +64,10 @@
 
 .puzzleButton {
   padding: 12px 24px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
-  background: #f8fafc;
-  color: #1e293b;
+  background: #1c2333;
+  color: #cdd9e5;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -75,12 +75,12 @@
 }
 
 .puzzleButton:hover {
-  background: white;
+  background: #243048;
   border-color: #0ea5e9;
 }
 
 .puzzleButton.selected {
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border-color: #ffd700;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
@@ -88,14 +88,14 @@
 /* 설명 */
 .description {
   text-align: center;
-  color: #334155;
+  color: #cdd9e5;
   font-size: 1.1rem;
   max-width: 500px;
   line-height: 1.6;
   padding: 16px 24px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 /* 게임 상태 */
@@ -103,9 +103,9 @@
   display: flex;
   gap: 32px;
   padding: 20px 40px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .stat {
@@ -117,7 +117,7 @@
 
 .statLabel {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #768390;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -143,9 +143,9 @@
   display: flex;
   gap: 48px;
   padding: 32px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 24px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 /* 액션 버튼 */
@@ -196,20 +196,20 @@
 }
 
 .resetButton {
-  background: white;
-  color: #1e293b;
-  border: 2px solid #e2e8f0;
+  background: #1c2333;
+  color: #cdd9e5;
+  border: 2px solid rgba(99, 120, 160, 0.25);
 }
 
 .resetButton:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
+  background: #243048;
+  border-color: rgba(99, 120, 160, 0.5);
 }
 
 /* 메시지 */
 .message {
   padding: 16px 32px;
-  background: white;
+  background: #1c2333;
   border-radius: 12px;
   font-size: 1.1rem;
   text-align: center;
@@ -229,13 +229,13 @@
 }
 
 .successMessage {
-  background: #f0fdf4;
+  background: rgba(22, 163, 74, 0.1);
   border: 1px solid #86efac;
   color: #16a34a;
 }
 
 .errorMessage {
-  background: #fef2f2;
+  background: rgba(220, 38, 38, 0.1);
   border: 1px solid #fca5a5;
   color: #dc2626;
 }
@@ -244,9 +244,9 @@
 .help {
   max-width: 500px;
   padding: 24px;
-  background: #f1f5f9;
+  background: #1c2333;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .help h3 {
@@ -259,7 +259,7 @@
   margin: 0;
   padding-left: 24px;
   line-height: 1.8;
-  color: #334155;
+  color: #cdd9e5;
 }
 
 .help ol li {
@@ -269,10 +269,10 @@
 .hint {
   margin-top: 16px;
   padding: 12px 16px;
-  background: #fffbeb;
+  background: rgba(255, 215, 0, 0.08);
   border-radius: 8px;
   border-left: 3px solid #ffd700;
-  color: #334155;
+  color: #cdd9e5;
   font-size: 0.95rem;
 }
 

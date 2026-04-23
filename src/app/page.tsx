@@ -57,15 +57,6 @@ export default function Home() {
               <div className={styles.cardFooter}>바로가기 →</div>
             </Link>
 
-            {/* 퍼즐나라의 앨리스 */}
-            <Link href="/alice" className={styles.categoryCard}>
-              <div className={styles.iconWrapper}>🐇</div>
-              <h3 className={styles.categoryTitle}>퍼즐나라의 앨리스</h3>
-              <p className={styles.categoryDesc}>
-                이상한 나라의 앨리스와 함께하는 신비로운 이야기 퍼즐! (준비 중)
-              </p>
-              <div className={styles.cardFooter}>준비 중...</div>
-            </Link>
 
           </div>
         </section>

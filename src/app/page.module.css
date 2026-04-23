@@ -1,7 +1,6 @@
-/* Dashboard Container */
 .container {
   min-height: 100vh;
-  background-color: var(--surface);
+  background-color: var(--background);
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
@@ -11,8 +10,8 @@
 .hero {
   text-align: left;
   padding: 60px 40px;
-  background: white;
-  border-bottom: 1px solid #eaeaea;
+  background: linear-gradient(135deg, #161b22 0%, #1c2333 100%);
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +34,7 @@
 }
 
 .subtitle {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 24px;
@@ -50,11 +49,12 @@
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .ctaButton:hover {
-  background-color: #0260a4; /* Darker shade of primary */
+  background-color: #3b87e8;
+  transform: translateY(-1px);
 }
 
 /* Main Content */
@@ -78,11 +78,12 @@
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--text-primary);
 }
 
 .viewAll {
@@ -92,125 +93,140 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  opacity: 0.85;
+  transition: opacity 0.15s;
 }
 
 .viewAll:hover {
+  opacity: 1;
   text-decoration: underline;
 }
 
 /* Categories Grid */
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .categoryCard {
-  background: white;
-  padding: 32px;
-  border-radius: 16px;
-  border: 1px solid #e1e4e8;
+  background: var(--card-bg);
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
   height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .categoryCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-  border-color: var(--primary);
+  transform: translateY(-4px);
+  border-color: rgba(83, 155, 245, 0.4);
+  background: var(--card-hover);
 }
 
 .iconWrapper {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 12px;
-  background: var(--surface);
+  background: rgba(83, 155, 245, 0.1);
+  border: 1px solid rgba(83, 155, 245, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  margin-bottom: 18px;
 }
 
 .categoryTitle {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 8px;
+  color: var(--text-primary);
 }
 
 .categoryDesc {
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 18px;
   flex: 1;
 }
 
 .cardFooter {
-  display: flex;
-  align-items: center;
   color: var(--primary);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
-/* Recent Puzzles List - Simplified Card */
+/* Recent Puzzles */
 .recentGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
 }
 
 .miniCard {
   display: flex;
   align-items: center;
-  padding: 16px;
-  background: white;
-  border: 1px solid #e1e4e8;
+  padding: 14px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  transition: all 0.2s;
+  transition: all 0.15s;
+  text-decoration: none;
+  color: inherit;
 }
 
 .miniCard:hover {
-  border-color: var(--primary);
-  background-color: #f8fbff;
+  border-color: rgba(83, 155, 245, 0.4);
+  background: var(--card-hover);
+  transform: translateY(-2px);
 }
 
 .miniEmoji {
-  font-size: 2rem;
-  margin-right: 16px;
+  font-size: 1.8rem;
+  margin-right: 14px;
+  flex-shrink: 0;
 }
 
 .miniContent {
   flex: 1;
+  min-width: 0;
 }
 
 .miniTitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .miniDesc {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
     padding: 40px 24px;
     text-align: center;
   }
-  
+
   .heroContent {
     margin-bottom: 32px;
   }
-  
+
   .ctaButton {
     width: 100%;
     justify-content: center;

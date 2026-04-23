@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 32px 24px 64px;
   display: flex;
   flex-direction: column;
@@ -16,18 +16,18 @@
   left: 32px;
   text-decoration: none;
   font-weight: 600;
-  color: #64748b;
-  background: white;
+  color: #768390;
+  background: #1c2333;
   padding: 10px 16px;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(99, 120, 160, 0.25);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: all 0.2s;
 }
 
 .backButton:hover {
   border-color: #0ea5e9;
-  color: #0284c7;
+  color: #539bf5;
   transform: translateY(-2px);
 }
 
@@ -41,11 +41,11 @@
   font-size: 2.2rem;
   font-weight: 800;
   margin: 0;
-  color: #1e293b;
+  color: #cdd9e5;
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   margin-top: 10px;
   font-size: 1.05rem;
   line-height: 1.6;
@@ -61,25 +61,25 @@
 
 .tab {
   padding: 12px 20px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
-  background: white;
+  background: #1c2333;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #64748b;
+  color: #768390;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .tab:hover {
-  border-color: #93c5fd;
-  color: #2563eb;
+  border-color: #539bf5;
+  color: #539bf5;
 }
 
 .activeTab {
-  border-color: #3b82f6;
-  background: #eff6ff;
-  color: #1d4ed8;
+  border-color: #539bf5;
+  background: rgba(83, 155, 245, 0.1);
+  color: #539bf5;
 }
 
 /* 메인 레이아웃 */
@@ -99,27 +99,27 @@
 
 /* 설명 패널 */
 .explainPanel {
-  background: white;
+  background: #1c2333;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .explainPanel h3 {
   margin: 0 0 16px 0;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 1.3rem;
 }
 
 .explainPanel p {
-  color: #475569;
+  color: #768390;
   line-height: 1.6;
   margin: 0;
 }
 
 .codeBlock {
-  background: #1e293b;
+  background: #161b22;
   color: #f8fafc;
   padding: 16px;
   border-radius: 12px;
@@ -149,7 +149,7 @@
 /* 개념 박스 */
 .conceptBox {
   margin-top: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -162,18 +162,18 @@
 }
 
 .conceptRow + .conceptRow {
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .conceptLabel {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #768390;
   font-weight: 600;
 }
 
 .conceptValue {
   font-weight: 700;
-  color: #1e293b;
+  color: #cdd9e5;
 }
 
 .outputHighlight {
@@ -183,11 +183,11 @@
 
 /* 인터랙티브 영역 */
 .interactiveArea {
-  background: white;
+  background: #1c2333;
   border-radius: 20px;
   padding: 28px 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -203,7 +203,7 @@
 .selectorTitle {
   margin: 0;
   font-size: 1.05rem;
-  color: #334155;
+  color: #cdd9e5;
   text-align: center;
 }
 
@@ -220,24 +220,24 @@
   align-items: center;
   gap: 4px;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 14px;
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   cursor: pointer;
   transition: all 0.2s;
   min-width: 100px;
 }
 
 .fnCard:hover {
-  border-color: #93c5fd;
+  border-color: #539bf5;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 4px 12px rgba(83, 155, 245, 0.15);
 }
 
 .fnCardActive {
-  border-color: #3b82f6;
-  background: #eff6ff;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  border-color: #539bf5;
+  background: rgba(83, 155, 245, 0.1);
+  box-shadow: 0 4px 12px rgba(83, 155, 245, 0.2);
 }
 
 .fnEmoji {
@@ -247,12 +247,12 @@
 .fnName {
   font-weight: 700;
   font-size: 1rem;
-  color: #1e293b;
+  color: #cdd9e5;
 }
 
 .fnDesc {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: #768390;
 }
 
 /* 기계 시각화 */
@@ -279,7 +279,7 @@
 
 .paramLabel {
   font-weight: 700;
-  color: #3b82f6;
+  color: #539bf5;
   font-size: 1rem;
 }
 
@@ -294,20 +294,20 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background: rgba(99, 120, 160, 0.08);
+  border: 2px solid rgba(99, 120, 160, 0.25);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #334155;
+  color: #cdd9e5;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .chip:hover {
   transform: translateY(-3px);
-  border-color: #60a5fa;
-  color: #2563eb;
-  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.12);
+  border-color: #539bf5;
+  color: #539bf5;
+  box-shadow: 0 4px 8px rgba(83, 155, 245, 0.2);
 }
 
 .chipSelected {
@@ -324,8 +324,8 @@
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
-  background: #f1f5f9;
-  border: 2px solid #e2e8f0;
+  background: rgba(99, 120, 160, 0.08);
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 16px;
   width: fit-content;
 }
@@ -334,7 +334,7 @@
 .machineArrowOut {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #64748b;
+  color: #768390;
 }
 
 .gear {
@@ -358,7 +358,7 @@
 
 .runButton {
   padding: 14px 32px;
-  background: #3b82f6;
+  background: #539bf5;
   border: none;
   border-radius: 12px;
   color: white;
@@ -369,9 +369,9 @@
 }
 
 .runButton:hover {
-  background: #2563eb;
+  background: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(83, 155, 245, 0.3);
 }
 
 .runButton:disabled {
@@ -382,7 +382,7 @@
 
 .divider {
   height: 2px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.15);
   width: 100%;
 }
 
@@ -401,7 +401,7 @@
 
 .formLabel {
   font-weight: 600;
-  color: #64748b;
+  color: #768390;
   font-size: 0.9rem;
   min-width: 80px;
 }
@@ -409,18 +409,18 @@
 .formInput {
   flex: 1;
   padding: 10px 14px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
-  color: #1e293b;
-  background: #f8fafc;
+  color: #cdd9e5;
+  background: rgba(99, 120, 160, 0.08);
   outline: none;
   transition: border-color 0.2s;
 }
 
 .formInput:focus {
-  border-color: #3b82f6;
+  border-color: #539bf5;
 }
 
 .opSelector {
@@ -431,12 +431,12 @@
 .opButton {
   width: 44px;
   height: 44px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   font-size: 1.2rem;
   font-weight: 700;
-  color: #64748b;
+  color: #768390;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -448,7 +448,7 @@
 
 .opActive {
   border-color: #f59e0b;
-  background: #fffbeb;
+  background: rgba(245, 158, 11, 0.1);
   color: #d97706;
 }
 
@@ -464,24 +464,24 @@
   align-items: center;
   gap: 12px;
   padding: 16px 24px;
-  background: #f1f5f9;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 14px;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 .buildCall {
-  color: #3b82f6;
+  color: #539bf5;
 }
 
 .buildArrow {
-  color: #94a3b8;
+  color: #768390;
   font-size: 1.3rem;
 }
 
 .buildOutput {
   font-size: 1.3rem;
-  color: #94a3b8;
+  color: #768390;
   min-width: 32px;
   text-align: center;
 }
@@ -498,42 +498,42 @@
 }
 
 .composeExplain {
-  background: white;
+  background: #1c2333;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .composeExplain h3 {
   margin: 0 0 12px 0;
-  color: #1e293b;
+  color: #cdd9e5;
   font-size: 1.3rem;
 }
 
 .composeExplain p {
-  color: #475569;
+  color: #768390;
   line-height: 1.6;
   margin: 0;
 }
 
 .composeBuilder {
-  background: white;
+  background: #1c2333;
   border-radius: 20px;
   padding: 28px 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .composeResult {
-  background: white;
+  background: #1c2333;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 120, 160, 0.2);
   animation: fadeIn 0.3s ease;
 }
 
@@ -549,9 +549,9 @@
   align-items: center;
   gap: 4px;
   padding: 16px;
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 14px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
 }
 
 .pipeStep {
@@ -562,7 +562,7 @@
 }
 
 .pipeArrowDown {
-  color: #94a3b8;
+  color: #768390;
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -576,15 +576,15 @@
 }
 
 .pipeInput {
-  background: #dbeafe;
-  color: #1d4ed8;
-  border: 2px solid #93c5fd;
+  background: rgba(83, 155, 245, 0.15);
+  color: #539bf5;
+  border: 2px solid rgba(83, 155, 245, 0.3);
 }
 
 .pipeOutput {
-  background: #d1fae5;
-  color: #065f46;
-  border: 2px solid #6ee7b7;
+  background: rgba(6, 95, 70, 0.2);
+  color: #6ee7b7;
+  border: 2px solid rgba(110, 231, 183, 0.3);
 }
 
 .pipeFunction {
@@ -592,11 +592,11 @@
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  background: white;
-  border: 2px solid #c7d2fe;
+  background: #161b22;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
   font-weight: 600;
-  color: #4338ca;
+  color: #a78bfa;
   font-size: 0.9rem;
 }
 
@@ -613,7 +613,7 @@
 }
 
 .pipeRemove:hover {
-  background: #fee2e2;
+  background: rgba(239, 68, 68, 0.15);
 }
 
 .addFnRow {
@@ -626,25 +626,25 @@
 
 .addLabel {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #768390;
   font-weight: 600;
 }
 
 .addFnButton {
   padding: 8px 14px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid rgba(99, 120, 160, 0.25);
   border-radius: 10px;
-  background: white;
+  background: #1c2333;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #475569;
+  color: #768390;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .addFnButton:hover {
   border-color: #a78bfa;
-  color: #6d28d9;
+  color: #a78bfa;
   transform: translateY(-2px);
 }
 
@@ -657,7 +657,7 @@
 
 /* 합성 추적 */
 .composeTrace {
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 12px;
@@ -671,18 +671,18 @@
 }
 
 .traceRow + .traceRow {
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(99, 120, 160, 0.25);
 }
 
 .traceLabel {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #768390;
   font-family: monospace;
 }
 
 .traceValue {
   font-weight: 700;
-  color: #1e293b;
+  color: #cdd9e5;
 }
 
 .traceFinal {

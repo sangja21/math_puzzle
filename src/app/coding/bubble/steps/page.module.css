@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--background);
+  color: var(--text-primary);
   padding: 28px 24px 48px;
   display: flex;
   flex-direction: column;
@@ -15,9 +15,9 @@
   left: 20px;
   padding: 10px 18px;
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #475569;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -49,7 +49,7 @@
 
 .subtitle {
   margin-top: 10px;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 1.05rem;
 }
 
@@ -65,8 +65,8 @@
 .statBox {
   padding: 12px 18px;
   border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +76,7 @@
 
 .statLabel {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
@@ -84,7 +84,7 @@
 .statValue {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-primary);
   margin-top: 4px;
 }
 
@@ -131,14 +131,14 @@
 }
 
 .secondaryButton {
-  background: #ffffff;
-  color: #475569;
-  border: 1px solid #cbd5e1;
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
 }
 
 .secondaryButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  border-color: #94a3b8;
+  border-color: var(--text-secondary);
   background: #f8fafc;
 }
 
@@ -153,8 +153,8 @@
 .explainBox {
   padding: 18px 20px;
   border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
@@ -162,12 +162,12 @@
   margin: 0 0 8px;
   font-size: 1rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .explainText {
   margin: 0;
-  color: #334155;
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -178,10 +178,10 @@
 }
 
 .listSection {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   max-height: 520px;
   display: flex;
   flex-direction: column;
@@ -193,7 +193,7 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .stepList {
@@ -207,8 +207,8 @@
 .stepItem {
   padding: 10px 12px;
   border-radius: 10px;
-  background: #f1f5f9; /* Slate-100 */
-  color: #64748b;
+  background: rgba(255,255,255,0.05); /* Slate-100 */
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.4;
   border: 1px solid transparent;

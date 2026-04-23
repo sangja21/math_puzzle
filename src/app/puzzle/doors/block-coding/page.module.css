@@ -2,8 +2,8 @@
 
 .container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #0f1117;
+  color: #cdd9e5;
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -24,7 +24,7 @@
 }
 
 .subtitle {
-  color: #64748b;
+  color: #768390;
   font-size: 1rem;
 }
 
@@ -33,10 +33,10 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #1c2333;
+  border: 1px solid rgba(99, 120, 160, 0.25);
   border-radius: 8px;
-  color: #fff;
+  color: #cdd9e5;
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.3s ease;
@@ -44,13 +44,13 @@
 }
 
 .backButton:hover {
-  background: #f1f5f9;
+  background: #243048;
   transform: translateX(-5px);
 }
 
 /* 입력 섹션 */
 .inputSection {
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -63,7 +63,7 @@
 
 .inputLabel {
   font-size: 1.1rem;
-  color: #334155;
+  color: #cdd9e5;
 }
 
 .numberInput {
@@ -72,8 +72,8 @@
   font-size: 1.2rem;
   border: 2px solid #86efac;
   border-radius: 8px;
-  background: #f0fdf4;
-  color: #fff;
+  background: #161b22;
+  color: #cdd9e5;
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -114,17 +114,17 @@
 }
 
 .blockSection {
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
   padding: 1.5rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(99, 120, 160, 0.2);
 }
 
 .sectionTitle {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #334155;
+  color: #cdd9e5;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -204,7 +204,7 @@
 .nestedBlocks {
   margin-left: 1.5rem;
   padding-left: 1rem;
-  border-left: 4px solid #e2e8f0;
+  border-left: 4px solid rgba(99, 120, 160, 0.25);
 }
 
 /* 입력 필드 스타일 (블록 내부) */
@@ -248,8 +248,8 @@
 /* 결과 섹션 */
 .resultSection {
   margin-top: 2rem;
-  background: #f0fdf4;
-  border: 1px solid #86efac;
+  background: rgba(22, 163, 74, 0.1);
+  border: 1px solid rgba(134, 239, 172, 0.3);
   border-radius: 16px;
   padding: 1.5rem;
 }
@@ -278,7 +278,7 @@
 }
 
 .resultLabel {
-  color: #64748b;
+  color: #768390;
   font-size: 0.95rem;
 }
 
@@ -314,6 +314,7 @@
   font-size: 0.95rem;
   animation: popIn 0.3s ease backwards;
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 @keyframes popIn {
@@ -341,7 +342,7 @@
 /* 설명 박스 */
 .explanationBox {
   margin-top: 2rem;
-  background: #f8fafc;
+  background: rgba(99, 120, 160, 0.08);
   border-radius: 16px;
   padding: 1.5rem;
   border-left: 4px solid #ffcd56;
@@ -355,13 +356,13 @@
 }
 
 .explanationText {
-  color: #64748b;
+  color: #768390;
   line-height: 1.7;
   font-size: 0.95rem;
 }
 
 .explanationText strong {
-  color: #334155;
+  color: #cdd9e5;
 }
 
 /* 실행 애니메이션 */
