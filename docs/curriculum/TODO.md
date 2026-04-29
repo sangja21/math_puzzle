@@ -15,7 +15,7 @@ README의 진도표가 *상태 요약* 이라면, 본 문서는 *손에 잡히�
 - [x] `CoordPlane` 컴포넌트 분리: `src/app/puzzle/linear-function/page.tsx` 의 SVG 좌표평면을 `src/components/CoordPlane.tsx`로 추출 — 2026-04-29
 - [x] `linear-function`을 새 `CoordPlane` 사용하도록 마이그레이션 (타입체크 통과, dead code 제거) — 2026-04-29
 - [x] `CoordPlane` 옵션 정리: `curves`(샘플 폴리라인) · `points` · `xRange/yRange` · `gridTicks` · `width/height` 입력 + `sampleLine`/`sampleFunction` 헬퍼 — 2026-04-29
-- [ ] `StoryHeader` 컴포넌트 신설: 책 챕터 인용 카드 표준 — 제목/스토리/핵심 수학 3슬롯
+- [x] `StoryHeader` 컴포넌트 신설: 책 챕터 인용 카드 표준 — emoji/title/subtitle/story/coreMath 슬롯 + 768·480 반응형 — 2026-04-29
 - [ ] 적분/도함수 시각화 공통 헬퍼: `src/lib/puzzles/calculus.ts` (수치미분, 사다리꼴 적분, 접선 기울기) — 단원 8·9 진입 시 신설
 
 ## 1. 단원별 진행
@@ -141,4 +141,5 @@ README의 진도표가 *상태 요약* 이라면, 본 문서는 *손에 잡히�
 |------|------|------|
 | 2026-04-29 | 커리큘럼 기획서 하네스 10개 추가 | `7ad6fb1` |
 | 2026-04-29 | TODO 문서 추가 | `52796f2` |
-| 2026-04-29 | CoordPlane 공유 컴포넌트 추출 + linear-function 마이그레이션 | (이번 커밋) |
+| 2026-04-29 | CoordPlane 공유 컴포넌트 추출 + linear-function 마이그레이션 | `351882f` |
+| 2026-04-29 | StoryHeader 공유 컴포넌트 신설 | (이번 커밋) |
