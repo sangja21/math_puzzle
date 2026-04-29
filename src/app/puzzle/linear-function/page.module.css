@@ -115,13 +115,6 @@
   align-items: center;
   gap: 8px;
 }
-.svgPlane {
-  display: block;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 380px;
-}
 .legend {
   display: flex;
   gap: 16px;

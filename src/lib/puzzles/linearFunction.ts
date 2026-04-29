@@ -27,31 +27,6 @@ export function generateGameTarget(): { a: number; b: number } {
   return { a, b };
 }
 
-// 수학 좌표 → SVG 픽셀 (범위: x,y ∈ [-10,10], SVG 400×400)
-export function toSvgX(x: number, svgW = 400): number {
-  return ((x + 10) / 20) * svgW;
-}
-export function toSvgY(y: number, svgH = 400): number {
-  return ((10 - y) / 20) * svgH;
-}
-
-// 직선의 SVG 양 끝점 (x=-10 ~ x=10 범위, y를 -12~12 클램프)
-export function getLineSvgPoints(
-  a: number,
-  b: number,
-  svgW = 400,
-  svgH = 400,
-): { x1: number; y1: number; x2: number; y2: number } {
-  const yLeft = Math.max(-12, Math.min(12, a * -10 + b));
-  const yRight = Math.max(-12, Math.min(12, a * 10 + b));
-  return {
-    x1: toSvgX(-10, svgW),
-    y1: toSvgY(yLeft, svgH),
-    x2: toSvgX(10, svgW),
-    y2: toSvgY(yRight, svgH),
-  };
-}
-
 export const OBSERVATION_POINTS = [
   'a(기울기) > 0 이면 오른쪽으로 올라가는 직선이에요.',
   'a(기울기) < 0 이면 오른쪽으로 내려가는 직선이에요.',

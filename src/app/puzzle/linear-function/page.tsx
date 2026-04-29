@@ -1,116 +1,30 @@
 'use client';
 
-import React, { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import {
   generateQuizQuestion,
   generateGameTarget,
-  getLineSvgPoints,
-  toSvgX,
-  toSvgY,
   formatEquation,
   OBSERVATION_POINTS,
   CODING_TABLE_X_VALUES,
   QuizQuestion,
 } from '@/lib/puzzles/linearFunction';
+import { CoordPlane, sampleLine, type Curve } from '@/components/CoordPlane';
 import styles from './page.module.css';
 
 type Tab = 'explorer' | 'quiz' | 'coding';
 type QuizPhase = 'slope' | 'intercept' | 'done';
 
-const SVG_W = 380;
-const SVG_H = 380;
-const GRID_TICKS = [-8, -6, -4, -2, 2, 4, 6, 8];
+type LineSpec = { a: number; b: number; color: string; dashed?: boolean; width?: number };
 
-// ─── 공통: 좌표평면 SVG ──────────────────────────────────────────
-function CoordPlane({
-  lines,
-  points = [],
-}: {
-  lines: { a: number; b: number; color: string; dashed?: boolean; width?: number }[];
-  points?: { x: number; y: number; color: string; label?: string }[];
-}) {
-  return (
-    <svg
-      width={SVG_W}
-      height={SVG_H}
-      viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-      className={styles.svgPlane}
-    >
-      {/* 격자 */}
-      {GRID_TICKS.map((t) => (
-        <React.Fragment key={t}>
-          <line
-            x1={toSvgX(t, SVG_W)} y1={0}
-            x2={toSvgX(t, SVG_W)} y2={SVG_H}
-            stroke="rgba(255,255,255,0.08)" strokeWidth={1}
-          />
-          <line
-            x1={0} y1={toSvgY(t, SVG_H)}
-            x2={SVG_W} y2={toSvgY(t, SVG_H)}
-            stroke="rgba(255,255,255,0.08)" strokeWidth={1}
-          />
-          <text
-            x={toSvgX(t, SVG_W) + 3}
-            y={toSvgY(0, SVG_H) - 4}
-            fill="rgba(255,255,255,0.35)"
-            fontSize={9}
-          >{t}</text>
-          <text
-            x={toSvgX(0, SVG_W) + 4}
-            y={toSvgY(t, SVG_H) + 3}
-            fill="rgba(255,255,255,0.35)"
-            fontSize={9}
-          >{t}</text>
-        </React.Fragment>
-      ))}
-
-      {/* x축, y축 */}
-      <line x1={0} y1={toSvgY(0, SVG_H)} x2={SVG_W} y2={toSvgY(0, SVG_H)} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} />
-      <line x1={toSvgX(0, SVG_W)} y1={0} x2={toSvgX(0, SVG_W)} y2={SVG_H} stroke="rgba(255,255,255,0.5)" strokeWidth={1.5} />
-      <text x={SVG_W - 12} y={toSvgY(0, SVG_H) - 6} fill="rgba(255,255,255,0.6)" fontSize={12} fontWeight="bold">x</text>
-      <text x={toSvgX(0, SVG_W) + 6} y={14} fill="rgba(255,255,255,0.6)" fontSize={12} fontWeight="bold">y</text>
-
-      {/* 직선들 */}
-      {lines.map((line, i) => {
-        const pts = getLineSvgPoints(line.a, line.b, SVG_W, SVG_H);
-        return (
-          <line
-            key={i}
-            x1={pts.x1} y1={pts.y1}
-            x2={pts.x2} y2={pts.y2}
-            stroke={line.color}
-            strokeWidth={line.width ?? 2.5}
-            strokeDasharray={line.dashed ? '8 5' : undefined}
-            strokeLinecap="round"
-          />
-        );
-      })}
-
-      {/* 점들 */}
-      {points.map((p, i) => (
-        <React.Fragment key={i}>
-          <circle
-            cx={toSvgX(p.x, SVG_W)}
-            cy={toSvgY(p.y, SVG_H)}
-            r={6}
-            fill={p.color}
-            stroke="white"
-            strokeWidth={2}
-          />
-          {p.label && (
-            <text
-              x={toSvgX(p.x, SVG_W) + 9}
-              y={toSvgY(p.y, SVG_H) - 6}
-              fill={p.color}
-              fontSize={12}
-              fontWeight="bold"
-            >{p.label}</text>
-          )}
-        </React.Fragment>
-      ))}
-    </svg>
-  );
+function linesToCurves(lines: LineSpec[]): Curve[] {
+  return lines.map((l) => ({
+    samples: sampleLine(l.a, l.b),
+    color: l.color,
+    dashed: l.dashed,
+    width: l.width,
+  }));
 }
 
 // ─── 탭 1: 직선 탐험기 ───────────────────────────────────────────
@@ -150,7 +64,7 @@ function ExplorerTab() {
       <div className={styles.twoCol}>
         {/* 그래프 */}
         <div className={styles.graphBox}>
-          <CoordPlane lines={lines} />
+          <CoordPlane curves={linesToCurves(lines)} />
           {isGameMode && (
             <div className={styles.legend}>
               <span><span className={styles.dot} style={{ background: '#60a5fa' }} /> 내 직선</span>
@@ -327,7 +241,7 @@ function QuizTab() {
       <div className={styles.twoCol}>
         {/* 그래프 */}
         <div className={styles.graphBox}>
-          <CoordPlane lines={lines} points={points} />
+          <CoordPlane curves={linesToCurves(lines)} points={points} />
         </div>
 
         {/* 퀴즈 패널 */}
@@ -489,7 +403,7 @@ function CodingTab() {
         {/* 하단: 표 + 그래프 */}
         <div className={styles.twoCol}>
           <div className={styles.graphBox}>
-            <CoordPlane lines={lines} />
+            <CoordPlane curves={linesToCurves(lines)} />
           </div>
 
           <div className={styles.tableBox}>
