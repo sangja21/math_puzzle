@@ -5,12 +5,12 @@ import { StoryHeader } from '@/components/StoryHeader';
 import { CoordPlane, sampleFunction, type Curve } from '@/components/CoordPlane';
 import {
   evaluateQuadratic,
-  vertex as computeVertex,
   roots as computeRoots,
   formatQuadratic,
   BASIC_TABLE_X,
   ROOT_EXAMPLES,
 } from '@/lib/puzzles/quadraticFunction';
+import { CannonTab } from './CannonTab';
 import styles from './page.module.css';
 
 type Tab = 'principle' | 'cannon';
@@ -758,27 +758,6 @@ function CallToCannon({ onClick }: { onClick: () => void }) {
         🎯 포탄쏘기 시작
       </button>
     </section>
-  );
-}
-
-// ════════════════════════════════════════════════════════════════
-// 포탄쏘기 게임 탭 (다음 단계에서 구현)
-// ════════════════════════════════════════════════════════════════
-
-function CannonTab() {
-  return (
-    <div className={styles.cannonTab}>
-      <div className={styles.placeholder}>
-        <span className={styles.placeholderEmoji}>🚧</span>
-        <h2>포탄쏘기 게임 — 준비 중</h2>
-        <p>
-          기획문서{' '}
-          <code>docs/curriculum/01-quadratic-function.md</code> 의 *후보 1
-          포탄 표적 맞히기* 컨셉으로 구현 예정입니다. 지금은 원리 탭에서
-          포물선의 비밀을 먼저 익혀보세요.
-        </p>
-      </div>
-    </div>
   );
 }
 
