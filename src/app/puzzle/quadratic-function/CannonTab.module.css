@@ -370,6 +370,65 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* ── DuelMode 체력바 ───────────────────── */
+.hpRow {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+.hpBox {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+.hpBoxRight {
+  text-align: right;
+}
+.hpHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+}
+.hpLabel {
+  color: rgba(248, 250, 252, 0.85);
+  font-weight: 600;
+}
+.hpValue {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+}
+.hpTrack {
+  height: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.hpFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.35s ease, background 0.2s ease;
+}
+.hpBoxRight .hpTrack {
+  transform: scaleX(-1); /* 우측 정렬: 오른쪽에서 줄어듦 */
+}
+.duelStatsRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: -8px 0 18px;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.6);
+}
+
 /* ── DuelMode 전용 상태 메시지 ────────── */
 .statusEnemy {
   color: #f87171;

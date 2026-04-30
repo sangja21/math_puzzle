@@ -138,11 +138,14 @@ export const SPEED_STEP = 0.5;
 export const SPEED_DEFAULT = 15;
 
 // ════════════════════════════════════════════════════════════
-// 대결 모드 (Duel)
+// 대결 모드 (Duel) — 체력제, 라운드 제한 없음
 // ════════════════════════════════════════════════════════════
 
 export const ENEMY_X = 30;
-export const DUEL_ROUNDS = 5;
+export const MAX_HP = 100;
+export const HIT_DAMAGE = 25;
+// 적이 거의 정확해지는 발사 횟수 (이 이후엔 노이즈 0)
+export const ENEMY_PRECISION_AT = 4;
 
 // 사용자 / 적 대포 bbox (포탄 명중 검사용)
 export const USER_BBOX: Rect = { x: -0.7, y: 0, w: 1.4, h: 1.2 };
@@ -158,11 +161,11 @@ export interface EnemyShot {
   speed: number;
 }
 
-// 적이 라운드별로 노이즈 섞어서 발사 — 라운드가 늘수록 정확해짐
-export function computeEnemyShot(round: number): EnemyShot {
+// 적이 발사 — 누적 발사 횟수가 늘수록 정확해짐 (shotIndex 0-based)
+export function computeEnemyShot(shotIndex: number): EnemyShot {
   const baseAngle = 45;
   const baseSpeed = Math.sqrt(ENEMY_X * G); // ≈ 17.15
-  const noiseScale = Math.max(0, 1 - (round - 1) / (DUEL_ROUNDS - 1));
+  const noiseScale = Math.max(0, 1 - shotIndex / ENEMY_PRECISION_AT);
   const angleNoise = (Math.random() - 0.5) * 2 * 20 * noiseScale;
   const speedNoise = (Math.random() - 0.5) * 2 * 5 * noiseScale;
   const a = Math.max(ANGLE_MIN, Math.min(ANGLE_MAX, baseAngle + angleNoise));

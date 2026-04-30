@@ -21,7 +21,9 @@ import {
   ENEMY_X,
   USER_BBOX,
   ENEMY_BBOX,
-  DUEL_ROUNDS,
+  MAX_HP,
+  HIT_DAMAGE,
+  ENEMY_PRECISION_AT,
   trajectoryAt,
   trajectorySamples,
   enemyTrajectoryAt,
@@ -36,12 +38,13 @@ import styles from './CannonTab.module.css';
 type DuelPhase =
   | { kind: 'aiming' }
   | { kind: 'user-flying' }
-  | { kind: 'user-hit' }
+  | { kind: 'user-hit' } // 사용자 포탄 명중 (적 HP 깎임)
+  | { kind: 'user-miss' } // 사용자 미스
   | { kind: 'enemy-pause'; shot: EnemyShot }
   | { kind: 'enemy-flying'; shot: EnemyShot }
-  | { kind: 'enemy-hit' }
-  | { kind: 'round-miss' }
-  | { kind: 'final'; outcome: 'win' | 'lose' | 'draw' };
+  | { kind: 'enemy-hit' } // 적 포탄 명중 (사용자 HP 깎임)
+  | { kind: 'enemy-miss' }
+  | { kind: 'final'; outcome: 'win' | 'lose' };
 
 const VIEW_X = -2;
 const VIEW_W = 38;
@@ -57,7 +60,10 @@ function sy(y: number): number {
 export function DuelMode({ onBack }: { onBack: () => void }) {
   const [angle, setAngle] = useState<number>(ANGLE_DEFAULT);
   const [speed, setSpeed] = useState<number>(SPEED_DEFAULT);
-  const [round, setRound] = useState<number>(1);
+  const [userHP, setUserHP] = useState<number>(MAX_HP);
+  const [enemyHP, setEnemyHP] = useState<number>(MAX_HP);
+  const [enemyShotIndex, setEnemyShotIndex] = useState<number>(0);
+  const [userShotCount, setUserShotCount] = useState<number>(0);
   const [phase, setPhase] = useState<DuelPhase>({ kind: 'aiming' });
 
   // 사용자 / 적 발사 진행 시간
@@ -77,7 +83,7 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
     [angle, speed],
   );
 
-  // 사용자 발사 트레일 (user-flying 상태에서만)
+  // 사용자 발사 트레일
   const userPath = useMemo(() => {
     if (phase.kind !== 'user-flying') return [];
     return trajectorySamples(angle, speed, {
@@ -92,7 +98,7 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
     return trajectoryAt(angle, speed, userT);
   }, [phase.kind, angle, speed, userT]);
 
-  // 적 발사 트레일 (enemy-flying 상태에서만)
+  // 적 발사 트레일
   const enemyPath = useMemo(() => {
     if (phase.kind !== 'enemy-flying') return [];
     return enemyTrajectorySamples(phase.shot.angleDeg, phase.shot.speed, {
@@ -126,21 +132,21 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
 
       const p = trajectoryAt(angle, speed, elapsed);
 
-      // 적 명중 — 사용자 승리 (즉시)
+      // 적 명중 — 데미지 적용
       if (pointInRect(p, ENEMY_BBOX)) {
+        setEnemyHP((hp) => Math.max(0, hp - HIT_DAMAGE));
         setPhase({ kind: 'user-hit' });
         confetti({
-          particleCount: 100,
-          spread: 80,
+          particleCount: 60,
+          spread: 60,
           origin: { y: 0.5 },
         });
         return;
       }
 
-      // 지면 닿음 또는 시간 초과 — 미스, 적 차례
+      // 지면 또는 시간 초과 — 미스
       if (p.y < 0 || elapsed > 6) {
-        const shot = computeEnemyShot(round);
-        setPhase({ kind: 'enemy-pause', shot });
+        setPhase({ kind: 'user-miss' });
         return;
       }
 
@@ -149,9 +155,43 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
 
     rafRef.current = requestAnimationFrame(tick);
     return cleanupRaf;
-  }, [phase.kind, angle, speed, round, cleanupRaf]);
+  }, [phase.kind, angle, speed, cleanupRaf]);
 
-  // 적 일시정지 (조준 연출) — 0.6s
+  // 사용자 명중 후 1.0s — 적 KO 면 final, 아니면 적 차례
+  useEffect(() => {
+    if (phase.kind !== 'user-hit') return;
+    const id = setTimeout(() => {
+      if (enemyHP <= 0) {
+        // 큰 confetti 한 번 더
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.5 },
+        });
+        setPhase({ kind: 'final', outcome: 'win' });
+      } else {
+        const shot = computeEnemyShot(enemyShotIndex);
+        setEnemyShotIndex((i) => i + 1);
+        setEnemyT(0);
+        setPhase({ kind: 'enemy-pause', shot });
+      }
+    }, 1000);
+    return () => clearTimeout(id);
+  }, [phase.kind, enemyHP, enemyShotIndex]);
+
+  // 사용자 미스 후 0.6s — 적 차례
+  useEffect(() => {
+    if (phase.kind !== 'user-miss') return;
+    const id = setTimeout(() => {
+      const shot = computeEnemyShot(enemyShotIndex);
+      setEnemyShotIndex((i) => i + 1);
+      setEnemyT(0);
+      setPhase({ kind: 'enemy-pause', shot });
+    }, 600);
+    return () => clearTimeout(id);
+  }, [phase.kind, enemyShotIndex]);
+
+  // 적 일시정지 (조준) — 0.6s
   useEffect(() => {
     if (phase.kind !== 'enemy-pause') return;
     const id = setTimeout(() => {
@@ -174,15 +214,16 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
 
       const p = enemyTrajectoryAt(shot.angleDeg, shot.speed, elapsed);
 
-      // 사용자 명중 — 적 승리
+      // 사용자 명중 — 데미지 적용
       if (pointInRect(p, USER_BBOX)) {
+        setUserHP((hp) => Math.max(0, hp - HIT_DAMAGE));
         setPhase({ kind: 'enemy-hit' });
         return;
       }
 
-      // 지면 닿음 또는 시간 초과 — 미스
+      // 지면 또는 시간 초과 — 미스
       if (p.y < 0 || elapsed > 6) {
-        setPhase({ kind: 'round-miss' });
+        setPhase({ kind: 'enemy-miss' });
         return;
       }
 
@@ -193,49 +234,43 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
     return cleanupRaf;
   }, [phase, cleanupRaf]);
 
-  // user-hit: 1.5s 후 final win
-  useEffect(() => {
-    if (phase.kind !== 'user-hit') return;
-    const id = setTimeout(() => {
-      setPhase({ kind: 'final', outcome: 'win' });
-    }, 1500);
-    return () => clearTimeout(id);
-  }, [phase.kind]);
-
-  // enemy-hit: 1.5s 후 final lose
+  // 적 명중 후 1.0s — 사용자 KO 면 final, 아니면 사용자 차례
   useEffect(() => {
     if (phase.kind !== 'enemy-hit') return;
     const id = setTimeout(() => {
-      setPhase({ kind: 'final', outcome: 'lose' });
-    }, 1500);
-    return () => clearTimeout(id);
-  }, [phase.kind]);
-
-  // round-miss: 1s 후 다음 라운드 또는 draw
-  useEffect(() => {
-    if (phase.kind !== 'round-miss') return;
-    const id = setTimeout(() => {
-      setUserT(0);
-      setEnemyT(0);
-      if (round + 1 > DUEL_ROUNDS) {
-        setPhase({ kind: 'final', outcome: 'draw' });
+      if (userHP <= 0) {
+        setPhase({ kind: 'final', outcome: 'lose' });
       } else {
-        setRound((r) => r + 1);
+        setUserT(0);
         setPhase({ kind: 'aiming' });
       }
     }, 1000);
     return () => clearTimeout(id);
-  }, [phase.kind, round]);
+  }, [phase.kind, userHP]);
+
+  // 적 미스 후 0.6s — 사용자 차례
+  useEffect(() => {
+    if (phase.kind !== 'enemy-miss') return;
+    const id = setTimeout(() => {
+      setUserT(0);
+      setPhase({ kind: 'aiming' });
+    }, 600);
+    return () => clearTimeout(id);
+  }, [phase.kind]);
 
   const onFire = () => {
     if (phase.kind !== 'aiming') return;
     setUserT(0);
+    setUserShotCount((n) => n + 1);
     setPhase({ kind: 'user-flying' });
   };
 
   const onRestart = () => {
     cleanupRaf();
-    setRound(1);
+    setUserHP(MAX_HP);
+    setEnemyHP(MAX_HP);
+    setEnemyShotIndex(0);
+    setUserShotCount(0);
     setUserT(0);
     setEnemyT(0);
     setAngle(ANGLE_DEFAULT);
@@ -248,34 +283,23 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
       <div className={styles.cannonTab}>
         <div
           className={`${styles.duelFinal} ${
-            phase.outcome === 'win'
-              ? styles.duelFinalWin
-              : phase.outcome === 'lose'
-                ? styles.duelFinalLose
-                : styles.duelFinalDraw
+            phase.outcome === 'win' ? styles.duelFinalWin : styles.duelFinalLose
           }`}
         >
           <span className={styles.duelFinalEmoji}>
-            {phase.outcome === 'win'
-              ? '🏆'
-              : phase.outcome === 'lose'
-                ? '💥'
-                : '🤝'}
+            {phase.outcome === 'win' ? '🏆' : '💥'}
           </span>
-          <h2>
-            {phase.outcome === 'win'
-              ? '승리!'
-              : phase.outcome === 'lose'
-                ? '패배...'
-                : '무승부'}
-          </h2>
+          <h2>{phase.outcome === 'win' ? '승리!' : '패배...'}</h2>
           <p>
             {phase.outcome === 'win'
-              ? `${round} 라운드 만에 적을 격파했어요. 빠르고 정확한 조준이었습니다.`
-              : phase.outcome === 'lose'
-                ? `${round} 라운드에서 적의 포탄에 맞았어요. 다시 도전!`
-                : '5 라운드 동안 결판이 나지 않았어요. 한 번 더?'}
+              ? `사용자 발사 ${userShotCount}회 만에 적의 체력을 0으로 만들었어요. 빠르고 정확한 조준이었습니다.`
+              : `적의 체력을 다 깎기 전에 당신의 체력이 먼저 0이 됐어요. 다시 도전!`}
           </p>
+          <div className={styles.duelStatsRow}>
+            <span>적 발사 횟수: {enemyShotIndex}</span>
+            <span>·</span>
+            <span>사용자 발사 횟수: {userShotCount}</span>
+          </div>
           <div className={styles.duelFinalActions}>
             <button className={styles.restartBtn} onClick={onRestart}>
               🔄 다시 도전
@@ -302,27 +326,40 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
       </button>
     );
   } else if (phase.kind === 'user-flying') {
-    statusNode = <div className={styles.statusFlying}>🚀 사용자 포탄 비행 중...</div>;
+    statusNode = (
+      <div className={styles.statusFlying}>🚀 사용자 포탄 비행 중...</div>
+    );
+  } else if (phase.kind === 'user-hit') {
+    statusNode = (
+      <div className={styles.statusHit}>
+        🎯 명중! 적 체력 −{HIT_DAMAGE}
+      </div>
+    );
+  } else if (phase.kind === 'user-miss') {
+    statusNode = <div className={styles.statusMiss}>빗나감 — 적 차례</div>;
   } else if (phase.kind === 'enemy-pause') {
     statusNode = <div className={styles.statusEnemy}>⚔️ 적이 조준 중...</div>;
   } else if (phase.kind === 'enemy-flying') {
     statusNode = <div className={styles.statusEnemyFire}>💨 적 포탄 발사!</div>;
-  } else if (phase.kind === 'user-hit') {
-    statusNode = <div className={styles.statusHit}>🎯 명중! 적을 맞혔어요!</div>;
   } else if (phase.kind === 'enemy-hit') {
-    statusNode = <div className={styles.statusMiss}>💥 적의 포탄에 맞았어요!</div>;
-  } else if (phase.kind === 'round-miss') {
-    statusNode = <div className={styles.statusRound}>둘 다 빗나감 — 다음 라운드</div>;
+    statusNode = (
+      <div className={styles.statusMiss}>
+        💥 적의 포탄에 맞았어요! 체력 −{HIT_DAMAGE}
+      </div>
+    );
+  } else if (phase.kind === 'enemy-miss') {
+    statusNode = (
+      <div className={styles.statusRound}>적 미스 — 사용자 차례</div>
+    );
   }
 
-  // 적 노이즈 안내 (현재 라운드 정확도)
-  const accuracyPct = Math.round(((round - 1) / (DUEL_ROUNDS - 1)) * 100);
+  // 적 정확도 (다음 발사 기준)
+  const nextEnemyAccuracy = Math.min(
+    100,
+    Math.round((enemyShotIndex / ENEMY_PRECISION_AT) * 100),
+  );
 
-  // 현재 적 발사 정보 (있으면)
-  const showEnemyShot =
-    phase.kind === 'enemy-pause' ||
-    phase.kind === 'enemy-flying' ||
-    phase.kind === 'enemy-hit';
+  // 적의 현재 발사 정보
   const enemyShot =
     phase.kind === 'enemy-pause' || phase.kind === 'enemy-flying'
       ? phase.shot
@@ -330,17 +367,34 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
 
   return (
     <div className={styles.cannonTab}>
-      {/* HUD */}
+      {/* HUD: 체력바 + 발사 횟수 */}
       <div className={styles.hud}>
         <div className={styles.hudLeft}>
           <button className={styles.backBtn} onClick={onBack}>
             ← 모드 선택
           </button>
-          <span className={styles.levelBadge}>
-            ⚔️ 라운드 {round} / {DUEL_ROUNDS}
-          </span>
-          <span className={styles.levelName}>적 정확도 {accuracyPct}%</span>
         </div>
+        <div className={styles.hudRight}>
+          적 정확도 다음턴 <strong>{nextEnemyAccuracy}%</strong>
+        </div>
+      </div>
+
+      <div className={styles.hpRow}>
+        <HpBar
+          label="🤺 사용자"
+          hp={userHP}
+          max={MAX_HP}
+          color="#60a5fa"
+          glowColor="rgba(96, 165, 250, 0.5)"
+        />
+        <HpBar
+          label="⚔️ 적"
+          hp={enemyHP}
+          max={MAX_HP}
+          color="#f87171"
+          glowColor="rgba(248, 113, 113, 0.5)"
+          rightAligned
+        />
       </div>
 
       {/* SVG 씬 */}
@@ -461,12 +515,13 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
           )}
 
           {/* 사용자 대포 */}
-          <UserCannon angleDeg={angle} />
+          <UserCannon angleDeg={angle} hpRatio={userHP / MAX_HP} />
 
           {/* 적 대포 */}
           <EnemyCannon
             angleDeg={enemyShot ? enemyShot.angleDeg : 45}
             x={ENEMY_X}
+            hpRatio={enemyHP / MAX_HP}
           />
         </svg>
       </div>
@@ -499,10 +554,14 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
         </div>
 
         <div className={styles.hint}>
-          💡 적의 거리는 <strong>{ENEMY_X}m</strong>. 라운드가 늘수록 적의 조준이
-          더 정확해져요.
-          {showEnemyShot && enemyShot && (
-            <> · 적 조준: θ={enemyShot.angleDeg.toFixed(1)}°, v={enemyShot.speed.toFixed(1)}m/s</>
+          💡 적의 거리는 <strong>{ENEMY_X}m</strong>. 한 번 명중할 때마다 체력 −
+          {HIT_DAMAGE}. 적은 발사할수록 정확해져요!
+          {enemyShot && (
+            <>
+              {' '}
+              · 적 조준: θ={enemyShot.angleDeg.toFixed(1)}°, v=
+              {enemyShot.speed.toFixed(1)}m/s
+            </>
           )}
         </div>
 
@@ -512,11 +571,59 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
   );
 }
 
+// ─── 체력바 ────────────────────────────────────
+
+function HpBar({
+  label,
+  hp,
+  max,
+  color,
+  glowColor,
+  rightAligned,
+}: {
+  label: string;
+  hp: number;
+  max: number;
+  color: string;
+  glowColor: string;
+  rightAligned?: boolean;
+}) {
+  const ratio = Math.max(0, hp) / max;
+  const pct = Math.round(ratio * 100);
+  const lowHp = ratio <= 0.25;
+  return (
+    <div
+      className={`${styles.hpBox} ${rightAligned ? styles.hpBoxRight : ''}`}
+    >
+      <div className={styles.hpHeader}>
+        <span className={styles.hpLabel}>{label}</span>
+        <span
+          className={styles.hpValue}
+          style={{ color: lowHp ? '#f87171' : color }}
+        >
+          {Math.max(0, hp)} / {max}
+        </span>
+      </div>
+      <div className={styles.hpTrack}>
+        <div
+          className={styles.hpFill}
+          style={{
+            width: `${pct}%`,
+            background: color,
+            boxShadow: `0 0 12px ${glowColor}`,
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 // ─── SVG 컴포넌트 ───────────────────────────────
 
-function UserCannon({ angleDeg }: { angleDeg: number }) {
+function UserCannon({ angleDeg, hpRatio }: { angleDeg: number; hpRatio: number }) {
+  const opacity = 0.4 + 0.6 * hpRatio; // 체력 낮을수록 투명
   return (
-    <g>
+    <g opacity={opacity}>
       <rect x={-0.6} y={sy(0.6)} width={1.2} height={0.6} fill="#475569" />
       <circle cx={-0.4} cy={sy(0)} r={0.25} fill="#1e293b" />
       <circle cx={0.4} cy={sy(0)} r={0.25} fill="#1e293b" />
@@ -536,9 +643,18 @@ function UserCannon({ angleDeg }: { angleDeg: number }) {
   );
 }
 
-function EnemyCannon({ angleDeg, x }: { angleDeg: number; x: number }) {
+function EnemyCannon({
+  angleDeg,
+  x,
+  hpRatio,
+}: {
+  angleDeg: number;
+  x: number;
+  hpRatio: number;
+}) {
+  const opacity = 0.4 + 0.6 * hpRatio;
   return (
-    <g transform={`translate(${x}, 0)`}>
+    <g transform={`translate(${x}, 0)`} opacity={opacity}>
       <rect x={-0.6} y={sy(0.6)} width={1.2} height={0.6} fill="#7f1d1d" />
       <circle cx={-0.4} cy={sy(0)} r={0.25} fill="#1e293b" />
       <circle cx={0.4} cy={sy(0)} r={0.25} fill="#1e293b" />
