@@ -63,6 +63,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'quadratic_function',
+    title: '2차함수의 원리',
+    emoji: '📈',
+    description: '포물선의 비밀을 발견하고 포탄을 쏴서 표적을 맞혀보세요!',
+    difficulty: 'easy',
+    href: '/puzzle/quadratic-function',
+    tag: '2차함수 🎯',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',

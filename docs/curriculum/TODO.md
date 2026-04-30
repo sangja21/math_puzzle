@@ -23,15 +23,16 @@ README의 진도표가 *상태 요약* 이라면, 본 문서는 *손에 잡히�
 각 단원은 순서대로 체크. *선정* 이전 단계는 모두 사용자 결정 의존.
 
 ### 단원 1 — 이차함수 (`quadratic-function`)
-- [ ] 안건 선정 (A/B/C) — `01-quadratic-function.md` 결정 메모에 기록
-- [ ] 선정 안건의 구체 구현 계획서 추가 (페이지 와이어, 상태/이벤트, 데이터 모델)
-- [ ] `src/lib/puzzles/quadraticFunction.ts` (퀴즈 생성, 좌표 변환, 포맷팅)
-- [ ] `src/app/puzzle/quadratic-function/page.tsx` + `page.module.css`
-- [ ] `src/lib/puzzles.ts` 메타 등록 + 정렬 위치 결정
-- [ ] `principles/page.tsx` 항목 추가 (필요 시)
-- [ ] 다크모드 / 768·480 반응형 점검
-- [ ] 시각 검증 (탐험기·퀴즈·코딩 / 또는 안건별 동선)
-- [ ] 커밋 (`feat: 이차함수 ...`)
+- [x] 안건 선정 — 포탄쏘기 게임 (후보 1) — 2026-04-30
+- [x] 선정 안건의 구체 구현 계획서 → `01-quadratic-principle-tab.md` (원리 탭부터)
+- [x] `src/lib/puzzles/quadraticFunction.ts` (evaluate / vertex / roots / format) — 2026-04-30
+- [x] `src/app/puzzle/quadratic-function/page.tsx` + `page.module.css` (원리 탭 6섹션 + 게임 탭 placeholder) — 2026-04-30
+- [x] `src/lib/puzzles.ts` 메타 등록 (`quadratic_function`, `lessonGroup: 함수와 그래프`) — 2026-04-30
+- [ ] `principles/page.tsx` 자동 렌더 확인 (lessonGroup 자동)
+- [x] 다크모드 / 768·480 반응형 (CSS 미디어쿼리 포함)
+- [ ] 시각 검증 (브라우저 — 사용자 확인 필요)
+- [ ] 포탄쏘기 게임 탭 본구현 (별도 계획 + 커밋)
+- [ ] 커밋 — 진행 중
 
 ### 단원 2 — 다항함수 (`polynomial`)
 - [ ] 안건 선정
