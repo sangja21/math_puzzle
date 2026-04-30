@@ -136,3 +136,73 @@ export const SPEED_MIN = 5;
 export const SPEED_MAX = 25;
 export const SPEED_STEP = 0.5;
 export const SPEED_DEFAULT = 15;
+
+// ════════════════════════════════════════════════════════════
+// 대결 모드 (Duel)
+// ════════════════════════════════════════════════════════════
+
+export const ENEMY_X = 30;
+export const DUEL_ROUNDS = 5;
+
+// 사용자 / 적 대포 bbox (포탄 명중 검사용)
+export const USER_BBOX: Rect = { x: -0.7, y: 0, w: 1.4, h: 1.2 };
+export const ENEMY_BBOX: Rect = {
+  x: ENEMY_X - 0.7,
+  y: 0,
+  w: 1.4,
+  h: 1.2,
+};
+
+export interface EnemyShot {
+  angleDeg: number;
+  speed: number;
+}
+
+// 적이 라운드별로 노이즈 섞어서 발사 — 라운드가 늘수록 정확해짐
+export function computeEnemyShot(round: number): EnemyShot {
+  const baseAngle = 45;
+  const baseSpeed = Math.sqrt(ENEMY_X * G); // ≈ 17.15
+  const noiseScale = Math.max(0, 1 - (round - 1) / (DUEL_ROUNDS - 1));
+  const angleNoise = (Math.random() - 0.5) * 2 * 20 * noiseScale;
+  const speedNoise = (Math.random() - 0.5) * 2 * 5 * noiseScale;
+  const a = Math.max(ANGLE_MIN, Math.min(ANGLE_MAX, baseAngle + angleNoise));
+  const v = Math.max(SPEED_MIN, Math.min(SPEED_MAX, baseSpeed + speedNoise));
+  return { angleDeg: a, speed: v };
+}
+
+// 적 포탄: 우측에서 좌측으로 (originX 출발, 좌향 발사)
+export function enemyTrajectoryAt(
+  angleDeg: number,
+  speed: number,
+  t: number,
+  originX: number = ENEMY_X,
+): Vec2 {
+  const rad = (angleDeg * Math.PI) / 180;
+  return {
+    x: originX - speed * Math.cos(rad) * t,
+    y: speed * Math.sin(rad) * t - 0.5 * G * t * t,
+  };
+}
+
+export function enemyTrajectorySamples(
+  angleDeg: number,
+  speed: number,
+  options: {
+    dt?: number;
+    maxT?: number;
+    minY?: number;
+    originX?: number;
+  } = {},
+): Vec2[] {
+  const dt = options.dt ?? 0.04;
+  const maxT = options.maxT ?? 6;
+  const minY = options.minY ?? -0.5;
+  const originX = options.originX ?? ENEMY_X;
+  const samples: Vec2[] = [];
+  for (let t = 0; t <= maxT; t += dt) {
+    const p = enemyTrajectoryAt(angleDeg, speed, t, originX);
+    samples.push(p);
+    if (p.y < minY) break;
+  }
+  return samples;
+}

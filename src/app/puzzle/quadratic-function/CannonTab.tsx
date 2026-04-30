@@ -27,6 +27,7 @@ import {
   type Rect,
   type Level,
 } from '@/lib/puzzles/cannonGame';
+import { DuelMode } from './DuelMode';
 import styles from './CannonTab.module.css';
 
 type Phase =
@@ -53,7 +54,54 @@ function sy(y: number): number {
   return VIEW_Y_MAX + VIEW_Y_MIN - y;
 }
 
+type Mode = 'select' | 'target' | 'duel';
+
 export function CannonTab() {
+  const [mode, setMode] = useState<Mode>('select');
+
+  if (mode === 'target') {
+    return <TargetMode onBack={() => setMode('select')} />;
+  }
+  if (mode === 'duel') {
+    return <DuelMode onBack={() => setMode('select')} />;
+  }
+  return <ModeSelect onPick={setMode} />;
+}
+
+function ModeSelect({
+  onPick,
+}: {
+  onPick: (m: 'target' | 'duel') => void;
+}) {
+  return (
+    <div className={styles.modeSelect}>
+      <h2 className={styles.modeTitle}>도전 모드를 골라주세요</h2>
+      <div className={styles.modeCards}>
+        <button
+          className={styles.modeCard}
+          onClick={() => onPick('target')}
+        >
+          <span className={styles.modeIcon}>🎯</span>
+          <h3>표적 맞히기</h3>
+          <p>4 레벨로 포물선의 기본을 익혀요. 단계별로 어려워집니다.</p>
+          <span className={`${styles.modeBadge} ${styles.modeBadgeBeginner}`}>
+            입문
+          </span>
+        </button>
+        <button className={styles.modeCard} onClick={() => onPick('duel')}>
+          <span className={styles.modeIcon}>⚔️</span>
+          <h3>대결 모드</h3>
+          <p>적 포탄과 1:1 듀얼! 5 라운드 안에 적을 먼저 맞혀야 해요.</p>
+          <span className={`${styles.modeBadge} ${styles.modeBadgeChallenge}`}>
+            도전
+          </span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function TargetMode({ onBack }: { onBack: () => void }) {
   const [angle, setAngle] = useState<number>(ANGLE_DEFAULT);
   const [speed, setSpeed] = useState<number>(SPEED_DEFAULT);
   const [levelIdx, setLevelIdx] = useState<number>(0);
@@ -228,6 +276,9 @@ export function CannonTab() {
       {/* HUD */}
       <div className={styles.hud}>
         <div className={styles.hudLeft}>
+          <button className={styles.backBtn} onClick={onBack}>
+            ← 모드 선택
+          </button>
           <span className={styles.levelBadge}>
             레벨 {level.id} / {LEVELS.length}
           </span>
