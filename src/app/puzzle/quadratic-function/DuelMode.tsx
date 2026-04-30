@@ -4,7 +4,6 @@ import {
   useState,
   useEffect,
   useMemo,
-  useRef,
   useCallback,
 } from 'react';
 import confetti from 'canvas-confetti';
@@ -79,12 +78,6 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
   const [userT, setUserT] = useState<number>(0);
   const [enemyT, setEnemyT] = useState<number>(0);
 
-  // phase ref — tick 콜백에서 최신 phase 확인용 (stale closure 방지)
-  const phaseRef = useRef(phase);
-  useEffect(() => {
-    phaseRef.current = phase;
-  }, [phase]);
-
   // 현재 사용자 포탄 위치 (user-flying 중에만)
   const userBall: Vec2 | null = useMemo(() => {
     if (phase.kind !== 'user-flying') return null;
@@ -107,9 +100,6 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
     const localWalls = walls;
 
     const tick = (now: number) => {
-      // phase 가 이미 다른 상태로 갔다면 즉시 중단
-      if (phaseRef.current.kind !== 'user-flying') return;
-
       const elapsed = (now - startTime) / 1000;
       setUserT(elapsed);
 
@@ -196,8 +186,6 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
     const localWalls = walls;
 
     const tick = (now: number) => {
-      if (phaseRef.current.kind !== 'enemy-flying') return;
-
       const elapsed = (now - startTime) / 1000;
       setEnemyT(elapsed);
 
