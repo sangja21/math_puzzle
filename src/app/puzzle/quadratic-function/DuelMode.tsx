@@ -21,16 +21,12 @@ import {
   ENEMY_X,
   USER_X_MIN,
   USER_X_MAX,
-  ENEMY_X_MIN,
-  ENEMY_X_MAX,
   MOVE_STEP,
   MAX_HP,
   HIT_DAMAGE,
   ENEMY_PRECISION_AT,
   trajectoryAt,
-  trajectorySamples,
   enemyTrajectoryAt,
-  enemyTrajectorySamples,
   computeEnemyShot,
   generateWalls,
   randomEnemyMove,
@@ -82,82 +78,50 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
 
   const [userT, setUserT] = useState<number>(0);
   const [enemyT, setEnemyT] = useState<number>(0);
-  const rafRef = useRef<number | null>(null);
-  const startRef = useRef<number>(0);
 
-  // 미리보기 궤적
-  const previewPath = useMemo(
-    () =>
-      trajectorySamples(angle, speed, {
-        dt: 0.05,
-        maxT: 6,
-        minY: VIEW_Y_MIN,
-        originX: userX,
-      }),
-    [angle, speed, userX],
-  );
+  // phase ref — tick 콜백에서 최신 phase 확인용 (stale closure 방지)
+  const phaseRef = useRef(phase);
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
 
-  // 사용자 발사 트레일
-  const userPath = useMemo(() => {
-    if (phase.kind !== 'user-flying') return [];
-    return trajectorySamples(angle, speed, {
-      dt: 0.04,
-      maxT: userT,
-      minY: VIEW_Y_MIN,
-      originX: userX,
-    });
-  }, [phase.kind, angle, speed, userT, userX]);
-
+  // 현재 사용자 포탄 위치 (user-flying 중에만)
   const userBall: Vec2 | null = useMemo(() => {
     if (phase.kind !== 'user-flying') return null;
     return trajectoryAt(angle, speed, userT, userX);
   }, [phase.kind, angle, speed, userT, userX]);
 
-  // 적 발사 트레일
-  const enemyPath = useMemo(() => {
-    if (phase.kind !== 'enemy-flying') return [];
-    return enemyTrajectorySamples(phase.shot.angleDeg, phase.shot.speed, {
-      dt: 0.04,
-      maxT: enemyT,
-      minY: VIEW_Y_MIN,
-      originX: enemyX,
-    });
-  }, [phase, enemyT, enemyX]);
-
+  // 현재 적 포탄 위치 (enemy-flying 중에만)
   const enemyBall: Vec2 | null = useMemo(() => {
     if (phase.kind !== 'enemy-flying') return null;
     return enemyTrajectoryAt(phase.shot.angleDeg, phase.shot.speed, enemyT, enemyX);
   }, [phase, enemyT, enemyX]);
 
-  const cleanupRaf = useCallback(() => {
-    if (rafRef.current !== null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-  }, []);
-
-  // 사용자 발사 애니메이션
+  // 사용자 발사 애니메이션 (local raf — stale rafRef 충돌 방지)
   useEffect(() => {
     if (phase.kind !== 'user-flying') return;
 
-    startRef.current = performance.now();
+    let raf = 0;
+    const startTime = performance.now();
     const enemyB = enemyBbox(enemyX);
+    const localWalls = walls;
 
     const tick = (now: number) => {
-      const elapsed = (now - startRef.current) / 1000;
+      // phase 가 이미 다른 상태로 갔다면 즉시 중단
+      if (phaseRef.current.kind !== 'user-flying') return;
+
+      const elapsed = (now - startTime) / 1000;
       setUserT(elapsed);
 
       const p = trajectoryAt(angle, speed, elapsed, userX);
 
-      // 벽 충돌 (적 명중보다 먼저 검사)
-      for (const w of walls) {
+      for (const w of localWalls) {
         if (pointInRect(p, w)) {
           setPhase({ kind: 'user-miss' });
           return;
         }
       }
 
-      // 적 명중
       if (pointInRect(p, enemyB)) {
         setEnemyHP((hp) => Math.max(0, hp - HIT_DAMAGE));
         setPhase({ kind: 'user-hit' });
@@ -170,12 +134,12 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
         return;
       }
 
-      rafRef.current = requestAnimationFrame(tick);
+      raf = requestAnimationFrame(tick);
     };
 
-    rafRef.current = requestAnimationFrame(tick);
-    return cleanupRaf;
-  }, [phase.kind, angle, speed, userX, enemyX, walls, cleanupRaf]);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [phase.kind, angle, speed, userX, enemyX, walls]);
 
   // 적 차례로 넘어가는 공통 로직 (사용자 공격 후)
   const transitionToEnemyTurn = useCallback(() => {
@@ -221,22 +185,25 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
     return () => clearTimeout(id);
   }, [phase]);
 
-  // 적 발사 애니메이션
+  // 적 발사 애니메이션 (local raf)
   useEffect(() => {
     if (phase.kind !== 'enemy-flying') return;
 
-    startRef.current = performance.now();
+    let raf = 0;
+    const startTime = performance.now();
     const shot = phase.shot;
     const userB = userBbox(userX);
+    const localWalls = walls;
 
     const tick = (now: number) => {
-      const elapsed = (now - startRef.current) / 1000;
+      if (phaseRef.current.kind !== 'enemy-flying') return;
+
+      const elapsed = (now - startTime) / 1000;
       setEnemyT(elapsed);
 
       const p = enemyTrajectoryAt(shot.angleDeg, shot.speed, elapsed, enemyX);
 
-      // 벽 충돌
-      for (const w of walls) {
+      for (const w of localWalls) {
         if (pointInRect(p, w)) {
           setPhase({ kind: 'enemy-miss' });
           return;
@@ -254,12 +221,12 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
         return;
       }
 
-      rafRef.current = requestAnimationFrame(tick);
+      raf = requestAnimationFrame(tick);
     };
 
-    rafRef.current = requestAnimationFrame(tick);
-    return cleanupRaf;
-  }, [phase, enemyX, userX, walls, cleanupRaf]);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [phase, enemyX, userX, walls]);
 
   // 다음 라운드 시작 (벽 새로 생성 + aiming 진입)
   const startNextRound = useCallback(() => {
@@ -306,7 +273,6 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
   };
 
   const onRestart = () => {
-    cleanupRaf();
     setUserX(0);
     setEnemyX(ENEMY_X);
     setWalls(generateWalls(0, ENEMY_X));
@@ -540,33 +506,6 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
             </g>
           ))}
 
-          {/* 미리보기 궤적 */}
-          {phase.kind === 'aiming' && <PreviewPath path={previewPath} />}
-
-          {/* 사용자 트레일 */}
-          {userPath.length > 0 && (
-            <polyline
-              points={userPath.map((p) => `${p.x},${sy(p.y)}`).join(' ')}
-              fill="none"
-              stroke="#fbbf24"
-              strokeWidth={0.12}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          )}
-
-          {/* 적 트레일 */}
-          {enemyPath.length > 0 && (
-            <polyline
-              points={enemyPath.map((p) => `${p.x},${sy(p.y)}`).join(' ')}
-              fill="none"
-              stroke="#f87171"
-              strokeWidth={0.12}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          )}
-
           {/* 사용자 포탄 */}
           {userBall && userBall.y >= VIEW_Y_MIN && (
             <circle
@@ -784,21 +723,6 @@ function EnemyCannon({
         <circle cx={1.4} cy={0} r={0.18} fill="#1e293b" />
       </g>
     </g>
-  );
-}
-
-function PreviewPath({ path }: { path: Vec2[] }) {
-  if (path.length < 2) return null;
-  const points = path.map((p) => `${p.x},${sy(p.y)}`).join(' ');
-  return (
-    <polyline
-      points={points}
-      fill="none"
-      stroke="rgba(251, 191, 36, 0.5)"
-      strokeWidth={0.08}
-      strokeDasharray="0.3 0.25"
-      strokeLinecap="round"
-    />
   );
 }
 
