@@ -19,10 +19,11 @@ export function trajectoryAt(
   angleDeg: number,
   speed: number,
   t: number,
+  originX: number = 0,
 ): Vec2 {
   const rad = (angleDeg * Math.PI) / 180;
   return {
-    x: speed * Math.cos(rad) * t,
+    x: originX + speed * Math.cos(rad) * t,
     y: speed * Math.sin(rad) * t - 0.5 * G * t * t,
   };
 }
@@ -31,14 +32,20 @@ export function trajectoryAt(
 export function trajectorySamples(
   angleDeg: number,
   speed: number,
-  options: { dt?: number; maxT?: number; minY?: number } = {},
+  options: {
+    dt?: number;
+    maxT?: number;
+    minY?: number;
+    originX?: number;
+  } = {},
 ): Vec2[] {
   const dt = options.dt ?? 0.04;
   const maxT = options.maxT ?? 6;
   const minY = options.minY ?? -0.5;
+  const originX = options.originX ?? 0;
   const samples: Vec2[] = [];
   for (let t = 0; t <= maxT; t += dt) {
-    const p = trajectoryAt(angleDeg, speed, t);
+    const p = trajectoryAt(angleDeg, speed, t, originX);
     samples.push(p);
     if (p.y < minY) break;
   }
@@ -141,36 +148,84 @@ export const SPEED_DEFAULT = 15;
 // 대결 모드 (Duel) — 체력제, 라운드 제한 없음
 // ════════════════════════════════════════════════════════════
 
-export const ENEMY_X = 30;
+export const ENEMY_X = 30; // 적 초기 위치
 export const MAX_HP = 100;
 export const HIT_DAMAGE = 25;
 // 적이 거의 정확해지는 발사 횟수 (이 이후엔 노이즈 0)
 export const ENEMY_PRECISION_AT = 4;
 
-// 사용자 / 적 대포 bbox (포탄 명중 검사용)
-export const USER_BBOX: Rect = { x: -0.7, y: 0, w: 1.4, h: 1.2 };
-export const ENEMY_BBOX: Rect = {
-  x: ENEMY_X - 0.7,
-  y: 0,
-  w: 1.4,
-  h: 1.2,
-};
+// 이동 가능 범위
+export const USER_X_MIN = -2;
+export const USER_X_MAX = 10;
+export const ENEMY_X_MIN = 20;
+export const ENEMY_X_MAX = 33;
+export const MOVE_STEP = 1; // 사용자 한 번 이동 시 1m
+export const ENEMY_MOVE_RANGE = 3; // 적 이동 ±3m 랜덤
+
+// 사용자 / 적 대포 bbox 팩토리 (위치에 따라 동적)
+export function userBbox(userX: number): Rect {
+  return { x: userX - 0.7, y: 0, w: 1.4, h: 1.2 };
+}
+export function enemyBbox(enemyX: number): Rect {
+  return { x: enemyX - 0.7, y: 0, w: 1.4, h: 1.2 };
+}
+
+// 후방 호환 — 옛 USER_BBOX/ENEMY_BBOX 도 유지 (CannonTab 의 TargetMode 가 미사용이지만 import 안전)
+export const USER_BBOX: Rect = userBbox(0);
+export const ENEMY_BBOX: Rect = enemyBbox(ENEMY_X);
 
 export interface EnemyShot {
   angleDeg: number;
   speed: number;
 }
 
-// 적이 발사 — 누적 발사 횟수가 늘수록 정확해짐 (shotIndex 0-based)
-export function computeEnemyShot(shotIndex: number): EnemyShot {
+// 적이 발사 — 누적 발사 횟수가 늘수록 정확해짐 + 거리 기반 속도
+export function computeEnemyShot(
+  shotIndex: number,
+  distance: number = ENEMY_X,
+): EnemyShot {
   const baseAngle = 45;
-  const baseSpeed = Math.sqrt(ENEMY_X * G); // ≈ 17.15
+  const safeDistance = Math.max(5, Math.min(40, distance));
+  const baseSpeed = Math.sqrt(safeDistance * G);
   const noiseScale = Math.max(0, 1 - shotIndex / ENEMY_PRECISION_AT);
   const angleNoise = (Math.random() - 0.5) * 2 * 20 * noiseScale;
   const speedNoise = (Math.random() - 0.5) * 2 * 5 * noiseScale;
   const a = Math.max(ANGLE_MIN, Math.min(ANGLE_MAX, baseAngle + angleNoise));
   const v = Math.max(SPEED_MIN, Math.min(SPEED_MAX, baseSpeed + speedNoise));
   return { angleDeg: a, speed: v };
+}
+
+// 매 라운드 새 벽 1~2개 생성
+export function generateWalls(userX: number, enemyX: number): Rect[] {
+  const minDist = 4;
+  const usableMin = userX + minDist;
+  const usableMax = enemyX - minDist;
+  if (usableMax - usableMin < 2) return [];
+
+  const count = Math.random() < 0.5 ? 1 : 2;
+  const walls: Rect[] = [];
+  if (count === 1) {
+    const wx = usableMin + Math.random() * (usableMax - usableMin);
+    const wh = 2 + Math.random() * 5;
+    walls.push({ x: wx - 0.4, y: 0, w: 0.8, h: wh });
+  } else {
+    const mid = (usableMin + usableMax) / 2;
+    if (mid - usableMin > 1.5) {
+      const w1x = usableMin + Math.random() * (mid - usableMin - 1);
+      walls.push({ x: w1x - 0.4, y: 0, w: 0.8, h: 2 + Math.random() * 5 });
+    }
+    if (usableMax - mid > 1.5) {
+      const w2x = mid + 1 + Math.random() * (usableMax - mid - 1);
+      walls.push({ x: w2x - 0.4, y: 0, w: 0.8, h: 2 + Math.random() * 5 });
+    }
+  }
+  return walls;
+}
+
+// 적 랜덤 이동
+export function randomEnemyMove(currentX: number): number {
+  const delta = (Math.random() - 0.5) * 2 * ENEMY_MOVE_RANGE;
+  return Math.max(ENEMY_X_MIN, Math.min(ENEMY_X_MAX, currentX + delta));
 }
 
 // 적 포탄: 우측에서 좌측으로 (originX 출발, 좌향 발사)

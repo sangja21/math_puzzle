@@ -370,6 +370,58 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* ── DuelMode 이동 컨트롤 ───────────────── */
+.moveRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.moveBtn {
+  padding: 8px 14px;
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 8px;
+  color: #93c5fd;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+.moveBtn:hover:not(:disabled) {
+  background: rgba(96, 165, 250, 0.22);
+  transform: translateY(-1px);
+}
+.moveBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.posLabel {
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.75);
+}
+.posLabel strong {
+  color: #60a5fa;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  margin-left: 4px;
+}
+.posLabelEnemy {
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.75);
+  margin-left: auto;
+}
+.posLabelEnemy strong {
+  color: #f87171;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  margin-left: 4px;
+}
+
 /* ── DuelMode 체력바 ───────────────────── */
 .hpRow {
   display: flex;
