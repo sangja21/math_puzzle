@@ -25,7 +25,9 @@ import {
   HIT_DAMAGE,
   ENEMY_PRECISION_AT,
   trajectoryAt,
+  trajectorySamples,
   enemyTrajectoryAt,
+  enemyTrajectorySamples,
   computeEnemyShot,
   generateWalls,
   randomEnemyMove,
@@ -78,13 +80,35 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
   const [userT, setUserT] = useState<number>(0);
   const [enemyT, setEnemyT] = useState<number>(0);
 
-  // 현재 사용자 포탄 위치 (user-flying 중에만)
+  // 사용자 발사 트레일 (지금까지 지나온 궤적)
+  const userPath = useMemo(() => {
+    if (phase.kind !== 'user-flying') return [];
+    return trajectorySamples(angle, speed, {
+      dt: 0.04,
+      maxT: userT,
+      minY: VIEW_Y_MIN,
+      originX: userX,
+    });
+  }, [phase.kind, angle, speed, userT, userX]);
+
+  // 현재 사용자 포탄 위치
   const userBall: Vec2 | null = useMemo(() => {
     if (phase.kind !== 'user-flying') return null;
     return trajectoryAt(angle, speed, userT, userX);
   }, [phase.kind, angle, speed, userT, userX]);
 
-  // 현재 적 포탄 위치 (enemy-flying 중에만)
+  // 적 발사 트레일
+  const enemyPath = useMemo(() => {
+    if (phase.kind !== 'enemy-flying') return [];
+    return enemyTrajectorySamples(phase.shot.angleDeg, phase.shot.speed, {
+      dt: 0.04,
+      maxT: enemyT,
+      minY: VIEW_Y_MIN,
+      originX: enemyX,
+    });
+  }, [phase, enemyT, enemyX]);
+
+  // 현재 적 포탄 위치
   const enemyBall: Vec2 | null = useMemo(() => {
     if (phase.kind !== 'enemy-flying') return null;
     return enemyTrajectoryAt(phase.shot.angleDeg, phase.shot.speed, enemyT, enemyX);
@@ -494,6 +518,18 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
             </g>
           ))}
 
+          {/* 사용자 트레일 */}
+          {userPath.length > 1 && (
+            <polyline
+              points={userPath.map((p) => `${p.x},${sy(p.y)}`).join(' ')}
+              fill="none"
+              stroke="#fbbf24"
+              strokeWidth={0.12}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+
           {/* 사용자 포탄 */}
           {userBall && userBall.y >= VIEW_Y_MIN && (
             <circle
@@ -503,6 +539,18 @@ export function DuelMode({ onBack }: { onBack: () => void }) {
               fill="#fbbf24"
               stroke="#fde68a"
               strokeWidth={0.06}
+            />
+          )}
+
+          {/* 적 트레일 */}
+          {enemyPath.length > 1 && (
+            <polyline
+              points={enemyPath.map((p) => `${p.x},${sy(p.y)}`).join(' ')}
+              fill="none"
+              stroke="#f87171"
+              strokeWidth={0.12}
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           )}
 
