@@ -74,6 +74,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'polynomial',
+    title: '다항함수의 원리',
+    emoji: '〰️',
+    description: '아르키메데스의 곡선! 차수를 올리며 굽이가 늘어나는 비밀을 직접 만져보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/polynomial',
+    tag: '다항함수 〰️',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
