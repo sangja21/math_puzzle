@@ -62,6 +62,17 @@ const Sidebar = () => {
                         </div>
                     </Link>
 
+                    <a
+                        href="https://github.com/sangja21/scratch-games-collection"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeSidebar}
+                    >
+                        <div className={styles.navLink}>
+                            <span>🐱</span> 스크래치 게임 <span className={styles.externalIcon}>↗</span>
+                        </div>
+                    </a>
+
                 </nav>
 
                 <div className={styles.footer}>
