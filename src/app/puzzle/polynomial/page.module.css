@@ -7,6 +7,44 @@
   margin: 0 auto;
 }
 
+/* ── 탭 ─────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+.tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: 0;
+  color: rgba(248, 250, 252, 0.6);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  letter-spacing: 0.01em;
+}
+.tab:hover {
+  color: rgba(248, 250, 252, 0.95);
+  background: rgba(255, 255, 255, 0.04);
+}
+.tabActive {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(167, 139, 250, 0.18));
+  color: #f1f5f9;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(96, 165, 250, 0.2),
+    inset 0 0 0 1px rgba(96, 165, 250, 0.4);
+}
+.tabActive:hover {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.22), rgba(167, 139, 250, 0.22));
+}
+
 /* ── 섹션 공통 ───────────────────────────── */
 .principleTab {
   display: flex;
@@ -346,6 +384,17 @@
   .slider::-moz-range-thumb {
     width: 26px;
     height: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+  .tab {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 }
 
