@@ -77,7 +77,7 @@ export const PUZZLES: PuzzleCard[] = [
     id: 'polynomial',
     title: '다항함수의 원리',
     emoji: '〰️',
-    description: '아르키메데스의 곡선! 차수를 올리며 굽이가 늘어나는 비밀을 직접 만져보세요.',
+    description: '아르키메데스의 곡선! 차수를 올리며 굽이를 만져보고, 시라쿠사를 지키는 방어전에 도전하세요.',
     difficulty: 'medium',
     href: '/puzzle/polynomial',
     tag: '다항함수 〰️',

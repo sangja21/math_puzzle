@@ -1,0 +1,327 @@
+.tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── 헤더 ─────────────────────────────── */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.headLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.headTitle {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.lvBadge {
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1c1917;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.scoreChip {
+  padding: 6px 14px;
+  background: rgba(248, 113, 113, 0.12);
+  color: #fca5a5;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.story {
+  margin: 0;
+  padding: 12px 16px;
+  background: rgba(167, 139, 250, 0.08);
+  border-left: 3px solid #a78bfa;
+  border-radius: 0 8px 8px 0;
+  color: rgba(248, 250, 252, 0.85);
+  line-height: 1.6;
+}
+
+/* ── 게임 본체 ───────────────────────── */
+.gameRow {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.graphBoxRel {
+  position: relative;
+  flex: 1 1 380px;
+  max-width: 420px;
+  min-width: 0;
+}
+.dragLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  pointer-events: none;
+}
+.dragLayer circle {
+  pointer-events: auto;
+  touch-action: none;
+}
+
+/* ── 컨트롤 패널 ─────────────────────── */
+.controlPanel {
+  flex: 1 1 240px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.degreeBox {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.degreeLabel {
+  font-size: 1rem;
+  color: rgba(248, 250, 252, 0.85);
+}
+.degreeValue {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #60a5fa;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-left: 4px;
+}
+.slider {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #60a5fa;
+  border: 2px solid #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #60a5fa;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+}
+.degreeHint {
+  font-size: 0.82rem;
+  color: rgba(248, 250, 252, 0.55);
+}
+
+/* ── 경고 / 클리어 박스 ──────────────── */
+.warnBox {
+  padding: 12px 14px;
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.32);
+  color: #fdba74;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.warnBox strong {
+  color: #fed7aa;
+}
+.clearBox {
+  padding: 14px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(52, 211, 153, 0.12),
+    rgba(96, 165, 250, 0.12)
+  );
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.clearTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #6ee7b7;
+}
+.clearSubtitle {
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.85);
+}
+.nextBtn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  border: 0;
+  border-radius: 10px;
+  color: #022c22;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nextBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 211, 153, 0.35);
+}
+.finalMsg {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fde68a;
+}
+
+/* ── 리셋 / 라운드 네비 ──────────────── */
+.resetBtn {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.resetBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+.levelNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+  flex-wrap: wrap;
+}
+.levelNavLabel {
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.55);
+}
+.levelDots {
+  display: flex;
+  gap: 6px;
+}
+.levelDot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(248, 250, 252, 0.7);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.levelDot:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
+}
+.levelDotActive {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #1c1917;
+  border-color: #fbbf24;
+}
+
+/* ── 도움말 ─────────────────────────── */
+.help {
+  background: rgba(96, 165, 250, 0.06);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.help summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #93c5fd;
+  list-style: none;
+}
+.help summary::-webkit-details-marker {
+  display: none;
+}
+.help summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+}
+.help[open] summary::before {
+  transform: rotate(90deg);
+}
+.helpBody {
+  padding: 0 14px 14px;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  padding-top: 12px;
+  color: rgba(248, 250, 252, 0.82);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.6;
+}
+.helpBody p {
+  margin: 0;
+}
+.helpBody strong {
+  color: #f1f5f9;
+}
+.kw {
+  color: #fbbf24;
+  font-weight: 700;
+}
+.helpHint {
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: rgba(251, 191, 36, 0.08);
+  border-left: 3px solid #fbbf24;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.9rem;
+}
+
+/* ── 반응형 ───────────────────────────── */
+@media (max-width: 768px) {
+  .gameRow {
+    gap: 16px;
+  }
+  .headTitle {
+    font-size: 1.1rem;
+  }
+  .slider::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .levelDot {
+    width: 36px;
+    height: 36px;
+  }
+}

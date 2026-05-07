@@ -78,6 +78,91 @@ export function rungePoints(n: number, xMin = -5, xMax = 5): Point[] {
   return out;
 }
 
+// ─── 아르키메데스 방어전 (실습 게임) ─────────────────────────
+export interface DefenseLevel {
+  level: number;
+  enemies: Point[]; // 적의 (x, y) 위치
+  minDegree: number; // 적 수 - 1
+  story: string;
+}
+
+export const DEFENSE_LEVELS: DefenseLevel[] = [
+  {
+    level: 1,
+    enemies: [
+      { x: -3, y: 2 },
+      { x: 3, y: -2 },
+    ],
+    minDegree: 1,
+    story: '시라쿠사 성벽 앞 — 적 2명. 직선 한 발이면 충분합니다.',
+  },
+  {
+    level: 2,
+    enemies: [
+      { x: -3, y: -1 },
+      { x: 0, y: 3 },
+      { x: 3, y: -1 },
+    ],
+    minDegree: 2,
+    story: '적 3명이 흩어져 있어요. 직선으로는 절대 모두 못 맞혀요…',
+  },
+  {
+    level: 3,
+    enemies: [
+      { x: -4, y: 1 },
+      { x: -1, y: -2 },
+      { x: 2, y: 3 },
+      { x: 4, y: -1 },
+    ],
+    minDegree: 3,
+    story: 'S자처럼 휘어진 곡선이 필요해요. 적 4명.',
+  },
+  {
+    level: 4,
+    enemies: [
+      { x: -4, y: 2 },
+      { x: -2, y: -2 },
+      { x: 0, y: 1 },
+      { x: 2, y: -1 },
+      { x: 4, y: 3 },
+    ],
+    minDegree: 4,
+    story: '적 5명. W자 모양으로 굽은 곡선이 필요할 거예요.',
+  },
+  {
+    level: 5,
+    enemies: [
+      { x: -4, y: -1 },
+      { x: -2.5, y: 3 },
+      { x: -1, y: -2.5 },
+      { x: 1, y: 2 },
+      { x: 2.5, y: -2 },
+      { x: 4, y: 1 },
+    ],
+    minDegree: 5,
+    story: '최종 보스 — 적 6명이 사방으로! 차수가 부족하면 절대 못 맞혀요.',
+  },
+];
+
+// 곡선이 적 위치를 통과했는지 — y값 차이로 판정
+export function isEnemyHit(
+  fn: (x: number) => number,
+  enemy: Point,
+  threshold = 0.4,
+): boolean {
+  const y = fn(enemy.x);
+  if (!Number.isFinite(y)) return false;
+  return Math.abs(y - enemy.y) < threshold;
+}
+
+// 차수 D에 대한 컨트롤 포인트의 x 좌표 (등간격)
+export function controlPointXs(degree: number, xMin = -4, xMax = 4): number[] {
+  const k = degree + 1;
+  if (k === 1) return [(xMin + xMax) / 2];
+  const step = (xMax - xMin) / (k - 1);
+  return Array.from({ length: k }, (_, i) => xMin + i * step);
+}
+
 // 차수 N인 다항을 사람이 읽을 수 있는 식으로 (간단 버전, 0 계수 생략)
 export function formatPolynomial(coeffs: Coeffs): string {
   const fmt = (n: number) =>

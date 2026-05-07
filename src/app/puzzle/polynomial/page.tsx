@@ -11,7 +11,10 @@ import {
   DEGREE_SAMPLES,
   type Point,
 } from '@/lib/puzzles/polynomial';
+import { DefenseTab } from './DefenseTab';
 import styles from './page.module.css';
+
+type Tab = 'principle' | 'defense';
 
 const STORY =
   '시라쿠사가 로마군에 포위되었을 때, 노학자 아르키메데스는 *정교한 곡선* 으로 ' +
@@ -19,6 +22,8 @@ const STORY =
   '직선과 포물선만으로는 부족했던 순간 ─ 차수가 더 높은 곡선의 비밀이 필요했죠.';
 
 export default function PolynomialPage() {
+  const [tab, setTab] = useState<Tab>('principle');
+
   return (
     <div className={styles.container}>
       <StoryHeader
@@ -29,14 +34,57 @@ export default function PolynomialPage() {
         coreMath={['y = aₙxⁿ + … + a₀', '차수 ↔ 굽이', '보간', '끝단 거동']}
       />
 
-      <main className={styles.principleTab}>
-        <Section1Intro />
-        <Section2Degree />
-        <Section3Lagrange />
-        <Section4EndBehavior />
-        <Section5Runge />
-        <Section6SelfCheck />
-      </main>
+      <nav
+        className={styles.tabs}
+        role="tablist"
+        aria-label="다항함수 학습 탭"
+      >
+        <button
+          role="tab"
+          aria-selected={tab === 'principle'}
+          className={`${styles.tab} ${tab === 'principle' ? styles.tabActive : ''}`}
+          onClick={() => setTab('principle')}
+        >
+          📐 수학의 원리
+        </button>
+        <button
+          role="tab"
+          aria-selected={tab === 'defense'}
+          className={`${styles.tab} ${tab === 'defense' ? styles.tabActive : ''}`}
+          onClick={() => setTab('defense')}
+        >
+          🏰 아르키메데스 방어전
+        </button>
+      </nav>
+
+      {tab === 'principle' && (
+        <main className={styles.principleTab}>
+          <Section1Intro />
+          <Section2Degree />
+          <Section3Lagrange />
+          <Section4EndBehavior />
+          <Section5Runge />
+          <Section6SelfCheck />
+          <CallToDefense onClick={() => setTab('defense')} />
+        </main>
+      )}
+
+      {tab === 'defense' && <DefenseTab />}
+    </div>
+  );
+}
+
+function CallToDefense({ onClick }: { onClick: () => void }) {
+  return (
+    <div className={styles.cta}>
+      <h3>🏰 이제 시라쿠사를 지킬 시간!</h3>
+      <p>
+        배운 걸 활용해 적을 모두 통과하는 곡선을 만들어보세요. 차수가 부족하면
+        절대 모두 못 맞혀요.
+      </p>
+      <button type="button" className={styles.ctaBtn} onClick={onClick}>
+        아르키메데스 방어전 시작
+      </button>
     </div>
   );
 }
