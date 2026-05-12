@@ -1,0 +1,753 @@
+.container {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #1e1b4b 0%, #0f172a 40%, #020617 100%);
+  color: #f8fafc;
+  padding: 32px 24px 64px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── 탭 ─────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+.tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: 0;
+  color: rgba(248, 250, 252, 0.6);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.tab:hover {
+  color: rgba(248, 250, 252, 0.95);
+  background: rgba(255, 255, 255, 0.04);
+}
+.tabActive {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(167, 139, 250, 0.18));
+  color: #f1f5f9;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(251, 191, 36, 0.18),
+    inset 0 0 0 1px rgba(251, 191, 36, 0.4);
+}
+
+/* ── 섹션 공통 ───────────────────────────── */
+.principleTab {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.section {
+  padding: 24px 0 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.section:first-child {
+  border-top: 0;
+  padding-top: 8px;
+}
+.sectionTitle {
+  margin: 0 0 14px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.lead {
+  margin: 0 0 18px;
+  line-height: 1.7;
+  color: rgba(248, 250, 252, 0.82);
+  font-size: 0.98rem;
+}
+.lead strong {
+  color: #f1f5f9;
+}
+.kw {
+  color: #fbbf24;
+  font-weight: 700;
+}
+.eq {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #60a5fa;
+}
+.note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.62);
+  line-height: 1.55;
+}
+
+/* ── §1 + 게임 탭 공통 레이아웃 ─────── */
+.introRow {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.introText {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bigNumber {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+.introMessage {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(248, 250, 252, 0.78);
+}
+.introMessage em {
+  color: #fbbf24;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── 쌀 박스 ─────────────────────────── */
+.riceBoxArea {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.tierLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(167, 139, 250, 0.14);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #c4b5fd;
+  font-variant-numeric: tabular-nums;
+}
+.riceBox {
+  position: relative;
+  background: linear-gradient(to bottom, #0b1029 0%, #1a1238 100%);
+  border: 2px solid rgba(167, 139, 250, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.grain {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  animation: drop 0.5s cubic-bezier(0.4, 1.3, 0.5, 1) forwards;
+}
+@keyframes drop {
+  0% { transform: translateY(-440px); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.toast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 23, 42, 0.95);
+  color: #fbbf24;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px 18px;
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  border-radius: 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: toastIn 1.4s ease-out forwards;
+}
+@keyframes toastIn {
+  0% { opacity: 0; transform: translate(-50%, -30%); }
+  15%, 75% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -70%); }
+}
+.tierDots {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+.tierDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.25);
+  transition: background 0.2s ease;
+}
+.tierDotActive {
+  background: #fbbf24;
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.5);
+}
+
+/* ── §1 자동재생 컨트롤 ──────────────── */
+.autoControl {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+.smallBtn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(248, 250, 252, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.smallBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ── §2 막대 차트 ──────────────────── */
+.barChartWrap {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.scaleToggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.scaleBtn {
+  flex: 1;
+  padding: 8px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(248, 250, 252, 0.7);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.scaleBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+}
+.scaleActive {
+  background: rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
+  border-color: rgba(96, 165, 250, 0.5);
+}
+.barRow {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 200px;
+  margin-bottom: 6px;
+}
+.bar {
+  flex: 1;
+  background: linear-gradient(to top, #60a5fa, #a78bfa);
+  border-radius: 4px 4px 0 0;
+  min-height: 2px;
+  transition: height 0.3s ease;
+}
+.barLabels {
+  display: flex;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: rgba(248, 250, 252, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+.barLabels span {
+  flex: 1;
+  text-align: center;
+}
+
+/* ── §3 슬라이더 + 결과 ─────────────── */
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.sliderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.slider {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fbbf24;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fbbf24;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+}
+.sliderHint {
+  font-size: 0.78rem;
+  color: rgba(248, 250, 252, 0.45);
+  text-align: right;
+}
+.tenToNDisplay {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(96, 165, 250, 0.08);
+  border-radius: 10px;
+  padding: 14px 12px;
+  margin-top: 10px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tenToNDisplay .lhs,
+.tenToNDisplay .rhs {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+.tenToNDisplay .arrow {
+  color: rgba(248, 250, 252, 0.5);
+}
+.tenToNDisplay .logForm {
+  font-size: 0.95rem;
+  color: #a78bfa;
+  margin-top: 6px;
+  flex-basis: 100%;
+  text-align: center;
+}
+
+/* ── §4 밑 비교 ─────────────────────── */
+.compareLegend {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.compareItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.85);
+}
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* ── §5 로그 사례 카드 ──────────────── */
+.exampleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.exampleCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.exampleCard:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+}
+.exampleHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.exampleEmoji {
+  font-size: 1.4rem;
+}
+.exampleTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.exampleFormula {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85rem;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.08);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.exampleInsight {
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.75);
+  line-height: 1.5;
+}
+.exampleInsight em {
+  color: #fbbf24;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── §6 자가 점검 ───────────────────── */
+.selfCheck {
+  background: rgba(96, 165, 250, 0.06);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 10px;
+}
+.selfCheck + .selfCheck {
+  margin-top: 8px;
+}
+.selfCheck summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #93c5fd;
+  list-style: none;
+}
+.selfCheck summary::-webkit-details-marker { display: none; }
+.selfCheck summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+}
+.selfCheck[open] summary::before { transform: rotate(90deg); }
+.selfCheckBody {
+  padding: 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  padding-top: 12px;
+}
+.scA {
+  margin: 0;
+  color: #34d399;
+  font-weight: 600;
+}
+.scHint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.55);
+  font-style: italic;
+}
+
+/* ── 게임 탭 (체스판 + 박스 + 정보) ─── */
+.gameTab {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.gameMain {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.chessSide {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.chessBoard {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.chessCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.55);
+  transition: background 0.2s ease;
+}
+.cellLight { background: #d4a373; }
+.cellDark { background: #6f4518; }
+.cellLight.cellDone {
+  background: #f1c27d;
+}
+.cellDark.cellDone {
+  background: #8b5a2b;
+}
+.cellCurrent {
+  box-shadow: inset 0 0 0 3px #fbbf24;
+  z-index: 1;
+}
+.cellGrain {
+  position: absolute;
+  inset: 22%;
+  background: radial-gradient(circle at 30% 30%, #fff7e6, #f5c469 65%, #d49850 100%);
+  border-radius: 45% 45% 50% 50%;
+  transform: rotate(-15deg);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+.cellCount {
+  position: absolute;
+  bottom: 1px;
+  right: 2px;
+  font-size: 0.55rem;
+  color: rgba(0, 0, 0, 0.65);
+  font-variant-numeric: tabular-nums;
+}
+
+.dialog {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dialogLine {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.dialogWho {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dialogSage { color: #93c5fd; }
+.dialogKing { color: #fcd34d; }
+.dialogText {
+  color: rgba(248, 250, 252, 0.85);
+}
+
+.gameBoxSide {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.primaryBtn {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #0f172a;
+  border: 0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(251, 191, 36, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.primaryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35);
+}
+.primaryBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.secondaryBtn {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(248, 250, 252, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.secondaryBtn.active {
+  background: rgba(167, 139, 250, 0.2);
+  color: #c4b5fd;
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+/* 정보 패널 (체스판 아래) */
+.infoPanel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px;
+}
+.infoCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.infoLabel {
+  font-size: 0.72rem;
+  color: rgba(248, 250, 252, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.infoValue {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.infoAnalogy {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.analogyIcon { font-size: 1.5rem; }
+.analogyText {
+  font-size: 0.9rem;
+  color: #fcd34d;
+  font-weight: 600;
+}
+
+/* 챌린지 카드 */
+.challenges {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.challengeCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.challengeQ {
+  font-size: 0.92rem;
+  color: rgba(248, 250, 252, 0.85);
+  flex: 1 1 auto;
+}
+.challengeAnswer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(52, 211, 153, 0.14);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* ── 반응형 ───────────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px 48px;
+  }
+  .tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+  .tab {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+  .exampleGrid {
+    grid-template-columns: 1fr;
+  }
+  .gameMain {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .chessBoard {
+    max-width: 100%;
+  }
+  .infoPanel {
+    grid-template-columns: 1fr 1fr;
+  }
+  .slider::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 12px 40px;
+  }
+  .barRow {
+    height: 160px;
+  }
+  .barLabels { font-size: 0.6rem; }
+}

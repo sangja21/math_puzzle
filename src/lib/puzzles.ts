@@ -85,6 +85,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'exp_log',
+    title: '지수와 로그의 원리',
+    emoji: '♟️',
+    description: '체스판 쌀알 전설! 한 칸씩 두 배의 두 배를 직접 채우며 지수와 로그를 만나보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/exp-log',
+    tag: '지수·로그 ♟️',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
