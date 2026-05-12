@@ -5,23 +5,13 @@ import Matter from 'matter-js';
 import styles from './page.module.css';
 
 const BOX_WIDTH = 280;
-const BOX_HEIGHT = 360;
-const GRAIN_R = 4; // 알 반지름 (px)
-const WALL_T = 60; // 박스 안 보이는 벽 두께
+const BOX_HEIGHT = 380;
+const GRAIN_R = 4;
+const WALL_T = 60;
 
-// 한 알이 의미하는 톨 수: 100^tier
-const TIER_UNITS: readonly string[] = [
-  '1톨', '100톨', '1만 톨', '100만 톨', '1억 톨',
-  '100억 톨', '1조 톨', '100조 톨', '1경 톨', '100경 톨',
-];
-const MAX_TIER = TIER_UNITS.length - 1;
-
-// 한 칸당 최대 떨어뜨릴 알 수 (성능)
-const MAX_DROP_PER_CELL = 140;
-// 박스 가용 알 수 캡 (이걸 넘기 직전이 격상 트리거)
-const SOFT_CAPACITY = 260;
-// 한 프레임에 spawn하는 알 수
-const SPAWN_PER_FRAME = 6;
+const PER_CELL_CAP = 100; // 한 칸당 떨어뜨릴 알 수 상한
+const HARD_CAPACITY = 2000; // 박스 안 알 수 최대 (성능 안전)
+const SPAWN_PER_FRAME = 8;
 
 export interface RiceBoxProps {
   cell: number;
@@ -34,14 +24,13 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
   const engineRef = useRef<Matter.Engine | null>(null);
   const bodiesRef = useRef<Array<{ body: Matter.Body; el: HTMLDivElement }>>([]);
   const dropQueueRef = useRef(0);
-  const tierRef = useRef(0);
   const lastCellRef = useRef(0);
+  const overflowShownRef = useRef(false);
   const rafRef = useRef<number | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const grainIdRef = useRef(0);
 
-  const [tier, setTier] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
+  const [bodyCount, setBodyCount] = useState(0);
 
   // ── 엔진 초기화 ────────────────────────────────
   useEffect(() => {
@@ -49,10 +38,9 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
       gravity: { x: 0, y: 1, scale: 0.0012 },
       enableSleeping: true,
     });
-    engine.timing.timeScale = 1.0;
     engineRef.current = engine;
 
-    // 좌·우·바닥 벽 (박스 밖 안 보이게 두꺼움)
+    // 좌·우·바닥 — 위쪽은 뚫림 (알이 박스 위로 솟을 수 있음)
     const floor = Matter.Bodies.rectangle(
       width / 2,
       height + WALL_T / 2 - 1,
@@ -64,28 +52,33 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
       -WALL_T / 2,
       height / 2,
       WALL_T,
-      height + WALL_T * 2,
+      height * 3,
       { isStatic: true, friction: 0.1 },
     );
     const right = Matter.Bodies.rectangle(
       width + WALL_T / 2,
       height / 2,
       WALL_T,
-      height + WALL_T * 2,
+      height * 3,
       { isStatic: true, friction: 0.1 },
     );
     Matter.World.add(engine.world, [floor, left, right]);
 
-    const tick = () => {
+    let lastCountUpdate = 0;
+    const tick = (now: number) => {
       Matter.Engine.update(engine, 1000 / 60);
 
-      // queue에서 새 알 spawn
+      // spawn
       let spawned = 0;
-      while (
-        spawned < SPAWN_PER_FRAME &&
-        dropQueueRef.current > 0 &&
-        bodiesRef.current.length < SOFT_CAPACITY + 30
-      ) {
+      while (spawned < SPAWN_PER_FRAME && dropQueueRef.current > 0) {
+        if (bodiesRef.current.length >= HARD_CAPACITY) {
+          dropQueueRef.current = 0;
+          if (!overflowShownRef.current) {
+            showToast('💥 박스가 한계에 — 진짜 양은 훨씬 더 많아요');
+            overflowShownRef.current = true;
+          }
+          break;
+        }
         spawnGrain();
         dropQueueRef.current--;
         spawned++;
@@ -96,6 +89,12 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
       for (let i = 0; i < arr.length; i++) {
         const { body, el } = arr[i];
         el.style.transform = `translate3d(${body.position.x - GRAIN_R}px, ${body.position.y - GRAIN_R}px, 0) rotate(${body.angle}rad)`;
+      }
+
+      // body count UI 갱신 (5fps로)
+      if (now - lastCountUpdate > 200) {
+        setBodyCount(arr.length);
+        lastCountUpdate = now;
       }
 
       rafRef.current = requestAnimationFrame(tick);
@@ -114,14 +113,13 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
 
-  // ── cell 변화 시 떨어뜨릴 알 수 계산 ─────────────
+  // ── cell 변화 시 떨어뜨릴 알 수 enqueue ─────────
   useEffect(() => {
     if (cell < lastCellRef.current) {
       // 리셋
       lastCellRef.current = 0;
       dropQueueRef.current = 0;
-      tierRef.current = 0;
-      setTier(0);
+      overflowShownRef.current = false;
       setToast(null);
       clearAllGrains();
       return;
@@ -130,31 +128,17 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
 
     for (let c = lastCellRef.current + 1; c <= cell; c++) {
       const grainsThisCell = 1n << BigInt(c - 1);
-      let toAdd = computeVisible(grainsThisCell, tierRef.current);
-
-      // 격상이 필요한지 미리 검사 (현재 박스 + 추가 후 SOFT_CAPACITY 초과 여부)
-      while (
-        bodiesRef.current.length + dropQueueRef.current + toAdd > SOFT_CAPACITY &&
-        tierRef.current < MAX_TIER
-      ) {
-        tierRef.current++;
-        showToast(`📏 척도 100배 격상 — 1알 = ${TIER_UNITS[tierRef.current]}`);
-        clearAllGrains();
-        dropQueueRef.current = 0;
-        toAdd = computeVisible(grainsThisCell, tierRef.current);
-      }
-
-      dropQueueRef.current += Math.min(toAdd, MAX_DROP_PER_CELL);
+      const visible =
+        grainsThisCell > BigInt(PER_CELL_CAP) ? PER_CELL_CAP : Number(grainsThisCell);
+      dropQueueRef.current += visible;
     }
-
-    setTier(tierRef.current);
     lastCellRef.current = cell;
   }, [cell]);
 
   const showToast = (text: string) => {
     setToast(text);
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-    toastTimerRef.current = setTimeout(() => setToast(null), 1400);
+    toastTimerRef.current = setTimeout(() => setToast(null), 1800);
   };
 
   const clearAllGrains = () => {
@@ -172,9 +156,8 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
     const container = containerRef.current;
     if (!engine || !container) return;
 
-    // 위쪽 좌우 약간 랜덤
     const x = width * 0.18 + Math.random() * width * 0.64;
-    const y = -GRAIN_R - Math.random() * 30;
+    const y = -GRAIN_R - 20 - Math.random() * 60;
     const body = Matter.Bodies.circle(x, y, GRAIN_R, {
       friction: 0.55,
       frictionStatic: 0.6,
@@ -195,39 +178,22 @@ export function RiceBox({ cell, width = BOX_WIDTH, height = BOX_HEIGHT }: RiceBo
     container.appendChild(el);
 
     bodiesRef.current.push({ body, el });
-    grainIdRef.current++;
   };
 
   return (
     <div className={styles.riceBoxArea}>
       <div className={styles.tierLabel}>
-        <span>📏</span> 1알 = {TIER_UNITS[tier]}
+        <span>🌾</span> 박스 안 {bodyCount.toLocaleString('ko-KR')}알 쌓임
       </div>
       <div
         ref={containerRef}
         className={styles.riceBox}
         style={{ width, height }}
         role="img"
-        aria-label={`쌀 박스 — 현재 척도 1알이 ${TIER_UNITS[tier]}`}
+        aria-label={`쌀 박스 — 현재 ${bodyCount}개 알이 쌓여 있음`}
       >
         {toast && <div className={styles.toast}>{toast}</div>}
       </div>
-      <div className={styles.tierDots} aria-hidden="true">
-        {TIER_UNITS.map((_, i) => (
-          <span
-            key={i}
-            className={`${styles.tierDot} ${i <= tier ? styles.tierDotActive : ''}`}
-          />
-        ))}
-      </div>
     </div>
   );
-}
-
-function computeVisible(grainsThisCell: bigint, tier: number): number {
-  const divisor = 100n ** BigInt(tier);
-  const q = grainsThisCell / divisor;
-  if (q === 0n) return 0;
-  if (q > BigInt(MAX_DROP_PER_CELL)) return MAX_DROP_PER_CELL;
-  return Number(q);
 }

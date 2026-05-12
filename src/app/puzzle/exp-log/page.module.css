@@ -126,26 +126,28 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  padding-top: 120px; /* 박스 위로 솟아오른 알을 위한 여백 */
 }
 .tierLabel {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: rgba(167, 139, 250, 0.14);
-  border: 1px solid rgba(167, 139, 250, 0.35);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #c4b5fd;
+  color: #fcd34d;
   font-variant-numeric: tabular-nums;
 }
 .riceBox {
   position: relative;
   background: linear-gradient(to bottom, #0b1029 0%, #1a1238 100%);
   border: 2px solid rgba(167, 139, 250, 0.5);
-  border-radius: 10px;
-  overflow: hidden;
+  border-top: 1px dashed rgba(167, 139, 250, 0.25);
+  border-radius: 0 0 10px 10px;
+  overflow: visible; /* 알이 박스 위로 솟아도 보임 */
   box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 .grainPhys {
