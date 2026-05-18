@@ -107,6 +107,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'sine',
+    title: '사인함수의 원리',
+    emoji: '🔺',
+    description: '피라미드의 높이를 재던 사인! 직접 사인음을 합쳐 화음과 맥놀이까지 귀로 들어보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/sine',
+    tag: '사인함수 🎵',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
