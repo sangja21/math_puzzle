@@ -18,6 +18,22 @@ export interface PointMark {
   radius?: number;
 }
 
+export interface ArrowSpec {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  color: string;
+  width?: number;
+  dashed?: boolean;
+  label?: string;
+  /** label은 화살표 끝점 근처. 기본 8px 안쪽 오프셋 */
+  labelOffset?: number;
+  /** 머리 크기(px). 기본 10 */
+  headSize?: number;
+  opacity?: number;
+}
+
 export interface CoordPlaneProps {
   width?: number;
   height?: number;
@@ -26,6 +42,7 @@ export interface CoordPlaneProps {
   gridTicks?: number[];
   curves?: Curve[];
   points?: PointMark[];
+  arrows?: ArrowSpec[];
   className?: string;
 }
 
@@ -39,6 +56,7 @@ export function CoordPlane({
   gridTicks = DEFAULT_TICKS,
   curves = [],
   points = [],
+  arrows = [],
   className,
 }: CoordPlaneProps) {
   const projX = (x: number) =>
@@ -111,6 +129,65 @@ export function CoordPlane({
             strokeLinecap="round"
             strokeLinejoin="round"
           />
+        );
+      })}
+
+      {arrows.map((a, i) => {
+        const sx = projX(a.x1);
+        const sy = projY(a.y1);
+        const ex = projX(a.x2);
+        const ey = projY(a.y2);
+        const dx = ex - sx;
+        const dy = ey - sy;
+        const len = Math.hypot(dx, dy);
+        if (len < 0.5) return null;
+        const head = a.headSize ?? 10;
+        const ux = dx / len;
+        const uy = dy / len;
+        // 머리 안쪽으로 살짝 들어가서 선이 끝나도록 — 머리가 더 깔끔
+        const shaftEx = ex - ux * head * 0.6;
+        const shaftEy = ey - uy * head * 0.6;
+        const leftX = ex - ux * head + uy * head * 0.55;
+        const leftY = ey - uy * head - ux * head * 0.55;
+        const rightX = ex - ux * head - uy * head * 0.55;
+        const rightY = ey - uy * head + ux * head * 0.55;
+        const labelOff = a.labelOffset ?? 8;
+        const labelX = ex - ux * labelOff + uy * 12;
+        const labelY = ey - uy * labelOff - ux * 12;
+        return (
+          <g
+            key={`arrow-${i}`}
+            opacity={a.opacity ?? 1}
+          >
+            <line
+              x1={sx}
+              y1={sy}
+              x2={shaftEx}
+              y2={shaftEy}
+              stroke={a.color}
+              strokeWidth={a.width ?? 2.5}
+              strokeLinecap="round"
+              strokeDasharray={a.dashed ? '6 4' : undefined}
+            />
+            <polygon
+              points={`${ex},${ey} ${leftX},${leftY} ${rightX},${rightY}`}
+              fill={a.color}
+            />
+            {a.label && (
+              <text
+                x={labelX}
+                y={labelY}
+                fill={a.color}
+                fontSize={12}
+                fontWeight="bold"
+                textAnchor="middle"
+                dominantBaseline="central"
+                style={{ paintOrder: 'stroke', stroke: 'rgba(2,6,23,0.8)', strokeWidth: 3 }}
+              >
+                {a.label}
+              </text>
+            )}
+          </g>
         );
       })}
 

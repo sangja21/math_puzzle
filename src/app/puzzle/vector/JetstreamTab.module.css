@@ -1,0 +1,349 @@
+.tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── 헤더 ─────────────────────────────── */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.headLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.headTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.lvBadge {
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #082f49;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.windChip {
+  padding: 6px 14px;
+  background: rgba(148, 163, 184, 0.14);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.story {
+  margin: 0;
+  padding: 12px 16px;
+  background: rgba(56, 189, 248, 0.08);
+  border-left: 3px solid #38bdf8;
+  border-radius: 0 8px 8px 0;
+  color: rgba(248, 250, 252, 0.85);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ── 게임 본체 ───────────────────────── */
+.gameRow {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.graphBox {
+  flex: 1 1 380px;
+  max-width: 460px;
+  min-width: 0;
+}
+.controlPanel {
+  flex: 1 1 240px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── 헤딩 슬라이더 ─────────────── */
+.headingBox {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.headingLabel {
+  font-size: 1rem;
+  color: rgba(248, 250, 252, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headingValue {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.slider {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+}
+.headingHint {
+  font-size: 0.82rem;
+  color: rgba(248, 250, 252, 0.55);
+}
+
+/* ── 액션 버튼 ──────────────────── */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.playBtn {
+  flex: 1;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  border: 0;
+  border-radius: 10px;
+  color: #082f49;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.playBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+}
+.playBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.resetBtn {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.resetBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── 결과 박스 ──────────────────── */
+.resultBox {
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.resultSuccess {
+  background: linear-gradient(
+    135deg,
+    rgba(52, 211, 153, 0.14),
+    rgba(56, 189, 248, 0.1)
+  );
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+.resultMiss {
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.34);
+}
+.resultTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.resultSuccess .resultTitle {
+  color: #6ee7b7;
+}
+.resultMiss .resultTitle {
+  color: #fdba74;
+}
+.resultBody {
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.82);
+  line-height: 1.55;
+}
+.nextBtn {
+  align-self: flex-start;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  border: 0;
+  border-radius: 10px;
+  color: #022c22;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.15s ease;
+}
+.nextBtn:hover {
+  transform: translateY(-1px);
+}
+.finalMsg {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #fde68a;
+}
+
+/* ── 라운드 네비 ──────────────── */
+.levelNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+  flex-wrap: wrap;
+}
+.levelNavLabel {
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.55);
+}
+.levelDots {
+  display: flex;
+  gap: 6px;
+}
+.levelDot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(248, 250, 252, 0.7);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.levelDot:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
+}
+.levelDotActive {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #082f49;
+  border-color: #38bdf8;
+}
+.levelDotCleared {
+  background: rgba(52, 211, 153, 0.18);
+  color: #6ee7b7;
+  border-color: rgba(52, 211, 153, 0.45);
+}
+
+/* ── 도움말 ─────────────────────────── */
+.help {
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.help summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #7dd3fc;
+  list-style: none;
+}
+.help summary::-webkit-details-marker {
+  display: none;
+}
+.help summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+}
+.help[open] summary::before {
+  transform: rotate(90deg);
+}
+.helpBody {
+  padding: 0 14px 14px;
+  border-top: 1px solid rgba(56, 189, 248, 0.12);
+  padding-top: 12px;
+  color: rgba(248, 250, 252, 0.82);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.6;
+}
+.helpBody p {
+  margin: 0;
+}
+.helpBody strong {
+  color: #f1f5f9;
+}
+.legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.72);
+}
+.legendDot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legendSwatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+/* ── 반응형 ────────────── */
+@media (max-width: 768px) {
+  .gameRow {
+    gap: 16px;
+  }
+  .headTitle {
+    font-size: 1.05rem;
+  }
+  .slider::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .levelDot {
+    width: 36px;
+    height: 36px;
+  }
+}

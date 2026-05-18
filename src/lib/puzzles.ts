@@ -96,6 +96,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'vector',
+    title: '벡터의 원리',
+    emoji: '✈️',
+    description: '심술궂은 제트기류! 비행기 방향을 직접 보정해 목적지에 착륙시키며 벡터 합과 분해를 익혀보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/vector',
+    tag: '벡터 ✈️',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
