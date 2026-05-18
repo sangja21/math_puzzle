@@ -505,6 +505,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '추론 🎯',
     category: 'puzzle',
   },
+  {
+    id: 'nonogram',
+    title: '노노그램',
+    emoji: '🟧',
+    description: '가로·세로 숫자만 보고 칸을 채워 그림을 완성! 일본의 그림 논리 퍼즐.',
+    difficulty: 'medium',
+    href: '/puzzle/nonogram',
+    tag: '논리 그림 🎨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
