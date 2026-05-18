@@ -495,6 +495,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '기하 증명 📐',
     category: 'puzzle',
   },
+  {
+    id: 'mastermind',
+    title: '마스터마인드',
+    emoji: '🎯',
+    description: '6가지 색으로 만든 비밀 코드를 단서만 보고 깨라! 추론과 정보의 게임.',
+    difficulty: 'medium',
+    href: '/puzzle/mastermind',
+    tag: '추론 🎯',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
