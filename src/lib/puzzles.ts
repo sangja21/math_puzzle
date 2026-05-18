@@ -465,6 +465,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '신규 퍼즐! ✨',
     category: 'puzzle',
   },
+  {
+    id: 'konigsberg',
+    title: '쾨니히스베르크의 다리',
+    emoji: '🌉',
+    description: '7개 다리를 모두 정확히 한 번씩 건너 보세요. 오일러가 그래프 이론을 탄생시킨 그 문제!',
+    difficulty: 'medium',
+    href: '/puzzle/konigsberg',
+    tag: '그래프 이론 🌉',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
