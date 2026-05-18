@@ -396,6 +396,16 @@ export const PUZZLES: PuzzleCard[] = [
     category: 'puzzle',
   },
   {
+    id: 'monty_hall',
+    title: '몬티 홀의 역설',
+    emoji: '🚪',
+    description: '문 3개 중 차는 하나. 사회자가 염소를 보여줬을 때, 바꿔야 할까 유지해야 할까?',
+    difficulty: 'medium',
+    href: '/puzzle/monty-hall',
+    tag: '확률 직관 🎲',
+    category: 'puzzle',
+  },
+  {
     id: 'function_machine',
     title: '함수 기계',
     emoji: '⚙️',
