@@ -133,10 +133,11 @@
 
 .svgWrap {
   width: 100%;
-  background: radial-gradient(ellipse at center, #102542 0%, #061121 100%);
+  background: radial-gradient(ellipse at center, #f5ecd6 0%, #e7d9b8 100%);
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(83, 155, 245, 0.15);
+  border: 1px solid rgba(83, 155, 245, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(120, 90, 50, 0.15);
 }
 
 .boardSvg {
@@ -155,15 +156,15 @@
 }
 
 .edgeUsed {
-  stroke: #38bdf8;
-  stroke-width: 6;
-  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.7));
+  stroke: #0284c7;
+  stroke-width: 6.5;
+  filter: drop-shadow(0 0 4px rgba(2, 132, 199, 0.55));
 }
 
 .edgeLast {
-  stroke: #fbbf24;
-  stroke-width: 6.5;
-  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.8));
+  stroke: #d97706;
+  stroke-width: 7;
+  filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.7));
 }
 
 /* ── 노드 ── */
@@ -172,29 +173,32 @@
 }
 
 .nodeCircle {
-  fill: #1e293b;
-  stroke: #64748b;
-  stroke-width: 2.5;
+  fill: #ffffff;
+  stroke: #1e293b;
+  stroke-width: 3;
   transition: fill 0.18s ease, stroke 0.18s ease, r 0.18s ease;
 }
 
 .nodeGroup:hover .nodeCircle {
-  fill: #334155;
-  stroke: #93c5fd;
+  fill: #fef3c7;
+  stroke: #0c4a6e;
 }
 
 .nodeOdd {
-  stroke: #f87171;
+  stroke: #dc2626;
+  stroke-width: 3.5;
 }
 
 .nodeStart {
-  fill: #166534;
-  stroke: #4ade80;
+  fill: #bbf7d0;
+  stroke: #15803d;
+  stroke-width: 3.5;
 }
 
 .nodeCurrent {
-  fill: #1d4ed8;
-  stroke: #93c5fd;
+  fill: #bfdbfe;
+  stroke: #1d4ed8;
+  stroke-width: 3.5;
 }
 
 .nodeShake {
@@ -202,31 +206,31 @@
 }
 
 .nodeLabel {
-  fill: #e2e8f0;
-  font-size: 13px;
-  font-weight: 700;
+  fill: #1e293b;
+  font-size: 15px;
+  font-weight: 800;
   text-anchor: middle;
   dominant-baseline: central;
   pointer-events: none;
   paint-order: stroke;
-  stroke: #0b1729;
-  stroke-width: 3;
+  stroke: #ffffff;
+  stroke-width: 3.5;
 }
 
 .nodeDegree {
-  fill: #94a3b8;
-  font-size: 11px;
+  fill: #475569;
+  font-size: 12px;
   font-weight: 700;
   text-anchor: middle;
   dominant-baseline: central;
   pointer-events: none;
   paint-order: stroke;
-  stroke: #0b1729;
-  stroke-width: 2.5;
+  stroke: #ffffff;
+  stroke-width: 3;
 }
 
 .nodeDegreeOdd {
-  fill: #fca5a5;
+  fill: #b91c1c;
 }
 
 /* ── 진행 / 안내 바 ── */
@@ -608,10 +612,10 @@
   }
 
   .nodeLabel {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .nodeDegree {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
