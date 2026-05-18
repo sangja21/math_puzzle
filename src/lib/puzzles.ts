@@ -475,6 +475,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '그래프 이론 🌉',
     category: 'puzzle',
   },
+  {
+    id: 'sudoku_mini',
+    title: '스도쿠 미니 (4×4)',
+    emoji: '🟦',
+    description: '가로·세로·박스에 1~4를 한 번씩! 9×9 스도쿠의 어린이 버전.',
+    difficulty: 'easy',
+    href: '/puzzle/sudoku-mini',
+    tag: '논리 추론 🧩',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {

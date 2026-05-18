@@ -1,0 +1,632 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617 0%, #0f172a 60%, #1a1f2e 100%);
+  color: #cdd9e5;
+  padding: 40px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homeBtn {
+  align-self: flex-start;
+  background: rgba(99, 120, 160, 0.12);
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  color: #cdd9e5;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  transition: background 0.15s ease;
+}
+
+.homeBtn:hover {
+  background: rgba(99, 120, 160, 0.22);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+  max-width: 640px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title span {
+  color: #60a5fa;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.subtitle strong {
+  color: #fbbf24;
+}
+
+/* ── 난이도 칩 + 퍼즐 인덱스 ── */
+.difficultyRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.diffChip {
+  background: rgba(99, 120, 160, 0.12);
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  color: #cdd9e5;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.diffChip:hover {
+  background: rgba(83, 155, 245, 0.15);
+  border-color: rgba(83, 155, 245, 0.45);
+}
+
+.diffChipActive {
+  transform: translateY(-1px);
+}
+
+.diff_easy.diffChipActive {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border-color: #22c55e;
+  color: #052e16;
+}
+
+.diff_medium.diffChipActive {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border-color: #f59e0b;
+  color: #1c1300;
+}
+
+.diff_hard.diffChipActive {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  border-color: #ef4444;
+  color: #2c0606;
+}
+
+.puzzleIdx {
+  margin-left: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 8px;
+  padding: 7px 12px;
+}
+
+/* ── 무대 ── */
+.stage {
+  width: 100%;
+  max-width: 460px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.statBox {
+  flex: 1;
+  min-width: 100px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.statBoxBad {
+  border-color: rgba(248, 113, 113, 0.5);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.statBoxGood {
+  border-color: rgba(74, 222, 128, 0.5);
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  color: #768390;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #cdd9e5;
+  font-variant-numeric: tabular-nums;
+}
+
+.statBoxBad .statValue {
+  color: #fca5a5;
+}
+
+.statBoxGood .statValue {
+  color: #86efac;
+}
+
+/* ── 보드 ── */
+.boardWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* 따뜻한 베이지 프레임 */
+  background: #2a1d10;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px rgba(120, 80, 40, 0.45), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1px;
+  background: #1a1209;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cell {
+  background: #f0d9b5;
+  border: none;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1209;
+  cursor: pointer;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.1s ease;
+  padding: 0;
+  /* 셀 좌상단 좌표를 그대로 두고 굵은 경계만 안쪽 그림자로 강조 */
+  position: relative;
+}
+
+.cell:hover:not(:disabled) {
+  background: #f5e3c4;
+}
+
+.cellGiven {
+  background: #d4a574;
+  color: #1a1209;
+  cursor: default;
+}
+
+.cellGiven:hover {
+  background: #d4a574;
+}
+
+.cellInput {
+  color: #1d4ed8;
+}
+
+.cellSelected {
+  background: #93c5fd !important;
+  box-shadow: inset 0 0 0 3px #1d4ed8;
+}
+
+.cellConflict {
+  background: #fca5a5 !important;
+  color: #7f1d1d !important;
+  animation: shake 0.3s ease;
+}
+
+.cellHint {
+  background: #fde68a !important;
+  animation: hintPulse 1s ease-in-out 2;
+}
+
+/* 굵은 박스 경계 — row=1 과 col=1 셀의 우/하단에 진한 선 */
+.thickBottom {
+  box-shadow: inset 0 -3px 0 0 #1a1209;
+}
+
+.thickRight {
+  box-shadow: inset -3px 0 0 0 #1a1209;
+}
+
+.thickBottom.thickRight {
+  box-shadow: inset -3px 0 0 0 #1a1209, inset 0 -3px 0 0 #1a1209;
+}
+
+/* 선택 셀이면 굵은 박스 경계 위에 선택 강조가 오도록 */
+.cellSelected.thickBottom {
+  box-shadow: inset 0 0 0 3px #1d4ed8, inset 0 -3px 0 0 #1a1209;
+}
+
+.cellSelected.thickRight {
+  box-shadow: inset 0 0 0 3px #1d4ed8, inset -3px 0 0 0 #1a1209;
+}
+
+.cellSelected.thickBottom.thickRight {
+  box-shadow: inset 0 0 0 3px #1d4ed8, inset -3px 0 0 0 #1a1209, inset 0 -3px 0 0 #1a1209;
+}
+
+/* ── 완성 축하 ── */
+.celebrate {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.45);
+  border-radius: 10px;
+}
+
+.celebrateText {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #86efac;
+}
+
+.nextBtn {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border: 1px solid #22c55e;
+  color: #052e16;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.nextBtn:hover {
+  transform: translateY(-1px);
+}
+
+/* ── 컨트롤 패널 ── */
+.controlPanel {
+  width: 100%;
+  max-width: 460px;
+  margin-top: 18px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.numPad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.numBtn {
+  min-height: 52px;
+  background: linear-gradient(135deg, #f0d9b5, #d4a574);
+  border: 1px solid #b58863;
+  color: #1a1209;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.1s ease, filter 0.15s ease;
+}
+
+.numBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.numBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.numBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.eraseBtn {
+  min-height: 52px;
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #fca5a5;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.eraseBtn:hover:not(:disabled) {
+  background: rgba(248, 113, 113, 0.28);
+}
+
+.eraseBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.hintBtn,
+.resetBtn,
+.newBtn {
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, transform 0.15s ease;
+  min-height: 44px;
+}
+
+.hintBtn {
+  background: rgba(83, 155, 245, 0.15);
+  border-color: rgba(83, 155, 245, 0.4);
+  color: #93c5fd;
+}
+
+.hintBtn:hover:not(:disabled) {
+  background: rgba(83, 155, 245, 0.28);
+}
+
+.hintBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.resetBtn {
+  background: rgba(99, 120, 160, 0.18);
+  border-color: rgba(99, 120, 160, 0.35);
+  color: #cdd9e5;
+}
+
+.resetBtn:hover {
+  background: rgba(99, 120, 160, 0.32);
+}
+
+.newBtn {
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  border-color: #8b5cf6;
+  color: #1e1b4b;
+}
+
+.newBtn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+}
+
+/* ── 도움말 ── */
+.help {
+  width: 100%;
+  max-width: 460px;
+  margin-top: 18px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 12px;
+  padding: 4px 0;
+}
+
+.help > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #cdd9e5;
+  position: relative;
+  padding-left: 38px;
+}
+
+.help > summary::-webkit-details-marker {
+  display: none;
+}
+
+.help > summary::before {
+  content: '▶';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #60a5fa;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.help[open] > summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.helpBody {
+  padding: 4px 22px 18px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.helpBody p {
+  margin: 0 0 10px;
+}
+
+.helpBody ul {
+  margin: 4px 0 12px;
+  padding-left: 22px;
+}
+
+.helpBody li {
+  margin-bottom: 4px;
+}
+
+.helpBody strong {
+  color: #fcd34d;
+}
+
+.helpBody em {
+  color: #93c5fd;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── 애니메이션 ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@keyframes hintPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .container {
+    padding: 28px 14px 50px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.88rem;
+  }
+
+  .stage {
+    padding: 16px 12px;
+  }
+
+  .board {
+    max-width: 100%;
+  }
+
+  .cell {
+    font-size: 1.5rem;
+  }
+
+  .statBox {
+    min-width: 86px;
+    padding: 8px 10px;
+  }
+
+  .statValue {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 22px 10px 40px;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+  }
+
+  .diffChip {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .puzzleIdx {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .cell {
+    font-size: 1.3rem;
+  }
+
+  .numBtn {
+    min-height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .eraseBtn {
+    min-height: 48px;
+    font-size: 0.78rem;
+  }
+
+  .btnRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .newBtn {
+    grid-column: 1 / -1;
+  }
+
+  .statsRow {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .statBox {
+    min-width: 0;
+    padding: 7px 6px;
+  }
+
+  .statLabel {
+    font-size: 0.62rem;
+  }
+
+  .statValue {
+    font-size: 0.82rem;
+  }
+}
