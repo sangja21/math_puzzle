@@ -406,6 +406,16 @@ export const PUZZLES: PuzzleCard[] = [
     category: 'puzzle',
   },
   {
+    id: 'n_queens',
+    title: 'N-퀸',
+    emoji: '♛',
+    description: '체스판에 퀸 N개를 서로 공격하지 못하게 놓아라! 4·6·8 단계 도전.',
+    difficulty: 'hard',
+    href: '/puzzle/n-queens',
+    tag: '백트래킹 ♛',
+    category: 'puzzle',
+  },
+  {
     id: 'function_machine',
     title: '함수 기계',
     emoji: '⚙️',
