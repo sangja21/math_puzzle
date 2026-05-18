@@ -485,6 +485,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '논리 추론 🧩',
     category: 'puzzle',
   },
+  {
+    id: 'pythagoras',
+    title: '피타고라스 시각 증명',
+    emoji: '📐',
+    description: 'a²+b²=c²를 슬라이드해서 직접 확인! 같은 정사각형을 두 가지로 채워 면적이 같음을 발견하세요.',
+    difficulty: 'easy',
+    href: '/puzzle/pythagoras',
+    tag: '기하 증명 📐',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {

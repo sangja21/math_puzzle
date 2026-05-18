@@ -1,0 +1,504 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617 0%, #0f172a 60%, #1a1f2e 100%);
+  color: #cdd9e5;
+  padding: 40px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homeBtn {
+  align-self: flex-start;
+  background: rgba(99, 120, 160, 0.12);
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  color: #cdd9e5;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  transition: background 0.15s ease;
+}
+
+.homeBtn:hover {
+  background: rgba(99, 120, 160, 0.22);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+  max-width: 640px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title span {
+  color: #fbbf24;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.subtitle strong {
+  color: #fbbf24;
+}
+
+/* ── 다리 a, b, c 컨트롤 ── */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 20px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.legCtrl {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.legValue {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #fbbf24;
+  font-variant-numeric: tabular-nums;
+}
+
+.cFormula {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(99, 120, 160, 0.3);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border: 2px solid #1c1300;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border: 2px solid #1c1300;
+  cursor: pointer;
+}
+
+/* ── 무대 ── */
+.stage {
+  width: 100%;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 18px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  align-items: center;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  max-width: 432px; /* 400 + 2*16 PAD */
+  display: block;
+  margin: 0 auto;
+}
+
+/* 옅은 베이지 큰 정사각형 */
+.bigSquare {
+  fill: #d4a574;
+  stroke: #1a1209;
+  stroke-width: 2;
+}
+
+/* t=0 의 a², b² 흰 정사각형 — 옅은 색으로 흰 공간 강조 */
+.whiteSquare {
+  fill: #f5e3c4;
+  stroke: #b58863;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+/* t=1 의 c² 기울어진 흰 정사각형 */
+.whiteSquareC {
+  fill: #fde68a;
+  stroke: #b58863;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.triangle {
+  filter: drop-shadow(0 0 0 #0f172a);
+  opacity: 0.92;
+}
+
+.dimLabels {
+  font-family: inherit;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.dimLabel {
+  font-size: 11px;
+  fill: #cdd9e5;
+}
+
+/* ── t 슬라이더 패널 ── */
+.tCtrl {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 12px;
+}
+
+.tHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.tTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tValue {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #60a5fa;
+  font-variant-numeric: tabular-nums;
+}
+
+.tSlider::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  border: 2px solid #0c1a3a;
+}
+
+.tSlider::-moz-range-thumb {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  border: 2px solid #0c1a3a;
+}
+
+.tEnds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.endBtn {
+  background: rgba(99, 120, 160, 0.12);
+  border: 1px solid rgba(99, 120, 160, 0.3);
+  color: #cdd9e5;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.endBtn:hover {
+  background: rgba(83, 155, 245, 0.18);
+  border-color: rgba(83, 155, 245, 0.4);
+}
+
+.endBtnActive {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  border-color: #3b82f6;
+  color: #0c1a3a;
+}
+
+.autoToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cdd9e5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.autoToggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: #60a5fa;
+  cursor: pointer;
+}
+
+/* ── 면적 패널 ── */
+.areaPanel {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 18px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.areaRow {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(99, 120, 160, 0.18);
+}
+
+.areaRow:last-child {
+  border-bottom: none;
+}
+
+.areaLabel {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.areaFormula {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  font-variant-numeric: tabular-nums;
+}
+
+.areaValue {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #cdd9e5;
+  font-variant-numeric: tabular-nums;
+}
+
+.areaWhite {
+  background: linear-gradient(90deg, rgba(253, 230, 138, 0.08), rgba(253, 230, 138, 0));
+  border-left: 3px solid #fbbf24;
+  padding-left: 10px;
+  margin-top: 4px;
+  border-bottom: none;
+}
+
+.areaWhite .areaLabel {
+  color: #fde68a;
+}
+
+.areaWhite .areaValue {
+  color: #fde68a;
+}
+
+/* ── 도움말 ── */
+.help {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 18px;
+  background: #111827;
+  border: 1px solid rgba(99, 120, 160, 0.22);
+  border-radius: 12px;
+  padding: 4px 0;
+}
+
+.help > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #cdd9e5;
+  position: relative;
+  padding-left: 38px;
+}
+
+.help > summary::-webkit-details-marker {
+  display: none;
+}
+
+.help > summary::before {
+  content: '▶';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fbbf24;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.help[open] > summary::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.helpBody {
+  padding: 4px 22px 18px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.helpBody p {
+  margin: 0 0 10px;
+}
+
+.helpBody strong {
+  color: #fcd34d;
+}
+
+.helpBody em {
+  color: #93c5fd;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .container {
+    padding: 28px 14px 50px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.88rem;
+  }
+
+  .controls {
+    grid-template-columns: 1fr 1fr;
+    padding: 14px;
+  }
+
+  .legCtrl:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .cFormula {
+    text-align: left;
+  }
+
+  .stage {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .tCtrl {
+    order: 2;
+  }
+
+  .areaRow {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 4px 12px;
+  }
+
+  .areaFormula {
+    grid-column: 1 / -1;
+    font-size: 0.78rem;
+    color: #64748b;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 22px 10px 40px;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .legCtrl:nth-child(3) {
+    grid-column: 1;
+  }
+
+  .areaPanel {
+    padding: 14px 16px;
+  }
+
+  .areaValue {
+    font-size: 1.2rem;
+  }
+
+  .areaLabel {
+    font-size: 0.82rem;
+  }
+
+  .stage {
+    padding: 12px;
+  }
+
+  .svg {
+    max-width: 100%;
+  }
+}
