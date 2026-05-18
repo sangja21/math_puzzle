@@ -416,6 +416,16 @@ export const PUZZLES: PuzzleCard[] = [
     category: 'puzzle',
   },
   {
+    id: 'tangram',
+    title: '탱그램',
+    emoji: '🧩',
+    description: '큰 정사각형을 자른 7조각! 회전·뒤집어 새, 고양이, 집을 만들어보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/tangram',
+    tag: '기하 직관 📐',
+    category: 'puzzle',
+  },
+  {
     id: 'function_machine',
     title: '함수 기계',
     emoji: '⚙️',
