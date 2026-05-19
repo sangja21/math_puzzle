@@ -245,9 +245,9 @@ export default function TangramPage() {
           {/* 목표 실루엣 */}
           <polygon
             points={targetOutlineOffset.map((v) => `${v.x},${v.y}`).join(' ')}
-            fill="rgba(251, 191, 36, 0.13)"
-            stroke="rgba(251, 191, 36, 0.55)"
-            strokeWidth="0.05"
+            fill="rgba(251, 191, 36, 0.2)"
+            stroke="rgba(251, 191, 36, 0.7)"
+            strokeWidth="0.06"
             strokeDasharray="0.18 0.12"
           />
 

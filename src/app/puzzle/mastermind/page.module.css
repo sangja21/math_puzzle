@@ -232,7 +232,7 @@
 }
 
 .rowDisabled {
-  opacity: 0.55;
+  opacity: 0.78;
 }
 
 .rowIdx {
@@ -286,9 +286,9 @@
 }
 
 .codeCellLocked {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(40, 30, 20, 0.55);
   border-style: dotted;
-  border-color: rgba(99, 120, 160, 0.3);
+  border-color: rgba(180, 150, 110, 0.6);
   box-shadow: none;
 }
 

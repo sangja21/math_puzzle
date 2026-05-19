@@ -83,24 +83,26 @@ export function CoordPlane({
           <line
             x1={projX(t)} y1={0}
             x2={projX(t)} y2={height}
-            stroke="rgba(255,255,255,0.08)" strokeWidth={1}
+            stroke="rgba(255,255,255,0.14)" strokeWidth={1}
           />
           <line
             x1={0} y1={projY(t)}
             x2={width} y2={projY(t)}
-            stroke="rgba(255,255,255,0.08)" strokeWidth={1}
+            stroke="rgba(255,255,255,0.14)" strokeWidth={1}
           />
           <text
             x={projX(t) + 3}
             y={y0 - 4}
-            fill="rgba(255,255,255,0.35)"
-            fontSize={9}
+            fill="rgba(255,255,255,0.58)"
+            fontSize={10}
+            fontWeight={500}
           >{t}</text>
           <text
             x={x0 + 4}
             y={projY(t) + 3}
-            fill="rgba(255,255,255,0.35)"
-            fontSize={9}
+            fill="rgba(255,255,255,0.58)"
+            fontSize={10}
+            fontWeight={500}
           >{t}</text>
         </React.Fragment>
       ))}
