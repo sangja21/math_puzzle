@@ -221,19 +221,21 @@
 }
 
 .queen {
-  font-size: 0.72px;
-  fill: #1a1209;
+  font-size: 0.78px;
+  fill: #fafaf9;
   font-weight: 900;
   pointer-events: none;
   paint-order: stroke;
-  stroke: #fff;
-  stroke-width: 0.015;
+  stroke: #0c0a09;
+  stroke-width: 0.07;
+  filter: drop-shadow(0 0.02px 0.04px rgba(0, 0, 0, 0.55));
   animation: queenPop 0.25s ease;
 }
 
 .queenConflict {
-  fill: #7f1d1d;
-  stroke: #fee2e2;
+  fill: #fee2e2;
+  stroke: #7f1d1d;
+  stroke-width: 0.07;
   animation: queenShake 0.4s ease;
 }
 
