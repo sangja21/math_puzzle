@@ -140,6 +140,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'differential',
+    title: '미분의 원리',
+    emoji: '🎢',
+    description: '롤러코스터의 속도! 기울기계를 읽으며 가장 가파른 활강 지점과 봉우리·골짜기를 잡아내세요.',
+    difficulty: 'medium',
+    href: '/puzzle/differential',
+    tag: '미분 🎢',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',

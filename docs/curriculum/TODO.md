@@ -16,7 +16,7 @@ README의 진도표가 *상태 요약* 이라면, 본 문서는 *손에 잡히�
 - [x] `linear-function`을 새 `CoordPlane` 사용하도록 마이그레이션 (타입체크 통과, dead code 제거) — 2026-04-29
 - [x] `CoordPlane` 옵션 정리: `curves`(샘플 폴리라인) · `points` · `xRange/yRange` · `gridTicks` · `width/height` 입력 + `sampleLine`/`sampleFunction` 헬퍼 — 2026-04-29
 - [x] `StoryHeader` 컴포넌트 신설: 책 챕터 인용 카드 표준 — emoji/title/subtitle/story/coreMath 슬롯 + 768·480 반응형 — 2026-04-29
-- [ ] 적분/도함수 시각화 공통 헬퍼: `src/lib/puzzles/calculus.ts` (수치미분, 사다리꼴 적분, 접선 기울기) — 단원 8·9 진입 시 신설
+- [x] 적분/도함수 시각화 공통 헬퍼: `src/lib/puzzles/calculus.ts` (수치미분, 사다리꼴 적분, 리만 직사각형, 접선 기울기, 극값 탐색) — 2026-06-04
 
 ## 1. 단원별 진행
 
@@ -98,15 +98,15 @@ README의 진도표가 *상태 요약* 이라면, 본 문서는 *손에 잡히�
 - [x] 커밋 — 본 커밋
 
 ### 단원 8 — 미분 (`differential`)
-- [ ] 안건 선정
-- [ ] 구체 구현 계획서
-- [ ] **공유 자산 신설**: `src/lib/puzzles/calculus.ts` (단원 9 공유)
-- [ ] 라이브러리
-- [ ] 페이지 + CSS (할선→접선 애니메이션)
-- [ ] 메타 등록
-- [ ] 반응형 점검
-- [ ] 시각 검증
-- [ ] 커밋
+- [x] 안건 선정 — 후보 2 롤러코스터 챌린지 🎢 (+후보 5 극값 사냥 = 라운드 2) — 2026-06-04
+- [x] 구체 구현 계획서 — `08-differential.md` 결정 메모 채움 — 2026-06-04
+- [x] **공유 자산 신설**: `src/lib/puzzles/calculus.ts` (단원 9 공유) — 2026-06-04
+- [x] 라이브러리 — `src/lib/puzzles/differential.ts` (트랙 3종, 최급강하·극값 탐색, 채점) — 2026-06-04
+- [x] 페이지 + CSS (할선→접선 Δ 수렴 시연) — 원리 탭 5섹션 + CoasterRide 게임 탭 — 2026-06-04
+- [x] 메타 등록 — `differential`, 함수와 그래프, 🎢 — 2026-06-04
+- [x] 반응형 점검 — 768·480 CSS 포함
+- [x] 시각 검증 — Playwright 헤드리스 (양 탭 + 라운드1 ⭐3 + JS 에러 0)
+- [x] 커밋 — 본 커밋
 
 ### 단원 9 — 적분 (`integral`)
 - [ ] 안건 선정
