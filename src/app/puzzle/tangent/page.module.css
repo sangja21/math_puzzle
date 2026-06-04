@@ -1,0 +1,398 @@
+.container {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #7c2d12 0%, #451a03 45%, #020617 100%);
+  color: #f8fafc;
+  padding: 32px 24px 64px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── 탭 ─────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+.tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: 0;
+  color: rgba(248, 250, 252, 0.6);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.tab:hover {
+  color: rgba(248, 250, 252, 0.95);
+  background: rgba(255, 255, 255, 0.04);
+}
+.tabActive {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.22), rgba(251, 191, 36, 0.22));
+  color: #f1f5f9;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(251, 146, 60, 0.22),
+    inset 0 0 0 1px rgba(251, 146, 60, 0.4);
+}
+
+/* ── 섹션 ─────────────────────────────── */
+.principleTab {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.section {
+  padding: 24px 0 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.section:first-child {
+  border-top: 0;
+  padding-top: 8px;
+}
+.sectionTitle {
+  margin: 0 0 14px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.lead {
+  margin: 0 0 18px;
+  line-height: 1.7;
+  color: rgba(248, 250, 252, 0.82);
+  font-size: 0.98rem;
+}
+.lead strong {
+  color: #f1f5f9;
+}
+.kw {
+  color: #fb923c;
+  font-weight: 700;
+}
+.eq {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #f472b6;
+}
+.cosEq {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #fb923c;
+}
+.eqLight {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #ffedd5;
+}
+
+/* ── 레이아웃 ─────────── */
+.graphRow {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.graphBox {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+.controlPanel {
+  flex: 1 1 240px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.triangleBox {
+  flex: 1 1 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── 값 박스 ─────── */
+.valueBig {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fb923c;
+  background: rgba(251, 146, 60, 0.1);
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.62);
+  line-height: 1.55;
+}
+
+/* ── 일치 배너 ─────── */
+.matchBanner {
+  padding: 12px 16px;
+  background: rgba(251, 146, 60, 0.14);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+  border-radius: 10px;
+  color: #fed7aa;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ── 슬라이더 ─────────────────────── */
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.sliderLabel {
+  font-size: 1rem;
+  color: rgba(248, 250, 252, 0.85);
+  display: flex;
+  justify-content: space-between;
+}
+.sliderValue {
+  color: #fbbf24;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-weight: 700;
+}
+.slider {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fb923c;
+  border: 2px solid #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fb923c;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+}
+
+/* ── 특수각 표 ─────── */
+.specialTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.specialTable th,
+.specialTable td {
+  padding: 8px 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.specialTable th {
+  background: rgba(251, 146, 60, 0.12);
+  color: #fed7aa;
+  font-weight: 700;
+}
+.specialTable tr:last-child td {
+  border-bottom: 0;
+}
+.specialTable td.match {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fde68a;
+  font-weight: 700;
+}
+
+/* ── 자가 점검 ────────────────────────────── */
+.selfCheck {
+  background: rgba(251, 146, 60, 0.06);
+  border: 1px solid rgba(251, 146, 60, 0.18);
+  border-radius: 10px;
+  margin-top: 8px;
+}
+.selfCheck + .selfCheck {
+  margin-top: 8px;
+}
+.selfCheck summary {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fed7aa;
+  list-style: none;
+}
+.selfCheck summary::-webkit-details-marker {
+  display: none;
+}
+.selfCheck summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+}
+.selfCheck[open] summary::before {
+  transform: rotate(90deg);
+}
+.selfCheckBody {
+  padding: 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(251, 146, 60, 0.12);
+  padding-top: 12px;
+}
+.scA {
+  margin: 0;
+  color: #fb923c;
+  font-weight: 600;
+}
+.scHint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.55);
+  font-style: italic;
+}
+
+/* ── CTA ──────────────────────── */
+.cta {
+  margin-top: 12px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.14), rgba(251, 191, 36, 0.14));
+  border: 1px solid rgba(251, 146, 60, 0.32);
+  border-radius: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.cta h3 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 1.15rem;
+}
+.cta p {
+  margin: 0;
+  color: rgba(248, 250, 252, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.ctaBtn {
+  margin-top: 4px;
+  padding: 10px 22px;
+  background: #fb923c;
+  color: #431407;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.ctaBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(251, 146, 60, 0.4);
+}
+
+/* ── 반응형 ─────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px 48px;
+  }
+  .graphRow {
+    gap: 16px;
+  }
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+  .valueBig {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+  .tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+  .tab {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  .slider::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 12px 40px;
+  }
+}
+
+/* ── 점근선 경고 ─────── */
+.warnBanner {
+  padding: 12px 16px;
+  background: rgba(248, 113, 113, 0.14);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 10px;
+  color: #fecaca;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.warnBanner strong {
+  color: #f87171;
+}
+
+/* ── 경사 기준 카드 ─────── */
+.slopeCards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.slopeCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.slopeOk {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: #a7f3d0;
+}
+.slopeNo {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fecaca;
+}

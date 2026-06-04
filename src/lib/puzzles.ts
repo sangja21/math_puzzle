@@ -129,6 +129,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'tangent',
+    title: '탄젠트함수의 원리',
+    emoji: '🌅',
+    description: '탈레스와 피라미드의 비밀! 막대기 하나와 그림자만으로 대피라미드의 높이를 재 보세요.',
+    difficulty: 'easy',
+    href: '/puzzle/tangent',
+    tag: '탄젠트함수 🌅',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
