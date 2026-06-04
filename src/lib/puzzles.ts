@@ -118,6 +118,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'cosine',
+    title: '코사인함수의 원리',
+    emoji: '🌙',
+    description: '지구에서 달까지의 거리! 망원경으로 각도 두 개만 재서 직접 잴 수 없는 거리를 알아내 보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/cosine',
+    tag: '코사인함수 🌙',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
