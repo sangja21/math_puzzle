@@ -1,0 +1,314 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── 미션 헤더 ─────────────────────── */
+.missionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.missionBadge {
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: rgba(45, 212, 191, 0.14);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  color: #5eead4;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.missionTitle {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #f1f5f9;
+}
+.missionScene {
+  margin: 0;
+  font-size: 0.92rem;
+  color: rgba(248, 250, 252, 0.72);
+  line-height: 1.55;
+}
+.scaleNote {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(248, 250, 252, 0.5);
+  font-style: italic;
+}
+
+/* ── 장면 ─────────────────────────── */
+.sceneBox {
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 10px;
+}
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── 컨트롤 패널 ──────────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+.stepLabel {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #5eead4;
+}
+.stepDesc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.75);
+  line-height: 1.6;
+}
+.mono {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #fbbf24;
+  font-weight: 700;
+}
+.hint {
+  margin: 0;
+  font-size: 0.88rem;
+  color: rgba(248, 250, 252, 0.6);
+}
+.alignedBanner {
+  padding: 10px 14px;
+  background: rgba(251, 191, 36, 0.14);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 10px;
+  color: #fde68a;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+/* ── 슬라이더 ─────────────────────── */
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.sliderLabel {
+  font-size: 0.95rem;
+  color: rgba(248, 250, 252, 0.85);
+  display: flex;
+  justify-content: space-between;
+}
+.sliderValue {
+  color: #fbbf24;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-weight: 700;
+}
+.slider {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  border: 2px solid #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+}
+
+/* ── 버튼 ─────────────────────────── */
+.primaryBtn {
+  align-self: center;
+  padding: 10px 26px;
+  background: #2dd4bf;
+  color: #042f2e;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+.primaryBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(45, 212, 191, 0.4);
+}
+.primaryBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── 결과 ─────────────────────────── */
+.resultStars {
+  font-size: 2rem;
+  text-align: center;
+}
+.resultTable {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.resultTable th,
+.resultTable td {
+  padding: 9px 14px;
+  font-size: 0.92rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.resultTable tr:last-child th,
+.resultTable tr:last-child td {
+  border-bottom: 0;
+}
+.resultTable th {
+  text-align: left;
+  color: rgba(248, 250, 252, 0.65);
+  font-weight: 600;
+  width: 40%;
+}
+.resultTable td {
+  text-align: right;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: #f1f5f9;
+  font-weight: 700;
+}
+
+.mathCard {
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.mathCardTitle {
+  font-weight: 700;
+  color: #a7f3d0;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+.mathCard p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(248, 250, 252, 0.8);
+}
+.mathCard strong {
+  color: #34d399;
+}
+
+/* ── 최종 요약 ─────────────────────── */
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(52, 211, 153, 0.1));
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+.summaryTitle {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #f1f5f9;
+}
+.summaryStars {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+.summaryCount {
+  margin-left: 10px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.1rem;
+  color: #fbbf24;
+  font-weight: 700;
+}
+.summaryList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: rgba(248, 250, 252, 0.85);
+}
+.summaryNote {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.65);
+  line-height: 1.6;
+}
+
+/* ── 반응형 ─────────────────────────── */
+@media (max-width: 768px) {
+  .panel {
+    padding: 14px 14px;
+  }
+  .missionTitle {
+    font-size: 1.15rem;
+  }
+  .slider::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+  }
+  .slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sceneBox {
+    padding: 6px;
+  }
+  .resultStars {
+    font-size: 1.6rem;
+  }
+}
+
+/* ── 직사각형 합 막대 ─────────────────────── */
+.sumBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px 4px;
+  font-size: 0.9rem;
+  color: rgba(248, 250, 252, 0.8);
+}
+.sumBar strong {
+  color: #fbbf24;
+}
+.sumValue {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #5eead4;
+}

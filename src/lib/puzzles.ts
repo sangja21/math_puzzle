@@ -151,6 +151,17 @@ export const PUZZLES: PuzzleCard[] = [
     lessonGroup: '함수와 그래프',
   },
   {
+    id: 'integral',
+    title: '적분의 원리',
+    emoji: '🏛️',
+    description: '잘게 쪼갤수록 정확해진다! 모눈으로 어림하고 직사각형 부대로 검증 — 아르키메데스의 실진법까지.',
+    difficulty: 'medium',
+    href: '/puzzle/integral',
+    tag: '적분 🏛️',
+    category: 'principle',
+    lessonGroup: '함수와 그래프',
+  },
+  {
     id: 'machin',
     title: '침묵하는 설계자의 암호',
     emoji: '📜',
