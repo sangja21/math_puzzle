@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import styles from './page.module.css';
 
 const INSTALL_STEPS = [
@@ -76,6 +77,18 @@ export default function DesignPage() {
           ))}
         </div>
       </section>
+
+      {/* 다음 수업 */}
+      <Link href="/design/week2" className={styles.nextWeekLink}>
+        <div className={styles.nextWeekCard}>
+          <div>
+            <div className={styles.nextWeekLabel}>다음 수업</div>
+            <div className={styles.nextWeekTitle}>🔑 내 열쇠고리 만들기</div>
+            <div className={styles.nextWeekDesc}>스케치 → 치수 → 돌출 → 구멍 뚫기</div>
+          </div>
+          <span className={styles.nextWeekArrow}>→</span>
+        </div>
+      </Link>
     </div>
   );
 }

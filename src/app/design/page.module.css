@@ -118,6 +118,48 @@
   line-height: 1.4;
 }
 
+.nextWeekLink {
+  display: block;
+  text-decoration: none;
+}
+.nextWeekCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(74, 222, 128, 0.06);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.nextWeekCard:hover {
+  background: rgba(74, 222, 128, 0.11);
+  border-color: rgba(74, 222, 128, 0.35);
+}
+.nextWeekLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4ade80;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.nextWeekTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 4px;
+}
+.nextWeekDesc {
+  font-size: 0.85rem;
+  color: rgba(248, 250, 252, 0.5);
+}
+.nextWeekArrow {
+  font-size: 1.5rem;
+  color: #4ade80;
+  flex-shrink: 0;
+}
+
 @media (max-width: 480px) {
   .shortcutGrid { grid-template-columns: 1fr 1fr; }
 }
