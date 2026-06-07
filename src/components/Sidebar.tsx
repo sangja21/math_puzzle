@@ -62,6 +62,12 @@ const Sidebar = () => {
                         </div>
                     </Link>
 
+                    <Link href="/design" onClick={closeSidebar}>
+                        <div className={`${styles.navLink} ${pathname.startsWith('/design') ? styles.active : ''}`}>
+                            <span>⚙️</span> 설계 공방
+                        </div>
+                    </Link>
+
                     <a
                         href="https://github.com/sangja21/scratch-games-collection"
                         target="_blank"

@@ -1,0 +1,373 @@
+/* ── 전체 컨테이너 ──────────────────────────────────────────── */
+.container {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #0d1f0f 0%, #0f172a 40%, #020617 100%);
+  color: #f8fafc;
+  padding: 32px 24px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── 히어로 ─────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.heroIcon {
+  font-size: 3rem;
+  line-height: 1;
+}
+.heroTitle {
+  margin: 0 0 4px;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #86efac, #4ade80, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.heroSub {
+  margin: 0;
+  color: rgba(248, 250, 252, 0.55);
+  font-size: 0.95rem;
+}
+
+/* ── 탭 ─────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tab {
+  padding: 10px 22px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: rgba(248, 250, 252, 0.5);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  border-radius: 8px 8px 0 0;
+}
+.tab:hover { color: rgba(248, 250, 252, 0.85); }
+.tabActive {
+  color: #4ade80;
+  border-bottom-color: #4ade80;
+  font-weight: 700;
+}
+
+/* ── 탭 콘텐츠 ──────────────────────────────────────────────── */
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ── 섹션 ───────────────────────────────────────────────────── */
+.section {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.section:first-child { border-top: 0; padding-top: 0; }
+.sectionTitle {
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.sectionDesc {
+  margin: 0 0 16px;
+  color: rgba(248, 250, 252, 0.6);
+  font-size: 0.9rem;
+}
+
+/* ── 설치 단계 ──────────────────────────────────────────────── */
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.stepItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.stepNum {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.stepItem > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stepItem strong { font-size: 0.95rem; color: #f1f5f9; }
+.stepItem p { margin: 0; font-size: 0.875rem; color: rgba(248, 250, 252, 0.65); }
+.stepItem code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: ui-monospace, monospace;
+  color: #86efac;
+}
+
+/* ── UI 표 ──────────────────────────────────────────────────── */
+.tableWrap { overflow-x: auto; }
+.uiTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.uiTable th {
+  text-align: left;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(248, 250, 252, 0.55);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.uiTable td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(248, 250, 252, 0.8);
+  vertical-align: top;
+}
+.uiTable tr:hover td { background: rgba(255, 255, 255, 0.03); }
+.posCell { color: rgba(248, 250, 252, 0.45); font-size: 0.82rem; white-space: nowrap; }
+
+/* ── 용어 카드 ──────────────────────────────────────────────── */
+.termGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.termCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.termName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #86efac;
+  margin-bottom: 6px;
+}
+.termDesc {
+  font-size: 0.8rem;
+  color: rgba(248, 250, 252, 0.65);
+  line-height: 1.5;
+}
+
+/* ── 노트 박스 ──────────────────────────────────────────────── */
+.noteBox {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.noteItem {
+  display: flex;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: rgba(248, 250, 252, 0.75);
+  line-height: 1.5;
+}
+.noteIcon { font-size: 1.1rem; flex-shrink: 0; }
+
+/* ── 체크리스트 ─────────────────────────────────────────────── */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.checkItem:hover { background: rgba(255, 255, 255, 0.06); }
+.checkInput { display: none; }
+.checkBox {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  transition: border-color 0.15s, background 0.15s;
+  margin-top: 1px;
+}
+.checked {
+  border-color: #4ade80;
+  background: #16a34a;
+}
+.checkSkill { font-size: 0.9rem; font-weight: 600; color: #f1f5f9; }
+.checkDone { text-decoration: line-through; color: rgba(248, 250, 252, 0.4); }
+.checkDays { font-size: 0.78rem; color: rgba(248, 250, 252, 0.45); margin-top: 2px; }
+.checkProgress {
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #86efac;
+  background: rgba(74, 222, 128, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+/* ── 데이 카드 그리드 ──────────────────────────────────────── */
+.dayGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.dayCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.dayCardHighlight {
+  border-color: rgba(74, 222, 128, 0.35);
+  background: rgba(74, 222, 128, 0.05);
+}
+.dayHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.dayBadge {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(248, 250, 252, 0.6);
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dayCardHighlight .dayBadge {
+  background: rgba(74, 222, 128, 0.2);
+  color: #86efac;
+}
+.dayTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  flex: 1;
+}
+.dayDuration {
+  font-size: 0.78rem;
+  color: rgba(248, 250, 252, 0.4);
+  white-space: nowrap;
+}
+.skillList {
+  margin: 0 0 10px;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.skillList li {
+  font-size: 0.84rem;
+  color: rgba(248, 250, 252, 0.7);
+  line-height: 1.5;
+}
+.exerciseBox {
+  display: flex;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: rgba(248, 250, 252, 0.65);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 7px;
+  padding: 8px 12px;
+  align-items: flex-start;
+}
+.exerciseLabel {
+  flex-shrink: 0;
+  background: rgba(74, 222, 128, 0.2);
+  color: #86efac;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 99px;
+}
+.noteInCard {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: rgba(248, 250, 252, 0.5);
+  line-height: 1.5;
+  padding-left: 4px;
+  border-left: 2px solid rgba(74, 222, 128, 0.3);
+  padding-left: 10px;
+}
+
+/* ── JLCPCB 흐름 ────────────────────────────────────────────── */
+.flowRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.flowStep {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.flowBox {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  color: rgba(248, 250, 252, 0.8);
+  white-space: nowrap;
+}
+.flowArrow {
+  color: rgba(248, 250, 252, 0.3);
+  font-size: 0.9rem;
+}
+
+/* ── 반응형 ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 20px 16px 60px; }
+  .heroTitle { font-size: 1.5rem; }
+  .termGrid { grid-template-columns: 1fr 1fr; }
+  .tabs { overflow-x: auto; }
+}
+@media (max-width: 480px) {
+  .termGrid { grid-template-columns: 1fr; }
+  .hero { gap: 12px; }
+  .heroIcon { font-size: 2rem; }
+}
