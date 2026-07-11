@@ -62,6 +62,12 @@ const Sidebar = () => {
                         </div>
                     </Link>
 
+                    <Link href="/ai" onClick={closeSidebar}>
+                        <div className={`${styles.navLink} ${pathname.startsWith('/ai') ? styles.active : ''}`}>
+                            <span>🤖</span> AI 딥러닝
+                        </div>
+                    </Link>
+
                     <a
                         href="https://github.com/sangja21/scratch-games-collection"
                         target="_blank"
