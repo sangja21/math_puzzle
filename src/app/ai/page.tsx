@@ -38,8 +38,9 @@ const CHAPTERS: Chapter[] = [
     emoji: '🔢',
     concept: 'Matrix Multiplication',
     description:
-      '뉴런 여러 개를 한꺼번에! 내적을 격자로 쌓으면 신경망의 한 층이 됩니다.',
-    status: 'soon',
+      '뉴런 여러 개를 한꺼번에! 내적을 격자로 쌓으면 신경망의 한 층이 됩니다. 워크북 50개 빈칸을 행×열로 채우며 층 하나를 통째로 계산해봅니다.',
+    href: '/ai/matrix',
+    status: 'ready',
   },
   {
     no: '03',
