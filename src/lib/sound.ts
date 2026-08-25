@@ -64,6 +64,61 @@ export const playSound = (type: 'select' | 'move' | 'error' | 'success') => {
   }
 };
 
+export const playColorPaintSound = (colorIdx: number) => {
+  if (!audioCtx) return;
+
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+
+  // Frequencies for 4 colors (C5, E5, G5, B5 / Do, Mi, Sol, Si pentatonic feel)
+  const notes = [523.25, 659.25, 783.99, 987.77];
+  const freq = notes[colorIdx % notes.length] || 523.25;
+
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  // Water drop / Mallet style sound
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(freq * 1.2, now);
+  osc.frequency.exponentialRampToValueAtTime(freq, now + 0.04);
+
+  gain.gain.setValueAtTime(0.25, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start(now);
+  osc.stop(now + 0.18);
+};
+
+export const playClearSound = () => {
+  if (!audioCtx) return;
+
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(450, now);
+  osc.frequency.exponentialRampToValueAtTime(200, now + 0.12);
+
+  gain.gain.setValueAtTime(0.2, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start(now);
+  osc.stop(now + 0.12);
+};
+
 const playNote = (freq: number, startTime: number, duration: number, type: OscillatorType = 'sine') => {
   if (!audioCtx) return;
   const osc = audioCtx.createOscillator();

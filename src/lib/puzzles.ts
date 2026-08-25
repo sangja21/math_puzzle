@@ -559,6 +559,16 @@ export const PUZZLES: PuzzleCard[] = [
     tag: '논리 그림 🎨',
     category: 'puzzle',
   },
+  {
+    id: 'four_color',
+    title: '4색 정리',
+    emoji: '🗺️',
+    description: '어떤 지도든 4가지 색이면 충분하다! 남미·유럽·대한민국 지도를 칠해보세요.',
+    difficulty: 'medium',
+    href: '/puzzle/four-color',
+    tag: '신규 퍼즐! ✨',
+    category: 'puzzle',
+  },
 ];
 
 export const difficultyColors = {
